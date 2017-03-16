@@ -1,0 +1,74 @@
+﻿@model proto.Models.BarModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BarModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageDir)
+        </dt>
+
+        <dd>
+            <img class="media-object" src="@Url.Content(Model.ImageDir)" alt="Generic placeholder image" style="width:128px;height:128px" />
+
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelefonNr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelefonNr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fakultet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fakultet)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to front", "Index", "Home")
+</p>

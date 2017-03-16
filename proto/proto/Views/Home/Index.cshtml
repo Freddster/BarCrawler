@@ -1,0 +1,47 @@
+﻿@model IEnumerable<proto.Models.BarModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>BarCrawler.dk</h1>
+
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#Oversigt" aria-controls="Oversigt" role="tab" data-toggle="tab">Oversigt</a></li>
+    <li role="presentation"><a href="#Events" aria-controls="Events" role="tab" data-toggle="tab">Events</a></li>
+    <li role="presentation"><a href="#Feed" aria-controls="Kort" role="tab" data-toggle="tab">Feed</a></li>
+    <li role="presentation"><a href="#Kort" aria-controls="Kort" role="tab" data-toggle="tab">Kort</a></li>
+</ul>
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="Oversigt">
+        <div class="list-group">
+
+            @foreach (var item in Model)
+            {
+                <a href="@Url.Action("Details","BarModels",new { id = item.ID})" class="list-group-item">
+                    <div class="media">
+                        <div class="pull-left">
+                            <img class="media-object" src="@Url.Content(item.ImageDir)" alt="Generic placeholder image" style="width:64px;height:64px" />
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">@item.Name</h4>
+                            @item.Description
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade in" id="Events">
+        HEJ!
+    </div>
+    <div role="tabpanel" class="tab-pane fade in" id="Feed">
+
+    </div>
+    <div role="tabpanel" class="tab-pane fade in" id="Kort">
+
+    </div>
+</div>
+
+
