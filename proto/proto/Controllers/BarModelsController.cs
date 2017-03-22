@@ -6,17 +6,20 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using proto.DAL;
 using proto.Models;
 
 namespace proto.Controllers
 {
     public class BarModelsController : Controller
     {
-        private protoContext db = new protoContext();
+        private BarCrawlerContext db = new BarCrawlerContext();
+        private UnitOfWork unitOfWork = new UnitOfWork();
 
         // GET: BarModels
         public ActionResult Index()
         {
+            return View(unitOfWork.BarRepository.GetAllBars());
             return View(db.BarModels.ToList());
         }
 
@@ -27,7 +30,8 @@ namespace proto.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BarModel barModel = db.BarModels.Find(id);
+            BarModel barModel = unitOfWork.BarRepository.GetBarByID(id);
+            //BarModel barModel = db.BarModels.Find(id);
             if (barModel == null)
             {
                 return HttpNotFound();
@@ -55,7 +59,9 @@ namespace proto.Controllers
                     file.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Images"), file.FileName));
                     barModel.ImageDir = System.IO.Path.Combine("~/Images",file.FileName);
                 }
-                db.BarModels.Add(barModel);
+                unitOfWork.BarRepository.AddBar(barModel);
+                //db.BarModels.Add(barModel);
+                unitOfWork.Save();
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -70,7 +76,8 @@ namespace proto.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BarModel barModel = db.BarModels.Find(id);
+            BarModel barModel = unitOfWork.BarRepository.GetBarByID(id);
+            //BarModel barModel = db.BarModels.Find(id);
             if (barModel == null)
             {
                 return HttpNotFound();
@@ -87,8 +94,10 @@ namespace proto.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(barModel).State = EntityState.Modified;
-                db.SaveChanges();
+                unitOfWork.BarRepository.UpdateBarModel(barModel);
+                unitOfWork.Save();
+                //db.Entry(barModel).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(barModel);
@@ -101,7 +110,8 @@ namespace proto.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BarModel barModel = db.BarModels.Find(id);
+            BarModel barModel = unitOfWork.BarRepository.GetBarByID(id);
+            //BarModel barModel = db.BarModels.Find(id);
             if (barModel == null)
             {
                 return HttpNotFound();
@@ -114,10 +124,15 @@ namespace proto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            BarModel barModel = db.BarModels.Find(id);
+            BarModel barModel = unitOfWork.BarRepository.GetBarByID(id);
+            unitOfWork.BarRepository.DeleteStudent(barModel.ID);
+            unitOfWork.Save();
+            return RedirectToAction("Index");
+
+            /*BarModel barModel = db.BarModels.Find(id);
             db.BarModels.Remove(barModel);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index");*/
         }
 
         protected override void Dispose(bool disposing)

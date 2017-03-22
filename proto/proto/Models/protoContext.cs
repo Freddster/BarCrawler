@@ -6,7 +6,7 @@ using System.Web;
 
 namespace proto.Models
 {
-    public class protoContext : DbContext
+    public class BarCrawlerContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -15,7 +15,7 @@ namespace proto.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public protoContext() : base("name=protoContext")
+        public BarCrawlerContext() : base("name=BarCrawlerContext")
         {
         }
 

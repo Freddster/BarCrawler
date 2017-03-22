@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using proto.DAL;
 using proto.Models;
 
 namespace proto.Controllers
 {
     public class HomeController : Controller
     {
-        private protoContext db = new protoContext();
+        private BarCrawlerContext db = new BarCrawlerContext();
+        UnitOfWork unitOfWork = new UnitOfWork();
 
         public ActionResult Index()
         {
-            return View(db.BarModels.ToList());
+            return View(unitOfWork.BarRepository.GetAllBars());
+            //return View(db.BarModels.ToList());
         }
 
         public ActionResult About()
