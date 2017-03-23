@@ -15,7 +15,7 @@ namespace proto.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private protoContext db = new protoContext();
+        private BarCrawlerContext db = new BarCrawlerContext();
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
