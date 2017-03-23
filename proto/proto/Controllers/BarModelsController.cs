@@ -7,18 +7,48 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using proto.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace proto.Controllers
 {
     public class BarModelsController : Controller
     {
         private protoContext db = new protoContext();
+        private ApplicationUserManager _userManager;
+        private ApplicationSignInManager _signInManager;
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         // GET: BarModels
         public ActionResult Index()
         {
             return View(db.BarModels.ToList());
         }
+
 
         // GET: BarModels/Details/5
         public ActionResult Details(int? id)
@@ -46,17 +76,30 @@ namespace proto.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(HttpPostedFileBase file,[Bind(Include = "ID,Name,Description,Adresse,TelefonNr,Email,Fakultet,ImageDir")] BarModel barModel)
+        public async System.Threading.Tasks.Task<ActionResult> Create(HttpPostedFileBase file, [Bind(Include = "ID,Name,Description,Adresse,TelefonNr,Email,Fakultet,ImageDir,Password,RememberMe")] BarModel barModel)
         {
             if (ModelState.IsValid)
             {
                 if (file != null && file.ContentLength > 0)
                 {
                     file.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Images"), file.FileName));
-                    barModel.ImageDir = System.IO.Path.Combine("~/Images",file.FileName);
+                    barModel.ImageDir = System.IO.Path.Combine("~/Images", file.FileName);
                 }
                 db.BarModels.Add(barModel);
                 db.SaveChanges();
+
+                var user = new ApplicationUser { UserName = Convert.ToString(barModel.ID), Email = barModel.Email, BarId = barModel.ID};
+                var result = await UserManager.CreateAsync(user, barModel.Password);
+
+
+                
+
+                if (result.Succeeded)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
+
+
                 return RedirectToAction("Index");
             }
 
@@ -78,12 +121,13 @@ namespace proto.Controllers
             return View(barModel);
         }
 
+       
         // POST: BarModels/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Description,Adresse,TelefonNr,Email,Fakultet,ImageDir")] BarModel barModel)
+        public ActionResult Edit([Bind(Include = "ID,Name,Description,Adresse,TelefonNr,Email,Fakultet,ImageDir,Password,RememberMe")] BarModel barModel)
         {
             if (ModelState.IsValid)
             {

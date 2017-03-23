@@ -6,7 +6,7 @@
 
 <h1>BarCrawler.dk</h1>
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs nav-justified">
     <li role="presentation" class="active"><a href="#Oversigt" aria-controls="Oversigt" role="tab" data-toggle="tab">Oversigt</a></li>
     <li role="presentation"><a href="#Events" aria-controls="Events" role="tab" data-toggle="tab">Events</a></li>
     <li role="presentation"><a href="#Feed" aria-controls="Kort" role="tab" data-toggle="tab">Feed</a></li>
@@ -17,8 +17,7 @@
     <div role="tabpanel" class="tab-pane fade in active" id="Oversigt">
         <div class="list-group">
 
-            @foreach (var item in Model)
-            {
+            @foreach (var item in Model){
                 <a href="@Url.Action("Details","BarModels",new { id = item.ID})" class="list-group-item">
                     <div class="media">
                         <div class="pull-left">

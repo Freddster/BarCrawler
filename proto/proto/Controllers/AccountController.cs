@@ -15,6 +15,8 @@ namespace proto.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private protoContext db = new protoContext();
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -103,6 +105,7 @@ namespace proto.Controllers
             }
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
+
 
         //
         // POST: /Account/VerifyCode

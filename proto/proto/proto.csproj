@@ -202,17 +202,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201703131233304_InitialCreate.cs" />
-    <Compile Include="Migrations\201703131233304_InitialCreate.Designer.cs">
-      <DependentUpon>201703131233304_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703161018176_Update.cs" />
-    <Compile Include="Migrations\201703161018176_Update.Designer.cs">
-      <DependentUpon>201703161018176_Update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703161225579_Updates.cs" />
-    <Compile Include="Migrations\201703161225579_Updates.Designer.cs">
-      <DependentUpon>201703161225579_Updates.cs</DependentUpon>
+    <Compile Include="Migrations\201703211527289_olewedel.cs" />
+    <Compile Include="Migrations\201703211527289_olewedel.Designer.cs">
+      <DependentUpon>201703211527289_olewedel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -222,6 +214,7 @@
     <Compile Include="Models\protoContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -300,14 +293,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703131233304_InitialCreate.resx">
-      <DependentUpon>201703131233304_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703161018176_Update.resx">
-      <DependentUpon>201703161018176_Update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703161225579_Updates.resx">
-      <DependentUpon>201703161225579_Updates.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703211527289_olewedel.resx">
+      <DependentUpon>201703211527289_olewedel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

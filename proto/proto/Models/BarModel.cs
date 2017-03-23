@@ -22,12 +22,20 @@ namespace proto.Models
         public string TelefonNr { get; set; }
 
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         public string Fakultet { get; set; }
 
         [Display(Name="Barbillede")]
         public string ImageDir { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Display(Name = "Remember me?")]
+        public bool RememberMe { get; set; }
 
     }
 }

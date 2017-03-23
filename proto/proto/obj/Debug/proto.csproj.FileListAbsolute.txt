@@ -80,7 +80,5 @@ c:\users\frederik\documents\visual studio 2015\Projects\proto\proto\bin\Microsof
 c:\users\frederik\documents\visual studio 2015\Projects\proto\proto\obj\Debug\proto.dll
 c:\users\frederik\documents\visual studio 2015\Projects\proto\proto\obj\Debug\proto.pdb
 C:\Users\Frederik\documents\visual studio 2015\Projects\proto\proto\obj\Debug\proto.csprojResolveAssemblyReference.cache
-C:\Users\Frederik\documents\visual studio 2015\Projects\proto\proto\obj\Debug\proto.Migrations.InitialCreate.resources
+C:\Users\Frederik\documents\visual studio 2015\Projects\proto\proto\obj\Debug\proto.Migrations.olewedel.resources
 C:\Users\Frederik\documents\visual studio 2015\Projects\proto\proto\obj\Debug\proto.csproj.GenerateResource.Cache
-C:\Users\Frederik\documents\visual studio 2015\Projects\proto\proto\obj\Debug\proto.Migrations.Update.resources
-C:\Users\Frederik\documents\visual studio 2015\Projects\proto\proto\obj\Debug\proto.Migrations.Updates.resources

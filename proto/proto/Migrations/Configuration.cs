@@ -5,15 +5,15 @@ namespace proto.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<proto.Models.protoContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<proto.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "proto.Models.protoContext";
+            ContextKey = "proto.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(proto.Models.protoContext context)
+        protected override void Seed(proto.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
