@@ -5,15 +5,15 @@ namespace proto.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<proto.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<proto.Models.BarCrawlerContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "proto.Models.ApplicationDbContext";
+            ContextKey = "proto.Models.BarCrawlerContext";
         }
 
-        protected override void Seed(proto.Models.ApplicationDbContext context)
+        protected override void Seed(proto.Models.BarCrawlerContext context)
         {
             //  This method will be called after migrating to the latest version.
 
