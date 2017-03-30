@@ -47,7 +47,6 @@ namespace proto.DAL
         public void UpdateBarModel(BarModel barmodel)
         {
             context.Entry(barmodel).State = EntityState.Modified;
-
         }
 
         //Delete

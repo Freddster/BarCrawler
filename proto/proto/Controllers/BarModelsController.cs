@@ -92,7 +92,7 @@ namespace proto.Controllers
                 unitOfWork.BarRepository.AddBar(barModel);
                 //db.BarModels.Add(barModel);
                 unitOfWork.Save();
-                db.SaveChanges();
+                //db.SaveChanges();
 
                 var user = new ApplicationUser { UserName = Convert.ToString(barModel.ID), Email = barModel.Email, BarId = barModel.ID};
                 var result = await UserManager.CreateAsync(user, barModel.Password);
