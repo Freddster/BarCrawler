@@ -42,3 +42,31 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<script defer type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD18o1qPT-HXKY-G76ArZc4HDlTRGVQ70A">
+</script>
+@*<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD18o1qPT-HXKY-G76ArZc4HDlTRGVQ70A&callback=initMap"
+    type="text/javascript"></script>*@
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        initialize();
+    });
+    function initialize() {
+        var mapOptions = {
+            center: new google.maps.LatLng(56.172058, 10.191259),
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+          mapOptions);
+        // create a marker
+        var latlng = new google.maps.LatLng(56.172058, 10.191259);
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title: 'My Place'
+        });
+        $("#map_canvas").css("width",).css("height", 300);
+    }
+</script>
