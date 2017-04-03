@@ -18,16 +18,16 @@
                     <span class="icon-bar"></span>
                 </button>
                 
-                <button class="btn btn-default" type="submit" href="Index"><i class="glyphicon glyphicon-home"></i></button>
-                
-                <div class="media"> <img src="@Url.Content("~/SharedImage/Badge.PNG")" style="max-width: 64px; max-height: 64px" @Html.ActionLink("ole", "Index", "Home")  /></div>
                 
                 @*@Html.ActionLink("BarCrawler", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Forside", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                    @* Midlertididt logo indsat med link til forside *@
+                    <a href="~/"><img border="0" src="/SharedImage/logo.png" width="48" height="48" /></a>
+                
+                    @*<li>@Html.ActionLink("Forside", "Index", "Home")</li>*@
+                    @*<li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>*@
                 </ul>
                 <div class="col-sm-3 col-md-3">
                     <form class="navbar-form" role="search">
