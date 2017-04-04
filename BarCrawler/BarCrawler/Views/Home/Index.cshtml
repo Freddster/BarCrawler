@@ -22,7 +22,7 @@
             <a class="list-group-item">
                 <div class="media">
                     <div class="pull-left">
-                        <img class="media-object" src="@Url.Content("https://www.codemonkey.in/images/Code-Monkey.png")" alt="Generic placeholder image" style="width: 64px; height: 64px"/>
+                        <img class="media-object" src="@Url.Content("https://www.codemonkey.in/images/Code-Monkey.png")" alt="Generic placeholder image" style="width: 64px; height: 64px" />
                     </div>4
                     <div class="media-body">
                         <h4 class="media-heading">CodeMonkey</h4>
@@ -35,7 +35,7 @@
             <a class="list-group-item">
                 <div class="media">
                     <div class="pull-left">
-                        <img class="media-object" src="@Url.Content("http://humlelauget.dk/onewebmedia/Rumænsk%20øl.jpg")" alt="Generic placeholder image" style="width: 64px; height: 64px"/>
+                        <img class="media-object" src="@Url.Content("http://humlelauget.dk/onewebmedia/Rumænsk%20øl.jpg")" alt="Generic placeholder image" style="width: 64px; height: 64px" />
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">BeerPenis</h4>
@@ -59,9 +59,31 @@
         </p>
     </div>
     <div id="kort" class="tab-pane fade">
-        maps all over da place
+        <h3> Bar kort </h3>
+        <div id="map"></div>
+        <style>
+            #map {
+                width: 100%;
+                height: 400px;
+            }
+        </style>
+        <script>
+            function initMap() {
+                var aarhus = { lat: 56.158170, lng: 10.198101 };
+                var map = new google.maps.Map(document.getElementById('map'),
+                    {
+                        zoom: 13,
+                        center: aarhus
+                    });
+                var marker = new google.maps.Map.Marker({
+                    position: aarhus,
+                    map: map
+
+                });
+            }
+        </script>
+        <script async defer
+                src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
+        </script>
     </div>
 </div>
-
-
-
