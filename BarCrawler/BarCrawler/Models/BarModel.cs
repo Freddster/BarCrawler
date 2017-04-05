@@ -36,6 +36,13 @@ namespace BarCrawler.Models
 
 
 
+        [MinLength(9), MaxLength(9)]
+        public double Longitude { get; set; }
+        [MinLength(9), MaxLength(9)]
+        public double Latitude { get; set; }
+
+
+
         //Foreign keys
         public List<EventModel> Events { get; set; }
         public List<FeedModel> Feeds { get; set; }
