@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarCrawler", "BarCrawler\Ba
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarCrawler.Tests", "BarCrawler.Tests\BarCrawler.Tests.csproj", "{4CB25A68-E83D-458F-8116-D407533974BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLogic", "DataAccessLogic\DataAccessLogic.csproj", "{A39B92A0-811E-4888-81FA-8971EDAE1045}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4CB25A68-E83D-458F-8116-D407533974BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CB25A68-E83D-458F-8116-D407533974BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CB25A68-E83D-458F-8116-D407533974BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A39B92A0-811E-4888-81FA-8971EDAE1045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A39B92A0-811E-4888-81FA-8971EDAE1045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A39B92A0-811E-4888-81FA-8971EDAE1045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A39B92A0-811E-4888-81FA-8971EDAE1045}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
