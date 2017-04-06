@@ -1,4 +1,43 @@
-﻿@{
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+    var map;
+    $(document).ready(function () {
+        initialize();
+        BindResizeEvent();
+    });
+
+    function BindResizeEvent() {
+        $('a[href="#kort"]').on('shown.bs.tab',
+            function() {
+                google.maps.event.trigger(map, 'resize');
+            });
+    }
+
+    function initialize() {
+        google.maps.visualRefresh = true;
+        var Aarhus = new google.maps.LatLng(56.158170, 10.198101);
+
+        var mapOptions = {
+            zoom: 13,
+            center: Aarhus,
+            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+        };
+
+        map = new google.maps.Map(document.getElementById("mapDiv"), mapOptions);
+    }
+
+</script>
+
+
+
+<script async defer
+        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
+</script>
+
+@{
     ViewBag.Title = "Forside";
 }
 
@@ -47,8 +86,33 @@
         </div>
     </div>
     <div id="event" class="tab-pane fade">
-        <p>Events yo yo yo </p>
+        
+        <a class="list-group-item">
+            <div class="container">
+                <div class="col-lg-1">
+                    <div class="row">
+                        <p style="color: darkred">06-04-2017</p>
+                    </div>
+                    <div class="row">
+                        <p style="color: darkred">17:00</p>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="row">   
+                        <p><b>Eventtitel goes here hjerte</b></p>
+                    </div>
+                    <div class="row">
+                        <p>Navnet på baren!</p>
+                    </div>
+                    <div class="row">
+                        <p>Kort beskrivelse af event her highway to the dangerzone!</p>
+                    </div>
+                </div>
+            </div>
+        </a>
     </div>
+    
+    @*Lav feed tabel snart!*@
     <div id="feed" class="tab-pane fade">
         <p>
             feed
@@ -58,32 +122,17 @@
             feed
         </p>
     </div>
+
+    @*Kort/map tab*@
     <div id="kort" class="tab-pane fade">
         <h3> Bar kort </h3>
-        <div id="map"></div>
+        <div id="mapDiv"></div>
         <style>
-            #map {
-                width: 100%;
-                height: 400px;
+            #mapDiv {
+                width: auto;
+                height: 450px;
             }
         </style>
-        <script>
-            function initMap() {
-                var aarhus = { lat: 56.158170, lng: 10.198101 };
-                var map = new google.maps.Map(document.getElementById('map'),
-                    {
-                        zoom: 13,
-                        center: aarhus
-                    });
-                var marker = new google.maps.Map.Marker({
-                    position: aarhus,
-                    map: map
-
-                });
-            }
-        </script>
-        <script async defer
-                src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
-        </script>
     </div>
 </div>
+
