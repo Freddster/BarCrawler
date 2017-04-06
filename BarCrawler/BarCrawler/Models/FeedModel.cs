@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -10,10 +11,15 @@ namespace BarCrawler.Models
     {
         [Key]
         public int FeedID { get; set; }
-        public DateTime TimeStamp { get; set; }
-        public string Text { get; set; }
+        [ForeignKey("BarModel")]
+        public int BarID { get; set; }
 
-        //Foreign
-        public BarModel Bar { get; set; }
+
+        [Timestamp]
+        public Byte[] TimeStamp { get; set; }
+
+        [Required]
+        [MaxLength(200)]
+        public string Text { get; set; }
     }
 }

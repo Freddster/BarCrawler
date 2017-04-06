@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,14 +12,26 @@ namespace BarCrawler.Models
     {
         [Key]
         public int DrinkID { get; set; }
-        public DateTime TimeStamp { get; set; }
+        [ForeignKey("BarModel")]
+        public int BarID { get; set; }
+
+        [Timestamp]
+        public Byte[] TimeStamp { get; set; }
         [Required]
         public string Title { get; set; }
+        [MaxLength(500)]
         public string Description { get; set; }
+
         [Required]
         public string Price { get; set; }
 
-        //Foreign Key
-        public BarModel BarModel { get; set; }
+        /*
+         Opret model til drinks billeder, sådan at det er muligt at baren
+         kan lægge et billede op af den pågældende drink.
+         Det skal evt være muligt at have to forskellige visningstilstande.
+         Den første tilstand vil være alm tabel form med billede ved siden af.
+         Den anden tilstand vil være et stort billede af drinken, hvor man så kan 
+         trykke på drinken, og så kommer informationen op i et lille "overlay" vindue.
+         */
     }
 }
