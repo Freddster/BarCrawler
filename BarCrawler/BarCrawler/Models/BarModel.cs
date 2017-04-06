@@ -35,10 +35,7 @@ namespace BarCrawler.Models
         public string Zipcode { get; set; }
 
 
-
-        [MinLength(9), MaxLength(9)]
         public double Longitude { get; set; }
-        [MinLength(9), MaxLength(9)]
         public double Latitude { get; set; }
 
 

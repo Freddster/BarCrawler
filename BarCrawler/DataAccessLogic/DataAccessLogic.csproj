@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarCrawlerContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BarRepository.cs" />
     <Compile Include="Repositories\DrinkRepository.cs" />
@@ -52,10 +53,7 @@
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BarCrawler\BarCrawler.csproj">
-      <Project>{7C0AD712-0CAE-4489-A003-05501B004B86}</Project>
-      <Name>BarCrawler</Name>
-    </ProjectReference>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
