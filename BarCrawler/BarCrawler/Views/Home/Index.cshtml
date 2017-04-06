@@ -1,4 +1,75 @@
-﻿@{
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+@*<script type="text/javascript">
+    var map;
+    $(window).load(function () {
+        BindResizeEvent();
+        initMap();
+    });
+
+    function BindResizeEvent() {
+        $("a[href='#kort']").on('shown.bs.tab',
+            function () {
+                google.maps.event.trigger(map, 'resize');
+            });
+    }
+    function initMap() {
+        var mapLatLong = new google.maps.LatLng(56.158170, 10.198101);
+        var mapOptions = {
+            zoom: 13,
+            center: mapLatLong,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            disableDefaultUI: false
+        };
+        //var aarhus = { lat: 56.158170, lng: 10.198101 };
+        map = new google.maps.Map(document.getElementById("mapDiv", mapOptions));
+        //{
+        //    zoom: 13,
+        //    center: aarhus
+        //});
+        //var marker = new google.maps.Map.Marker({
+        //    position: aarhus,
+        //    map: map
+
+        //});
+        //map.refresh();
+    }
+
+
+</script>*@
+<script type="text/javascript">
+    $(document).ready(function() {
+        initialize();
+    });
+
+    function initialize() {
+        google.maps.visualRefresh = true;
+        var Aarhus = new google.maps.LatLng(56.158170, 10.198101);
+
+        var mapOptions = {
+            zoom: 13,
+            center: Aarhus,
+            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+        };
+
+        var map = new google.maps.Map(document.getElementById("mapDiv"), mapOptions);
+
+
+    }
+    $('#kort').on('shown', function (e) {
+
+        google.maps.event.trigger(map, 'resize');
+
+    });
+</script>
+
+<script async defer
+        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
+</script>
+
+@{
     ViewBag.Title = "Forside";
 }
 
@@ -58,32 +129,17 @@
             feed
         </p>
     </div>
+    @*Kort/map tab*@
     <div id="kort" class="tab-pane fade">
         <h3> Bar kort </h3>
-        <div id="map"></div>
+        <div id="mapDiv"></div>
         <style>
-            #map {
-                width: 100%;
-                height: 400px;
+            #mapDiv {
+                width: 1000px;
+                height: 600px;
             }
         </style>
-        <script>
-            function initMap() {
-                var aarhus = { lat: 56.158170, lng: 10.198101 };
-                var map = new google.maps.Map(document.getElementById('map'),
-                    {
-                        zoom: 13,
-                        center: aarhus
-                    });
-                var marker = new google.maps.Map.Marker({
-                    position: aarhus,
-                    map: map
-
-                });
-            }
-        </script>
-        <script async defer
-                src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
-        </script>
+        
     </div>
 </div>
+

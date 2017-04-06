@@ -207,6 +207,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="SharedImage\FrontpageJumbotron.jpg" />
     <Content Include="SharedImage\logo.png" />
     <Content Include="Views\Home\Images\sloth.jpg" />
     <Content Include="Scripts\bootstrap.js" />
