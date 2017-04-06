@@ -47,19 +47,7 @@ namespace BarCrawler.Models
         public List<EventModel> Events { get; set; }
         public List<FeedModel> Feeds { get; set; }
         public List<PictureModel> Pictures { get; set; }
-        public List<Drink> Drinks { get; set; }
-
-
-        [Display(Name = "Barbillede")]
-        public string ImageDir { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
-
-        [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; }
-
+        public List<DrinkModel> Drinks { get; set; }
     }
 
 }

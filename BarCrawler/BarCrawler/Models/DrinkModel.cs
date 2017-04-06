@@ -6,7 +6,7 @@ using System.Web;
 
 namespace BarCrawler.Models
 {
-    public class Drink
+    public class DrinkModel
 
     {
         [Key]

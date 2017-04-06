@@ -199,7 +199,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BarCrawlerContext.cs" />
     <Compile Include="Models\BarModel.cs" />
-    <Compile Include="Models\Drink.cs" />
+    <Compile Include="Models\DrinkModel.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\FeedModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />

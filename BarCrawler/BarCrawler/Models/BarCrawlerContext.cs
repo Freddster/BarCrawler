@@ -20,7 +20,11 @@ namespace BarCrawler.Models
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
-        // public virtual DbSet<MyEntity> MyEntities { get; set; }
+        public virtual DbSet<BarModel> BarModels { get; set; }
+        public virtual DbSet<DrinkModel> DrinkModels { get; set; }
+        public virtual DbSet<EventModel> EventModels { get; set; }
+        public virtual DbSet<FeedModel> FeedModels { get; set; }
+        public virtual DbSet<PictureModel> PictureModels { get; set; }
     }
 
     //public class MyEntity

@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,6 +50,12 @@
     <Compile Include="Repositories\FeedRepository.cs" />
     <Compile Include="Repositories\PictureRepository.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BarCrawler\BarCrawler.csproj">
+      <Project>{7C0AD712-0CAE-4489-A003-05501B004B86}</Project>
+      <Name>BarCrawler</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
