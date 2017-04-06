@@ -4,34 +4,30 @@
 
 <script type="text/javascript">
     var map;
-    $(document).ready(function() {
+    $(document).ready(function () {
         initialize();
-        //BindResizeEvent();
+        BindResizeEvent();
     });
 
-    //function BindResizeEvent() {
-    //    $('a[href="#kort"]').on('shown.bs.tab',
-    //        function() {
-    //            google.maps.event.trigger(map, 'resize');
-    //        });
-    //}
-
-    function initialize() {
-        $('a[href="#kort"]').trigger('click',
+    function BindResizeEvent() {
+        $('a[href="#kort"]').on('shown.bs.tab',
             function() {
-                google.maps.visualRefresh = true;
-                var Aarhus = new google.maps.LatLng(56.158170, 10.198101);
-
-                var mapOptions = {
-                    zoom: 13,
-                    center: Aarhus,
-                    mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
-                };
-
-                map = new google.maps.Map(document.getElementById("mapDiv"), mapOptions);
+                google.maps.event.trigger(map, 'resize');
             });
     }
 
+    function initialize() {
+        google.maps.visualRefresh = true;
+        var Aarhus = new google.maps.LatLng(56.158170, 10.198101);
+
+        var mapOptions = {
+            zoom: 13,
+            center: Aarhus,
+            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+        };
+
+        map = new google.maps.Map(document.getElementById("mapDiv"), mapOptions);
+    }
 
 </script>
 
@@ -90,8 +86,33 @@
         </div>
     </div>
     <div id="event" class="tab-pane fade">
-        <p>Events yo yo yo </p>
+        
+        <a class="list-group-item">
+            <div class="container">
+                <div class="col-lg-1">
+                    <div class="row">
+                        <p style="color: darkred">06-04-2017</p>
+                    </div>
+                    <div class="row">
+                        <p style="color: darkred">17:00</p>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="row">   
+                        <p><b>Eventtitel goes here hjerte</b></p>
+                    </div>
+                    <div class="row">
+                        <p>Navnet på baren!</p>
+                    </div>
+                    <div class="row">
+                        <p>Kort beskrivelse af event her highway to the dangerzone!</p>
+                    </div>
+                </div>
+            </div>
+        </a>
     </div>
+    
+    @*Lav feed tabel snart!*@
     <div id="feed" class="tab-pane fade">
         <p>
             feed
@@ -101,6 +122,7 @@
             feed
         </p>
     </div>
+
     @*Kort/map tab*@
     <div id="kort" class="tab-pane fade">
         <h3> Bar kort </h3>
@@ -111,7 +133,6 @@
                 height: 450px;
             }
         </style>
-
     </div>
 </div>
 
