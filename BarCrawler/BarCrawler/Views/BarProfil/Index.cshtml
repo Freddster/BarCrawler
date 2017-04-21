@@ -4,17 +4,17 @@
 }
 
 
-     @*Indsæt coverbillede her*@
+@*Indsæt coverbillede her*@
 <center>
     <img src="http://cdn-mf1.heartyhosting.com/sites/mensfitness.com/files/styles/wide_videos/public/main_penis_weed_banana_.jpg?itok=F4HMjAZp" alt="Img" height="200" />
 </center>
-    <h2>BarProfil</h2>
-    <ul class="nav nav-tabs nav-justified" style="width:90%">
-        <li role="presentation" class="active"><a href="#Feed" aria-controls="Feed" role="tab" data-toggle="tab">Feed</a></li>
-        <li role="presentation"><a href="#Events" aria-controls="Events" role="tab" data-toggle="tab">Events</a></li>
-        <li role="presentation"><a href="#Galleri" aria-controls="Galleri" role="tab" data-toggle="tab">Galleri</a></li>
-        <li role="presentation"><a href="#Info" aria-controls="Info" role="tab" data-toggle="tab">Info</a></li>
-    </ul>
+<h2>BarProfil</h2>
+<ul class="nav nav-tabs nav-justified" style="width:90%">
+    <li role="presentation" class="active"><a href="#Feed" aria-controls="Feed" role="tab" data-toggle="tab">Feed</a></li>
+    <li role="presentation"><a href="#Events" aria-controls="Events" role="tab" data-toggle="tab">Events</a></li>
+    <li role="presentation"><a href="#Galleri" aria-controls="Galleri" role="tab" data-toggle="tab">Galleri</a></li>
+    <li role="presentation"><a href="#Info" aria-controls="Info" role="tab" data-toggle="tab">Info</a></li>
+</ul>
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane fade in active" id="Feed">
 
@@ -50,6 +50,61 @@
                 </div>
             </div>
         </div>
+    </div>
+
+
+    <div role="tabpanel" class="tab-pane fade in" id="Events">
+
+        <div class="container">
+            <h2>Event Kalender</h2>
+
+            <hr />
+            <div class="agenda">
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <colgroup>
+                            <col width="200" />
+                            <col width="200" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Dato</th>
+                                <th>Tid</th>
+                                <th>Event</th>
+                            </tr>
+                        </thead>
+
+                        @* For each der lber events igennem! *@
+                        <tbody>
+                            <!-- Single event in a single day -->
+                            <tr>
+                                <td class="agenda-date" rowspan="1">
+                                    <div class="dayofweek">Fredag</div>
+                                    <div class="shortdate text-muted">26. juli, 2017</div>
+                                </td>
+                                <td class="agenda-time">
+                                    18:00
+                                </td>
+                                <td class="agenda-events">
+                                    <div class="agenda-event">
+                                        <h5><b>Title måske?</b></h5>
+
+                                        <p>
+                                            Fredagsbar WOO!!!
+                                        </p>
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
