@@ -13,6 +13,7 @@ namespace BarCrawler.Models
         public int EventID { get; set; }
         [ForeignKey("BarModel")]
         public int BarID { get; set; }
+        public BarModel BarModel { get; set; }
 
 
         [Timestamp]

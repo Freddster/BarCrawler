@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<BarCrawler.Models.BarModel>
+
+@{
     ViewBag.Title = "Forside";
 }
 
@@ -19,30 +21,20 @@
     <div id="oversigt" class="tab-pane fade in active" role="tabpanel">
         <div>
             @* Placeholder for en barprofil *@
-            <a class="list-group-item">
-                <div class="media">
-                    <div class="pull-left">
-                        <img class="media-object" src="@Url.Content("https://www.codemonkey.in/images/Code-Monkey.png")" alt="Generic placeholder image" style="width: 64px; height: 64px" />
-                    </div>4
-                    <div class="media-body">
-                        <h4 class="media-heading">CodeMonkey</h4>
-
+            @foreach (var item in Model)
+            {
+                <a class="list-group-item">
+                    <div class="media">
+                        <div class="pull-left">
+                            <img class="media-object" src="@Url.Content(item.Pictures[0].Directory)" alt="Generic placeholder image" style="width: 64px; height: 64px" />
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">@item.BarName</h4>
+                            @item.Description
+                        </div>
                     </div>
-                </div>
-            </a>
-
-            @* Placeholder for en barprofil *@
-            <a class="list-group-item">
-                <div class="media">
-                    <div class="pull-left">
-                        <img class="media-object" src="@Url.Content("http://humlelauget.dk/onewebmedia/Rumænsk%20øl.jpg")" alt="Generic placeholder image" style="width: 64px; height: 64px" />
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">BeerPenis</h4>
-                        That's a penis
-                    </div>
-                </div>
-            </a>
+                </a>
+            }
 
         </div>
     </div>
@@ -60,30 +52,35 @@
     </div>
     <div id="kort" class="tab-pane fade">
         <h3> Bar kort </h3>
-        <div id="map"></div>
+        <div id="map" onclick="initMap()"></div>
         <style>
             #map {
                 width: 100%;
                 height: 400px;
             }
         </style>
-        <script>
-            function initMap() {
-                var aarhus = { lat: 56.158170, lng: 10.198101 };
-                var map = new google.maps.Map(document.getElementById('map'),
-                    {
-                        zoom: 13,
-                        center: aarhus
-                    });
-                var marker = new google.maps.Map.Marker({
-                    position: aarhus,
-                    map: map
-
-                });
-            }
-        </script>
-        <script async defer
-                src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
-        </script>
+        
     </div>
 </div>
+<script>
+            var map;
+            function initMap() {
+                var aarhus = { lat: 56.158170, lng: 10.198101 };
+                map = new google.maps.Map(document.getElementById('map'),
+                {
+                    zoom: 13,
+                    center: aarhus
+                });
+            }
+
+
+            $("#kort").on('shown.bs.tab', function () {
+
+                /* Trigger map resize event */
+                google.maps.event.trigger(map, 'resize');
+            });
+</script>
+<script async defer
+        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
+</script>
+

@@ -55,5 +55,11 @@
   <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BarCrawler\BarCrawler.csproj">
+      <Project>{7c0ad712-0cae-4489-a003-05501b004b86}</Project>
+      <Name>BarCrawler</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
