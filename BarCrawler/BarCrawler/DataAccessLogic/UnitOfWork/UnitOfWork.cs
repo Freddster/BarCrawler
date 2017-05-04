@@ -41,13 +41,12 @@ namespace DataAccessLogic.UnitOfWork
             _context.SaveChanges();
         }
 
-        public IEnumerable<BarModel> GetAllBarprofile()
+        public IEnumerable<BarModel> GetAllBarsForHome()
         {
-            return (_context.BarModels.Include(d => d.Drinks)
-                .Include(e => e.Events.Where(x => x.DateAndTimeForEvent > DateTime.Now))
-                .Include(f => f.Feeds)
-                .Include(p => p.Pictures)
-                .ToList());
+            return (_context.BarModels.Include(e => e.Events.Where( w => w.EventID == 2))
+            .Include(f => f.Feeds)
+            .Include(p => p.Pictures)
+            .ToList());
         }
     }
 }
