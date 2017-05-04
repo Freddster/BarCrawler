@@ -45,7 +45,11 @@
             <div class="list" style="margin-right:15px">
                 @*Tilføj foreach lige her*@
                 <div class="panel panel-default">
-                    <div class="panel-body">Description</div>
+                    <div class="panel-body">
+                        <button type="submit" class="btn btn-default">
+                            <i class="glyphicon-plus"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,9 +100,15 @@
     <div role="tabpanel" class="tab-pane fade in" id="Events">
 
         <div class="container">
-            <h2>Event Kalender</h2>
+            <h2>Kalender 
+                <button type="submit" class="btn btn-default">
+                    <i class="glyphicon-plus"></i>
+                </button>
+            </h2>
+            
 
             <hr />
+           
             <div class="agenda">
                 <div class="table-responsive">
                     <table class="table table-condensed table-bordered">
@@ -107,35 +117,35 @@
                             <col width="200" />
                         </colgroup>
                         <thead>
-                            <tr>
-                                <th>Dato</th>
-                                <th>Tid</th>
-                                <th>Event</th>
-                            </tr>
+                        <tr>
+                            <th>Dato</th>
+                            <th>Tid</th>
+                            <th>Event</th>
+                        </tr>
                         </thead>
 
                         @* For each der lber events igennem! *@
                         <tbody>
-                            <!-- Single event in a single day -->
-                            <tr>
-                                <td class="agenda-date" rowspan="1">
-                                    <div class="dayofweek">Fredag</div>
-                                    <div class="shortdate text-muted">26. juli, 2017</div>
-                                </td>
-                                <td class="agenda-time">
-                                    18:00
-                                </td>
-                                <td class="agenda-events">
-                                    <div class="agenda-event">
-                                        <h5><b>Title måske?</b></h5>
+                        <!-- Single event in a single day -->
+                        <tr>
+                            <td class="agenda-date" rowspan="1">
+                                <div class="dayofweek">Fredag</div>
+                                <div class="shortdate text-muted">26. juli, 2017</div>
+                            </td>
+                            <td class="agenda-time">
+                                18:00
+                            </td>
+                            <td class="agenda-events">
+                                <div class="agenda-event">
+                                    <h5><b>Title måske?</b></h5>
 
-                                        <p>
-                                            Fredagsbar WOO!!!
-                                        </p>
+                                    <p>
+                                        Fredagsbar WOO!!!
+                                    </p>
                                         
-                                    </div>
-                                </td>
-                            </tr>
+                                </div>
+                            </td>
+                        </tr>
                         </tbody>
 
 
@@ -146,5 +156,9 @@
         </div>
 
     </div>
+    <div role="tabpanel" class="tab-pane fade in" id="Info">
+        
+    </div>
+
 </div>
 
