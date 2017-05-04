@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,15 @@ namespace DataAccessLogic.UnitOfWork
         public FeedRepository FeedRepository => _feedRepository ?? new FeedRepository(_context);
         public PictureRepository PictureRepository => _pictureRepository ?? new PictureRepository(_context);
 
+
+        public BarModel GetBarprofile(int? id)
+        {
+            return (_context.BarModels.Include(d => d.Drinks)
+                .Include(e => e.Events)
+                .Include(f => f.Feeds)
+                .Include(p => p.Pictures)
+                .SingleOrDefault(x => x.BarID == id));
+        }
 
         public void Save()
         {

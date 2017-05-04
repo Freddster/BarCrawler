@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 
 namespace BarCrawler.Models
@@ -42,7 +43,7 @@ namespace BarCrawler.Models
         [MaxLength(5)]
         public string Zipcode { get; set; }
 
-
+        
         public double Longitude { get; set; }
         public double Latitude { get; set; }
 
