@@ -1,31 +1,159 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript">
+    var map;
+    $(document).ready(function () {
+        initialize();
+        BindResizeEvent();
+    });
+
+    function BindResizeEvent() {
+        $('a[href="#kort"]').on('shown.bs.tab',
+            function () {
+                google.maps.event.trigger(map, 'resize');
+            });
+    }
+
+    function initialize() {
+        google.maps.visualRefresh = true;
+        var Aarhus = new google.maps.LatLng(56.158170, 10.198101);
+
+        var mapOptions = {
+            zoom: 13,
+            center: Aarhus,
+            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+        };
+
+        map = new google.maps.Map(document.getElementById("mapDiv"), mapOptions);
+    }
+
+</script>
+
+
+
+<script async defer
+        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
+</script>
+
+@{
+    ViewBag.Title = "Forside";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>BarCrawler</h1>
+    <p class="lead">Velkommen til BarCrawler! </p>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<ul id="ForsideTabs" class="nav nav-tabs nav-justified">
+    <li class="active"><a data-toggle="tab" href="#oversigt">Oversigt</a></li>
+    <li><a data-toggle="tab" href="#event">Event</a></li>
+    <li><a data-toggle="tab" href="#feed">Feed</a></li>
+    <li><a data-toggle="tab" href="#kort">Kort</a></li>
+</ul>
+
+
+<div id="ForsideTabContext" class="tab-content">
+    <div id="oversigt" class="tab-pane fade in active" role="tabpanel">
+        <div>
+            @* Placeholder for en barprofil *@
+            <a class="list-group-item">
+                <div class="media">
+                    <div class="pull-left">
+                        <img class="media-object" src="@Url.Content("https://www.codemonkey.in/images/Code-Monkey.png")" alt="Generic placeholder image" style="width: 64px; height: 64px" />
+                    </div>4
+                    <div class="media-body">
+                        <h4 class="media-heading">CodeMonkey</h4>
+
+                    </div>
+                </div>
+            </a>
+
+            @* Placeholder for en barprofil *@
+            <a class="list-group-item">
+                <div class="media">
+                    <div class="pull-left">
+                        <img class="media-object" src="@Url.Content("http://humlelauget.dk/onewebmedia/Rumænsk%20øl.jpg")" alt="Generic placeholder image" style="width: 64px; height: 64px" />
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">BeerPenis</h4>
+                        That's a penis
+                    </div>
+                </div>
+            </a>
+
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div id="event" class="tab-pane fade">
+
+        <a class="list-group-item">
+            <div class="container">
+                <div class="col-lg-1">
+                    <div class="row">
+                        <p style="color: darkred">06-04-2017</p>
+                    </div>
+                    <div class="row">
+                        <p style="color: darkred">17:00</p>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="row">
+                        <p><b>Eventtitel goes here hjerte</b></p>
+                    </div>
+                    <div class="row">
+                        <p>Navnet på baren!</p>
+                    </div>
+                    <div class="row">
+                        <p>Kort beskrivelse af event her highway to the dangerzone!</p>
+                    </div>
+                </div>
+            </div>
+        </a>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    @*Lav feed tabel snart!*@
+    <div id="feed" class="tab-pane fade">
+        <a class="list-group-item">
+            <div class="container">
+                <div class="col-lg-1">
+                    <div class="row">
+                        <p style="color: darkred">06-04-2017</p>
+                    </div>
+                    <div class="row">
+                        <p style="color: darkred">17:00</p>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row">
+                        <p><b>BarProfilnavn goes here smiley</b></p>
+                    </div>
+
+                    <div class="row">
+                        <p>
+                            The banana is an edible fruit – botanically a berry[1][2] – produced by several kinds of large herbaceous flowering plants in the genus Musa.[3] In some countries, bananas used for cooking may be called plantains, in contrast to dessert bananas. The fruit is variable in size, color and firmness, but is usually elongated and curved, with soft flesh rich in starch covered with a rind which may be green, yellow, red, purple, or brown when ripe. The fruits grow in clusters hanging from the top of the plant. Almost all modern edible parthenocarpic (seedless) bananas come from two wild species – Musa acuminata and Musa balbisiana. The scientific names of most cultivated bananas are Musa acuminata, Musa balbisiana, and Musa × paradisiaca for the hybrid Musa acuminata × M. balbisiana, depending on their genomic constitution. The old scientific name Musa sapientum is no longer used.
+                            Musa species are native to tropical Indomalaya and Australia, and are likely to have been first domesticated in Papua New Guinea.[4][5] They are grown in 135 countries,[6] primarily for their fruit, and to a lesser extent to make fiber, banana wine and banana beer and as ornamental plants.
+                            Worldwide, there is no sharp distinction between "bananas" and "plantains". Especially in the Americas and Europe, "banana" usually refers to soft, sweet, dessert bananas, particularly those of the Cavendish group, which are the main exports from banana-growing countries. By contrast, Musa cultivars with firmer, starchier fruit are called "plantains". In other regions, such as Southeast Asia, many more kinds of banana are grown and eaten, so the simple two-fold distinction is not useful and is not made in local languages.
+                            The term "banana" is also used as the common name for the plants which produce the fruit.[3] This can extend to other members of the genus Musa like the scarlet banana (Musa coccinea), pink banana (Musa velutina) and the Fe'i bananas. It can also refer to members of the genus Ensete, like the snow banana (Ensete glaucum) and the economically important false banana (Ensete ventricosum). Both genera are classified under the banana family, Musaceae.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a>
     </div>
+
+
+@*Kort/map tab*@
+        
+<div id="kort" class="tab-pane fade">
+    <h3> Bar kort </h3>
+    <div id="mapDiv"></div>
+    <style>
+        #mapDiv {
+            width: auto;
+            height: 450px;
+        }
+    </style>
 </div>
+</div>
+
