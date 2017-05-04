@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<BarCrawler.Models.BarModel>
 
+
 @{
     ViewBag.Title = "Forside";
 }
@@ -19,14 +20,16 @@
 
 <div id="ForsideTabContext" class="tab-content">
     <div id="oversigt" class="tab-pane fade in active" role="tabpanel">
-        <div>
+        <div class="list-group">
+            
             @* Placeholder for en barprofil *@
             @foreach (var item in Model)
             {
-                <a class="list-group-item">
+                <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID})" class="list-group-item">
+
                     <div class="media">
                         <div class="pull-left">
-                            <img class="media-object" src="@Url.Content(item.Pictures[0].Directory)" alt="Generic placeholder image" style="width: 64px; height: 64px" />
+                            <img class="media-object" src="@Url.Content(item.Pictures[0].Directory)" alt="Generic placeholder image" style="width: 64px; height: 64px"/>
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">@item.BarName</h4>
@@ -35,37 +38,86 @@
                     </div>
                 </a>
             }
-
         </div>
     </div>
     <div id="event" class="tab-pane fade">
 
-        <a class="list-group-item">
-            <div class="container">
-                <div class="col-lg-1">
-                    <div class="row">
-                        <p style="color: darkred">06-04-2017</p>
+        @foreach (var item in Model)
+        {
+            foreach (var events in item.Events)
+            {
+                <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID}) class="list-group-item" >
+                    <div class="container">
+                        <div class="col-lg-1">
+                            <div class="row">
+                                <p style="color: #22662f">
+                                    @events.DateAndTimeForEvent
+                                </p>
+                            </div>
+                            <div class="row">
+                                @*<p style="color: yellowgreen">
+                                        @events.TimeStamp
+                                    </p>*@
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="row">
+                                <h4><b>@events.Title</b></h4>
+                            </div>
+
+                            <div class="row">
+                                <p>
+                                    @item.BarName
+                                </p>
+                            </div>
+                            <div class="row">
+                                <p>
+                                    @events.Description
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <p style="color: darkred">17:00</p>
+                </a>
+            }
+        }
+
+
+
+
+
+        @*<a class="list-group-item">
+                <div class="container">
+                    <div class="col-lg-1">
+                        <div class="row">
+                            <p style="color: darkred">06-04-2017</p>
+                        </div>
+                        <div class="row">
+                            <p style="color: darkred">17:00</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="row">
+                            <p>
+                                <b>Eventtitel goes here hjerte</b>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <p>Navnet på baren!</p>
+                        </div>
+                        <div class="row">
+                            <p>Kort beskrivelse af event her highway to the dangerzone!</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-5">
-                    <div class="row">
-                        <p><b>Eventtitel goes here hjerte</b></p>
-                    </div>
-                    <div class="row">
-                        <p>Navnet på baren!</p>
-                    </div>
-                    <div class="row">
-                        <p>Kort beskrivelse af event her highway to the dangerzone!</p>
-                    </div>
-                </div>
-            </div>
-        </a>
+            </a>*@
+
+
+
     </div>
 
     @*Lav feed tabel snart!*@
+
+
     <div id="feed" class="tab-pane fade">
         <a class="list-group-item">
             <div class="container">
@@ -103,26 +155,26 @@
                 height: 400px;
             }
         </style>
-        
+
     </div>
 </div>
 <script>
-            var map;
-            function initMap() {
-                var aarhus = { lat: 56.158170, lng: 10.198101 };
-                map = new google.maps.Map(document.getElementById('map'),
-                {
-                    zoom: 13,
-                    center: aarhus
-                });
-            }
+    var map;
+    function initMap() {
+        var aarhus = { lat: 56.158170, lng: 10.198101 };
+        map = new google.maps.Map(document.getElementById('map'),
+            {
+                zoom: 13,
+                center: aarhus
+            });
+    }
 
 
-            function resize() {
+    function resize() {
 
-                /* Trigger map resize event */
-                google.maps.event.trigger(map, 'resize');
-            }
+        /* Trigger map resize event */
+        google.maps.event.trigger(map, 'resize');
+    }
 </script>
 <script async defer
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
