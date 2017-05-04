@@ -40,5 +40,14 @@ namespace DataAccessLogic.UnitOfWork
         {
             _context.SaveChanges();
         }
+
+        public IEnumerable<BarModel> GetAllBarprofile()
+        {
+            return (_context.BarModels.Include(d => d.Drinks)
+                .Include(e => e.Events.Where(x => x.DateAndTimeForEvent > DateTime.Now))
+                .Include(f => f.Feeds)
+                .Include(p => p.Pictures)
+                .ToList());
+        }
     }
 }
