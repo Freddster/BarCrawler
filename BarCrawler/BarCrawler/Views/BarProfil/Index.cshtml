@@ -97,7 +97,6 @@
 
 
     <div role="tabpanel" class="tab-pane fade in" id="Events">
-
         <div class="container">
             <h2>
                 Kalender
@@ -107,14 +106,14 @@
             </h2>
 
 
-            <hr />
+            <hr/>
 
             <div class="agenda">
                 <div class="table-responsive">
                     <table class="table table-condensed table-bordered">
                         <colgroup>
-                            <col width="200" />
-                            <col width="200" />
+                            <col width="200"/>
+                            <col width="200"/>
                         </colgroup>
                         <thead>
                         <tr>
@@ -124,32 +123,27 @@
                         </tr>
                         </thead>
 
-                        @* For each der lber events igennem! *@
-                        <tbody>
-                        <!-- Single event in a single day -->
-                        <tr>
-                            <td class="agenda-date" rowspan="1">
-                                <div class="dayofweek">Fredag</div>
-                                <div class="shortdate text-muted">26. juli, 2017</div>
-                            </td>
-                            <td class="agenda-time">
-                                18:00
-                            </td>
-                            <td class="agenda-events">
-                                <div class="agenda-event">
-                                    <h5><b>Title måske?</b></h5>
-
-                                    <p>
-                                        Fredagsbar WOO!!!
-                                    </p>
-
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-
-
-
+                        @foreach (var item in Model.Events)
+                        {
+                            <tbody>
+                            <!-- Single event in a single day -->
+                            <tr>
+                                <td class="agenda-date" rowspan="1">
+                                    <div class="dayofweek">"@item.DateAndTimeForEvent.DayOfWeek</div>
+                                    <div class="shortdate text-muted">@item.DateAndTimeForEvent.Date.ToString("dd MMMM yyyy")</div>
+                                </td>
+                                <td class="agenda-time">
+                                    @item.DateAndTimeForEvent.TimeOfDay
+                                </td>
+                                <td class="agenda-events">
+                                    <div class="agenda-event">
+                                        <h5><b>@item.Title</b></h5>
+                                        <p>@item.Description</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        }
                     </table>
                 </div>
             </div>
@@ -160,19 +154,25 @@
         <h2>Kontaktinformation</h2>
         <div class="container">
             <div class="col-lg-2">
-                <div class="row"><b>Åbninstider: </b>
+                <div class="row">
+                    <b>Åbninstider: </b>
                 </div>
-                <div class="row"><b>Email: </b>
+                <div class="row">
+                    <b>Email: </b>
                 </div>
-                <div class="row"><b>Telefon nr.:</b>
+                <div class="row">
+                    <b>Telefon nr.:</b>
                 </div>
-                <div class="row"><b>Fakultet: </b>
+                <div class="row">
+                    <b>Fakultet: </b>
                 </div>
-                <div class="row"><b>Adresse: </b>
+                <div class="row">
+                    <b>Adresse: </b>
                 </div>
-                <div class="row"><b>By: </b>
+                <div class="row">
+                    <b>By: </b>
                 </div>
-                
+
             </div>
             <div class="col-lg-10">
                 <div class="row">Åbningstid</div>
@@ -191,14 +191,24 @@
                 @Model.Description
             </div>
         </div>
-        <div class="row">
-            <h2>Drinkskort</h2>
-        </div>
-        @foreach (var item in Model.Drinks)
+        @if (Model.Drinks != null)
         {
-            @Html.DisplayFor(modelItem => item.Title)
-        }
+            <div class="row">
+                <h2>Drinkskort</h2>
+            </div>
 
+            <div class="row">
+                <div class="col-lg-1"><b>Navn</b></div>
+                <div class="col-lg-1"><b>Pris</b></div>
+            </div>
+            foreach (var item in Model.Drinks)
+            {
+                <div class="row">
+                    <div class="col-lg-1">@Html.DisplayFor(modelItem => item.Title)</div>
+                    <div class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</div>
+                </div>
+            }
+        }
     </div>
 </div>
 
