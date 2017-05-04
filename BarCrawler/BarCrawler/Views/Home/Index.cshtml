@@ -13,7 +13,7 @@
     <li class="active"><a data-toggle="tab" href="#oversigt">Oversigt</a></li>
     <li><a data-toggle="tab" href="#event">Event</a></li>
     <li><a data-toggle="tab" href="#feed">Feed</a></li>
-    <li><a data-toggle="tab" href="#kort">Kort</a></li>
+    <li><a onclick="initMap" data-toggle="tab" href="#kort">Kort</a></li>
 </ul>
 
 
@@ -96,7 +96,7 @@
     </div>
     <div id="kort" class="tab-pane fade">
         <h3> Bar kort </h3>
-        <div id="map" onclick="initMap()"></div>
+        <div id="map" onmousedown="resize()"></div>
         <style>
             #map {
                 width: 100%;
@@ -118,11 +118,11 @@
             }
 
 
-            $("#kort").on('shown.bs.tab', function () {
+            function resize() {
 
                 /* Trigger map resize event */
                 google.maps.event.trigger(map, 'resize');
-            });
+            }
 </script>
 <script async defer
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
