@@ -1,4 +1,5 @@
-﻿@using BarCrawler.Models;
+﻿@using System.Net.Configuration
+@model BarCrawler.Models.BarModel
 @{
     ViewBag.Title = "BarProfil";
 }
@@ -6,7 +7,7 @@
 
 <script type="text/javascript">
     var map;
-    Window.onload = function() {
+    Window.onload = function () {
         google.maps.visualRefresh = true;
         var Aarhus = new google.maps.LatLng(56.158170, 10.198101);
 
@@ -26,18 +27,18 @@
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
 </script>
 
-     @*Indsæt coverbillede her*@
-    <div class="container" style="width:100%; height:350px; overflow:hidden;">
-            <img src="https://cdn.shopify.com/s/files/1/0691/2467/files/curvature.jpg?1308" alt="Img" style="max-width:100%; position: relative;" />
-    </div>
+@*Indsæt coverbillede her*@
+<div class="container" style="width:100%; height:350px; overflow:hidden;">
+    <img src="@Url.Content(Model.Pictures[0].Directory)" alt="Img" style="max-width:100%; position: relative;" />
+</div>
 
-<h2>BarProfil</h2>
-    <ul class="nav nav-tabs nav-justified" style="width:90%">
-        <li role="presentation" class="active"><a href="#Feed" aria-controls="Feed" role="tab" data-toggle="tab">Feed</a></li>
-        <li role="presentation"><a href="#Events" aria-controls="Events" role="tab" data-toggle="tab">Events</a></li>
-        <li role="presentation"><a href="#Galleri" aria-controls="Galleri" role="tab" data-toggle="tab">Galleri</a></li>
-        <li role="presentation"><a href="#Info" aria-controls="Info" role="tab" data-toggle="tab">Info</a></li>
-    </ul>
+<h2> @Html.DisplayFor(Model => Model.BarName)</h2>
+<ul class="nav nav-tabs nav-justified" style="width:90%">
+    <li role="presentation" class="active"><a href="#Feed" aria-controls="Feed" role="tab" data-toggle="tab">Feed</a></li>
+    <li role="presentation"><a href="#Events" aria-controls="Events" role="tab" data-toggle="tab">Events</a></li>
+    <li role="presentation"><a href="#Galleri" aria-controls="Galleri" role="tab" data-toggle="tab">Galleri</a></li>
+    <li role="presentation"><a href="#Info" aria-controls="Info" role="tab" data-toggle="tab">Info</a></li>
+</ul>
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane fade in active" id="Feed">
 
@@ -64,28 +65,26 @@
                         </tr>
                         <tr>
                             <td style="width:27px"><span class="glyphicon glyphicon-book"></span></td>
-                            <td>Fakultet</td>
+                            <td>@*Fakultet*@ @Model.Faculty</td>
                         </tr>
                         <tr>
                             @*Vejnavn og nummer*@
                             <td style="width:27px"><span class="glyphicon glyphicon-home"></span></td>
-                            <td>Findlandsgade 666</td>
+                            <td>@Model.Address1 @Model.StreetNumber</td>
                         </tr>
                         <tr>
                             @*Postnummer og by*@
                             <td style="width:27px"></td>
-                            <td>8200  Aarhus N</td>
+                            <td>@Model.Zipcode  @Model.City</td>
                         </tr>
                         <tr>
-                            <td>
-
-                            </td>
+                            <td></td>
                         </tr>
                     </table>
                     <div id="barMap">
                         <style>
-                            #barMap{
-                                max-width:100%;
+                            #barMap {
+                                max-width: 100%;
                                 height: 200px;
                             }
                         </style>
@@ -100,15 +99,16 @@
     <div role="tabpanel" class="tab-pane fade in" id="Events">
 
         <div class="container">
-            <h2>Kalender 
+            <h2>
+                Kalender
                 <button type="submit" class="btn btn-default">
                     <i class="glyphicon-plus"></i>
                 </button>
             </h2>
-            
+
 
             <hr />
-           
+
             <div class="agenda">
                 <div class="table-responsive">
                     <table class="table table-condensed table-bordered">
@@ -142,7 +142,7 @@
                                     <p>
                                         Fredagsbar WOO!!!
                                     </p>
-                                        
+
                                 </div>
                             </td>
                         </tr>
@@ -157,8 +157,48 @@
 
     </div>
     <div role="tabpanel" class="tab-pane fade in" id="Info">
-        
-    </div>
+        <h2>Kontaktinformation</h2>
+        <div class="container">
+            <div class="col-lg-2">
+                <div class="row"><b>Åbninstider: </b>
+                </div>
+                <div class="row"><b>Email: </b>
+                </div>
+                <div class="row"><b>Telefon nr.:</b>
+                </div>
+                <div class="row"><b>Fakultet: </b>
+                </div>
+                <div class="row"><b>Adresse: </b>
+                </div>
+                <div class="row"><b>By: </b>
+                </div>
+                
+            </div>
+            <div class="col-lg-10">
+                <div class="row">Åbningstid</div>
+                <div class="row">@Model.Email </div>
+                <div class="row">@Model.PhoneNumber </div>
+                <div class="row">@Model.Faculty</div>
+                <div class="row">@Model.Address1 @Model.StreetNumber</div>
+                <div class="row">@Model.Zipcode @Model.City</div>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Om os</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-11">
+                @Model.Description
+            </div>
+        </div>
+        <div class="row">
+            <h2>Drinkskort</h2>
+        </div>
+        @foreach (var item in Model.Drinks)
+        {
+            @Html.DisplayFor(modelItem => item.Title)
+        }
 
+    </div>
 </div>
 
