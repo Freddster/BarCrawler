@@ -28,8 +28,15 @@
 </script>
 
 @*Indsæt coverbillede her*@
-<div class="container" style="width:100%; height:350px; overflow:hidden;">
-    <img src="@Url.Content(Model.Pictures[0].Directory)" alt="Img" style="max-width:100%; position: relative;" />
+<div class="container" style="width: 100%; height: 350px; overflow: hidden;">
+    @if (Model.Pictures.Count > 0 )
+    {
+        <img src="@Url.Content(Model.Pictures[0].Directory)" alt="Img" style="max-width: 100%; position: relative;"/>
+    }
+    @if (Model.Pictures.Count == 0)
+    {
+        <img src="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="max-width: 100%; position: relative;" />
+    }
 </div>
 
 <h2> @Html.DisplayFor(Model => Model.BarName)</h2>
