@@ -107,7 +107,7 @@
 
 
     <div role="tabpanel" class="tab-pane fade in" id="Events">
-        @if (Model.Events != null)
+        @if (Model.Events.Count > 0)
         {
             <div class="container">
                 <h2>
@@ -161,7 +161,7 @@
                 </div>
             </div>
         }
-        @if (Model.Events == null)
+        @if (Model.Events.Count == 0)
         {
             <h2>@Model.BarName har ingen kommende events</h2>
         }
@@ -208,7 +208,7 @@
                 @Model.Description
             </div>
         </div>
-        @if (Model.Drinks != null)
+        @if (Model.Drinks.Count > 0)
         {
             <div class="row">
                 <h2>Drinkskort</h2>
