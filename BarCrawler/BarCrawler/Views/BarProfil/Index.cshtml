@@ -1,0 +1,150 @@
+﻿@using BarCrawler.Models;
+@{
+    ViewBag.Title = "BarProfil";
+}
+
+
+<script type="text/javascript">
+    var map;
+    Window.onload = function() {
+        google.maps.visualRefresh = true;
+        var Aarhus = new google.maps.LatLng(56.158170, 10.198101);
+
+        var mapOptions = {
+            zoom: 13,
+            center: Aarhus,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        map = new google.maps.Map(document.getElementById("barMap"), mapOptions);
+
+    }
+
+</script>
+
+<script async defer
+        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
+</script>
+
+     @*Indsæt coverbillede her*@
+    <div class="container" style="width:100%; height:350px; overflow:hidden;">
+            <img src="https://cdn.shopify.com/s/files/1/0691/2467/files/curvature.jpg?1308" alt="Img" style="max-width:100%; position: relative;" />
+    </div>
+
+<h2>BarProfil</h2>
+    <ul class="nav nav-tabs nav-justified" style="width:90%">
+        <li role="presentation" class="active"><a href="#Feed" aria-controls="Feed" role="tab" data-toggle="tab">Feed</a></li>
+        <li role="presentation"><a href="#Events" aria-controls="Events" role="tab" data-toggle="tab">Events</a></li>
+        <li role="presentation"><a href="#Galleri" aria-controls="Galleri" role="tab" data-toggle="tab">Galleri</a></li>
+        <li role="presentation"><a href="#Info" aria-controls="Info" role="tab" data-toggle="tab">Info</a></li>
+    </ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="Feed">
+
+        <div style="width:70%;float:left;margin-top:5px">
+            <div class="list" style="margin-right:15px">
+                @*Tilføj foreach lige her*@
+                <div class="panel panel-default">
+                    <div class="panel-body">Description</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="width:30%;float:left;margin-top:5px">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table>
+                        <tr>
+                            <td style="width:27px"><span class="glyphicon glyphicon-time"></span></td>
+                            <td>Åbningstider</td>
+                        </tr>
+                        <tr>
+                            <td style="width:27px"><span class="glyphicon glyphicon-book"></span></td>
+                            <td>Fakultet</td>
+                        </tr>
+                        <tr>
+                            @*Vejnavn og nummer*@
+                            <td style="width:27px"><span class="glyphicon glyphicon-home"></span></td>
+                            <td>Findlandsgade 666</td>
+                        </tr>
+                        <tr>
+                            @*Postnummer og by*@
+                            <td style="width:27px"></td>
+                            <td>8200  Aarhus N</td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="barMap">
+                        <style>
+                            #barMap{
+                                max-width:100%;
+                                height: 200px;
+                            }
+                        </style>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div role="tabpanel" class="tab-pane fade in" id="Events">
+
+        <div class="container">
+            <h2>Event Kalender</h2>
+
+            <hr />
+            <div class="agenda">
+                <div class="table-responsive">
+                    <table class="table table-condensed table-bordered">
+                        <colgroup>
+                            <col width="200" />
+                            <col width="200" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>Dato</th>
+                                <th>Tid</th>
+                                <th>Event</th>
+                            </tr>
+                        </thead>
+
+                        @* For each der lber events igennem! *@
+                        <tbody>
+                            <!-- Single event in a single day -->
+                            <tr>
+                                <td class="agenda-date" rowspan="1">
+                                    <div class="dayofweek">Fredag</div>
+                                    <div class="shortdate text-muted">26. juli, 2017</div>
+                                </td>
+                                <td class="agenda-time">
+                                    18:00
+                                </td>
+                                <td class="agenda-events">
+                                    <div class="agenda-event">
+                                        <h5><b>Title måske?</b></h5>
+
+                                        <p>
+                                            Fredagsbar WOO!!!
+                                        </p>
+                                        
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
