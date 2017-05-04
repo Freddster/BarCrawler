@@ -233,6 +233,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="SharedImage\FrontpageJumbotron.jpg" />
     <Content Include="Images\bar.jpg" />
     <Content Include="Scripts\googleMaps.js" />
     <Content Include="SharedImage\logo.png" />

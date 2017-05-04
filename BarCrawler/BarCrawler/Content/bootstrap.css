@@ -311,11 +311,11 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.428571429;
-  color: #333333;
-  background-color: #ffffff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333333;
+    background-color: #f6f7f8;
 }
 
 input,
@@ -4500,9 +4500,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
   color: #333333;
 }
 
-.navbar-inverse { 
-  background-color: #459123;
-  border-color: #080808;
+.navbar-inverse {
+    background-color: #22662f;
+    border-color: #080808;
 }
 
 .navbar-inverse .navbar-brand {
@@ -4928,13 +4928,15 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron {
+    /*find et andet billed*/
+    background-image: url(../SharedImage/FrontpageJumbotron.jpg);
   padding: 30px;
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: powderblue;
+  /*background-color: #b8860b;*/
 }
 
 .jumbotron h1 {
