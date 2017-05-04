@@ -14,7 +14,7 @@ namespace BarCrawler.Controllers
 
         public ActionResult Index()
         {
-            return View(db.BarModels.Include(b => b.Pictures).ToList());
+            return View(db.BarModels.Include(b => b.Pictures).Include(k => k.Events).ToList());
         }
 
         public ActionResult Contact()
