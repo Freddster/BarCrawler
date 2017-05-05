@@ -24,5 +24,8 @@ namespace BarCrawler.Models
         [Required]
         [MaxLength(200)]
         public string Text { get; set; }
+
+        [Required]
+        public DateTime DateAndTimeForFeed { get; set; }
     }
 }
