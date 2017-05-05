@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BarCrawler.Models.BarModel>
+﻿@using BarCrawler.Models
+@model IEnumerable<BarCrawler.Models.BarModel>
 
 
 @{
@@ -48,39 +49,99 @@
 
     <div id="event" class="tab-pane fade">
 
+        @{
+            //opretter en liste med EventModeller
+            List<EventModel> unsorted = new List<EventModel>();
+        }
+
         @foreach (var item in Model)
         {
             foreach (var events in item.Events)
             {
-                <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID})" class="list-group-item">
-                    <div class="container">
-                        <div class="col-lg-1">
-                            <div class="row">
-                                <p style="color: #22662f">
-                                    @events.DateAndTimeForEvent
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="row">
-                                <h4><b>@events.Title</b></h4>
-                            </div>
-
-                            <div class="row">
-                                <p>
-                                    @item.BarName
-                                </p>
-                            </div>
-                            <div class="row">
-                                <p>
-                                    @events.Description
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                //tilføjer listen med alle eksisterende events
+                unsorted.Add(events);
             }
         }
+        @{
+            //opretter en ny liste med alle event-onbjekterne i sorteret rækkefølge efter DateTime
+            List<EventModel> SortedList = unsorted.OrderBy(o => o.DateAndTimeForEvent).ToList();
+        }
+        
+        
+       
+        @foreach (var eventobj in SortedList) //Udskriver den sorterede liste på event-fanen 
+        {
+            <a href="@Url.Action("Index", "BarProfil", new {id = eventobj.BarID})" class="list-group-item">
+                <div class="container">
+                    <div class="col-lg-1">
+                        <div class="row">
+                            <p style="color: #22662f">
+                                @eventobj.DateAndTimeForEvent
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="row">
+                            <h4><b>@eventobj.Title</b></h4>
+                        </div>
+
+                        <div class="row">
+                            <p>
+                                @eventobj.BarModel.BarName
+                            </p>
+                        </div>
+                        <div class="row">
+                            <p>
+                                @eventobj.Description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+
+
+
+
+
+
+
+
+
+
+        @*@foreach (var item in Model)
+            {
+                foreach (var events in item.Events)
+                {
+                    <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID})" class="list-group-item">
+                        <div class="container">
+                            <div class="col-lg-1">
+                                <div class="row">
+                                    <p style="color: #22662f">
+                                        @events.DateAndTimeForEvent
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="row">
+                                    <h4><b>@events.Title</b></h4>
+                                </div>
+
+                                <div class="row">
+                                    <p>
+                                        @item.BarName
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <p>
+                                        @events.Description
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+            }*@
     </div>
 
 
