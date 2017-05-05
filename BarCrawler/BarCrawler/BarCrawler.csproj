@@ -218,6 +218,10 @@
     <Compile Include="Migrations\201705050828422_EnMigrationDerIkkeVirker.Designer.cs">
       <DependentUpon>201705050828422_EnMigrationDerIkkeVirker.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705050944028_MaybeItWorksNowIdentity.cs" />
+    <Compile Include="Migrations\201705050944028_MaybeItWorksNowIdentity.Designer.cs">
+      <DependentUpon>201705050944028_MaybeItWorksNowIdentity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BarCrawlerContext.cs" />
@@ -319,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705050828422_EnMigrationDerIkkeVirker.resx">
       <DependentUpon>201705050828422_EnMigrationDerIkkeVirker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705050944028_MaybeItWorksNowIdentity.resx">
+      <DependentUpon>201705050944028_MaybeItWorksNowIdentity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

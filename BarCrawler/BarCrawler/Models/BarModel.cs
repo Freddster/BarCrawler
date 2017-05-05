@@ -55,9 +55,9 @@ namespace BarCrawler.Models
         public List<FeedModel> Feeds { get; set; }          //Overvej at bruge et Dictionary til at gemme i. Burg evt. tidspunkt for oprettelse som key
         public List<PictureModel> Pictures { get; set; }
 
-        [ForeignKey("userID")]
-        public ApplicationUser appUser;
+        [ForeignKey("ApplicationUser")]
         public string userID;
+        public ApplicationUser ApplicationUser;
     }
 
 }

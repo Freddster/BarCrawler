@@ -154,7 +154,6 @@ namespace BarCrawler.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                var addedUser = UserManager.FindByName(user.UserName);
                 if (result.Succeeded)
                 {
                     var bar = new BarModel()
@@ -167,8 +166,9 @@ namespace BarCrawler.Controllers
                         Description = model.Description,
                         StreetNumber = model.StreetNumber,
                         City = model.City,
-                        userID = addedUser.Id,
-                        Email = model.Email
+                        userID = user.Id,
+                        Email = model.Email,
+                        Faculty = model.Faculty
                     };
 
                     db.BarModels.Add(bar);
