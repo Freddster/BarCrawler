@@ -19,6 +19,8 @@ namespace BarCrawler.Models
         [Timestamp]
         public Byte[] TimeStamp { get; set; }
 
+        //MANGLER typen DateTime til at vise hvornår en post på feeden er oprettet. 
+
         [Required]
         [MaxLength(200)]
         public string Text { get; set; }
