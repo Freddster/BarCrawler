@@ -30,7 +30,7 @@
 <div class="container" style="width: 100%; height: 350px; overflow: hidden;">
     @if (Model.Pictures.Count > 0)
     {
-        <img src="@Url.Content(Model.Pictures[0].Directory)" alt="Img" style="max-width: 100%; position: relative;" />
+        <img src="@Url.Content(Model.Pictures[0].Directory)" alt="Img" style="max-height: 350px; position: relative;" />
     }
     @if (Model.Pictures.Count == 0)
     {
@@ -170,15 +170,30 @@
     </div>
 
     <div role="tabpanel" class="tab-pane fade in" id="Galleri">
-        <h2>Galleri</h2>
+        <h2>Galleri <button type="submit" class="btn btn-default"><i class="glyphicon-plus"></i></button></h2>
         @if (@Model.Pictures.Count > 0)
             {
-                foreach (var item in Model.Pictures)
+            <div class="row">
+                @foreach (var item in Model.Pictures)
                 {
-                <img src="@Url.Content(item.Directory)" alt="" />
-                @Html.DisplayFor(modelItem => item.Description)
-            }
+                    <div class="col-lg-3">
+                        <div class="row">
+                            <img class="resize"
+                                 src="@Url.Content(item.Directory)"
+                                 alt=""
+                                 style="max-height: 200px;
+                                        max-width: 290px;
+                                        margin-left: auto;
+                                   margin-right: auto; display: block;" />
+                        </div>
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </div>
+                    </div>
+                }
+            </div>
         }
+
 
     </div>
 
@@ -216,31 +231,33 @@
 
             </div>
         </div>
-        <div class="row">
-            <h2>Om os <button type="submit" class="btn btn-default"><i class="glyphicon-plus"></i></button></h2>
-        </div>
-        <div class="row">
-            <div class="col-lg-11">
-                @Model.Description
-            </div>
-        </div>
-        @if (Model.Drinks.Count > 0)
-            {
+        <div class="container">
             <div class="row">
-                <h2>Drinkskort <button type="submit" class="btn btn-default"><i class="glyphicon-plus"></i></button></h2>
+                <h2>Om os <button type="submit" class="btn btn-default"><i class="glyphicon-plus"></i></button></h2>
             </div>
-
             <div class="row">
-                <div class="col-lg-1"><b>Navn</b></div>
-                <div class="col-lg-1"><b>Pris</b></div>
+                <div class="col-lg-11">
+                    @Model.Description
+                </div>
             </div>
-            foreach (var item in Model.Drinks)
+            @if (Model.Drinks.Count > 0)
             {
                 <div class="row">
-                    <div class="col-lg-1">@Html.DisplayFor(modelItem => item.Title)</div>
-                    <div class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</div>
+                    <h2>Drinkskort <button type="submit" class="btn btn-default"><i class="glyphicon-plus"></i></button></h2>
                 </div>
+
+                <div class="row">
+                    <div class="col-lg-1"><b>Navn</b></div>
+                    <div class="col-lg-1"><b>Pris</b></div>
+                </div>
+                foreach (var item in Model.Drinks)
+                {
+                    <div class="row">
+                        <div class="col-lg-1">@Html.DisplayFor(modelItem => item.Title)</div>
+                        <div class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</div>
+                    </div>
+                }
             }
-        }
+        </div>
     </div>
 </div>
