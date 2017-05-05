@@ -17,6 +17,7 @@ namespace BarCrawler.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private BarCrawlerContext db = new BarCrawlerContext();
 
         public AccountController()
         {
@@ -155,6 +156,23 @@ namespace BarCrawler.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var bar = new BarModel()
+                    {
+                        Address1 = model.Address1,
+                        Address2 = model.Address2,
+                        PhoneNumber = model.PhoneNumber,
+                        Zipcode = model.Zipcode,
+                        BarName = model.BarName,
+                        Description = model.Description,
+                        StreetNumber = model.StreetNumber,
+                        City = model.City,
+                        userID = user.Id,
+                        Email = model.Email,
+                        Faculty = model.Faculty
+                    };
+
+                    db.BarModels.Add(bar);
+                    db.SaveChanges();
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

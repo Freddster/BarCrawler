@@ -16,12 +16,14 @@ namespace BarCrawler.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public BarModel barID;
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("BarCrawlerContext", throwIfV1Schema: false)
         {
         }
 

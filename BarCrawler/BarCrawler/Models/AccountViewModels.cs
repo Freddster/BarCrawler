@@ -72,13 +72,47 @@ namespace BarCrawler.Models
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Kodeord")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Gentag kodeord")]
+        [Compare("Password", ErrorMessage = "Kodeordene stemmer ikke overens")]
         public string ConfirmPassword { get; set; }
+        [Required]
+        [MaxLength(50)]
+        [Display(Name = "Barens navn")]
+        public string BarName { get; set; }
+        [MaxLength(1000)]
+        [Display(Name = "Kort beskrivelse af bar")]
+        public string Description { get; set; }
+
+        [Required]
+        [Display(Name = "Fakultet")]
+        public string Faculty { get; set; }
+        [Display(Name = "Telefonnummer")]
+        [MaxLength(8)]
+        public string PhoneNumber { get; set; }
+
+
+        //Bar Address
+        [Required]
+        [Display(Name = "Vejnavn")]
+        public string Address1 { get; set; }
+        [Display(Name = "Etage")]
+        public string Address2 { get; set; }
+        [Required]
+        [Display(Name = "Husnummer")]
+        public string StreetNumber { get; set; }
+        [Required]
+        [Display(Name = "By")]
+        public string City { get; set; }
+        [Required]
+        [MaxLength(4)]
+        [Display(Name = "Postnummer")]
+        public string Zipcode { get; set; }
+
+
     }
 
     public class ResetPasswordViewModel
