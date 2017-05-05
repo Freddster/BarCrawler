@@ -33,7 +33,8 @@
 
                     <div class="media">
                         <div class="pull-left">
-                            <img class="media-object" src="@Url.Content(item.Pictures[0].Directory)" alt="Generic placeholder image" style="width: 64px; height: 64px" />
+                            
+                            <img class="media-object" src="@Url.Content(item.Pictures.Count <= 0 || item.Pictures[0].Directory == null ? "hej" : item.Pictures[0].Directory)" alt="N/A" style="width: 64px; height: 64px"/>
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">@item.BarName</h4>
