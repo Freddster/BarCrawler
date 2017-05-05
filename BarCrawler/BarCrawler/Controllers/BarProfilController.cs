@@ -32,5 +32,22 @@ namespace BarCrawler.Controllers
             }
             return View(barmodel); 
         }
+
+        public ActionResult BarLink(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var bar = db.BarModels.FirstOrDefault(b => b.userID == id);
+                if (bar == null)
+                {
+                    return HttpNotFound();
+                }
+                return View("Index",bar);
+            }
+        }
     }
 }
