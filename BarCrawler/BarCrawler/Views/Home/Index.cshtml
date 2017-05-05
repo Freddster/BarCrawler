@@ -100,91 +100,71 @@
                 </div>
             </a>
         }
-
-
-
-
-
-
-
-
-
-
-        @*@foreach (var item in Model)
-            {
-                foreach (var events in item.Events)
-                {
-                    <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID})" class="list-group-item">
-                        <div class="container">
-                            <div class="col-lg-1">
-                                <div class="row">
-                                    <p style="color: #22662f">
-                                        @events.DateAndTimeForEvent
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="row">
-                                    <h4><b>@events.Title</b></h4>
-                                </div>
-
-                                <div class="row">
-                                    <p>
-                                        @item.BarName
-                                    </p>
-                                </div>
-                                <div class="row">
-                                    <p>
-                                        @events.Description
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                }
-            }*@
     </div>
 
 
 
     @* ************************ FEED TAB ****************************** *@
     @*Lav feed tabel snart!*@
-
-    @foreach (var item in Model)
-    {
-        foreach (var feed in item.Feeds)
-        {
-            <div id="feed" class="tab-pane fade">
-                <a class="list-group-item">
-                    <div class="container">
-                        <div class="col-lg-1">
-                            <div class="row">
-                                <p style="color: #22662f">
-                                    @* MAngler tid for post / DateTime prop *@
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-10">
-                            <div class="row">
-                                <p>
-                                    <b>
-                                        @item.BarName
-                                    </b>
-                                </p>
-                            </div>
-
-                            <div class="row">
-                                <p>
-                                    @feed.Text
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+    
+    <div id="feed" class="tab-pane fade">
+        
+        
+        @*@{
+            //opretter en liste med EventModeller
+            List<FeedModel> unsortedfeed = new List<FeedModel>();
         }
-    }
 
+        @foreach (var item in Model)
+        {
+            foreach (var feed in item.Feeds)
+            {
+                //tilføjer listen med alle eksisterende events
+                unsortedfeed.Add(feed);
+            }
+        }
+        @{
+            //opretter en ny liste med alle event-onbjekterne i sorteret rækkefølge efter DateTime
+            List<FeedModel> SortedFeedList = unsortedfeed.OrderBy(o => o.TimeStamp).ToList();
+        }*@
+
+
+        
+@foreach (var item in Model)
+{
+    foreach (var feed in item.Feeds)
+     {
+
+         <a class="list-group-item">
+             <div class="container">
+                 <div class="col-lg-1">
+                     <div class="row">
+                         <p style="color: #22662f">
+                             @* Mangler tid for post / DateTime prop *@
+                         </p>
+                     </div>
+                 </div>
+                 <div class="col-lg-10">
+                     <div class="row">
+                         <p>
+                             <b>
+                                 @feed.BarModel.BarName
+                             </b>
+                         </p>
+                     </div>
+
+                     <div class="row">
+                         <p>
+                             @feed.Text
+                         </p>
+                     </div>
+                 </div>
+             </div>
+         </a>
+
+     }
+}
+    </div>
 
 
 
