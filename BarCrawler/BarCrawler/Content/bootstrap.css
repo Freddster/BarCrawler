@@ -61,6 +61,7 @@ body {
   margin: 0;
 }
 
+
 a:focus {
   outline: thin dotted;
 }
@@ -2049,9 +2050,9 @@ fieldset[disabled] .btn {
 }
 
 .btn-default {
-  color: #333333;
-  background-color: #ffffff;
-  border-color: #cccccc;
+    color: #333333;
+    background-color: #f6f7f8;
+    border-color: #cccccc;
 }
 
 .btn-default:hover,

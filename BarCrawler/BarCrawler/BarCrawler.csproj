@@ -236,6 +236,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\BarCrawlerTemplate.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -246,6 +247,7 @@
     <Content Include="Images\bar.jpg" />
     <Content Include="Scripts\googleMaps.js" />
     <Content Include="SharedImage\logo.png" />
+    <Content Include="SharedImage\Pipe.jpg" />
     <Content Include="Views\Home\Images\sloth.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
