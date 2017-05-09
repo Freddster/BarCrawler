@@ -16,6 +16,8 @@ namespace BarCrawler.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public BarModel barID;
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

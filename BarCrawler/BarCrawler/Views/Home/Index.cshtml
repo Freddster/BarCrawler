@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BarCrawler.Models.BarModel>
+﻿@using BarCrawler.Models
+@model IEnumerable<BarCrawler.Models.BarModel>
 
 
 @{
@@ -18,10 +19,13 @@
 </ul>
 
 
+
+@* ************************ OVERSIGT TAB ****************************** *@
+
 <div id="ForsideTabContext" class="tab-content">
     <div id="oversigt" class="tab-pane fade in active" role="tabpanel">
         <div class="list-group">
-            
+
             @* Placeholder for en barprofil *@
             @foreach (var item in Model)
             {
@@ -29,7 +33,8 @@
 
                     <div class="media">
                         <div class="pull-left">
-                            <img class="media-object" src="@Url.Content(item.Pictures[0].Directory)" alt="Generic placeholder image" style="width: 64px; height: 64px"/>
+                            
+                            <img class="media-object" src="@Url.Content(item.Pictures.Count <= 0 || item.Pictures[0].Directory == null ? "hej" : item.Pictures[0].Directory)" alt="N/A" style="width: 64px; height: 64px"/>
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">@item.BarName</h4>
@@ -40,26 +45,82 @@
             }
         </div>
     </div>
+
+    @* ************************ EVENT TAB ****************************** *@
+
     <div id="event" class="tab-pane fade">
-        
+
+        @{
+            //opretter en liste med EventModeller
+            List<EventModel> unsorted = new List<EventModel>();
+        }
+
         @foreach (var item in Model)
         {
-            if (item.Events != null)
+            foreach (var events in item.Events)
+            {
+                //tilføjer listen med alle eksisterende events
+                unsorted.Add(events);
+            }
+        }
+        @{
+            //opretter en ny liste med alle event-onbjekterne i sorteret rækkefølge efter DateTime
+            List<EventModel> SortedList = unsorted.OrderBy(o => o.DateAndTimeForEvent).ToList();
+        }
+        
+        
+       
+        @foreach (var eventobj in SortedList) //Udskriver den sorterede liste på event-fanen 
+        {
+            <a href="@Url.Action("Index", "BarProfil", new {id = eventobj.BarID})" class="list-group-item">
+                <div class="container">
+                    <div class="col-lg-1">
+                        <div class="row">
+                            <p style="color: #22662f">
+                                @eventobj.DateAndTimeForEvent
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="row">
+                            <h4><b>@eventobj.Title</b></h4>
+                        </div>
+
+                        <div class="row">
+                            <p>
+                                @eventobj.BarModel.BarName
+                            </p>
+                        </div>
+                        <div class="row">
+                            <p>
+                                @eventobj.Description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+
+
+
+
+
+
+
+
+
+
+        @*@foreach (var item in Model)
             {
                 foreach (var events in item.Events)
                 {
-                    <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID}) class="list-group-item">
+                    <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID})" class="list-group-item">
                         <div class="container">
                             <div class="col-lg-1">
                                 <div class="row">
                                     <p style="color: #22662f">
                                         @events.DateAndTimeForEvent
                                     </p>
-                                </div>
-                                <div class="row">
-                                    @*<p style="color: yellowgreen">
-                                            @events.TimeStamp
-                                        </p>*@
                                 </div>
                             </div>
                             <div class="col-lg-5">
@@ -81,75 +142,54 @@
                         </div>
                     </a>
                 }
-            }
-
-        }
-
-
-
-
-
-        @*<a class="list-group-item">
-                <div class="container">
-                    <div class="col-lg-1">
-                        <div class="row">
-                            <p style="color: darkred">06-04-2017</p>
-                        </div>
-                        <div class="row">
-                            <p style="color: darkred">17:00</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="row">
-                            <p>
-                                <b>Eventtitel goes here hjerte</b>
-                            </p>
-                        </div>
-                        <div class="row">
-                            <p>Navnet på baren!</p>
-                        </div>
-                        <div class="row">
-                            <p>Kort beskrivelse af event her highway to the dangerzone!</p>
-                        </div>
-                    </div>
-                </div>
-            </a>*@
-
-
-
+            }*@
     </div>
 
+
+
+    @* ************************ FEED TAB ****************************** *@
     @*Lav feed tabel snart!*@
 
+    @foreach (var item in Model)
+    {
+        foreach (var feed in item.Feeds)
+        {
+            <div id="feed" class="tab-pane fade">
+                <a class="list-group-item">
+                    <div class="container">
+                        <div class="col-lg-1">
+                            <div class="row">
+                                <p style="color: #22662f">
+                                    @* MAngler tid for post / DateTime prop *@
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="row">
+                                <p>
+                                    <b>
+                                        @item.BarName
+                                    </b>
+                                </p>
+                            </div>
 
-    <div id="feed" class="tab-pane fade">
-        <a class="list-group-item">
-            <div class="container">
-                <div class="col-lg-1">
-                    <div class="row">
-                        <p style="color: darkred">06-04-2017</p>
+                            <div class="row">
+                                <p>
+                                    @feed.Text
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <p style="color: darkred">17:00</p>
-                    </div>
-                </div>
-                <div class="col-lg-10">
-                    <div class="row">
-                        <p><b>BarProfilnavn goes here smiley</b></p>
-                    </div>
-
-                    <div class="row">
-                        <p>
-                            The banana is an edible fruit – botanically a berry[1][2] – produced by several kinds of large herbaceous flowering plants in the genus Musa.[3] In some countries, bananas used for cooking may be called plantains, in contrast to dessert bananas. The fruit is variable in size, color and firmness, but is usually elongated and curved, with soft flesh rich in starch covered with a rind which may be green, yellow, red, purple, or brown when ripe. The fruits grow in clusters hanging from the top of the plant. Almost all modern edible parthenocarpic (seedless) bananas come from two wild species – Musa acuminata and Musa balbisiana. The scientific names of most cultivated bananas are Musa acuminata, Musa balbisiana, and Musa × paradisiaca for the hybrid Musa acuminata × M. balbisiana, depending on their genomic constitution. The old scientific name Musa sapientum is no longer used.
-                            Musa species are native to tropical Indomalaya and Australia, and are likely to have been first domesticated in Papua New Guinea.[4][5] They are grown in 135 countries,[6] primarily for their fruit, and to a lesser extent to make fiber, banana wine and banana beer and as ornamental plants.
-                            Worldwide, there is no sharp distinction between "bananas" and "plantains". Especially in the Americas and Europe, "banana" usually refers to soft, sweet, dessert bananas, particularly those of the Cavendish group, which are the main exports from banana-growing countries. By contrast, Musa cultivars with firmer, starchier fruit are called "plantains". In other regions, such as Southeast Asia, many more kinds of banana are grown and eaten, so the simple two-fold distinction is not useful and is not made in local languages.
-                            The term "banana" is also used as the common name for the plants which produce the fruit.[3] This can extend to other members of the genus Musa like the scarlet banana (Musa coccinea), pink banana (Musa velutina) and the Fe'i bananas. It can also refer to members of the genus Ensete, like the snow banana (Ensete glaucum) and the economically important false banana (Ensete ventricosum). Both genera are classified under the banana family, Musaceae.
-                        </p>
-                    </div>
-                </div>
+                </a>
             </div>
-        </a>
-    </div>
+        }
+    }
+
+
+
+
+    @* ************************ GOOGLE MAPS TAB ****************************** *@
+
     <div id="kort" class="tab-pane fade">
         <h3> Bar kort </h3>
         <div id="map" onmousedown="resize()"></div>
@@ -162,6 +202,7 @@
 
     </div>
 </div>
+
 <script>
     var map;
     function initMap() {
@@ -179,6 +220,9 @@
         /* Trigger map resize event */
         google.maps.event.trigger(map, 'resize');
     }
+
+
+
 </script>
 <script async defer
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
