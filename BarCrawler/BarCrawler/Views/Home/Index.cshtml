@@ -41,44 +41,48 @@
         </div>
     </div>
     <div id="event" class="tab-pane fade">
-
+        
         @foreach (var item in Model)
         {
-            foreach (var events in item.Events)
+            if (item.Events != null)
             {
-                <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID}) class="list-group-item" >
-                    <div class="container">
-                        <div class="col-lg-1">
-                            <div class="row">
-                                <p style="color: #22662f">
-                                    @events.DateAndTimeForEvent
-                                </p>
+                foreach (var events in item.Events)
+                {
+                    <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID}) class="list-group-item">
+                        <div class="container">
+                            <div class="col-lg-1">
+                                <div class="row">
+                                    <p style="color: #22662f">
+                                        @events.DateAndTimeForEvent
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    @*<p style="color: yellowgreen">
+                                            @events.TimeStamp
+                                        </p>*@
+                                </div>
                             </div>
-                            <div class="row">
-                                @*<p style="color: yellowgreen">
-                                        @events.TimeStamp
-                                    </p>*@
-                            </div>
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="row">
-                                <h4><b>@events.Title</b></h4>
-                            </div>
+                            <div class="col-lg-5">
+                                <div class="row">
+                                    <h4><b>@events.Title</b></h4>
+                                </div>
 
-                            <div class="row">
-                                <p>
-                                    @item.BarName
-                                </p>
-                            </div>
-                            <div class="row">
-                                <p>
-                                    @events.Description
-                                </p>
+                                <div class="row">
+                                    <p>
+                                        @item.BarName
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <p>
+                                        @events.Description
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                }
             }
+
         }
 
 

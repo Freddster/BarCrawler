@@ -11,14 +11,11 @@ namespace BarCrawler.Controllers
 {
     public class HomeController : Controller
     {
-        private BarCrawlerContext db = new BarCrawlerContext();
-        private UnitOfWork _unitOfWork = new UnitOfWork();
+        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
 
         public ActionResult Index()
         {
             return View(_unitOfWork.GetAllBarsForHome());
-            //return View(db.BarModels.Include(b => b.Pictures).ToList());
-            //return View(db.BarModels.Include(b => b.Pictures).Include(k => k.Events).ToList());
         }
 
         public ActionResult Contact()

@@ -43,10 +43,27 @@ namespace DataAccessLogic.UnitOfWork
 
         public IEnumerable<BarModel> GetAllBarsForHome()
         {
-            return (_context.BarModels.Include(e => e.Events.Where( w => w.EventID == 2))
-            .Include(f => f.Feeds)
-            .Include(p => p.Pictures)
-            .ToList());
+            var allModels = _context.BarModels
+                .Include(p => p.Pictures)
+                .Include(f => f.Feeds)
+                .ToList();
+
+            List<BarModel> listToReturn = new List<BarModel>();
+            
+            //DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(-8);
+            DateTime nowDateTime = DateTime.Now.AddHours(-8);
+
+            foreach (var model in allModels)
+            {
+                _context.Entry(model)
+                    .Collection(e => e.Events)
+                    .Query()
+                    .Where(w => w.DateAndTimeForEvent > nowDateTime)
+                    .Load();
+                listToReturn.Add(model);
+            }
+
+            return listToReturn;
         }
     }
 }
