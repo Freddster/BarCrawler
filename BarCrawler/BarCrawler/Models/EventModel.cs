@@ -20,19 +20,26 @@ namespace BarCrawler.Models
         public Byte[] TimeStamp { get; set; }
 
         [Required]
+        [Display(Name = "Event navn")]
         public string Title { get; set; }
         [MaxLength(1000)]
+        [Display(Name = "Beskrivelse")]
         public string Description { get; set; }
         [Required]
+        [Display(Name = "Tidspunkt for event")]
         public DateTime DateAndTimeForEvent { get; set; }
-
+        //[Required]
+        public DateTime CreateTime { get; set; }
 
         //Her skal der bare være en standart indtastet ting fra selve baren
         //Address
         public string Address1 { get; set; }
         public string Address2 { get; set; }
+        [Display(Name = "Hus nr.")]
         public string StreetNumber { get; set; }
+        [Display(Name = "By")]
         public string City { get; set; }
+        [Display(Name = "Post nr.")]
         public string ZipCode { get; set; }
     }
 }

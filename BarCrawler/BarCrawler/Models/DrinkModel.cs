@@ -20,11 +20,14 @@ namespace BarCrawler.Models
         [Timestamp]
         public Byte[] TimeStamp { get; set; }
         [Required]
+        [Display(Name = "Drink navn")]
         public string Title { get; set; }
         [MaxLength(500)]
+        [Display(Name = "Beskrivelse")]
         public string Description { get; set; }
 
         [Required]
+        [Display(Name = "Pris")]
         public string Price { get; set; }
 
         /*

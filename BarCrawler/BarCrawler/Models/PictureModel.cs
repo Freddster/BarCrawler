@@ -19,7 +19,13 @@ namespace BarCrawler.Models
 
         [Timestamp]
         public Byte[] TimeStamp { get; set; }
+
+        //[Required]
+        public DateTime CreateTime { get; set; }
+
+
         [MaxLength(200)]
+        [Display(Name = "Beskrivelse")]
         public string Description { get; set; }
     }
 }
