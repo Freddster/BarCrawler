@@ -50,8 +50,8 @@ namespace DataAccessLogic.UnitOfWork
 
             List<BarModel> listToReturn = new List<BarModel>();
             
-            //DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(-8);
-            DateTime nowDateTime = DateTime.Now.AddHours(-8);
+            DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(-8);
+            //DateTime nowDateTime = DateTime.Now.AddHours(-8);
 
             foreach (var model in allModels)
             {

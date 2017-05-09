@@ -57,11 +57,15 @@
 
         @foreach (var item in Model)
         {
-            foreach (var events in item.Events)
+            if(item.Events != null)
             {
-                //tilføjer listen med alle eksisterende events
-                unsorted.Add(events);
+                foreach (var events in item.Events)
+                {
+                    //tilføjer listen med alle eksisterende events
+                    unsorted.Add(events);
+                }
             }
+
         }
         @{
             //opretter en ny liste med alle event-onbjekterne i sorteret rækkefølge efter DateTime
