@@ -18,16 +18,20 @@ namespace BarCrawler.Models
         //Bar info
         [Required]
         [MaxLength(50)]
+        [Display(Name = "Bar navn")]
         public string BarName { get; set; }
         [MaxLength(1000)]
+        [Display(Name = "Beskrivelse")]
         public string Description { get; set; }
         [Required]
         [EmailAddress]
+        [Display(Name = "Email")]
         public string Email { get; set; }
         [Required]
+        [Display(Name = "Studieretning")]
         public string Faculty { get; set; }
-        [Display(Name = "Telefon Nummer")]
         [MaxLength(8)]
+        [Display(Name = "Telefon nr.")]
         public string PhoneNumber { get; set; }
 
 
@@ -36,11 +40,14 @@ namespace BarCrawler.Models
         public string Address1 { get; set; }
         public string Address2 { get; set; }
         [Required]
+        [Display(Name = "Hus nr.")]
         public string StreetNumber { get; set; }
         [Required]
+        [Display(Name = "By")]
         public string City { get; set; }
         [Required]
         [MaxLength(5)]
+        [Display(Name = "Post nr.")]
         public string Zipcode { get; set; }
 
 
