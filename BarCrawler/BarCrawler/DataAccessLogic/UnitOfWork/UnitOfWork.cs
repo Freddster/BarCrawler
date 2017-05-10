@@ -18,14 +18,18 @@ namespace DataAccessLogic.UnitOfWork
         private FeedRepository _feedRepository;
         private PictureRepository _pictureRepository;
 
-
-
         public BarRepository BarRepository => _barRepository ?? new BarRepository(_context);
         public DrinkRepository DrinkRepository => _drinkRepository ?? new DrinkRepository(_context);
         public EventRepository EventRepository => _eventRepository ?? new EventRepository(_context);
         public FeedRepository FeedRepository => _feedRepository ?? new FeedRepository(_context);
         public PictureRepository PictureRepository => _pictureRepository ?? new PictureRepository(_context);
 
+
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
 
         public BarModel GetBarprofile(int? id)
         {
@@ -45,19 +49,7 @@ namespace DataAccessLogic.UnitOfWork
                 .Load();
 
             return modelToReturn;
-
-            return (_context.BarModels.Include(d => d.Drinks)
-                .Include(e => e.Events)
-                .Include(f => f.Feeds)
-                .Include(p => p.Pictures)
-                .SingleOrDefault(x => x.BarID == id));
         }
-
-        public void Save()
-        {
-            _context.SaveChanges();
-        }
-
         private const int TimeToSubtract = -12;
 
         public IEnumerable<BarModel> GetAllBarsForHome()
@@ -68,7 +60,7 @@ namespace DataAccessLogic.UnitOfWork
                 .ToList();
 
             List<BarModel> listToReturn = new List<BarModel>();
-            
+
             DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(TimeToSubtract);
             //DateTime nowDateTime = DateTime.Now.AddHours(TimeToSubtract);
 

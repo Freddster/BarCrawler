@@ -145,7 +145,7 @@
 
                         @foreach (var eventobj in SortedList) //Udskriver den sorterede liste på event-fanen
                         {
-                            <a href="@Url.Action("Index", "BarProfil", new {id = eventobj.BarID})" class="list-group-item">
+                            <a class="list-group-item">
                                 <div class="container">
                                     <div class="col-lg-1">
                                         <div class="row">
@@ -173,45 +173,6 @@
                                 </div>
                             </a>
                         }
-
-
-                        @*<div class="table-responsive">
-                                <table class="table table-condensed table-bordered">
-                                    <colgroup>
-                                        <col width="200" />
-                                        <col width="200" />
-                                    </colgroup>
-                                    <thead>
-                                        <tr>
-                                            <th>Dato</th>
-                                            <th>Tid</th>
-                                            <th>Event</th>
-                                        </tr>
-                                    </thead>
-
-                                    @foreach (var item in Model.Events)
-                                    {
-                                        <tbody>
-                                            <!-- Single event in a single day -->
-                                            <tr>
-                                                <td class="agenda-date" rowspan="1">
-                                                    <div class="dayofweek">@item.DateAndTimeForEvent.DayOfWeek</div>
-                                                    <div class="shortdate text-muted">@item.DateAndTimeForEvent.Date.ToString("dd MMMM yyyy")</div>
-                                                </td>
-                                                <td class="agenda-time">
-                                                    @item.DateAndTimeForEvent.TimeOfDay
-                                                </td>
-                                                <td class="agenda-events">
-                                                    <div class="agenda-event">
-                                                        <h5><b>@item.Title</b></h5>
-                                                        <p>@item.Description</p>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    }
-                                </table>
-                            </div>*@
                     </div>
                             }
             @if (Model.Events.Count == 0)
