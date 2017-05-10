@@ -240,7 +240,9 @@
             <div class="row">
                 <h2>
                     Om os
-                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
+                    <a href="@Url.Action("Edit", "BarProfil", new {id = @Model.BarID})">
+                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
+                    </a>
                 </h2>
             </div>
             <div class="row">

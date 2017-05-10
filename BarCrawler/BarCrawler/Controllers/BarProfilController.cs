@@ -8,6 +8,7 @@ using BarCrawler.Models;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Net;
+using BarCrawler.ViewModels;
 using Microsoft.Ajax.Utilities;
 
 namespace BarCrawler.Controllers
@@ -41,32 +42,32 @@ namespace BarCrawler.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BarModel barModel = db.BarModels.Find(id);
-            if (barModel == null)
+            BarModel barmodel = db.BarModels.Include(i => i.Pictures).SingleOrDefault(x => x.BarID == id);
+            if (barmodel == null)
             {
                 return HttpNotFound();
             }
-            return View(barModel);
+            EditViewModel viewModel = barmodel.Pictures.Count > 0 ? new EditViewModel(barmodel, barmodel.Pictures[0].Directory) : new EditViewModel(barmodel); 
+            return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(/*[Bind(Include = "BarID,TimeStamp,BarName,Description,Email,Faculty,PhoneNumber,Address1,Address2,StreetNumber,City,Zipcode,Longitude,Latitude")] */BarModel barModel)
+        public ActionResult Edit(EditViewModel editviewmodel)
         {
             if (ModelState.IsValid)
             {
-                var bar = db.BarModels.FirstOrDefault(m => m.BarID == barModel.BarID);
+                var bar = db.BarModels.FirstOrDefault(m => m.BarID == editviewmodel.BarID);
                 if (bar != null)
                 {
-                    bar.Address1 = barModel.Address1;
-                    bar.Address2 = barModel.Address2;
-                    bar.PhoneNumber = barModel.PhoneNumber;
-                    bar.Zipcode = barModel.Zipcode;
-                    bar.Description = barModel.Description;
-                    bar.StreetNumber = barModel.StreetNumber;
-                    bar.City = barModel.City;
-                    bar.Email = barModel.Email;
-                    bar.Faculty = barModel.Faculty;
+                    bar.Address1 = editviewmodel.Address1;
+                    bar.Address2 = editviewmodel.Address2;
+                    bar.PhoneNumber = editviewmodel.PhoneNumber;
+                    bar.Zipcode = editviewmodel.Zipcode;
+                    bar.Description = editviewmodel.Description;
+                    bar.StreetNumber = editviewmodel.StreetNumber;
+                    bar.City = editviewmodel.City;
+                    bar.Faculty = editviewmodel.Faculty;
                     db.Entry(bar).State = EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -74,11 +75,11 @@ namespace BarCrawler.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                return RedirectToAction("Index", new { id = barModel.BarID });
+                return RedirectToAction("Index", new { id = bar.BarID });
             }
             else
             {
-                return View(barModel);
+                return View(editviewmodel);
             }
         }
     }
