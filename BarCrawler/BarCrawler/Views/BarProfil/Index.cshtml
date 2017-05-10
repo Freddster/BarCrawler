@@ -199,38 +199,46 @@
 
     <div role="tabpanel" class="tab-pane fade in" id="Info">
         <h2>Kontaktinformation <button type="submit" class="btn btn-default"><i class="glyphicon-plus"></i></button></h2>
-        <div class="container">
-            <div class="col-lg-2">
-                <div class="row">
-                    <b>Åbninstider: </b>
-                </div>
-                <div class="row">
-                    <b>@Html.DisplayNameFor(m => m.Email): </b>
-                </div>
-                <div class="row">
-                    <b>@Html.DisplayNameFor(m => m.PhoneNumber):</b>
-                </div>
-                <div class="row">
-                    <b>@Html.DisplayNameFor(m => m.Faculty): </b>
-                </div>
-                <div class="row">
-                    <b>Adresse: </b>
-                </div>
-                <div class="row">
-                    <b>@Html.DisplayNameFor(m => m.City): </b>
-                </div>
-
+        
+        <div class="container-fluid">
+            <table class="table table" style="max-width: 400px; ">
+                <tbody>
+                <tr>
+                    <td>@Html.LabelFor(m => m.OpenTime):</td>
+                    <td>@Model.OpenTime - @Model.CloseTime</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Email):</td>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.PhoneNumber):</td>
+                    <td>@Model.PhoneNumber</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Faculty):</td>
+                    <td>@Model.Faculty</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.City):</td>
+                    <td>@Model.City</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Zipcode):</td>
+                    <td>@Model.Zipcode</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Address1):</td>
+                    <td>@Model.Address1</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.StreetNumber):</td>
+                    <td>@Model.StreetNumber</td>
+                </tr>
+                </tbody>
+            </table>
             </div>
-            <div class="col-lg-10">
-                <div class="row">Åbningstid </div>
-                <div class="row">@Model.Email </div>
-                <div class="row">@Model.PhoneNumber </div>
-                <div class="row">@Model.Faculty</div>
-                <div class="row">@Model.Address1 @Model.StreetNumber</div>
-                <div class="row">@Model.Zipcode @Model.City</div>
-
-            </div>
-        </div>
+       
         <div class="container">
             <div class="row">
                 <h2>Om os <button type="submit" class="btn btn-default"><i class="glyphicon-plus"></i></button></h2>
