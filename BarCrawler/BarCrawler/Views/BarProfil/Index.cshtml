@@ -113,7 +113,7 @@
             <div class="container">
                 <h2>
                     Kalender
-                    <button type="submit" class="btn btn-default" href="@Url.Action("Index", "Update", new {id = item.BarID})">
+                    <button type="submit" class="btn btn-default">
                         <i class="glyphicon glyphicon-plus"></i>
                     </button>
                 </h2>
@@ -198,7 +198,12 @@
     </div>
 
     <div role="tabpanel" class="tab-pane fade in" id="Info">
-        <h2>Kontaktinformation <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button></h2>
+        <h2>
+            Kontaktinformation
+            <a href="@Url.Action("Edit", "BarProfil", new {id = @Model.BarID})">
+                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
+            </a>
+        </h2>
         <div class="container">
             <div class="col-lg-2">
                 <div class="row">
@@ -233,7 +238,10 @@
         </div>
         <div class="container">
             <div class="row">
-                <h2>Om os <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button></h2>
+                <h2>
+                    Om os
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
+                </h2>
             </div>
             <div class="row">
                 <div class="col-lg-11">

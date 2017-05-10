@@ -25,6 +25,7 @@ namespace BarCrawler.Models
         [EmailAddress]
         public string Email { get; set; }
         [Required]
+
         public string Faculty { get; set; }
         [Display(Name = "Telefon Nummer")]
         [MaxLength(8)]
