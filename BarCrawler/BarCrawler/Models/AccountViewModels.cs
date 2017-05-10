@@ -88,6 +88,15 @@ namespace BarCrawler.Models
         public string Description { get; set; }
 
         [Required]
+        [StringLength(5)]
+        public string OpenTime { get; set; }
+        [Required]
+        [StringLength(5)]
+        public string CloseTime { get; set; }
+
+
+
+        [Required]
         [Display(Name = "Fakultet")]
         public string Faculty { get; set; }
         [Display(Name = "Telefonnummer")]

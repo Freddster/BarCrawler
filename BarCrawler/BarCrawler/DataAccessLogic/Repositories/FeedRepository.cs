@@ -11,12 +11,12 @@ namespace DataAccessLogic.Repositories
     public class FeedRepository : IDisposable
     {
         private BarCrawlerContext _context;
-        private DbSet<BarModel> _dbSet;
+        private DbSet<BarModel> _feedDbSet;
 
         public FeedRepository(BarCrawlerContext ReceivedContext)
         {
             _context = ReceivedContext;
-            _dbSet = ReceivedContext.BarModels;
+            _feedDbSet = ReceivedContext.BarModels;
         }
 
         public void Dispose()

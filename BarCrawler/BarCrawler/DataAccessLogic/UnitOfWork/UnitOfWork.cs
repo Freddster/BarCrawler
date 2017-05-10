@@ -41,6 +41,8 @@ namespace DataAccessLogic.UnitOfWork
             _context.SaveChanges();
         }
 
+        private const int TimeToSubtract = -12;
+
         public IEnumerable<BarModel> GetAllBarsForHome()
         {
             var allModels = _context.BarModels
@@ -50,8 +52,8 @@ namespace DataAccessLogic.UnitOfWork
 
             List<BarModel> listToReturn = new List<BarModel>();
             
-            DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(-8);
-            //DateTime nowDateTime = DateTime.Now.AddHours(-8);
+            DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(TimeToSubtract);
+            //DateTime nowDateTime = DateTime.Now.AddHours(TimeToSubtract);
 
             foreach (var model in allModels)
             {

@@ -11,12 +11,12 @@ namespace DataAccessLogic.Repositories
     public class PictureRepository : IDisposable
     {
         private BarCrawlerContext _context;
-        private DbSet<BarModel> _dbSet;
+        private DbSet<BarModel> _pictureDbSet;
 
         public PictureRepository(BarCrawlerContext ReceivedContext)
         {
             _context = ReceivedContext;
-            _dbSet = ReceivedContext.BarModels;
+            _pictureDbSet = ReceivedContext.BarModels;
         }
 
         public void Dispose()

@@ -11,40 +11,40 @@ namespace DataAccessLogic.Repositories
     public class EventRepository : IDisposable
     {
         private BarCrawlerContext _context;
-        private DbSet<EventModel> _dbSet;
+        private DbSet<EventModel> _eventDbSet;
 
         public EventRepository(BarCrawlerContext ReceivedContext)
         {
             _context = ReceivedContext;
-            _dbSet = ReceivedContext.EventModels;
+            _eventDbSet = ReceivedContext.EventModels;
         }
 
 
         public IEnumerable<EventModel> GetAllEvents()
         {
-            return _dbSet.ToList();
+            return _eventDbSet.ToList();
         }
 
         //Lav en funktion der kun returnere x antal events
 
         public EventModel GetEventByID(int? id)
         {
-            return _dbSet.Find(id);
+            return _eventDbSet.Find(id);
         }
 
 
         //Add
         public void AddEvent(EventModel eventModel)
         {
-            _dbSet.Add(eventModel);
+            _eventDbSet.Add(eventModel);
         }
 
 
         public void DeleteEvent(int? eventModelID)
         {
-            EventModel eventModel = _dbSet.Find((eventModelID));
+            EventModel eventModel = _eventDbSet.Find((eventModelID));
             if (eventModel != null)
-                _dbSet.Remove(eventModel);
+                _eventDbSet.Remove(eventModel);
         }
 
         public void UpdateEventModel(EventModel eventModel)

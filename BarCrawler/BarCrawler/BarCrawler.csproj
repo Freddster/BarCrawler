@@ -218,10 +218,15 @@
     <Compile Include="Migrations\201705091501555_UpdatedModelsWithCreateTime.Designer.cs">
       <DependentUpon>201705091501555_UpdatedModelsWithCreateTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705100722539_OpenCloseTimeInBarModel.cs" />
+    <Compile Include="Migrations\201705100722539_OpenCloseTimeInBarModel.Designer.cs">
+      <DependentUpon>201705100722539_OpenCloseTimeInBarModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BarCrawlerContext.cs" />
     <Compile Include="Models\BarModel.cs" />
+    <Compile Include="Models\BigRegisterViewModel.cs" />
     <Compile Include="Models\DrinkModel.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\FeedModel.cs" />
@@ -322,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705091501555_UpdatedModelsWithCreateTime.resx">
       <DependentUpon>201705091501555_UpdatedModelsWithCreateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705100722539_OpenCloseTimeInBarModel.resx">
+      <DependentUpon>201705100722539_OpenCloseTimeInBarModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

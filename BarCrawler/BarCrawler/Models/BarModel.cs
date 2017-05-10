@@ -35,10 +35,21 @@ namespace BarCrawler.Models
         [Display(Name = "Telefon nr.")]
         public string PhoneNumber { get; set; }
 
+        [Required]
+        [StringLength(5)]
+        [Display(Name = "Åbningstid")]
+        public string OpenTime { get; set; }
+        [Required]
+        [StringLength(5)]
+        [Display(Name = "Lukketid")]
+        public string CloseTime { get; set; }
+
 
         //Bar Address
         [Required]
+        [Display(Name = "Address 1")]
         public string Address1 { get; set; }
+        [Display(Name = "Address 2")]
         public string Address2 { get; set; }
         [Required]
         [Display(Name = "Hus nr.")]
