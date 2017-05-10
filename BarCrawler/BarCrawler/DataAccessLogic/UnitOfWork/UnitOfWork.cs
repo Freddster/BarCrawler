@@ -29,6 +29,23 @@ namespace DataAccessLogic.UnitOfWork
 
         public BarModel GetBarprofile(int? id)
         {
+            var modelToReturn = _context.BarModels
+                .Include(d => d.Drinks)
+                .Include(f => f.Feeds)
+                .Include(p => p.Pictures)
+                .SingleOrDefault(x => x.BarID == id);
+
+            DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(TimeToSubtract);
+            //DateTime nowDateTime = DateTime.Now.AddHours(TimeToSubtract);
+
+            _context.Entry(modelToReturn)
+                .Collection(e => e.Events)
+                .Query()
+                .Where(w => w.DateAndTimeForEvent > nowDateTime)
+                .Load();
+
+            return modelToReturn;
+
             return (_context.BarModels.Include(d => d.Drinks)
                 .Include(e => e.Events)
                 .Include(f => f.Feeds)

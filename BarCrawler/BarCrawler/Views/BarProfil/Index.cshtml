@@ -1,4 +1,6 @@
 ﻿@using System.Net.Configuration
+@using System.Reflection.Emit
+@using BarCrawler.Models
 @model BarCrawler.Models.BarModel
 @{
     ViewBag.Title = "BarProfil";
@@ -70,7 +72,7 @@
                     <table>
                         <tr>
                             <td style="width: 27px"><span class="glyphicon glyphicon-time"></span></td>
-                            <td>Åbningstider</td>
+                            <td>@*Åbningstider*@ @Model.OpenTime - @Model.CloseTime</td>
                         </tr>
                         <tr>
                             <td style="width: 27px"><span class="glyphicon glyphicon-book"></span></td>
@@ -108,65 +110,115 @@
 
 
     <div role="tabpanel" class="tab-pane fade in" id="Events">
-        @if (Model.Events.Count > 0)
+        <h2>
+            Kalender
+            <button type="submit" class="btn btn-default">
+                <i class="glyphicon-plus"></i>
+            </button>
+        </h2>
+        <div class="container">
+            @if (Model.Events.Count > 0)
             {
-            <div class="container">
-                <h2>
-                    Kalender
-                    <button type="submit" class="btn btn-default">
-                        <i class="glyphicon-plus"></i>
-                    </button>
-                </h2>
-
-
                 <hr />
 
-                <div class="agenda">
-                    <div class="table-responsive">
-                        <table class="table table-condensed table-bordered">
-                            <colgroup>
-                                <col width="200" />
-                                <col width="200" />
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>Dato</th>
-                                    <th>Tid</th>
-                                    <th>Event</th>
-                                </tr>
-                            </thead>
+                    <div class="agenda">
+                        @{
+                            //opretter en liste med EventModeller
+                            List<EventModel> unsorted = new List<EventModel>();
+                        }
 
-                            @foreach (var item in Model.Events)
+                        @foreach (var item in @Model.Events)
+                        {
+                            if (item != null)
                             {
-                                <tbody>
-                                    <!-- Single event in a single day -->
-                                    <tr>
-                                        <td class="agenda-date" rowspan="1">
-                                            <div class="dayofweek">@item.DateAndTimeForEvent.DayOfWeek</div>
-                                            <div class="shortdate text-muted">@item.DateAndTimeForEvent.Date.ToString("dd MMMM yyyy")</div>
-                                        </td>
-                                        <td class="agenda-time">
-                                            @item.DateAndTimeForEvent.TimeOfDay
-                                        </td>
-                                        <td class="agenda-events">
-                                            <div class="agenda-event">
-                                                <h5><b>@item.Title</b></h5>
-                                                <p>@item.Description</p>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                //tilføjer listen med alle eksisterende events
+                                unsorted.Add(item);
                             }
-                        </table>
-                    </div>
-                </div>
-            </div>
-        }
-        @if (Model.Events.Count == 0)
-            {
-            <h2>@Model.BarName har ingen kommende events</h2>
-        }
 
+                        }
+                        @{
+                            //opretter en ny liste med alle event-onbjekterne i sorteret rækkefølge efter DateTime
+                            List<EventModel> SortedList = unsorted.OrderBy(o => o.DateAndTimeForEvent).ToList();
+                        }
+
+
+
+                        @foreach (var eventobj in SortedList) //Udskriver den sorterede liste på event-fanen
+                        {
+                            <a href="@Url.Action("Index", "BarProfil", new {id = eventobj.BarID})" class="list-group-item">
+                                <div class="container">
+                                    <div class="col-lg-1">
+                                        <div class="row">
+                                            <p style="color: #22662f">
+                                                @eventobj.DateAndTimeForEvent
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="row">
+                                            <h4><b>@eventobj.Title</b></h4>
+                                        </div>
+
+                                        <div class="row">
+                                            <p>
+                                                @eventobj.BarModel.BarName
+                                            </p>
+                                        </div>
+                                        <div class="row">
+                                            <p>
+                                                @eventobj.Description
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+
+
+                        @*<div class="table-responsive">
+                                <table class="table table-condensed table-bordered">
+                                    <colgroup>
+                                        <col width="200" />
+                                        <col width="200" />
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th>Dato</th>
+                                            <th>Tid</th>
+                                            <th>Event</th>
+                                        </tr>
+                                    </thead>
+
+                                    @foreach (var item in Model.Events)
+                                    {
+                                        <tbody>
+                                            <!-- Single event in a single day -->
+                                            <tr>
+                                                <td class="agenda-date" rowspan="1">
+                                                    <div class="dayofweek">@item.DateAndTimeForEvent.DayOfWeek</div>
+                                                    <div class="shortdate text-muted">@item.DateAndTimeForEvent.Date.ToString("dd MMMM yyyy")</div>
+                                                </td>
+                                                <td class="agenda-time">
+                                                    @item.DateAndTimeForEvent.TimeOfDay
+                                                </td>
+                                                <td class="agenda-events">
+                                                    <div class="agenda-event">
+                                                        <h5><b>@item.Title</b></h5>
+                                                        <p>@item.Description</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    }
+                                </table>
+                            </div>*@
+                    </div>
+                            }
+            @if (Model.Events.Count == 0)
+            {
+                <h2>@Model.BarName har ingen kommende events</h2>
+            }
+        </div>
     </div>
 
     <div role="tabpanel" class="tab-pane fade in" id="Galleri">
