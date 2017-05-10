@@ -222,6 +222,10 @@
     <Compile Include="Migrations\201705100722539_OpenCloseTimeInBarModel.Designer.cs">
       <DependentUpon>201705100722539_OpenCloseTimeInBarModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705101428006_OpdateretDrinksModelPris.cs" />
+    <Compile Include="Migrations\201705101428006_OpdateretDrinksModelPris.Designer.cs">
+      <DependentUpon>201705101428006_OpdateretDrinksModelPris.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BarCrawlerContext.cs" />
@@ -330,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705100722539_OpenCloseTimeInBarModel.resx">
       <DependentUpon>201705100722539_OpenCloseTimeInBarModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705101428006_OpdateretDrinksModelPris.resx">
+      <DependentUpon>201705101428006_OpdateretDrinksModelPris.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

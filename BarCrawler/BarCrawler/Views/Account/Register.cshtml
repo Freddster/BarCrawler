@@ -15,24 +15,24 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(m => m.RegisterViewModel.Email, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.BarModel.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.RegisterViewModel.Email, new { @class = "form-control", type="email"})
+            @Html.TextBoxFor(m => m.BarModel.Email, new { @class = "form-control", type = "email" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.RegisterViewModel.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.RegisterViewModel.Password, new { @class = "form-control", type="password"})
+            @Html.PasswordFor(m => m.RegisterViewModel.Password, new { @class = "form-control", type = "password" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.RegisterViewModel.ConfirmPassword, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.RegisterViewModel.ConfirmPassword, new { @class = "form-control", type="password"})
+            @Html.PasswordFor(m => m.RegisterViewModel.ConfirmPassword, new { @class = "form-control", type = "password" })
         </div>
     </div>
-    <br/>
+    <br />
     <div class="form-group">
         @Html.LabelFor(m => m.BarModel.BarName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -45,25 +45,20 @@
             @Html.TextAreaFor(m => m.BarModel.Description, new { @class = "form-control" })
         </div>
     </div>
-    
-    
 
-    @*<form class="form-horizontal">*@
 
-                <div class="form-group">
-                        @Html.LabelFor(m => m.BarModel.OpenTime, new { @class = "col-md-2 control-label" })
-              
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.BarModel.OpenTime, new { @class = "form-control", type = "time", value = "12:00", id = "time" })
-                    </div>
-                </div>
-                <div class="form-group">
-                        @Html.LabelFor(m => m.BarModel.CloseTime, new { @class = "col-md-2 control-label" })
-                 
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.BarModel.CloseTime, new { @class = "form-control", type = "time", value = "12:00", id = "time" })
-                    </div>
-                </div>  
+    <div class="form-group">
+        @Html.LabelFor(m => m.BarModel.OpenTime, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.BarModel.OpenTime, new { @class = "form-control", type = "time", value = "12:00", id = "time" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.BarModel.CloseTime, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.BarModel.CloseTime, new { @class = "form-control", type = "time", value = "12:00", id = "time" })
+        </div>
+    </div>
 
 
     <div class="form-group">
@@ -75,7 +70,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.BarModel.PhoneNumber, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.BarModel.PhoneNumber, new { @class = "form-control"})
+            @Html.TextBoxFor(m => m.BarModel.PhoneNumber, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">

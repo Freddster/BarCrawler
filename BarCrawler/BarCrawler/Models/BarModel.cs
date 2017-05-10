@@ -31,8 +31,9 @@ namespace BarCrawler.Models
         [Required]
         [Display(Name = "Studieretning")]
         public string Faculty { get; set; }
-        [MaxLength(8)]
+        [StringLength(8)]
         [Display(Name = "Telefon nr.")]
+        [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "Telefon nr. skal være 8 cifre")]
         public string PhoneNumber { get; set; }
 
         [Required]
@@ -47,9 +48,9 @@ namespace BarCrawler.Models
 
         //Bar Address
         [Required]
-        [Display(Name = "Address 1")]
+        [Display(Name = "Address")]
         public string Address1 { get; set; }
-        [Display(Name = "Address 2")]
+        [Display(Name = "Etage")]
         public string Address2 { get; set; }
         [Required]
         [Display(Name = "Hus nr.")]
@@ -58,8 +59,9 @@ namespace BarCrawler.Models
         [Display(Name = "By")]
         public string City { get; set; }
         [Required]
-        [MaxLength(5)]
+        [StringLength(4)]
         [Display(Name = "Post nr.")]
+        [RegularExpression(@"[0-9]{4}$", ErrorMessage = "Post nr. skal være 4 cifre")]
         public string Zipcode { get; set; }
 
         

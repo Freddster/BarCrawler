@@ -28,7 +28,7 @@ namespace BarCrawler.Models
 
         [Required]
         [Display(Name = "Pris")]
-        public string Price { get; set; }
+        public double Price { get; set; }
 
         /*
          Opret model til drinks billeder, sådan at det er muligt at baren

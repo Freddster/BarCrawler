@@ -33,13 +33,21 @@ namespace BarCrawler.Models
 
         //Her skal der bare være en standart indtastet ting fra selve baren
         //Address
+        [Required]
+        [Display(Name = "Address")]
         public string Address1 { get; set; }
+        [Display(Name = "Etage")]
         public string Address2 { get; set; }
+        [Required]
         [Display(Name = "Hus nr.")]
         public string StreetNumber { get; set; }
+        [Required]
         [Display(Name = "By")]
         public string City { get; set; }
+        [Required]
+        [StringLength(4)]
         [Display(Name = "Post nr.")]
-        public string ZipCode { get; set; }
+        [RegularExpression(@"[0-9]{4}$", ErrorMessage = "Post nr. skal være 4 cifre")]
+        public string Zipcode { get; set; }
     }
 }

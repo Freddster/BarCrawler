@@ -152,7 +152,7 @@ namespace BarCrawler.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.RegisterViewModel.Email, Email = model.RegisterViewModel.Email };
+                var user = new ApplicationUser { UserName = model.BarModel.Email, Email = model.BarModel.Email };
                 var result = await UserManager.CreateAsync(user, model.RegisterViewModel.Password);
                 if (result.Succeeded)
                 {
@@ -167,9 +167,9 @@ namespace BarCrawler.Controllers
                         StreetNumber = model.BarModel.StreetNumber,
                         City = model.BarModel.City,
                         userID = user.Id,
-                        Email = model.RegisterViewModel.Email,
+                        Email = model.BarModel.Email,
                         Faculty = model.BarModel.Faculty,
-                        //OpenTime = model.RegisterViewModel.HourOpenTime + ":" + model.RegisterViewModel.MinuteOpenTime,
+                        OpenTime = model.BarModel.OpenTime,
                         CloseTime = model.BarModel.CloseTime
                     };
 
