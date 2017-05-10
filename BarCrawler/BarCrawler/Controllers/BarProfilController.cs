@@ -8,11 +8,12 @@ using BarCrawler.Models;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Net;
+using Microsoft.Ajax.Utilities;
 
 namespace BarCrawler.Controllers
 {
 
-    
+
     public class BarProfilController : Controller
     {
 
@@ -31,7 +32,7 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            return View(barmodel); 
+            return View(barmodel);
         }
 
         public ActionResult Edit(int? id)
@@ -50,15 +51,35 @@ namespace BarCrawler.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BarID,TimeStamp,BarName,Description,Email,Faculty,PhoneNumber,Address1,Address2,StreetNumber,City,Zipcode,Longitude,Latitude")] BarModel barModel)
+        public ActionResult Edit(/*[Bind(Include = "BarID,TimeStamp,BarName,Description,Email,Faculty,PhoneNumber,Address1,Address2,StreetNumber,City,Zipcode,Longitude,Latitude")] */BarModel barModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(barModel).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var bar = db.BarModels.FirstOrDefault(m => m.BarID == barModel.BarID);
+                if (bar != null)
+                {
+                    bar.Address1 = barModel.Address1;
+                    bar.Address2 = barModel.Address2;
+                    bar.PhoneNumber = barModel.PhoneNumber;
+                    bar.Zipcode = barModel.Zipcode;
+                    bar.Description = barModel.Description;
+                    bar.StreetNumber = barModel.StreetNumber;
+                    bar.City = barModel.City;
+                    bar.Email = barModel.Email;
+                    bar.Faculty = barModel.Faculty;
+                    db.Entry(bar).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                return RedirectToAction("Index", new { id = barModel.BarID });
             }
-            return View(barModel);
+            else
+            {
+                return View(barModel);
+            }
         }
     }
 }
