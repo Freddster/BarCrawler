@@ -4,27 +4,33 @@
     ViewBag.Title = "BarProfil";
 }
 
-<script type="text/javascript">
-    var map;
-    Window.onload = function () {
-        google.maps.visualRefresh = true;
-        var Aarhus = new google.maps.LatLng(56.158170, 10.198101);
-
-        var mapOptions = {
-            zoom: 13,
-            center: Aarhus,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        map = new google.maps.Map(document.getElementById("barMap"), mapOptions);
-
-    }
-
-</script>
 
 <script async defer
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
 </script>
+
+
+<script>
+    var map;
+    $(document).on("pageload",function() {
+        var aarhus = { lat: 56.158170, lng: 10.198101 };
+        map = new google.maps.Map(document.getElementById('barMap'),
+            {
+                zoom: 13,
+                center: aarhus
+            });
+    });
+
+
+    function resize() {
+
+        /* Trigger map resize event */
+        google.maps.event.trigger(map, 'resize');
+    }
+
+</script>
+
+
 
 @*Indsæt coverbillede her*@
 <div class="container" style="width: 100%; height: 350px; overflow: hidden;">
@@ -94,7 +100,7 @@
                         <style>
                             #barMap {
                                 max-width: 100%;
-                                height: 200px;
+                                height: 300px;
                             }
                         </style>
                     </div>
