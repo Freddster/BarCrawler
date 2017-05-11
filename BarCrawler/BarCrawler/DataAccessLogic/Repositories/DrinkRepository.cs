@@ -11,12 +11,12 @@ namespace DataAccessLogic.Repositories
     public class DrinkRepository : IDisposable
     {
         private BarCrawlerContext _context;
-        private DbSet<BarModel> _dbSet;
+        private DbSet<BarModel> _drinkDbSet;
 
         public DrinkRepository(BarCrawlerContext ReceivedContext)
         {
             _context = ReceivedContext;
-            _dbSet = ReceivedContext.BarModels;
+            _drinkDbSet = ReceivedContext.BarModels;
         }
 
         public void Dispose()

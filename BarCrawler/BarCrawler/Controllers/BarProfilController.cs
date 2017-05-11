@@ -8,6 +8,7 @@ using BarCrawler.Models;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Net;
+using DataAccessLogic.UnitOfWork;
 using BarCrawler.ViewModels;
 using Microsoft.Ajax.Utilities;
 
@@ -15,9 +16,7 @@ namespace BarCrawler.Controllers
 {
     public class BarProfilController : Controller
     {
-
-        private BarCrawlerContext db = new BarCrawlerContext();
-
+        private UnitOfWork _unitOfWork = new UnitOfWork();
         // GET: BarProfil
         public ActionResult Index(int? id)
         {
@@ -25,13 +24,12 @@ namespace BarCrawler.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            BarModel barmodel = db.BarModels.Include(i => i.Pictures).Include(e => e.Events).Include(f => f.Feeds).Include(d => d.Drinks).SingleOrDefault(x => x.BarID == id);
-            if (barmodel == null)
+            BarModel barModel = _unitOfWork.GetBarprofile(id);
+            if (barModel == null)
             {
                 return HttpNotFound();
             }
-            return View(barmodel);
+            return View(barModel); 
         }
 
         public ActionResult Edit(int? id)

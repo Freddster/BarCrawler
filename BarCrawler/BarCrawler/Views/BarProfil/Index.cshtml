@@ -1,4 +1,6 @@
 ﻿@using System.Net.Configuration
+@using System.Reflection.Emit
+@using BarCrawler.Models
 @model BarCrawler.Models.BarModel
 
 @{
@@ -31,7 +33,7 @@
 <div class="container" style="width: 100%; height: 350px; overflow: hidden;">
     @if (Model.Pictures.Count > 0)
     {
-        <img src="@Url.Content(Model.Pictures[0].Directory)" alt="Img" style="max-height: 350px; position: relative;" />
+        <img src="@Url.Content(Model.ProfilPictureModel.Directory)" alt="N/A" style="max-height: 350px; position: relative;" />
     }
     @if (Model.Pictures.Count == 0)
     {
@@ -107,7 +109,7 @@
                     <table>
                         <tr>
                             <td style="width: 27px"><span class="glyphicon glyphicon-time"></span></td>
-                            <td>Åbningstider</td>
+                            <td>@*Åbningstider*@ @Model.OpenTime - @Model.CloseTime</td>
                         </tr>
                         <tr>
                             <td style="width: 27px"><span class="glyphicon glyphicon-book"></span></td>
@@ -145,7 +147,14 @@
 
 
     <div role="tabpanel" class="tab-pane fade in" id="Events">
-        @if (Model.Events.Count > 0)
+        <h2>
+            Kalender
+            <button type="submit" class="btn btn-default">
+                <i class="glyphicon-plus"></i>
+            </button>
+        </h2>
+        <div class="container">
+            @if (Model.Events.Count > 0)
             {
             <div class="container">
                 <h2>
@@ -158,54 +167,44 @@
 
                 <hr />
 
-                <div class="agenda">
-                    <div class="table-responsive">
-                        <table class="table table-condensed table-bordered">
-                            <colgroup>
-                                <col width="200" />
-                                <col width="200" />
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>Dato</th>
-                                    <th>Tid</th>
-                                    <th>Event</th>
-                                </tr>
-                            </thead>
+                    <div class="agenda">
+                        @foreach (var eventobj in Model.Events) 
+                        {
+                            <a class="list-group-item">
+                                <div class="container">
+                                    <div class="col-lg-1">
+                                        <div class="row">
+                                            <p style="color: #22662f">
+                                                @eventobj.DateAndTimeForEvent
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="row">
+                                            <h4><b>@eventobj.Title</b></h4>
+                                        </div>
 
-                            @foreach (var item in Model.Events)
-                            {
-                                <tbody>
-                                    <!-- Single event in a single day -->
-                                    <tr>
-                                        <td class="agenda-date" rowspan="1">
-                                            <div class="dayofweek">@item.DateAndTimeForEvent.DayOfWeek</div>
-                                            <div class="shortdate text-muted">@item.DateAndTimeForEvent.Date.ToString("dd MMMM yyyy")</div>
-                                        </td>
-                                        <td class="agenda-time">
-                                            @item.DateAndTimeForEvent.Hour
-                                            :
-                                            @item.DateAndTimeForEvent.Minute
-                                        </td>
-                                        <td class="agenda-events">
-                                            <div class="agenda-event">
-                                                <h5><b>@item.Title</b></h5>
-                                                <p>@item.Description</p>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            }
-                        </table>
+                                        <div class="row">
+                                            <p>
+                                                @eventobj.BarModel.BarName
+                                            </p>
+                                        </div>
+                                        <div class="row">
+                                            <p>
+                                                @eventobj.Description
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        }
                     </div>
-                </div>
-            </div>
-        }
-        @if (Model.Events.Count == 0)
+                            }
+            @if (Model.Events.Count == 0)
             {
-            <h2>@Model.BarName har ingen kommende events</h2>
-        }
-
+                <h2>@Model.BarName har ingen kommende events</h2>
+            }
+        </div>
     </div>
 
     <div role="tabpanel" class="tab-pane fade in" id="Galleri">
@@ -237,44 +236,47 @@
     </div>
 
     <div role="tabpanel" class="tab-pane fade in" id="Info">
-        <h2>
-            Kontaktinformation
-            <a href="@Url.Action("Edit", "BarProfil", new {id = @Model.BarID})">
-                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
-            </a>
-        </h2>
-        <div class="container">
-            <div class="col-lg-2">
-                <div class="row">
-                    <b>Åbninstider: </b>
-                </div>
-                <div class="row">
-                    <b>Email: </b>
-                </div>
-                <div class="row">
-                    <b>Telefon nr.:</b>
-                </div>
-                <div class="row">
-                    <b>Fakultet: </b>
-                </div>
-                <div class="row">
-                    <b>Adresse: </b>
-                </div>
-                <div class="row">
-                    <b>By: </b>
-                </div>
-
+        <h2>Kontaktinformation <button type="submit" class="btn btn-default"><i class="glyphicon-plus"></i></button></h2>
+        
+        <div class="container-fluid">
+            <table class="table table" style="max-width: 400px; ">
+                <tbody>
+                <tr>
+                    <td>@Html.LabelFor(m => m.OpenTime):</td>
+                    <td>@Model.OpenTime - @Model.CloseTime</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Email):</td>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.PhoneNumber):</td>
+                    <td>@Model.PhoneNumber</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Faculty):</td>
+                    <td>@Model.Faculty</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.City):</td>
+                    <td>@Model.City</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Zipcode):</td>
+                    <td>@Model.Zipcode</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Address1):</td>
+                    <td>@Model.Address1</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.StreetNumber):</td>
+                    <td>@Model.StreetNumber</td>
+                </tr>
+                </tbody>
+            </table>
             </div>
-            <div class="col-lg-10">
-                <div class="row">Åbningstid </div>
-                <div class="row">@Model.Email </div>
-                <div class="row">@Model.PhoneNumber </div>
-                <div class="row">@Model.Faculty</div>
-                <div class="row">@Model.Address1 @Model.StreetNumber</div>
-                <div class="row">@Model.Zipcode @Model.City</div>
-
-            </div>
-        </div>
+       
         <div class="container">
             <div class="row">
                 <h2>

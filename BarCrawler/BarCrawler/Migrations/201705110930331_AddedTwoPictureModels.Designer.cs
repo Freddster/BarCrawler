@@ -7,13 +7,13 @@ namespace BarCrawler.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class MaybeItWorksNowIdentity : IMigrationMetadata
+    public sealed partial class AddedTwoPictureModels : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(MaybeItWorksNowIdentity));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedTwoPictureModels));
         
         string IMigrationMetadata.Id
         {
-            get { return "201705050944028_MaybeItWorksNowIdentity"; }
+            get { return "201705110930331_AddedTwoPictureModels"; }
         }
         
         string IMigrationMetadata.Source

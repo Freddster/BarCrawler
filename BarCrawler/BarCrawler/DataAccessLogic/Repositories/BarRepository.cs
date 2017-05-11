@@ -28,6 +28,15 @@ namespace DataAccessLogic.Repositories
             return _dbSet.Find(id);
         }
 
+        public BarModel GetProfile(int? id)
+        {
+            return (_dbSet.Include(d => d.Drinks)
+                .Include(e => e.Events)
+                .Include(f => f.Feeds)
+                .Include(p => p.Pictures)
+                .SingleOrDefault(x => x.BarID == id));
+        }
+
 
         //Add
         public void AddBar(BarModel barModel)
@@ -42,7 +51,7 @@ namespace DataAccessLogic.Repositories
             if (barModel != null)
                 _dbSet.Remove(barModel);
         }
-        
+
         //Update
         public void UpdateBarModel(BarModel barmodel)
         {

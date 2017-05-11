@@ -9,7 +9,7 @@ namespace BarCrawler.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(BarCrawler.Models.BarCrawlerContext context)
