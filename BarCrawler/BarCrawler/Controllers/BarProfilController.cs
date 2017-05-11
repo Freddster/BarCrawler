@@ -41,7 +41,7 @@ namespace BarCrawler.Controllers
             }
             else
             {
-                var bar = db.BarModels.FirstOrDefault(b => b.userID == id);
+                var bar = db.BarModels.FirstOrDefault(b => b.ApplicationUser.Id == id);
                 if (bar == null)
                 {
                     return HttpNotFound();

@@ -166,7 +166,6 @@ namespace BarCrawler.Controllers
                         Description = model.Description,
                         StreetNumber = model.StreetNumber,
                         City = model.City,
-                        userID = user.Id,
                         Email = model.Email,
                         Faculty = model.Faculty
                     };
