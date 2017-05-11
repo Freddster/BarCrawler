@@ -11,10 +11,17 @@ namespace BarCrawler.Controllers
 {
     public class HomeController : Controller
     {
+        BarCrawlerContext db = new BarCrawlerContext();
         private readonly UnitOfWork _unitOfWork = new UnitOfWork();
 
         public ActionResult Index()
         {
+            return View(db.BarModels
+                .Include(pp => pp.ProfilPictureModel)
+                .Include(p => p.Pictures)
+                .Include(e => e.Events)
+                .Include(f => f.Feeds)
+                .ToList());
             return View(_unitOfWork.GetAllBarsForHome());
         }
 

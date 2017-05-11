@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using BarCrawler.Models;
 using DataAccessLogic.Repositories;
 
@@ -37,6 +38,7 @@ namespace DataAccessLogic.UnitOfWork
                 .Include(d => d.Drinks)
                 .Include(f => f.Feeds)
                 .Include(p => p.Pictures)
+                .Include(pp => pp.ProfilPictureModel)
                 .SingleOrDefault(x => x.BarID == id);
 
             DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(TimeToSubtract);

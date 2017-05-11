@@ -30,6 +30,9 @@ namespace BarCrawler.Models
         [Display(Name = "Pris")]
         public double Price { get; set; }
 
+
+        public List<DrinkPictureModel> DrinkPictureModels { get; set; }
+
         /*
          Opret model til drinks billeder, sådan at det er muligt at baren
          kan lægge et billede op af den pågældende drink.

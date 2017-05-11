@@ -7,25 +7,26 @@ using System.Web;
 
 namespace BarCrawler.Models
 {
-    public class FeedModel
+    public class BarProfilPictureModel
     {
-        [Key]
-        public int FeedID { get; set; }
-        [ForeignKey("BarModel")]
+        /*[Key]
+        public int BarProfilePictureID { get; set; }
+        */
+        [Key, ForeignKey("BarModel")]
         public int BarID { get; set; }
-        public BarModel BarModel { get; set; }
-
+        public virtual BarModel BarModel { get; set; }
 
         [Timestamp]
         public Byte[] TimeStamp { get; set; }
-
-         
         [Required]
         [Display(Name = "Oprettelses tidspunkt")]
         public DateTime CreateTime { get; set; }
 
-        [Required]
+        public string Directory { get; set; }
+
         [MaxLength(200)]
-        public string Text { get; set; }
+        [Display(Name = "Beskrivelse")]
+        public string Description { get; set; }
+        
     }
 }

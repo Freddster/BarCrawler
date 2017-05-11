@@ -226,12 +226,18 @@
     <Compile Include="Migrations\201705101428006_OpdateretDrinksModelPris.Designer.cs">
       <DependentUpon>201705101428006_OpdateretDrinksModelPris.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705110930331_AddedTwoPictureModels.cs" />
+    <Compile Include="Migrations\201705110930331_AddedTwoPictureModels.Designer.cs">
+      <DependentUpon>201705110930331_AddedTwoPictureModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BarCrawlerContext.cs" />
     <Compile Include="Models\BarModel.cs" />
+    <Compile Include="Models\BarProfilPictureModel.cs" />
     <Compile Include="Models\BigRegisterViewModel.cs" />
     <Compile Include="Models\DrinkModel.cs" />
+    <Compile Include="Models\DrinkPictureModel.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\FeedModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -337,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705101428006_OpdateretDrinksModelPris.resx">
       <DependentUpon>201705101428006_OpdateretDrinksModelPris.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705110930331_AddedTwoPictureModels.resx">
+      <DependentUpon>201705110930331_AddedTwoPictureModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
