@@ -29,14 +29,15 @@
             @* Placeholder for en barprofil *@
             @foreach (var item in Model)
             {
-                if (item.ProfilPictureModel != null)
-                {
+                
                     <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID})" class="list-group-item">
 
                         <div class="media">
                             <div class="pull-left">
-                                
-                                <img src="@Url.Content(item.ProfilPictureModel.Directory)" alt="N/A" style="width: 64px; height: 64px"; position: relative;" />
+                                @if (item.ProfilPictureModel != null)
+                                {
+                                <img src="@Url.Content(item.ProfilPictureModel.Directory)" alt="N/A" style="width: 64px; height: 64px" ; position relative; />
+                                }
 
                                 @*<img class="media-object" src="@Url.Content(item.ProfilPictureModel.Directory == null ? "hej" : item.ProfilPictureModel.Directory)" alt="N/A" style="width: 64px; height: 64px" />*@
                             </div>
@@ -46,7 +47,6 @@
                             </div>
                         </div>
                     </a>
-                }
             }
         </div>
     </div>
