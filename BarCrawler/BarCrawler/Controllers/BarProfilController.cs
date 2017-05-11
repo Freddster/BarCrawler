@@ -16,6 +16,7 @@ namespace BarCrawler.Controllers
 {
     public class BarProfilController : Controller
     {
+        BarCrawlerContext db = new BarCrawlerContext();
         private UnitOfWork _unitOfWork = new UnitOfWork();
         // GET: BarProfil
         public ActionResult Index(int? id)
