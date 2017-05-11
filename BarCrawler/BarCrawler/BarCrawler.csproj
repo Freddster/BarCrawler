@@ -234,6 +234,7 @@
     <Compile Include="Models\PictureModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\DrinkViewModel.cs" />
     <Compile Include="ViewModels\EditViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -302,6 +303,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\BarProfil\Index.cshtml" />
     <Content Include="Views\BarProfil\Edit.cshtml" />
+    <Content Include="Views\BarProfil\CreateDrink.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

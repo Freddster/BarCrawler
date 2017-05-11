@@ -13,8 +13,6 @@ using Microsoft.Ajax.Utilities;
 
 namespace BarCrawler.Controllers
 {
-
-
     public class BarProfilController : Controller
     {
 
@@ -82,5 +80,78 @@ namespace BarCrawler.Controllers
                 return View(editviewmodel);
             }
         }
+
+        public ActionResult EditDrinks(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            BarModel barmodel = db.BarModels.Include(d => d.Drinks).SingleOrDefault(x => x.BarID == id);
+            if (barmodel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(barmodel);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateDrinks(DrinkModel drinkModel)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(drinkModel).State = EntityState.Modified;
+                db.SaveChanges(); 
+            }
+            return RedirectToAction("Index", new { id = drinkModel.BarModel.BarID });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteDrinks(int id)
+        {
+            DrinkModel drinkmodel = db.DrinkModels.Find(id);
+            if (drinkmodel == null)
+            {
+                return HttpNotFound();
+            }
+            db.DrinkModels.Remove(drinkmodel);
+            db.SaveChanges(); 
+            return RedirectToAction("Index", new { id = id });
+        }
+
+        public ActionResult CreateDrink(int id)
+        {
+            DrinkViewModel viewModel; 
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DrinkModel drinkModel = new DrinkModel();
+            drinkModel.BarID = id;
+            return View(drinkModel); 
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateDrink(DrinkModel drinkmodel)
+        {
+            if (ModelState.IsValid)
+            {
+                db.DrinkModels.Add(drinkmodel);
+                BarModel barmodel = db.BarModels.Find(drinkmodel.BarID);
+                if (barmodel == null)
+                {
+                    return HttpNotFound();
+                }
+                barmodel.Drinks.Add(drinkmodel);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", new { id = drinkmodel.BarID });
+        }
+
     }
 }
