@@ -16,12 +16,6 @@ namespace BarCrawler.Controllers
 
         public ActionResult Index()
         {
-            return View(db.BarModels
-                .Include(pp => pp.ProfilPictureModel)
-                .Include(p => p.Pictures)
-                .Include(e => e.Events)
-                .Include(f => f.Feeds)
-                .ToList());
             return View(_unitOfWork.GetAllBarsForHome());
         }
 

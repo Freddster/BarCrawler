@@ -48,6 +48,7 @@ namespace DataAccessLogic.UnitOfWork
                 .Collection(e => e.Events)
                 .Query()
                 .Where(w => w.DateAndTimeForEvent > nowDateTime)
+                .OrderBy(o => o.DateAndTimeForEvent)
                 .Load();
 
             return modelToReturn;
@@ -57,14 +58,14 @@ namespace DataAccessLogic.UnitOfWork
         public IEnumerable<BarModel> GetAllBarsForHome()
         {
             var allModels = _context.BarModels
-                .Include(p => p.Pictures)
+                .Include(p => p.ProfilPictureModel)
                 .Include(f => f.Feeds)
                 .ToList();
 
             List<BarModel> listToReturn = new List<BarModel>();
 
             DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(TimeToSubtract);
-            //DateTime nowDateTime = DateTime.Now.AddHours(TimeToSubtract);
+            //DateTimenowDateTime = DateTime.Now.AddHours(TimeToSubtract);
 
             foreach (var model in allModels)
             {
