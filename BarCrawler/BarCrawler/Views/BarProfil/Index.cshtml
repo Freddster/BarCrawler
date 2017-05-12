@@ -84,7 +84,7 @@
                             border-radius: inherit;
                         }
                     </style>
-                    @Html.ActionLink("Slå op", )
+                    @*@Html.ActionLink("Slå op", )*@
                 </li>
 
             </ul>
@@ -332,8 +332,8 @@
                                      @Html.DisplayFor(modelItem => item.Description)
                                  </div>
                                  <div class="col-lg-2">
-                                     @Html.ActionLink("Edit", "Index", new { id = item.DrinkID }) |
-                                     @Html.ActionLink("Delete", "DeleteDrinks", new { id = item.DrinkID })
+                                     @Html.ActionLink("Rediger", "EditDrink", new { id = item.DrinkID }) |
+                                     @Html.ActionLink("Slet", "DeleteDrinks", new { id = item.DrinkID })
                                      @* VI VED IKKE, HVAD DER SKER!! *@
                                  </div>
                              </div>
