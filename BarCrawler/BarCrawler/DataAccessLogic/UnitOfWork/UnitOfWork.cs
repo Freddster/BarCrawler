@@ -41,7 +41,9 @@ namespace DataAccessLogic.UnitOfWork
                 .Include(pp => pp.ProfilPictureModel)
                 .SingleOrDefault(x => x.BarID == id);
 
-            DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(TimeToSubtract);
+            if (modelToReturn != null)
+            {
+                DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(TimeToSubtract);
             //DateTime nowDateTime = DateTime.Now.AddHours(TimeToSubtract);
 
             _context.Entry(modelToReturn)
@@ -50,7 +52,8 @@ namespace DataAccessLogic.UnitOfWork
                 .Where(w => w.DateAndTimeForEvent > nowDateTime)
                 .OrderBy(o => o.DateAndTimeForEvent)
                 .Load();
-
+            }
+            
             return modelToReturn;
         }
         private const int TimeToSubtract = -12;

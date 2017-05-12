@@ -35,7 +35,7 @@
     {
         <img src="@Url.Content(Model.ProfilPictureModel.Directory)" alt="N/A" style="max-height: 350px; position: relative;" />
     }
-    @if (Model.Pictures.Count == 0)
+    else
     {
         <img src="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="max-width: 100%; position: relative;" />
     }
@@ -66,11 +66,14 @@
     <li role="presentation"><a href="#Info" aria-controls="Info" role="tab" data-toggle="tab">Info</a></li>
 </ul>
 <div class="tab-content">
+
+    @* ************************ FEED TAB ****************************** *@
+
     <div role="tabpanel" class="tab-pane fade in active" id="Feed">
         <div style="line-height: 20px">
             <h2>Feedoversigt</h2>
         </div>
-        <div style="width: 70%; float: left; margin-top: 5px; ">
+        <div style="width: 70%; float: left; margin-top: 5px;">
             @*Opret feed text felt*@
             <ul class="list-group" style="width: 99%;">
                 <li class="list-group-item">
@@ -92,7 +95,7 @@
             <div class="list" style="margin-right: 15px">
 
                 @foreach (var item in Model.Feeds)
-                {
+            {
                     <div class="panel panel-default">
                         <div class="panel-body">
                             @item.Text
@@ -143,7 +146,7 @@
     </div>
 
 
-
+    @* ************************ EVENT TAB ****************************** *@
 
     <div role="tabpanel" class="tab-pane fade in" id="Events">
         <h2>
@@ -156,7 +159,7 @@
             @if (Model.Events != null)
             {
                 <div class="container">
-                    <hr/>
+                    <hr />
 
                     <div class="agenda">
                         @foreach (var eventobj in Model.Events)
@@ -192,159 +195,143 @@
                     </div>
 
                     @if (Model.Events.Count == 0)
-                    {
+                {
                         <h2>@Model.BarName har ingen kommende events</h2>
                     }
                 </div>
             }
-                </div>
+        </div>
 
-                </div>
-               
-                <div role="tabpanel" class="tab-pane fade in" id="Galleri">
-                    <h2>Galleri <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
-                    </h2>
-                    @if (@Model.Pictures.Count > 0)
-                    {
+    </div>
+
+    @* ************************ GALLERY TAB ****************************** *@
+
+    <div role="tabpanel" class="tab-pane fade in" id="Galleri">
+        <h2>
+            Galleri <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+        </h2>
+        @if (@Model.Pictures.Count > 0)
+        {
+            <div class="row">
+                @foreach (var item in Model.Pictures)
+                {
+                    <div class="col-lg-3">
                         <div class="row">
-                            @foreach (var item in Model.Pictures)
-                            {
-                                <div class="col-lg-3">
-                                    <div class="row">
-                                        <img class="resize"
-                                             src="@Url.Content(item.Directory)"
-                                             style="max-height: 200px; max-width: 290px; margin-left: auto; margin-right: auto; display: block;"/>
-                                    </div>
-                                    <div class="row">
-                                        @Html.DisplayFor(modelItem => modelItem.Description)
-                                    </div>
-                                </div>
-                            }
+                            <img class="resize"
+                                 src="@Url.Content(item.Directory)"
+                                 style="max-height: 200px; max-width: 290px; margin-left: auto; margin-right: auto; display: block;" />
                         </div>
-                    }
-                </div>
-            
-           
-                <div role="tabpanel" class="tab-pane fade in" id="Info">
-                    <h2>Kontaktinformation <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button></h2>
-
-                    <div class="container-fluid">
-                        <table class="table table" style="max-width: 400px; ">
-                            <tbody>
-                                <tr>
-                                    <td>@Html.LabelFor(m => m.OpenTime):</td>
-                                    <td>@Model.OpenTime - @Model.CloseTime</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.LabelFor(m => m.Email):</td>
-                                    <td>@Model.Email</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.LabelFor(m => m.PhoneNumber):</td>
-                                    <td>@Model.PhoneNumber</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.LabelFor(m => m.Faculty):</td>
-                                    <td>@Model.Faculty</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.LabelFor(m => m.City):</td>
-                                    <td>@Model.City</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.LabelFor(m => m.Zipcode):</td>
-                                    <td>@Model.Zipcode</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.LabelFor(m => m.Address1):</td>
-                                    <td>@Model.Address1</td>
-                                </tr>
-                                <tr>
-                                    <td>@Html.LabelFor(m => m.StreetNumber):</td>
-                                    <td>@Model.StreetNumber</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => modelItem.Description)
+                        </div>
                     </div>
+                }
+            </div>
+        }
+    </div>
 
-                    <div class="container">
-                        <div class="row">
-                            <h2>
-                                Om os
-                                <a href="@Url.Action("Edit", "BarProfil", new {id = @Model.BarID})">
-                                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
-                                </a>
-                            </h2>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-11">
-                                @Model.Description
-                            </div>
-                        </div>
+    @* ************************ INFO TAB ****************************** *@
 
-                        <div class="row">
-                            <h2>
-                                Drinkskort
-                                <a href="@Url.Action("CreateDrink", "BarProfil", new {id = @Model.BarID})">
-                                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
-                                </a>
-                            </h2>
-                        </div>
-                        @if (Model.Drinks.Count > 0)
-                        {
-                            using (Html.BeginForm())
-                            {
-                                <fieldset>
-                                    <div class="row">
-                                        <div class="col-lg-1">
-                                            <b>Titel</b>
-                                        </div>
-                                        <div class="col-lg-1">
-                                            <b>Pris</b>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <b>Beskrivelse</b>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <b>Action</b>
-                                        </div>
+    <div role="tabpanel" class="tab-pane fade in" id="Info">
+        <h2>
+            Kontaktinformation <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+        </h2>
 
-                                    </div>
+        <div class="container-fluid">
+            <table class="table table" style="max-width: 400px;">
+                <tbody>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.OpenTime):</td>
+                        <td>@Model.OpenTime - @Model.CloseTime</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.Email):</td>
+                        <td>@Model.Email</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.PhoneNumber):</td>
+                        <td>@Model.PhoneNumber</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.Faculty):</td>
+                        <td>@Model.Faculty</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.City):</td>
+                        <td>@Model.City</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.Zipcode):</td>
+                        <td>@Model.Zipcode</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.Address1):</td>
+                        <td>@Model.Address1</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(m => m.StreetNumber):</td>
+                        <td>@Model.StreetNumber</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-                                    @foreach (var item in Model.Drinks)
-                                    {
-                                        <div class="row">
-                                            <div class="col-lg-1">
-                                                @Html.DisplayFor(modelItem => item.Title)
-                                            </div>
-                                            <div class="col-lg-1">
-                                                @Html.DisplayFor(modelItem => item.Price)
-                                            </div>
-                                            <div class="col-lg-3">
-                                                @Html.DisplayFor(modelItem => item.Description)
-                                            </div>
-                                            <div class="col-lg-2">
-                                                @Html.ActionLink("Edit", "Index", new { id = item.DrinkID }) |
-                                                @Html.ActionLink("Delete", "DeleteDrinks", new { id = item.DrinkID })
-                                                @* VI VED IKKE, HVAD DER SKER!! *@
-                                            </div>
-                                        </div>
-                                    }
-                                </fieldset>
-                            }
-                            @*<div class="row">
-                                    <div class="col-lg-1"><b>Navn</b></div>
-                                    <div class="col-lg-1"><b>Pris</b></div>
-                                </div>
-                                foreach (var item in Model.Drinks)
-                                {
-                                    <div class="row">
-                                        <div class="col-lg-1">@Html.DisplayFor(modelItem => item.Title)</div>
-                                        <div class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</div>
-                                    </div>
-                                }
-                                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>*@
-                        }
-                    </div>
+        <div class="container">
+            <div class="row">
+                <h2>
+                    Om os
+                    <a href="@Url.Action("Edit", "BarProfil", new {id = @Model.BarID})">
+                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
+                    </a>
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-11">
+                    @Model.Description
                 </div>
             </div>
+        </div>
+        <div class="container-fluid">
+            @*<div class="row">*@
+            <h2>
+                Drinkskort
+                <a href="@Url.Action("CreateDrink", "BarProfil", new {id = @Model.BarID})">
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+                </a>
+            </h2>
+        </div>
+        @if (Model.Drinks.Count > 0)
+        {
+            <div>
+                @* Denne version af tabellen skal kun vises hvis det er baren selv der er logget ind*@
+                <table class="table table">
+                    <thead>
+                        <tr>
+                            <th class="col-md-2">@Html.LabelFor(d => d.Drinks[0].Title)</th>
+                            <th class="col-md-1">@Html.LabelFor(d => d.Drinks[0].Price)</th>
+                            <th class="col-md-4">@Html.LabelFor(d => d.Drinks[0].Description)</th>
+                            <th class="col-md-1, text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Drinks)
+                        {
+                            <tr>
+                                <td>@item.Title</td>
+                                <td>@item.Price kr</td>
+                                <td>@item.Description</td>
+                                <td class="col-md-1, text-right">
+                                    @* Det første er navn på knappen. Argument 2 er den action der skal køres *@
+                                    @Html.ActionLink("Edit", "EditDrinks/" + item.DrinkID) |
+                                    @Html.ActionLink("Delete", "DeleteDrinks", new { id = item.DrinkID })
+                                    @* VI VED IKKE, HVAD DER SKER!! *@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        }
+    </div>
+</div>
