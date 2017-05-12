@@ -11,6 +11,7 @@ namespace BarCrawler.Models
     public class BarModel
     {
         [Key]
+        [Display()]
         public int BarID { get; set; }
 
         [Timestamp]

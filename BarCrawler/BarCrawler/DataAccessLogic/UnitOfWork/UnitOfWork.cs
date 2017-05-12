@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
+using BarCrawler.DataAccessLogic.Repositories.Interface;
 using BarCrawler.Models;
 using DataAccessLogic.Repositories;
 
 namespace DataAccessLogic.UnitOfWork
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private BarCrawlerContext _context = new BarCrawlerContext();
         private BarRepository _barRepository;
@@ -18,13 +19,21 @@ namespace DataAccessLogic.UnitOfWork
         private EventRepository _eventRepository;
         private FeedRepository _feedRepository;
         private PictureRepository _pictureRepository;
+        //private IDrinkRepository DrinkRepositoryyyyy;
 
         public BarRepository BarRepository => _barRepository ?? new BarRepository(_context);
-        public DrinkRepository DrinkRepository => _drinkRepository ?? new DrinkRepository(_context);
+        //public DrinkRepository DrinkRepository => _drinkRepository ?? new DrinkRepository(_context);
         public EventRepository EventRepository => _eventRepository ?? new EventRepository(_context);
         public FeedRepository FeedRepository => _feedRepository ?? new FeedRepository(_context);
         public PictureRepository PictureRepository => _pictureRepository ?? new PictureRepository(_context);
+        //public DrinkRepository UgabugaDrinkRepository => DrinkRepositoryyyyy ?? new DrinkRepository(_context);
 
+        public UnitOfWork()
+        {
+            DrinkRepository = new DrinkRepository(_context);
+        }
+
+        public IDrinkRepository DrinkRepository { get; private set; }
 
 
         public void Save()
@@ -81,6 +90,11 @@ namespace DataAccessLogic.UnitOfWork
             }
 
             return listToReturn;
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
         }
     }
 }

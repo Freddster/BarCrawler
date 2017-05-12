@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace BarCrawler.Models
 {
     public class BarProfilPictureModel
     {
-        /*[Key]
-        public int BarProfilePictureID { get; set; }
-        */
         [Key, ForeignKey("BarModel")]
         public int BarID { get; set; }
         public virtual BarModel BarModel { get; set; }

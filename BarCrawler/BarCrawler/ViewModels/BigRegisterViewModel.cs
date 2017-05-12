@@ -1,4 +1,6 @@
-﻿namespace BarCrawler.Models
+﻿using BarCrawler.Models;
+
+namespace BarCrawler.ViewModels
 {
     public class BigRegisterViewModel
     {

@@ -12,28 +12,28 @@ namespace BarCrawler.ViewModels
     {
         public DrinkViewModel()
         {
-            
         }
+
         public DrinkViewModel(DrinkModel dm)
         {
             DrinkID = dm.DrinkID; 
             BarID = dm.BarID;
             Title = dm.Title;
             Description = dm.Description;
-            Price = dm.Price; 
+            Price = dm.Price;
         }
-        [Key]
+        //[Key]
         public int DrinkID { get; set; }
 
-        [ForeignKey("BarModel")]
+        //[ForeignKey("BarModel")]
         public int BarID { get; set; }
 
-        [Required]
+        //[Required]
         public string Title { get; set; }
-        [MaxLength(500)]
+        //[MaxLength(500)]
         public string Description { get; set; }
 
-        [Required]
-        public string Price { get; set; }
+        //[Required]
+        public double Price { get; set; }
     }
 }

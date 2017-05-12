@@ -80,38 +80,35 @@ namespace BarCrawler.Controllers
             }
         }
 
-        public ActionResult EditDrink(int id)
+        public ActionResult EditDrink(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DrinkModel drinkmodel = db.DrinkModels.Find(id);
-            if (drinkmodel == null)
+            DrinkModel drinkModel = _unitOfWork.DrinkRepository.GetByID(id);
+            if (drinkModel == null)
             {
                 return HttpNotFound();
             }
-            DrinkViewModel dm = new DrinkViewModel(drinkmodel); 
+            DrinkViewModel dm = new DrinkViewModel(drinkModel); 
             return View(dm);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditDrink(DrinkViewModel drinkmodel)
+        public ActionResult EditDrink(DrinkViewModel drinkViewModel)
         {
-            DrinkModel dm = db.DrinkModels.Find(drinkmodel.DrinkID);
+            DrinkModel dm = _unitOfWork.DrinkRepository.GetByID(drinkViewModel.DrinkID);
             if(dm == null)
                 return HttpNotFound();
             if (ModelState.IsValid)
             {
-                dm.Description = drinkmodel.Description;
-                dm.Price = drinkmodel.Price;
-                dm.Title = drinkmodel.Title; 
-                db.Entry(dm).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index", new { id = drinkmodel.BarID });
+                _unitOfWork.DrinkRepository.AddModelForUpdate(ref drinkViewModel, ref dm);
+                _unitOfWork.Save();
+                return RedirectToAction("Index", new { id = drinkViewModel.BarID });
             }
-                return View(drinkmodel);
+                return View(drinkViewModel);
         }
 
 
@@ -131,13 +128,15 @@ namespace BarCrawler.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteDrinks(int id)
         {
-            DrinkModel drinkmodel = db.DrinkModels.Find(id);
+            DrinkModel drinkmodel = _unitOfWork.DrinkRepository.GetByID(id);
             if (drinkmodel == null)
             {
                 return HttpNotFound();
             }
-            db.DrinkModels.Remove(drinkmodel);
-            db.SaveChanges(); 
+            _unitOfWork.DrinkRepository.Remove(drinkmodel);
+            _unitOfWork.Save();
+            //db.DrinkModels.Remove(drinkmodel);
+            //db.SaveChanges(); 
             return RedirectToAction("Index", new { id = id });
         }
 

@@ -8,7 +8,6 @@ using System.Web;
 namespace BarCrawler.Models
 {
     public class DrinkModel
-
     {
         [Key]
         public int DrinkID { get; set; }

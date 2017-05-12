@@ -53,9 +53,9 @@ namespace DataAccessLogic.Repositories
         }
 
         //Update
-        public void UpdateBarModel(BarModel barmodel)
+        public void UpdateBarModel(BarModel barModel)
         {
-            _context.Entry(barmodel).State = EntityState.Modified;
+            _context.Entry(barModel).State = EntityState.Modified;
         }
 
 

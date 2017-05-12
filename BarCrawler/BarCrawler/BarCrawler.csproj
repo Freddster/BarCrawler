@@ -205,7 +205,11 @@
     <Compile Include="DataAccessLogic\Repositories\DrinkRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\EventRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\FeedRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\GenericRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\Interface\IDrinkRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\Interface\IRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\PictureRepository.cs" />
+    <Compile Include="DataAccessLogic\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="DataAccessLogic\UnitOfWork\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -235,7 +239,7 @@
     <Compile Include="Models\BarCrawlerContext.cs" />
     <Compile Include="Models\BarModel.cs" />
     <Compile Include="Models\BarProfilPictureModel.cs" />
-    <Compile Include="Models\BigRegisterViewModel.cs" />
+    <Compile Include="ViewModels\BigRegisterViewModel.cs" />
     <Compile Include="Models\DrinkModel.cs" />
     <Compile Include="Models\DrinkPictureModel.cs" />
     <Compile Include="Models\EventModel.cs" />
