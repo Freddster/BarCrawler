@@ -80,19 +80,38 @@ namespace BarCrawler.Controllers
             }
         }
 
-        public ActionResult EditDrinks(int? id)
+        public ActionResult EditDrink(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            BarModel barmodel = db.BarModels.Include(d => d.Drinks).SingleOrDefault(x => x.BarID == id);
-            if (barmodel == null)
+            DrinkModel drinkmodel = db.DrinkModels.Find(id);
+            if (drinkmodel == null)
             {
                 return HttpNotFound();
             }
-            return View(barmodel);
+            DrinkViewModel dm = new DrinkViewModel(drinkmodel); 
+            return View(dm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditDrink(DrinkViewModel drinkmodel)
+        {
+            DrinkModel dm = db.DrinkModels.Find(drinkmodel.DrinkID);
+            if(dm == null)
+                return HttpNotFound();
+            if (ModelState.IsValid)
+            {
+                dm.Description = drinkmodel.Description;
+                dm.Price = drinkmodel.Price;
+                dm.Title = drinkmodel.Title; 
+                db.Entry(dm).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index", new { id = drinkmodel.BarID });
+            }
+                return View(drinkmodel);
         }
 
 

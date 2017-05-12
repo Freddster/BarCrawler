@@ -89,7 +89,7 @@
                             border-radius: inherit;
                         }
                     </style>
-                    @*@Html.ActionLink("Slå op",)*@
+                    @*@Html.ActionLink("Slå op", )*@
                 </li>
             </ul>
             <div class="list" style="margin-right: 15px">
@@ -332,6 +332,44 @@
                 </table>
             </div>
 
-        }
+                @*         </div>
+        </div>*@
+                         </div>
+
+                         @foreach (var item in Model.Drinks)
+                         {
+                             <div class="row">
+                                 <div class="col-lg-1">
+                                     @Html.DisplayFor(modelItem => item.Title)
+                                 </div>
+                                 <div class="col-lg-1">
+                                     @Html.DisplayFor(modelItem => item.Price)
+                                 </div>
+                                 <div class="col-lg-3">
+                                     @Html.DisplayFor(modelItem => item.Description)
+                                 </div>
+                                 <div class="col-lg-2">
+                                     @Html.ActionLink("Rediger", "EditDrink", new { id = item.DrinkID }) |
+                                     @Html.ActionLink("Slet", "DeleteDrinks", new { id = item.DrinkID })
+                                     @* VI VED IKKE, HVAD DER SKER!! *@
+                                 </div>
+                             </div>
+                         }
+                     </fieldset>
+                 }
+                @*<div class="row">
+                    <div class="col-lg-1"><b>Navn</b></div>
+                    <div class="col-lg-1"><b>Pris</b></div>
+                </div>
+                foreach (var item in Model.Drinks)
+                {
+                    <div class="row">
+                        <div class="col-lg-1">@Html.DisplayFor(modelItem => item.Title)</div>
+                        <div class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</div>
+                    </div>
+                }
+                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>*@
+            }
+        </div>
     </div>
 </div>

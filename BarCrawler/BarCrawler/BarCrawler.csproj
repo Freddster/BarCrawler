@@ -315,6 +315,7 @@
     <Content Include="Views\BarProfil\Index.cshtml" />
     <Content Include="Views\BarProfil\Edit.cshtml" />
     <Content Include="Views\BarProfil\CreateDrink.cshtml" />
+    <Content Include="Views\BarProfil\EditDrink.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
