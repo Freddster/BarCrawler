@@ -29,19 +29,28 @@
             @* Placeholder for en barprofil *@
             @foreach (var item in Model)
             {
-                <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID})" class="list-group-item">
+                
+                    <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID})" class="list-group-item">
 
-                    <div class="media">
-                        <div class="pull-left">
-                            
-                            <img class="media-object" src="@Url.Content(item.Pictures.Count <= 0 || item.Pictures[0].Directory == null ? "hej" : item.Pictures[0].Directory)" alt="N/A" style="width: 64px; height: 64px"/>
+                        <div class="media">
+                            <div class="pull-left">
+                                @if (item.ProfilPictureModel != null)
+                                {
+                                    <img src="@Url.Content(item.ProfilPictureModel.Directory)" alt="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="width: 64px; height: 64px" ; position relative; />
+                                }
+                                else
+                                {
+                                    <img src="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="width: 64px; height: 64px; position: relative;" />
+                                }
+
+                                @*<img class="media-object" src="@Url.Content(item.ProfilPictureModel.Directory == null ? "hej" : item.ProfilPictureModel.Directory)" alt="N/A" style="width: 64px; height: 64px" />*@
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">@item.BarName</h4>
+                                @item.Description
+                            </div>
                         </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">@item.BarName</h4>
-                            @item.Description
-                        </div>
-                    </div>
-                </a>
+                    </a>
             }
         </div>
     </div>
@@ -52,25 +61,23 @@
 
         @{
             //opretter en liste med EventModeller
-            List<EventModel> unsorted = new List<EventModel>();
-        }
-
-        @foreach (var item in Model)
-        {
-            foreach (var events in item.Events)
+            List<EventModel> eventList = new List<EventModel>();
+            foreach (var item in Model)
             {
-                //tilføjer listen med alle eksisterende events
-                unsorted.Add(events);
+                if (item.Events != null)
+                {
+                    foreach (var events in item.Events)
+                    {
+                        //tilføjer listen med alle eksisterende events
+                        eventList.Add(events);
+                    }
+                }
+                //opretter en ny liste med alle event-onbjekterne i sorteret rækkefølge efter DateTime
+                eventList.OrderBy(o => o.DateAndTimeForEvent);
             }
         }
-        @{
-            //opretter en ny liste med alle event-onbjekterne i sorteret rækkefølge efter DateTime
-            List<EventModel> SortedList = unsorted.OrderBy(o => o.DateAndTimeForEvent).ToList();
-        }
-        
-        
-       
-        @foreach (var eventobj in SortedList) //Udskriver den sorterede liste på event-fanen 
+
+        @foreach (var eventobj in eventList) //Udskriver den sorterede liste på event-fanen
         {
             <a href="@Url.Action("Index", "BarProfil", new {id = eventobj.BarID})" class="list-group-item">
                 <div class="container">
@@ -100,49 +107,6 @@
                 </div>
             </a>
         }
-
-
-
-
-
-
-
-
-
-
-        @*@foreach (var item in Model)
-            {
-                foreach (var events in item.Events)
-                {
-                    <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID})" class="list-group-item">
-                        <div class="container">
-                            <div class="col-lg-1">
-                                <div class="row">
-                                    <p style="color: #22662f">
-                                        @events.DateAndTimeForEvent
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="row">
-                                    <h4><b>@events.Title</b></h4>
-                                </div>
-
-                                <div class="row">
-                                    <p>
-                                        @item.BarName
-                                    </p>
-                                </div>
-                                <div class="row">
-                                    <p>
-                                        @events.Description
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                }
-            }*@
     </div>
 
 
@@ -152,36 +116,39 @@
 
     @foreach (var item in Model)
     {
-        foreach (var feed in item.Feeds)
+        if (item.Feeds != null)
         {
-            <div id="feed" class="tab-pane fade">
-                <a class="list-group-item">
-                    <div class="container">
-                        <div class="col-lg-1">
-                            <div class="row">
-                                <p style="color: #22662f">
-                                    @* MAngler tid for post / DateTime prop *@
-                                </p>
+            foreach (var feed in item.Feeds)
+            {
+                <div id="feed" class="tab-pane fade">
+                    <a class="list-group-item">
+                        <div class="container">
+                            <div class="col-lg-1">
+                                <div class="row">
+                                    <p style="color: #22662f">
+                                        @* MAngler tid for post / DateTime prop *@
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-10">
-                            <div class="row">
-                                <p>
-                                    <b>
-                                        @item.BarName
-                                    </b>
-                                </p>
-                            </div>
+                            <div class="col-lg-10">
+                                <div class="row">
+                                    <p>
+                                        <b>
+                                            @item.BarName
+                                        </b>
+                                    </p>
+                                </div>
 
-                            <div class="row">
-                                <p>
-                                    @feed.Text
-                                </p>
+                                <div class="row">
+                                    <p>
+                                        @feed.Text
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            }
         }
     }
 

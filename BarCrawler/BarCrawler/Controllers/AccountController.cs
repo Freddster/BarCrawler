@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BarCrawler.Models;
+using BarCrawler.ViewModels;
 
 namespace BarCrawler.Controllers
 {
@@ -148,27 +149,29 @@ namespace BarCrawler.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(BigRegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var user = new ApplicationUser { UserName = model.BarModel.Email, Email = model.BarModel.Email };
+                var result = await UserManager.CreateAsync(user, model.RegisterViewModel.Password);
                 if (result.Succeeded)
                 {
                     var bar = new BarModel()
                     {
-                        Address1 = model.Address1,
-                        Address2 = model.Address2,
-                        PhoneNumber = model.PhoneNumber,
-                        Zipcode = model.Zipcode,
-                        BarName = model.BarName,
-                        Description = model.Description,
-                        StreetNumber = model.StreetNumber,
-                        City = model.City,
+                        Address1 = model.BarModel.Address1,
+                        Address2 = model.BarModel.Address2,
+                        PhoneNumber = model.BarModel.PhoneNumber,
+                        Zipcode = model.BarModel.Zipcode,
+                        BarName = model.BarModel.BarName,
+                        Description = model.BarModel.Description,
+                        StreetNumber = model.BarModel.StreetNumber,
+                        City = model.BarModel.City,
                         userID = user.Id,
-                        Email = model.Email,
-                        Faculty = model.Faculty
+                        Email = model.BarModel.Email,
+                        Faculty = model.BarModel.Faculty,
+                        OpenTime = model.BarModel.OpenTime,
+                        CloseTime = model.BarModel.CloseTime
                     };
 
                     db.BarModels.Add(bar);

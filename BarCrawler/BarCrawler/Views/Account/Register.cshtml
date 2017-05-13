@@ -1,4 +1,7 @@
-﻿@model BarCrawler.Models.RegisterViewModel
+﻿@model BarCrawler.ViewModels.BigRegisterViewModel
+
+
+
 @{
     ViewBag.Title = "Register";
 }
@@ -12,76 +15,92 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.BarModel.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.BarModel.Email, new { @class = "form-control", type = "email" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.RegisterViewModel.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.PasswordFor(m => m.RegisterViewModel.Password, new { @class = "form-control", type = "password" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.RegisterViewModel.ConfirmPassword, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            @Html.PasswordFor(m => m.RegisterViewModel.ConfirmPassword, new { @class = "form-control", type = "password" })
         </div>
     </div>
-    <br/>
+    <br />
     <div class="form-group">
-        @Html.LabelFor(m => m.BarName, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.BarModel.BarName, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.BarName, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.BarModel.BarName, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Faculty, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.BarModel.Description, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Faculty, new { @class = "form-control" })
+            @Html.TextAreaFor(m => m.BarModel.Description, new { @class = "form-control" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.BarModel.OpenTime, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.BarModel.OpenTime, new { @class = "form-control", type = "time", value = "12:00", id = "time" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.BarModel.CloseTime, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.BarModel.CloseTime, new { @class = "form-control", type = "time", value = "12:00", id = "time" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.BarModel.Faculty, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.BarModel.Faculty, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Address1, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.BarModel.PhoneNumber, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Address1, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.BarModel.PhoneNumber, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.StreetNumber, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.BarModel.Address1, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.StreetNumber, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.BarModel.Address1, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Address2, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.BarModel.Address2, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Address2, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.BarModel.Address2, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Zipcode, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.BarModel.StreetNumber, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Zipcode, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.BarModel.StreetNumber, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(m => m.BarModel.Zipcode, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.BarModel.Zipcode, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.BarModel.City, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.BarModel.City, new { @class = "form-control" })
         </div>
     </div>
 

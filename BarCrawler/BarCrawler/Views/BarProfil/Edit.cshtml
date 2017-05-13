@@ -1,0 +1,148 @@
+﻿@using Microsoft.AspNet.Identity
+@model BarCrawler.ViewModels.EditViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<div class="container" style="width: 100%; height: 350px; overflow: hidden;">
+    <img src="@Url.Content(Model.Picture)" alt="Img" style="max-height: 350px; position: relative;" />
+</div>
+
+<hr />
+<h2>Opdater kontaktinformationer</h2>
+@using (Html.BeginForm("Edit", "BarProfil", FormMethod.Post, new { id = "Edit" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.BarID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Faculty, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Faculty, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Faculty, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address1, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Address2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Address2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StreetNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StreetNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StreetNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Zipcode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Zipcode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Zipcode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary" style="font-family:'Helvetica';">
+                    <i class="glyphicon glyphicon-save"></i> 
+                     Save
+                </button>
+                @*<input type="submit" value="Save" class="btn btn-default"/>*@
+            </div>
+        </div>
+    </div>
+}
+@Html.ActionLink("Tilbage", "Index", new { id = Model.BarID })
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+@*@using (Html.BeginForm("Edit","BarProfil",FormMethod.Post,Model.BarID))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Address1, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Address1, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Address2, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Address2, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Opdater" />
+            </div>
+        </div>
+    }
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
+
+
+@*@Html.AntiForgeryToken()
+    @if(User.Identity.IsAuthenticated && (Model.BarID.ToString() == User.Identity.GetUserId()))
+
+    <div class="form-group">
+        @Html.LabelFor(Model => Model.Address1, new {@Class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.EditorFor(Model => Model.Address1)
+            @Html.ValidationMessageFor(Model => Model.Address1)
+        </div>
+
+        <div>
+            <a href="@Url.Action("Index", "BarProfil", new {id = @Model.BarID})">
+                <button type="submit" class="btn btn-default">Tilbage</button>
+            </a>
+        </div>
+    </div>*@

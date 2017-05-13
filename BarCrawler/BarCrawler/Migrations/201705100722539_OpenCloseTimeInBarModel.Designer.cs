@@ -7,13 +7,13 @@ namespace BarCrawler.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class EnMigrationDerIkkeVirker : IMigrationMetadata
+    public sealed partial class OpenCloseTimeInBarModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(EnMigrationDerIkkeVirker));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(OpenCloseTimeInBarModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201705050828422_EnMigrationDerIkkeVirker"; }
+            get { return "201705100722539_OpenCloseTimeInBarModel"; }
         }
         
         string IMigrationMetadata.Source

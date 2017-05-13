@@ -4,32 +4,30 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BarCrawler.DataAccessLogic.Repositories;
+using BarCrawler.DataAccessLogic.Repositories.Interface;
 using BarCrawler.Models;
+using BarCrawler.ViewModels;
 
 namespace DataAccessLogic.Repositories
 {
-    public class DrinkRepository : IDisposable
+    public class DrinkRepository : GenericRepository<DrinkModel>, IDrinkRepository
     {
-        private BarCrawlerContext _context;
-        private DbSet<BarModel> _dbSet;
-
-        public DrinkRepository(BarCrawlerContext ReceivedContext)
+        public DrinkRepository(BarCrawlerContext ReceivedContext) : base(ReceivedContext)
         {
-            _context = ReceivedContext;
-            _dbSet = ReceivedContext.BarModels;
         }
 
-        public void Dispose()
+        public BarCrawlerContext BarCrawlerContext
         {
-            _context?.Dispose();
+            get { return _context as BarCrawlerContext; }
         }
 
-        //Find
-
-        //Add
-
-        //Delete
-
-        //Remove
+        public void AddModelForUpdate(ref DrinkViewModel viewModel, ref DrinkModel drinkModel)
+        {
+            drinkModel.Description = viewModel.Description;
+            drinkModel.Price = viewModel.Price;
+            drinkModel.Title = viewModel.Title;
+            _context.Entry(drinkModel).State = EntityState.Modified;
+        }
     }
 }

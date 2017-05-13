@@ -8,7 +8,6 @@ using System.Web;
 namespace BarCrawler.Models
 {
     public class DrinkModel
-
     {
         [Key]
         public int DrinkID { get; set; }
@@ -20,12 +19,18 @@ namespace BarCrawler.Models
         [Timestamp]
         public Byte[] TimeStamp { get; set; }
         [Required]
+        [Display(Name = "Drink navn")]
         public string Title { get; set; }
         [MaxLength(500)]
+        [Display(Name = "Beskrivelse")]
         public string Description { get; set; }
 
         [Required]
-        public string Price { get; set; }
+        [Display(Name = "Pris")]
+        public double Price { get; set; }
+
+
+        public List<DrinkPictureModel> DrinkPictureModels { get; set; }
 
         /*
          Opret model til drinks billeder, sådan at det er muligt at baren

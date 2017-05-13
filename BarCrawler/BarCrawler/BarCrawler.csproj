@@ -205,7 +205,11 @@
     <Compile Include="DataAccessLogic\Repositories\DrinkRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\EventRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\FeedRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\GenericRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\Interface\IDrinkRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\Interface\IRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\PictureRepository.cs" />
+    <Compile Include="DataAccessLogic\UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="DataAccessLogic\UnitOfWork\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,19 +218,32 @@
     <Compile Include="Migrations\201704210849293_Initial.Designer.cs">
       <DependentUpon>201704210849293_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705050828422_EnMigrationDerIkkeVirker.cs" />
-    <Compile Include="Migrations\201705050828422_EnMigrationDerIkkeVirker.Designer.cs">
-      <DependentUpon>201705050828422_EnMigrationDerIkkeVirker.cs</DependentUpon>
+    <Compile Include="Migrations\201705091501555_UpdatedModelsWithCreateTime.cs" />
+    <Compile Include="Migrations\201705091501555_UpdatedModelsWithCreateTime.Designer.cs">
+      <DependentUpon>201705091501555_UpdatedModelsWithCreateTime.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705050944028_MaybeItWorksNowIdentity.cs" />
-    <Compile Include="Migrations\201705050944028_MaybeItWorksNowIdentity.Designer.cs">
-      <DependentUpon>201705050944028_MaybeItWorksNowIdentity.cs</DependentUpon>
+    <Compile Include="Migrations\201705100722539_OpenCloseTimeInBarModel.cs" />
+    <Compile Include="Migrations\201705100722539_OpenCloseTimeInBarModel.Designer.cs">
+      <DependentUpon>201705100722539_OpenCloseTimeInBarModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705101428006_OpdateretDrinksModelPris.cs" />
+    <Compile Include="Migrations\201705101428006_OpdateretDrinksModelPris.Designer.cs">
+      <DependentUpon>201705101428006_OpdateretDrinksModelPris.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705110930331_AddedTwoPictureModels.cs" />
+    <Compile Include="Migrations\201705110930331_AddedTwoPictureModels.Designer.cs">
+      <DependentUpon>201705110930331_AddedTwoPictureModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\BarCrawlerContextInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BarCrawlerContext.cs" />
     <Compile Include="Models\BarModel.cs" />
+    <Compile Include="Models\BarProfilPictureModel.cs" />
+    <Compile Include="Models\ICustomBarContext.cs" />
+    <Compile Include="ViewModels\BigRegisterViewModel.cs" />
     <Compile Include="Models\DrinkModel.cs" />
+    <Compile Include="Models\DrinkPictureModel.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\FeedModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -234,6 +251,8 @@
     <Compile Include="Models\PictureModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\DrinkViewModel.cs" />
+    <Compile Include="ViewModels\EditViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\BarCrawlerTemplate.css" />
@@ -300,9 +319,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\BarProfil\Index.cshtml" />
+    <Content Include="Views\BarProfil\Edit.cshtml" />
+    <Content Include="Views\BarProfil\CreateDrink.cshtml" />
+    <Content Include="Views\BarProfil\EditDrink.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="obj\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -323,11 +346,17 @@
     <EmbeddedResource Include="Migrations\201704210849293_Initial.resx">
       <DependentUpon>201704210849293_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705050828422_EnMigrationDerIkkeVirker.resx">
-      <DependentUpon>201705050828422_EnMigrationDerIkkeVirker.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705091501555_UpdatedModelsWithCreateTime.resx">
+      <DependentUpon>201705091501555_UpdatedModelsWithCreateTime.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705050944028_MaybeItWorksNowIdentity.resx">
-      <DependentUpon>201705050944028_MaybeItWorksNowIdentity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705100722539_OpenCloseTimeInBarModel.resx">
+      <DependentUpon>201705100722539_OpenCloseTimeInBarModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705101428006_OpdateretDrinksModelPris.resx">
+      <DependentUpon>201705101428006_OpdateretDrinksModelPris.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705110930331_AddedTwoPictureModels.resx">
+      <DependentUpon>201705110930331_AddedTwoPictureModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

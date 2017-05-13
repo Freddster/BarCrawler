@@ -16,10 +16,16 @@ namespace BarCrawler.Models
         public BarModel BarModel { get; set; }
         public string Directory { get; set; }
 
-
         [Timestamp]
         public Byte[] TimeStamp { get; set; }
+
+        [Required]
+        [Display(Name = "Oprettelses tidspunkt")]
+        public DateTime CreateTime { get; set; }
+
+
         [MaxLength(200)]
+        [Display(Name = "Beskrivelse")]
         public string Description { get; set; }
     }
 }

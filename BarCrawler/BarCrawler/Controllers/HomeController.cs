@@ -5,16 +5,28 @@ using System.Web;
 using System.Web.Mvc;
 using BarCrawler.Models;
 using System.Data.Entity;
+using DataAccessLogic.UnitOfWork;
 
 namespace BarCrawler.Controllers
 {
     public class HomeController : Controller
     {
-        private BarCrawlerContext db = new BarCrawlerContext();
+        BarCrawlerContext db; // = new BarCrawlerContext();
+        private readonly UnitOfWork _unitOfWork;// = new UnitOfWork();
+
+        public HomeController()
+        {
+            _unitOfWork = new UnitOfWork();
+        }
+
+        public HomeController(BarCrawlerContext context)
+        {
+            _unitOfWork = new UnitOfWork(context);
+        }
 
         public ActionResult Index()
         {
-            return View(db.BarModels.Include(b => b.Pictures).Include(k => k.Events).Include(f => f.Feeds).ToList());
+            return View(_unitOfWork.GetAllBarsForHome());
         }
 
         public ActionResult Contact()
