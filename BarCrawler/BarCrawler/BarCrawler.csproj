@@ -234,11 +234,13 @@
     <Compile Include="Migrations\201705110930331_AddedTwoPictureModels.Designer.cs">
       <DependentUpon>201705110930331_AddedTwoPictureModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\BarCrawlerContextInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BarCrawlerContext.cs" />
     <Compile Include="Models\BarModel.cs" />
     <Compile Include="Models\BarProfilPictureModel.cs" />
+    <Compile Include="Models\ICustomBarContext.cs" />
     <Compile Include="ViewModels\BigRegisterViewModel.cs" />
     <Compile Include="Models\DrinkModel.cs" />
     <Compile Include="Models\DrinkPictureModel.cs" />

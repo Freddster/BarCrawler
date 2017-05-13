@@ -11,8 +11,18 @@ namespace BarCrawler.Controllers
 {
     public class HomeController : Controller
     {
-        BarCrawlerContext db = new BarCrawlerContext();
-        private readonly UnitOfWork _unitOfWork = new UnitOfWork();
+        BarCrawlerContext db; // = new BarCrawlerContext();
+        private readonly UnitOfWork _unitOfWork;// = new UnitOfWork();
+
+        public HomeController()
+        {
+            _unitOfWork = new UnitOfWork();
+        }
+
+        public HomeController(BarCrawlerContext context)
+        {
+            _unitOfWork = new UnitOfWork(context);
+        }
 
         public ActionResult Index()
         {
