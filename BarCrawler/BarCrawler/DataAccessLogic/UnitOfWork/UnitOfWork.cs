@@ -57,15 +57,19 @@ namespace DataAccessLogic.UnitOfWork
 
         public BarModel GetBarprofile(int? id)
         {
+
             var modelToReturn = _context.BarModels
                 .Include(d => d.Drinks)
                 .Include(f => f.Feeds)
                 .Include(p => p.Pictures)
                 .Include(pp => pp.ProfilPictureModel)
                 .SingleOrDefault(x => x.BarID == id);
+                
 
             if (modelToReturn != null)
             {
+                modelToReturn.Drinks = modelToReturn.Drinks.OrderBy(o => o.Title).ToList();
+                
                 //DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(TimeToSubtract);
                 DateTime nowDateTime = DateTime.Now.AddHours(TimeToSubtract);
 

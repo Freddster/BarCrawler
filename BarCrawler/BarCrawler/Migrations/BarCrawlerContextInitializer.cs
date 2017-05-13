@@ -85,9 +85,9 @@ namespace BarCrawler.Migrations
             });
             drinkModels.Add(new DrinkModel()
             {
-                Title = "Blå Batman",
-                Price = 40,
-                Description = "Den er blå...",
+                Title = "Spejlæg",
+                Price = 60,
+                Description = "Den smager som slik, og kommer i en kande",
                 BarID = 1,
                 BarModel = barModels.Find(b => b.BarName == "Katrines Kælder")
             });
