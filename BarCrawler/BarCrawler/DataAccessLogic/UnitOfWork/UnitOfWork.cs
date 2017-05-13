@@ -66,8 +66,8 @@ namespace DataAccessLogic.UnitOfWork
 
             if (modelToReturn != null)
             {
-                DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(TimeToSubtract);
-                //DateTime nowDateTime = DateTime.Now.AddHours(TimeToSubtract);
+                //DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(TimeToSubtract);
+                DateTime nowDateTime = DateTime.Now.AddHours(TimeToSubtract);
 
                 _context.Entry(modelToReturn)
                     .Collection(e => e.Events)
@@ -86,12 +86,13 @@ namespace DataAccessLogic.UnitOfWork
             var allModels = _context.BarModels
                 .Include(p => p.ProfilPictureModel)
                 .Include(f => f.Feeds)
+                .OrderBy(model => model.BarName)
                 .ToList();
 
             List<BarModel> listToReturn = new List<BarModel>();
 
-            DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(TimeToSubtract);
-            //DateTimenowDateTime = DateTime.Now.AddHours(TimeToSubtract);
+            //DateTime nowDateTime = new DateTime(2017, 05, 04, 16, 00, 00).AddHours(TimeToSubtract);
+            DateTime nowDateTime = DateTime.Now.AddHours(TimeToSubtract);
 
             foreach (var model in allModels)
             {

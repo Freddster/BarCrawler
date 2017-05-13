@@ -22,6 +22,9 @@ namespace BarCrawler.Migrations
             Debug.WriteLine("part 2\n\n\n\n");
             List<BarModel> barModels = new List<BarModel>();
             List<EventModel> eventModels = new List<EventModel>();
+            List<DrinkModel> drinkModels = new List<DrinkModel>();
+            BarProfilPictureModel barProfilPictureModels;
+            List<PictureModel> pictureModels = new List<PictureModel>();
             /**/
 
             barModels.Add(new BarModel()
@@ -40,7 +43,9 @@ namespace BarCrawler.Migrations
                 PhoneNumber = "12345678",
                 StreetNumber = "2",
                 Zipcode = "8200",
-                Events = eventModels.FindAll(model => model.BarID == 1)
+                Events = eventModels.FindAll(model => model.BarID == 1),
+                Drinks = drinkModels.FindAll(model => model.BarID == 1),
+                Pictures = pictureModels.FindAll(model => model.BarID == 1)
             });
 
             eventModels.Add(new EventModel()
@@ -70,11 +75,61 @@ namespace BarCrawler.Migrations
                 BarModel = barModels.Find(b => b.BarName == "Katrines Kælder")
             });
 
+            drinkModels.Add(new DrinkModel()
+            {
+                Title = "Blå Batman",
+                Price = 40,
+                Description = "Den er blå...",
+                BarID = 1,
+                BarModel = barModels.Find(b => b.BarName == "Katrines Kælder")
+            });
+            drinkModels.Add(new DrinkModel()
+            {
+                Title = "Blå Batman",
+                Price = 40,
+                Description = "Den er blå...",
+                BarID = 1,
+                BarModel = barModels.Find(b => b.BarName == "Katrines Kælder")
+            });
+
+            barProfilPictureModels = new BarProfilPictureModel()
+            {
+                Description = "Det er vores logo",
+                CreateTime = DateTime.Now,
+                Directory = "https://d30y9cdsu7xlg0.cloudfront.net/png/34710-200.png",
+                BarID = 1,
+                BarModel = barModels.Find(b => b.BarName == "Katrines Kælder")
+            };
+
+            pictureModels.Add(new PictureModel()
+            {
+                Description = "Pænt billede",
+                CreateTime = DateTime.Now,
+                Directory = "https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/engineer.png",
+                BarID = 1,
+                BarModel = barModels.Find(b => b.BarName == "Katrines Kælder")
+            });
+            pictureModels.Add(new PictureModel()
+            {
+                Description = "Meget pænt billede",
+                CreateTime = DateTime.Now,
+                Directory = "https://0.s3.envato.com/files/100272724/code%20background.jpg",
+                BarID = 1,
+                BarModel = barModels.Find(b => b.BarName == "Katrines Kælder")
+            });
+
             barModels[0].Events.AddRange(eventModels.FindAll(model => model.BarID == 1));
+            barModels[0].Drinks.AddRange(drinkModels.FindAll(model => model.BarID == 1));
+            barModels[0].ProfilPictureModel = barProfilPictureModels;
+            List<PictureModel> pm = new List<PictureModel>();
+            pm.AddRange(pictureModels.FindAll(model => model.BarID == 1));
+            barModels[0].Pictures.AddRange(pm);
+
+
             barModels.Add(new BarModel()
             {
                 Address1 = "Who knows",
-                //*BarID = 1,*
+                BarID = 2,
                 BarName = "Klubben",
                 City = "Aarhus N",
                 CloseTime = "04:00",
@@ -93,11 +148,7 @@ namespace BarCrawler.Migrations
             {
                 context.BarModels.Add(barModel);
             }
-            /*foreach (var eventModel in eventModels)
-            {
-                context.EventModels.Add(eventModel);
-            }*/
-            //context.BarModels.Add();
+            
 
             base.Seed(context);
         }
