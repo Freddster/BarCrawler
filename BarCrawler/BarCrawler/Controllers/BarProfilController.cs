@@ -186,6 +186,7 @@ namespace BarCrawler.Controllers
                 FeedModel feed = new FeedModel();
                 feed.Text = t;
                 feed.BarID = id;
+                feed.CreateTime = DateTime.Now;
                 db.FeedModels.Add(feed);
                 db.SaveChanges();
             }
