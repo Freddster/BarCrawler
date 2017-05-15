@@ -4,7 +4,18 @@ using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using BarCrawler.Controllers;
 using BarCrawler.Models;
+using BarCrawler.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System.Globalization;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace BarCrawler.Migrations
 {
@@ -16,18 +27,32 @@ namespace BarCrawler.Migrations
             //Seed(context);
         }
 
+
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager { get; set; }
+
+
         /**/
         protected override void Seed(BarCrawlerContext context)
         {
             Debug.WriteLine("part 2\n\n\n\n");
+            List<ApplicationUser> applicationUsers = new List<ApplicationUser>();
             List<BarModel> barModels = new List<BarModel>();
             List<EventModel> eventModels = new List<EventModel>();
             List<DrinkModel> drinkModels = new List<DrinkModel>();
             BarProfilPictureModel barProfilPictureModels;
             List<PictureModel> pictureModels = new List<PictureModel>();
-            /**/
 
-            barModels.Add(new BarModel()
+
+            var user = new ApplicationUser { UserName ="kk@ase.au.dk", Email = "kk@ase.au.dk" };
+            UserManager = new ApplicationUserManager(new UserStore<ApplicationUser>());
+            var result = UserManager.Create(user, "qwertY1!");
+
+            if (result.Succeeded)
+                Debug.WriteLine("Shit succeeded\n\n\n\n");
+
+                barModels.Add(new BarModel()
             {
                 Address1 = "Finlandsgade",
                 BarID = 1,
@@ -43,6 +68,7 @@ namespace BarCrawler.Migrations
                 PhoneNumber = "12345678",
                 StreetNumber = "2",
                 Zipcode = "8200",
+                userID = user.Id,
                 Events = eventModels.FindAll(model => model.BarID == 1),
                 Drinks = drinkModels.FindAll(model => model.BarID == 1),
                 Pictures = pictureModels.FindAll(model => model.BarID == 1)
@@ -151,6 +177,8 @@ namespace BarCrawler.Migrations
             
 
             base.Seed(context);
+            //SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
         }
     }
 }
