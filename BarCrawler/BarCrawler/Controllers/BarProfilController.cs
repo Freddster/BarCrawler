@@ -128,18 +128,25 @@ namespace BarCrawler.Controllers
             return RedirectToAction("Index", new { id = drinkModel.BarModel.BarID });
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteDrinks(int id)
+        public ActionResult DeleteDrink(int id)
         {
-            DrinkModel drinkmodel = db.DrinkModels.Find(id);
-            if (drinkmodel == null)
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DrinkModel drink = db.DrinkModels.Find(id);
+            if (drink == null)
             {
                 return HttpNotFound();
             }
-            db.DrinkModels.Remove(drinkmodel);
-            db.SaveChanges(); 
-            return RedirectToAction("Index", new { id = id });
+            BarModel bm = db.BarModels.Find(drink.BarID);
+            if (bm == null)
+            {
+                return HttpNotFound();
+            }
+            db.DrinkModels.Remove(drink);
+            db.SaveChanges();
+            return RedirectToAction("Index", new { id = bm.BarID });
         }
 
         public ActionResult CreateDrink(int id)
