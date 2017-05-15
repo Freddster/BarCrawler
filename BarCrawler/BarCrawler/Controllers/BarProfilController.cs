@@ -175,5 +175,34 @@ namespace BarCrawler.Controllers
             return RedirectToAction("Index", new { id = drinkmodel.BarID });
         }
 
+
+
+        //Virker stadig ikke 
+        [HttpGet]
+        public ActionResult CreateFeed(int id , string t/**/)
+        {
+            if (!t.IsNullOrWhiteSpace())
+            {
+                FeedModel feed = new FeedModel();
+                feed.Text = t;
+                feed.BarID = id;
+                db.FeedModels.Add(feed);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index", new {id = id});
+        }
+
+        [HttpGet]
+        public ActionResult DeleteFeed(int id, int Fid/**/)
+        {
+            var feed = this.db.FeedModels.FirstOrDefault(b => b.FeedID == Fid);
+            if (feed != null)
+            {
+                db.FeedModels.Remove(feed);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", new { id = id });
+        }
     }
 }
