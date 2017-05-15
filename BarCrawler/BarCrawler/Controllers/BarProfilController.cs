@@ -130,18 +130,18 @@ namespace BarCrawler.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DrinkModel drink = db.DrinkModels.Find(id);
+            DrinkModel drink = _unitOfWork.DrinkRepository.GetByID(id); 
             if (drink == null)
             {
                 return HttpNotFound();
             }
-            BarModel bm = db.BarModels.Find(drink.BarID);
+            BarModel bm = _unitOfWork.BarRepository.GetBarByID(drink.BarID);
             if (bm == null)
             {
                 return HttpNotFound();
             }
-            db.DrinkModels.Remove(drink);
-            db.SaveChanges();
+            _unitOfWork.DrinkRepository.Remove(drink);
+            _unitOfWork.Save(); 
             return RedirectToAction("Index", new { id = bm.BarID });
         }
 
