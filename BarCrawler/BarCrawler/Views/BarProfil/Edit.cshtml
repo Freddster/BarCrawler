@@ -26,6 +26,21 @@
                 @Html.ValidationMessageFor(model => model.Faculty, "", new { @class = "text-danger" })
             </div>
         </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(m => m.OpenTime, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.OpenTime, new { @class = "form-control", type = "time", value = "12:00", id = "time" })
+                @Html.ValidationMessageFor(model => model.OpenTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.CloseTime, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.CloseTime, new { @class = "form-control", type = "time", value = "12:00", id = "time" })
+                @Html.ValidationMessageFor(model => model.CloseTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })

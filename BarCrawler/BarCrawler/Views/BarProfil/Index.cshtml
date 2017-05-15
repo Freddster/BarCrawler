@@ -58,7 +58,7 @@
     }
 </script>
 
-<h2> @Html.LabelFor(Model => Model.BarName)</h2>
+<h2> @Html.DisplayFor(Model => Model.BarName)</h2>
 <ul class="nav nav-tabs nav-justified" style="width:90%">
     <li role="presentation" class="active"><a href="#Feed" aria-controls="Feed" role="tab" data-toggle="tab">Feed</a></li>
     <li role="presentation"><a href="#Events" aria-controls="Events" role="tab" data-toggle="tab">Events</a></li>
@@ -234,7 +234,11 @@
 
     <div role="tabpanel" class="tab-pane fade in" id="Info">
         <h2>
-            Kontaktinformation <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+            Kontaktinformation 
+            <a href="@Url.Action("Edit", "BarProfil", new {id = @Model.BarID})">
+                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
+            </a>
+            
         </h2>
 
         <div class="container-fluid">
@@ -331,8 +335,6 @@
                 </table>
             </div>
 
-            
-            @* <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>*@
         }
     </div>
 </div>
