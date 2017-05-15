@@ -342,13 +342,58 @@
                     @Model.Description
                 </div>
             </div>
+
+            <div class="row">
+                <h2>
+                    Drinkskort
+                    <a href="@Url.Action("CreateDrink", "BarProfil", new {id = @Model.BarID})">
+                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+                    </a>
+                </h2>
+            </div>
             @if (Model.Drinks.Count > 0)
             {
-                <div class="row">
-                    <h2>Drinkskort <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button></h2>
-                </div>
+                using (Html.BeginForm())
+                 {
+                     <fieldset>
+                         <div class="row">
+                             <div class="col-lg-1">
+                                 <b>Titel</b>
+                             </div>
+                             <div class="col-lg-1">
+                                 <b>Pris</b>
+                             </div>
+                             <div class="col-lg-3">
+                                 <b>Beskrivelse</b>
+                             </div>
+                             <div class="col-lg-2">
+                                 <b>Action</b>
+                             </div>
 
-                <div class="row">
+                         </div>
+
+                         @foreach (var item in Model.Drinks)
+                         {
+                             <div class="row">
+                                 <div class="col-lg-1">
+                                     @Html.DisplayFor(modelItem => item.Title)
+                                 </div>
+                                 <div class="col-lg-1">
+                                     @Html.DisplayFor(modelItem => item.Price)
+                                 </div>
+                                 <div class="col-lg-3">
+                                     @Html.DisplayFor(modelItem => item.Description)
+                                 </div>
+                                 <div class="col-lg-2">
+                                     @Html.ActionLink("Rediger", "EditDrink", new { id = item.DrinkID }) |
+                                     @Html.ActionLink("Slet", "DeleteDrink", new { id = item.DrinkID })
+                                     @* VI VED IKKE, HVAD DER SKER!! *@
+                                 </div>
+                             </div>
+                         }
+                     </fieldset>
+                 }
+                @*<div class="row">
                     <div class="col-lg-1"><b>Navn</b></div>
                     <div class="col-lg-1"><b>Pris</b></div>
                 </div>
@@ -359,6 +404,7 @@
                         <div class="col-lg-1">@Html.DisplayFor(modelItem => item.Price)</div>
                     </div>
                 }
+                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>*@
             }
         </div>
     </div>
