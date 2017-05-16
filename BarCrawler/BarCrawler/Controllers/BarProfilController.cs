@@ -250,6 +250,7 @@ namespace BarCrawler.Controllers
                 return HttpNotFound();
             }
             
+            EventModel.CreateTime = DateTime.Now;
             db.EventModels.Add(EventModel);
             db.SaveChanges();
 
