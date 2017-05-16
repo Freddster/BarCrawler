@@ -4,7 +4,18 @@ using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using BarCrawler.Controllers;
 using BarCrawler.Models;
+using BarCrawler.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System.Globalization;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace BarCrawler.Migrations
 {
@@ -16,18 +27,42 @@ namespace BarCrawler.Migrations
             //Seed(context);
         }
 
+
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager { get; set; }
+
+
         /**/
         protected override void Seed(BarCrawlerContext context)
         {
             Debug.WriteLine("part 2\n\n\n\n");
+            ApplicationContextInitializer<ApplicationDbContext> applicationContextInitializer = new ApplicationContextInitializer<ApplicationDbContext>();
+
+
+            ApplicationDbContext applicationDbContext = new ApplicationDbContext();
+            List<ApplicationUser> applicationUsers = new List<ApplicationUser>();
+            var roleStore = new RoleStore<IdentityRole>(applicationDbContext);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+            var userStore = new UserStore<ApplicationUser>(applicationDbContext);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+
             List<BarModel> barModels = new List<BarModel>();
             List<EventModel> eventModels = new List<EventModel>();
             List<DrinkModel> drinkModels = new List<DrinkModel>();
             BarProfilPictureModel barProfilPictureModels;
             List<PictureModel> pictureModels = new List<PictureModel>();
-            /**/
 
-            barModels.Add(new BarModel()
+
+            var user = new ApplicationUser { UserName ="kk@ase.au.dk", Email = "kk@ase.au.dk" };
+            var result = userManager.Create(user, "qwertY1!");
+
+            
+
+            if (result.Succeeded)
+                Debug.WriteLine("Shit succeeded\n\n\n\n");
+
+                barModels.Add(new BarModel()
             {
                 Address1 = "Finlandsgade",
                 BarID = 1,
@@ -35,7 +70,7 @@ namespace BarCrawler.Migrations
                 City = "Aarhus N",
                 CloseTime = "02:00",
                 Description = "For ingeniøre",
-                Email = "kk@ase.au.dk",
+                Email = user.Email,
                 Faculty = "Ingenør",
                 Latitude = 123,
                 Longitude = 456,
@@ -43,6 +78,7 @@ namespace BarCrawler.Migrations
                 PhoneNumber = "12345678",
                 StreetNumber = "2",
                 Zipcode = "8200",
+                userID = user.Id,
                 Events = eventModels.FindAll(model => model.BarID == 1),
                 Drinks = drinkModels.FindAll(model => model.BarID == 1),
                 Pictures = pictureModels.FindAll(model => model.BarID == 1)
@@ -125,6 +161,8 @@ namespace BarCrawler.Migrations
             pm.AddRange(pictureModels.FindAll(model => model.BarID == 1));
             barModels[0].Pictures.AddRange(pm);
 
+            var user1 = new ApplicationUser { UserName = "rich@kid.com", Email = "rich@kid.com" };
+            var result1 = userManager.Create(user1, "qwertY1!");
 
             barModels.Add(new BarModel()
             {
@@ -134,14 +172,15 @@ namespace BarCrawler.Migrations
                 City = "Aarhus N",
                 CloseTime = "04:00",
                 Description = "Rich kids",
-                Email = "rich@kid.com",
+                Email = user1.Email,
                 Faculty = "Snobber",
                 Latitude = 123,
                 Longitude = 456,
                 OpenTime = "05:00",
                 PhoneNumber = "12345678",
                 StreetNumber = "2",
-                Zipcode = "8200"
+                Zipcode = "8200",
+                userID = user1.Id,
             });
 
             foreach (var barModel in barModels)
@@ -149,7 +188,23 @@ namespace BarCrawler.Migrations
                 context.BarModels.Add(barModel);
             }
             
+            base.Seed(context);
+            applicationDbContext.SaveChanges();
+            //SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
+        }
+    }
+
+
+    public class ApplicationContextInitializer<T> : DropCreateDatabaseAlways<ApplicationDbContext>
+    {
+        public ApplicationContextInitializer()
+        {
+            Debug.WriteLine("ApplicationContextInitializer\n\n\n\n");
+        }
+
+        protected override void Seed(ApplicationDbContext context)
+        {
             base.Seed(context);
         }
     }
