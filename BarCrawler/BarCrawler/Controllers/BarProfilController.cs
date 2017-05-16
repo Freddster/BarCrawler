@@ -221,5 +221,22 @@ namespace BarCrawler.Controllers
 
             return RedirectToAction("Index", new{id = bar.BarID});
         }
+
+        public ActionResult BarLink(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var bar = db.BarModels.FirstOrDefault(b => b.ApplicationUser.Id == id);
+                if (bar == null)
+                {
+                    return HttpNotFound();
+                }
+                return View("Index",bar);
+            }
+        }
     }
 }
