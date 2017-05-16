@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -17,7 +18,7 @@ namespace BarCrawler.Models
             return userIdentity;
         }
 
-        public BarModel barID;
+        public BarModel BarModel;
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

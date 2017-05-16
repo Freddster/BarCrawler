@@ -10,17 +10,72 @@
 
 <script type="text/javascript">
     var map;
-    Window.onload = function () {
-        google.maps.visualRefresh = true;
+
+    window.addEventListener("load",
+        function (event) {
+            initMap();
+
+            console.log("load Called");
+        });
+
+    function initMap() {
+
+
         var Aarhus = new google.maps.LatLng(56.158170, 10.198101);
 
         var mapOptions = {
-            zoom: 13,
+            zoom: 12,
             center: Aarhus,
+            disableDefaultUI: true,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
         map = new google.maps.Map(document.getElementById("barMap"), mapOptions);
+
+        var geocoder = new google.maps.Geocoder();
+        var address = $("#address").text() + " " + $("#City").text();
+        //var address = "Fuglesangs Alle 28 8210 Aarhus V";
+        console.log("Adressen er: " + address);
+        var latitude = 0;
+        var longitude = 0;
+        var heading = $("#Name").text();
+        var content = $("#Description").text();
+        var contentString = '<h3 id="firstHeading">' + heading + '</h3>' + '<div id="body">' + content + '</div>';
+
+
+            
+
+        geocoder.geocode({ 'address': address },
+            function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    latitude = results[0].geometry.location.lat();
+                    longitude = results[0].geometry.location.lng();
+
+                    console.log("LatLng function running!");
+                    console.log(latitude);
+                    console.log(longitude);
+
+                    var LatLng = { lat: latitude, lng: longitude };
+
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: contentString
+                    })
+
+                    var marker = new google.maps.Marker({
+                        position: LatLng,
+                        map: map
+                    });
+
+                    marker.addListener('click',
+                        function() {
+                            infoWindow.open(map, marker);
+                        });
+
+                    map.setCenter(marker.getPosition());
+                }
+            });
+
+        
 
     }
 
@@ -29,6 +84,7 @@
 <script async defer
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
 </script>
+
 
 @*Indsæt coverbillede her*@
 <div class="container" style="width: 100%; height: 350px; overflow: hidden;">
@@ -59,7 +115,7 @@
     }
 </script>
 
-<h2> @Html.DisplayFor(Model => Model.BarName)</h2>
+<h2 id="Name"> @Html.DisplayFor(Model => Model.BarName)</h2>
 <ul class="nav nav-tabs nav-justified" style="width:90%">
     <li role="presentation" class="active"><a href="#Feed" aria-controls="Feed" role="tab" data-toggle="tab">Feed</a></li>
     <li role="presentation"><a href="#Events" aria-controls="Events" role="tab" data-toggle="tab">Events</a></li>
@@ -106,8 +162,7 @@
                         </style>
                     </li>
                 </ul>
-
-                @* Slå op knap script, skal redirect til controller med textarea value (virker stadig ikke) *@
+                
                 <script>
                     function passText() {
                         var text = $("#feedInput").val();
@@ -117,12 +172,12 @@
                     }
                 </script>
             }
-            
-            
+
+
             <script>
-                function deleteFeed(feedId){
+                function deleteFeed(feedId) {
                     window.location.href = '@Url.Action("DeleteFeed", new {id = Model.BarID})' + '?Fid=' + feedId;
-                    }
+                }
             </script>
             <div class="list" style="margin-right: 25px; margin-left: 15px">
 
@@ -130,7 +185,7 @@
             {
                     <div class="panel panel-default">
                         <div class="panel-heading" style="background-color: white; border-bottom-color: transparent">
-                            
+
                             @Model.BarName
 
 
@@ -173,26 +228,24 @@
                         <tr>
                             @*Vejnavn og nummer*@
                             <td style="width: 27px"><span class="glyphicon glyphicon-home"></span></td>
-                            <td>@Model.Address1 @Model.StreetNumber</td>
+                            <td id ="address">@Model.Address1 @Model.StreetNumber</td>
                         </tr>
                         <tr>
                             @*Postnummer og by*@
                             <td style="width: 27px"></td>
-                            <td>@Model.Zipcode @Model.City</td>
+                            <td id="City">@Model.Zipcode @Model.City</td>
                         </tr>
                         <tr>
                             <td></td>
                         </tr>
                     </table>
-                    <div id="barMap">
-                        <style>
-                            #barMap {
-                                max-width: 100%;
-                                height: 200px;
-                            }
-                        </style>
-                    </div>
-
+                    <div id="barMap"></div>
+                    <style>
+                        #barMap {
+                            max-width: 100%;
+                            height: 200px;
+                        }
+                    </style>
                 </div>
             </div>
         </div>
@@ -287,11 +340,11 @@
 
     <div role="tabpanel" class="tab-pane fade in" id="Info">
         <h2>
-            Kontaktinformation 
+            Kontaktinformation
             <a href="@Url.Action("Edit", "BarProfil", new {id = @Model.BarID})">
                 <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
             </a>
-            
+
         </h2>
 
         <div class="container-fluid">
@@ -343,7 +396,7 @@
                 </h2>
             </div>
             <div class="row">
-                <div class="col-lg-11">
+                <div id="Description" class="col-lg-11">
                     @Model.Description
                 </div>
             </div>

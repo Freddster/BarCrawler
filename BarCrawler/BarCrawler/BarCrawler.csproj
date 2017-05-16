@@ -234,6 +234,18 @@
     <Compile Include="Migrations\201705110930331_AddedTwoPictureModels.Designer.cs">
       <DependentUpon>201705110930331_AddedTwoPictureModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705160909196_barId.cs" />
+    <Compile Include="Migrations\201705160909196_barId.Designer.cs">
+      <DependentUpon>201705160909196_barId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705161040238_bar.cs" />
+    <Compile Include="Migrations\201705161040238_bar.Designer.cs">
+      <DependentUpon>201705161040238_bar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705161136555_BarnameOnApplicationuser.cs" />
+    <Compile Include="Migrations\201705161136555_BarnameOnApplicationuser.Designer.cs">
+      <DependentUpon>201705161136555_BarnameOnApplicationuser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\BarCrawlerContextInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -357,6 +369,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705110930331_AddedTwoPictureModels.resx">
       <DependentUpon>201705110930331_AddedTwoPictureModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705160909196_barId.resx">
+      <DependentUpon>201705160909196_barId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705161040238_bar.resx">
+      <DependentUpon>201705161040238_bar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705161136555_BarnameOnApplicationuser.resx">
+      <DependentUpon>201705161136555_BarnameOnApplicationuser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
