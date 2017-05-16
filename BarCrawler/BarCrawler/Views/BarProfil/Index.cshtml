@@ -1,6 +1,7 @@
 ﻿@using System.Net.Configuration
-@using System.Reflection.Emit
 @using BarCrawler.Models
+@using Microsoft.AspNet.Identity
+@using System.Reflection.Emit
 @model BarCrawler.Models.BarModel
 
 @{
@@ -74,31 +75,83 @@
             <h2>Feedoversigt</h2>
         </div>
         <div style="width: 70%; float: left; margin-top: 5px;">
-            @*Opret feed text felt*@
-            <ul class="list-group" style="width: 99%;">
-                <li class="list-group-item">
-                    <textarea maxlength="200" id="feedInput" onfocusin="clearText(this);" rows="5" cols="5" onfocusout="resetText(this);">Lav et opslag...</textarea>
-                    <style>
-                        #feedInput {
-                            color: gray;
-                            resize: none;
-                            border: inherit;
-                            width: 80%;
-                            height: 100%;
-                            outline: none;
-                            border-radius: inherit;
+            @if (User.Identity.GetUserName() == Model.BarName)
+            {
+                @*Opret feed text felt*@
+                <ul class="list-group" style="width: 99%;">
+                    <li class="list-group-item" style="background-color: transparent; border: none">
+                        <textarea maxlength="200" id="feedInput" onfocusin="clearText(this);" rows="5" cols="5" onfocusout="resetText(this);">Lav et opslag...</textarea>
+
+                        <a class="btn btn-success" onclick="passText()" id="feedBtn">Slå op!</a>
+                        <style>
+                            #feedBtn {
+                                background-color: darkred;
+                                border: none;
+                                width: 19%;
+                                height: 120px;
+                                font-size: 25px;
+                                padding-top: 40px;
+                            }
+                        </style>
+                        <style>
+                            #feedInput {
+                                color: gray;
+                                resize: none;
+                                width: 80%;
+                                height: 120px;
+                                outline: black;
+                                border-radius: inherit;
+                                font-size: 20px;
+                            }
+                        </style>
+                    </li>
+                </ul>
+
+                @* Slå op knap script, skal redirect til controller med textarea value (virker stadig ikke) *@
+                <script>
+                    function passText() {
+                        var text = $("#feedInput").val();
+                        if ($("#feedInput").val() != "Lav et opslag..." && $("#feedInput").val() != '') {
+                            window.location.href = '@Url.Action("CreateFeed", new {id = Model.BarID})' + '?t=' + text;
                         }
-                    </style>
-                    @*@Html.ActionLink("Slå op", )*@
-                </li>
-            </ul>
-            <div class="list" style="margin-right: 15px">
+                    }
+                </script>
+            }
+            
+            
+            <script>
+                function deleteFeed(feedId){
+                    window.location.href = '@Url.Action("DeleteFeed", new {id = Model.BarID})' + '?Fid=' + feedId;
+                    }
+            </script>
+            <div class="list" style="margin-right: 25px; margin-left: 15px">
 
                 @foreach (var item in Model.Feeds)
             {
                     <div class="panel panel-default">
+                        <div class="panel-heading" style="background-color: white; border-bottom-color: transparent">
+                            
+                            @Model.BarName
+
+
+                            @if (User.Identity.GetUserName() == Model.BarName)
+                            {
+                                <button class="btn btn-default pull-right" onclick="deleteFeed(@item.FeedID)" style="font-size: 8px;">
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                </button>
+                            }
+                        </div>
                         <div class="panel-body">
-                            @item.Text
+                            <p id="feedPara">
+                                @item.Text
+                            </p>
+                            <style>
+                                #feedPara {
+                                    width: inherit;
+                                    font-size: 20px;
+                                    word-wrap: break-word;
+                                }
+                            </style>
                         </div>
                     </div>
                 }

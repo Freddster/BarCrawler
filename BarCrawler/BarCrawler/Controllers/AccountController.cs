@@ -153,7 +153,7 @@ namespace BarCrawler.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.BarModel.Email, Email = model.BarModel.Email };
+                var user = new ApplicationUser { UserName = model.BarModel.BarName, Email = model.BarModel.Email };
                 var result = await UserManager.CreateAsync(user, model.RegisterViewModel.Password);
                 if (result.Succeeded)
                 {
