@@ -11,6 +11,7 @@ using System.Net;
 using DataAccessLogic.UnitOfWork;
 using BarCrawler.ViewModels;
 using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
 
 namespace BarCrawler.Controllers
 {
@@ -204,6 +205,21 @@ namespace BarCrawler.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Index", new { id = id });
+        }
+
+        [HttpGet]
+        public ActionResult BarLink()
+        {
+            var UserId = User.Identity.GetUserId();
+
+            var bar = db.BarModels.SingleOrDefault(b => b.userID == UserId);
+
+            if (bar == null)
+            {
+                return HttpNotFound();
+            }
+
+            return RedirectToAction("Index", new{id = bar.BarID});
         }
     }
 }

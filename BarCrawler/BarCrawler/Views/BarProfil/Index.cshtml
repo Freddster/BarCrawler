@@ -10,25 +10,35 @@
 
 <script type="text/javascript">
     var map;
-    Window.onload = function () {
-        google.maps.visualRefresh = true;
-        var Aarhus = new google.maps.LatLng(56.158170, 10.198101);
 
-        var mapOptions = {
-            zoom: 13,
-            center: Aarhus,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+    window.addEventListener("load",
+        function(event) {
+            initMap();
 
-        map = new google.maps.Map(document.getElementById("barMap"), mapOptions);
+            console.log("load Called");
+        });
 
-    }
+    function initMap (){
+                
+            
+            var Aarhus = new google.maps.LatLng(56.158170, 10.198101);
+
+            var mapOptions = {
+                zoom: 13,
+                center: Aarhus,
+                disableDefaultUI: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map = new google.maps.Map(document.getElementById("barMap"), mapOptions);
+        }
 
 </script>
 
 <script async defer
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
 </script>
+
 
 @*Indsæt coverbillede her*@
 <div class="container" style="width: 100%; height: 350px; overflow: hidden;">
@@ -184,15 +194,13 @@
                             <td></td>
                         </tr>
                     </table>
-                    <div id="barMap">
+                    <div id="barMap"></div>
                         <style>
                             #barMap {
                                 max-width: 100%;
                                 height: 200px;
                             }
                         </style>
-                    </div>
-
                 </div>
             </div>
         </div>

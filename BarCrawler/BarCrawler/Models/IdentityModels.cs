@@ -17,7 +17,7 @@ namespace BarCrawler.Models
             return userIdentity;
         }
 
-        public BarModel barID;
+        public BarModel BarModel;
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
