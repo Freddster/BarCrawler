@@ -6,56 +6,54 @@
     ViewBag.Title = "CreateDrink";
 }
 
-@if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == Model.BarModel.BarName))
-{
-    <div class="container" style="width: 100%; height: 350px; overflow: hidden;">
-        <img src="http://i0.kym-cdn.com/photos/images/newsfeed/000/343/462/79a.gif" alt="Img" style="max-height: 350px; position: relative;"/>
+<div class="container" style="width: 100%; height: 350px; overflow: hidden;">
+    <img src="http://i0.kym-cdn.com/photos/images/newsfeed/000/343/462/79a.gif" alt="Img" style="max-height: 350px; position: relative;" />
+</div>
+
+<hr />
+<h2>Opret drink</h2>
+
+@using (Html.BeginForm("CreateDrink", "BarProfil", FormMethod.Post, new {id = "CreateDrink"}))
+ {
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.BarID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
     </div>
 
-    <hr/>
-    <h2>Opret drink</h2>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
-using (Html.BeginForm("CreateDrink", "BarProfil", FormMethod.Post, new {id = "CreateDrink"}))
- {
-     @Html.AntiForgeryToken()
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
-     <div class="form-horizontal">
-         @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-         @Html.HiddenFor(model => model.BarID)
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-primary" style="font-family: 'Helvetica';">
+                <i class="glyphicon glyphicon-save"></i>
+                Save
+            </button>
+        </div>
+    </div>
+</div>
 
-         <div class="form-group">
-             @Html.LabelFor(model => model.Title, htmlAttributes: new {@class = "control-label col-md-2"})
-             <div class="col-md-10">
-                 @Html.EditorFor(model => model.Title, new {htmlAttributes = new {@class = "form-control"}})
-                 @Html.ValidationMessageFor(model => model.Title, "", new {@class = "text-danger"})
-             </div>
-         </div>
-
-         <div class="form-group">
-             @Html.LabelFor(model => model.Price, htmlAttributes: new {@class = "control-label col-md-2"})
-             <div class="col-md-10">
-                 @Html.EditorFor(model => model.Price, new {htmlAttributes = new {@class = "form-control"}})
-                 @Html.ValidationMessageFor(model => model.Price, "", new {@class = "text-danger"})
-             </div>
-         </div>
-
-         <div class="form-group">
-             @Html.LabelFor(model => model.Description, htmlAttributes: new {@class = "control-label col-md-2"})
-             <div class="col-md-10">
-                 @Html.EditorFor(model => model.Description, new {htmlAttributes = new {@class = "form-control"}})
-                 @Html.ValidationMessageFor(model => model.Description, "", new {@class = "text-danger"})
-             </div>
-         </div>
-
-         <div class="form-group">
-             <div class="col-md-offset-2 col-md-10">
-                 <button type="submit" class="btn btn-primary" style="font-family: 'Helvetica';">
-                     <i class="glyphicon glyphicon-save"></i>
-                     Save
-                 </button>
-             </div>
-         </div>
-     </div>
- }
 }
 @Html.ActionLink("Tilbage", "Index", new { id = Model.BarID })

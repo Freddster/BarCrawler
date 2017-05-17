@@ -253,6 +253,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\DrinkViewModel.cs" />
     <Compile Include="ViewModels\EditViewModel.cs" />
+    <Compile Include="ViewModels\PictureViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\BarCrawlerTemplate.css" />

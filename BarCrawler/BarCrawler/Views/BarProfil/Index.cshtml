@@ -399,7 +399,7 @@
                     Om os
                     @if (User.Identity.GetUserName() == Model.BarName)
                     {
-                        <a href="@Url.Action("Edit", "BarProfil", new {id = @Model.BarID})">
+                        <a href="@Url.Action("Edit", "BarProfil", new {id = Model.BarID})">
                             <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
                         </a>
                     }
@@ -449,7 +449,7 @@
                                 @if (User.Identity.GetUserName() == Model.BarName)
                                 {
                                     <td class="col-md-1, text-right">
-                                        @Html.ActionLink("Rediger", "EditDrink", new { id = item.DrinkID })
+                                        @Html.ActionLink("Rediger", "EditDrink", new { id = item.DrinkID, barId = Model.BarID })
                                         @*@Html.Display(" | ")*@ |
                                         @Html.ActionLink("Slet", "DeleteDrink", new {id = item.DrinkID})
 

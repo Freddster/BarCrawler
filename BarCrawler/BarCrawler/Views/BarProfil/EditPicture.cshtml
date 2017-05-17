@@ -1,4 +1,4 @@
-﻿@model BarCrawler.Models.PictureModel
+﻿@model BarCrawler.ViewModels.PictureViewModel
 @{
     ViewBag.Title = "EditPicture";
 }
@@ -16,11 +16,7 @@
 
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.BarID)
-        @Html.HiddenFor(model => model.CreateTime)
         @Html.HiddenFor(model => model.PictureID)
-        @Html.HiddenFor(model => model.TimeStamp)
-        @Html.HiddenFor(model => model.BarModel)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Directory, htmlAttributes: new { @class = "control-label col-md-2" })
