@@ -236,7 +236,6 @@ namespace BarCrawler.Controllers
                 feed.Text = t;
                 feed.BarID = id;
                 feed.CreateTime = DateTime.Now;
-                db.FeedModels.Add(feed);
                 db.SaveChanges();
             }
 

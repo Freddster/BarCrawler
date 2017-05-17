@@ -249,6 +249,10 @@
     <Compile Include="Migrations\201705161136555_BarnameOnApplicationuser.Designer.cs">
       <DependentUpon>201705161136555_BarnameOnApplicationuser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705171236188_navigationalproper.cs" />
+    <Compile Include="Migrations\201705171236188_navigationalproper.Designer.cs">
+      <DependentUpon>201705171236188_navigationalproper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\BarCrawlerContextInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -383,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705161136555_BarnameOnApplicationuser.resx">
       <DependentUpon>201705161136555_BarnameOnApplicationuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705171236188_navigationalproper.resx">
+      <DependentUpon>201705171236188_navigationalproper.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
