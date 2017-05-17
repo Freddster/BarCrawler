@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using BarCrawler.Models;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Diagnostics.Eventing.Reader;
 using System.Net;
 using System.Net.Configuration;
 using DataAccessLogic.UnitOfWork;
@@ -110,6 +111,66 @@ namespace BarCrawler.Controllers
         }
         #endregion
 
+        #region Ændre Event
+        [HttpGet]
+        public ActionResult EditEvent(int id, int Eid)
+        {
+            if(id == null || Eid == null)
+                return HttpNotFound();
+            var _event = this.db.EventModels.Find(Eid);
+            if (_event == null)
+            {
+                return HttpNotFound();
+            }
+            var bm = db.BarModels.Find(id);
+            if (bm == null)
+                return HttpNotFound();
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
+            {
+                EventViewModel viewModel = new EventViewModel(_event);
+                return View(viewModel);
+            }
+            return RedirectToAction("BadRequestView");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditEvent(EventViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var model = db.EventModels.Find(viewModel.EventID);
+                model.Title = viewModel.Title;
+                model.Description = viewModel.Description;
+                model.DateAndTimeForEvent = viewModel.DateAndTimeForEvent;
+                model.Address1 = viewModel.Address1;
+                model.Address2 = viewModel.Address2;
+                model.StreetNumber = viewModel.StreetNumber;
+                model.City = viewModel.City;
+                model.Zipcode = viewModel.Zipcode;
+                db.SaveChanges();
+                return RedirectToAction("Index", new { id = model.BarID });
+            }
+            return RedirectToAction("BadRequestView");
+        }
+        #endregion
+
+        #region Slet Event
+        [HttpGet]
+        public ActionResult DeleteEvent(int id, int Eid /**/)
+        {
+            if(Eid == null || id == null)
+                return HttpNotFound();
+            var _event = this.db.EventModels.Find(Eid);
+            if (_event != null)
+            {
+                db.EventModels.Remove(_event);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", new { id = id });
+        }
+        #endregion
+
         #endregion
         #region Galleri
         /******************************* Galleri *******************************/
@@ -172,7 +233,7 @@ namespace BarCrawler.Controllers
                 PictureViewModel viewModel = new PictureViewModel(picture);
                 return View(viewModel);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("BadRequestView");
         }
 
         [HttpPost]
