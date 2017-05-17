@@ -73,8 +73,9 @@
                     }
                 }
                 //opretter en ny liste med alle event-onbjekterne i sorteret rækkefølge efter DateTime
-                eventList.OrderBy(o => o.DateAndTimeForEvent);
+
             }
+            eventList = eventList.OrderBy(o => o.DateAndTimeForEvent).ThenBy(o => o.Title).ToList();
         }
 
         @foreach (var eventobj in eventList) //Udskriver den sorterede liste på event-fanen

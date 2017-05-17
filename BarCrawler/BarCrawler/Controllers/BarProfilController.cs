@@ -11,6 +11,7 @@ using System.Net;
 using DataAccessLogic.UnitOfWork;
 using BarCrawler.ViewModels;
 using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
 
 namespace BarCrawler.Controllers
 {
@@ -19,6 +20,7 @@ namespace BarCrawler.Controllers
         BarCrawlerContext db = new BarCrawlerContext();
 
         private UnitOfWork _unitOfWork = new UnitOfWork();
+
         // GET: BarProfil
 
 
@@ -81,7 +83,7 @@ namespace BarCrawler.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                return RedirectToAction("Index", new { id = bar.BarID });
+                return RedirectToAction("Index", new {id = bar.BarID});
             }
             else
             {
@@ -117,7 +119,7 @@ namespace BarCrawler.Controllers
             {
                 _unitOfWork.DrinkRepository.AddModelForUpdate(ref drinkViewModel, ref dm);
                 _unitOfWork.Save();
-                return RedirectToAction("Index", new { id = drinkViewModel.BarID });
+                return RedirectToAction("Index", new {id = drinkViewModel.BarID});
             }
             return View(drinkViewModel);
         }
@@ -131,7 +133,7 @@ namespace BarCrawler.Controllers
                 db.Entry(drinkModel).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            return RedirectToAction("Index", new { id = drinkModel.BarModel.BarID });
+            return RedirectToAction("Index", new {id = drinkModel.BarModel.BarID});
         }
 
 
@@ -154,7 +156,7 @@ namespace BarCrawler.Controllers
             }
             _unitOfWork.DrinkRepository.Remove(drink);
             _unitOfWork.Save();
-            return RedirectToAction("Index", new { id = bm.BarID });
+            return RedirectToAction("Index", new {id = bm.BarID});
         }
 
 
@@ -186,7 +188,7 @@ namespace BarCrawler.Controllers
                 barmodel.Drinks.Add(drinkmodel);
                 db.SaveChanges();
             }
-            return RedirectToAction("Index", new { id = drinkmodel.BarID });
+            return RedirectToAction("Index", new {id = drinkmodel.BarID});
         }
 
         /* Galleri */
@@ -226,7 +228,7 @@ namespace BarCrawler.Controllers
 
         //Virker stadig ikke 
         [HttpGet]
-        public ActionResult CreateFeed(int id , string t/**/)
+        public ActionResult CreateFeed(int id, string t /**/)
         {
             if (!t.IsNullOrWhiteSpace())
             {
@@ -242,7 +244,7 @@ namespace BarCrawler.Controllers
         }
 
         [HttpGet]
-        public ActionResult DeleteFeed(int id, int Fid/**/)
+        public ActionResult DeleteFeed(int id, int Fid /**/)
         {
             var feed = this.db.FeedModels.FirstOrDefault(b => b.FeedID == Fid);
             if (feed != null)
@@ -250,7 +252,53 @@ namespace BarCrawler.Controllers
                 db.FeedModels.Remove(feed);
                 db.SaveChanges();
             }
-            return RedirectToAction("Index", new { id = id });
+            return RedirectToAction("Index", new {id = id});
+        }
+
+        [HttpGet]
+        public ActionResult BarLink()
+        {
+            var UserId = User.Identity.GetUserId();
+
+            var bar = db.BarModels.SingleOrDefault(b => b.userID == UserId);
+
+            if (bar == null)
+            {
+                return HttpNotFound();
+            }
+
+            return RedirectToAction("Index", new {id = bar.BarID});
+        }
+        
+        public ActionResult CreateEvent(int id)
+        {
+            var bar = db.BarModels.Find(id);
+            EventModel EventModel = new EventModel();
+            EventModel.BarID = id;
+            EventModel.Address1 = bar.Address1;
+            EventModel.Address2 = bar.Address2;
+            EventModel.City = bar.City;
+            EventModel.StreetNumber = bar.StreetNumber;
+            EventModel.Zipcode = bar.Zipcode;
+
+            return View(EventModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateEvent(EventModel EventModel)
+        {
+            var bar = db.BarModels.Find(EventModel.BarID);
+            if (bar == null)
+            {
+                return HttpNotFound();
+            }
+            
+            EventModel.CreateTime = DateTime.Now;
+            db.EventModels.Add(EventModel);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", new {id = EventModel.BarID});
         }
     }
 }

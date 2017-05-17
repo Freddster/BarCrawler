@@ -10,18 +10,27 @@
 
 <script type="text/javascript">
     var map;
-    Window.onload = function () {
-        google.maps.visualRefresh = true;
+
+    window.addEventListener("load",
+        function (event) {
+            initMap();
+
+            console.log("load Called");
+        });
+
+    function initMap() {
+
+
         var Aarhus = new google.maps.LatLng(56.158170, 10.198101);
 
         var mapOptions = {
             zoom: 13,
             center: Aarhus,
+            disableDefaultUI: true,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
         map = new google.maps.Map(document.getElementById("barMap"), mapOptions);
-
     }
 
 </script>
@@ -29,6 +38,7 @@
 <script async defer
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
 </script>
+
 
 @*Indsæt coverbillede her*@
 <div class="container" style="width: 100%; height: 350px; overflow: hidden;">
@@ -75,7 +85,7 @@
             <h2>Feedoversigt</h2>
         </div>
         <div style="width: 70%; float: left; margin-top: 5px;">
-            @if (User.Identity.GetUserName() == Model.BarName)
+            @if (User.Identity.GetUserId() == Model.userID)
             {
                 @*Opret feed text felt*@
                 <ul class="list-group" style="width: 99%;">
@@ -117,12 +127,12 @@
                     }
                 </script>
             }
-            
-            
+
+
             <script>
                 function deleteFeed(feedId){
                     window.location.href = '@Url.Action("DeleteFeed", new {id = Model.BarID})' + '?Fid=' + feedId;
-                    }
+                }
             </script>
             <div class="list" style="margin-right: 25px; margin-left: 15px">
 
@@ -130,11 +140,11 @@
             {
                     <div class="panel panel-default">
                         <div class="panel-heading" style="background-color: white; border-bottom-color: transparent">
-                            
+
                             @Model.BarName
 
 
-                            @if (User.Identity.GetUserName() == Model.BarName)
+                            @if (User.Identity.GetUserId() == Model.userID)
                             {
                                 <button class="btn btn-default pull-right" onclick="deleteFeed(@item.FeedID)" style="font-size: 8px;">
                                     <i class="glyphicon glyphicon-remove"></i>
@@ -184,15 +194,13 @@
                             <td></td>
                         </tr>
                     </table>
-                    <div id="barMap">
-                        <style>
-                            #barMap {
-                                max-width: 100%;
-                                height: 200px;
-                            }
-                        </style>
-                    </div>
-
+                    <div id="barMap"></div>
+                    <style>
+                        #barMap {
+                            max-width: 100%;
+                            height: 200px;
+                        }
+                    </style>
                 </div>
             </div>
         </div>
@@ -201,13 +209,20 @@
 
     @* ************************ EVENT TAB ****************************** *@
 
+
     <div role="tabpanel" class="tab-pane fade in" id="Events">
         <h2>
-            Kalender
-            <button type="submit" class="btn btn-default">
-                <i class="glyphicon glyphicon-plus"></i>
-            </button>
+            Events
+            @if (User.Identity.GetUserId() == Model.userID)
+            {
+                <a href="@Url.Action("CreateEvent", "BarProfil", new {id = @Model.BarID})">
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+                </a>
+            }
         </h2>
+        
+        
+
         <div class="container">
             @if (Model.Events != null)
             {
