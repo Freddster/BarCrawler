@@ -13,6 +13,12 @@ namespace DataAccessLogic.Repositories
         private BarCrawlerContext _context;
         private DbSet<BarModel> _feedDbSet;
 
+        /// <summary>
+        /// This is the FeedRepository's constructor, where the dbset for FeedRepository are set. 
+        /// The dbSet contains a table for all registred feeds in the project
+        /// Initializes a new instance of the <see cref="FeedRepository"/> class.
+        /// </summary>
+        /// <param name="receivedContext">The received context.</param>
         public FeedRepository(BarCrawlerContext ReceivedContext)
         {
             _context = ReceivedContext;

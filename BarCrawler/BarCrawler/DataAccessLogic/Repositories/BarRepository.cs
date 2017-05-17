@@ -75,9 +75,9 @@ namespace DataAccessLogic.Repositories
 
 
         /// <summary>
-        /// Deletes a bar from the dbSet
+        /// Deletes a bar from the dbSet if it exists
         /// </summary>
-        /// <param name="DeleteBar">Deletes a Bar</param>
+        /// <param name="DeleteBar">Deletes a bar</param>
         public void DeleteBar(int? barModelID)
         {
             BarModel barModel = _dbSet.Find((barModelID));
@@ -89,7 +89,7 @@ namespace DataAccessLogic.Repositories
         /// <summary>
         /// Updates the bar model.
         /// </summary>
-        /// <param name="barModel">Updates a Bar</param>
+        /// <param name="barModel">Updates a bar</param>
         public void UpdateBarModel(BarModel barModel)
         {
             _context.Entry(barModel).State = EntityState.Modified;
