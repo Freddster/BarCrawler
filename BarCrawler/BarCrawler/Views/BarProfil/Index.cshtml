@@ -117,12 +117,12 @@
                     }
                 </script>
             }
-            
-            
+
+
             <script>
                 function deleteFeed(feedId){
                     window.location.href = '@Url.Action("DeleteFeed", new {id = Model.BarID})' + '?Fid=' + feedId;
-                    }
+                }
             </script>
             <div class="list" style="margin-right: 25px; margin-left: 15px">
 
@@ -130,7 +130,7 @@
             {
                     <div class="panel panel-default">
                         <div class="panel-heading" style="background-color: white; border-bottom-color: transparent">
-                            
+
                             @Model.BarName
 
 
@@ -259,6 +259,33 @@
 
     @* ************************ GALLERY TAB ****************************** *@
 
+    <style>
+        .show-button {
+            position: relative;
+            float: left;
+            /*margin: 0px;*/
+        }
+
+        .DeleteButton {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display:none; 
+        }
+
+        .show-button:hover .DeleteButton{
+            display: block;
+            opacity: 1; 
+        }
+    </style>
+
+@*<script type="text/javascript">
+    $("div.DeleteButton").hide();
+    $('.show-button').hover(function() {
+        $('.DeleteButton').show(); 
+    });
+</script>*@
+
     <div role="tabpanel" class="tab-pane fade in" id="Galleri">
         <h2>
             Galleri
@@ -273,9 +300,13 @@
                 {
                     <div class="col-lg-3">
                         <div class="row">
-                            <img class="resize"
-                                 src="@Url.Content(item.Directory)"
-                                 style="max-height: 200px; max-width: 290px; margin-left: auto; margin-right: auto; vertical-align: middle; display: inline-block; height: 100%;" />
+                            <div class="show-button">
+                                <img class="resize" id="picutre"
+                                     src="@Url.Content(item.Directory)"
+                                     style="max-height: 200px; max-width: 290px; margin-left: auto; margin-right: auto; vertical-align: middle; display: inline-block; height: 100%;" />
+                                <input class="DeleteButton" type="button" value="Slet" />
+                            </div>
+
                         </div>
                         <div class="row">
                             @Html.DisplayFor(b => item.Description)
@@ -285,6 +316,8 @@
             </div>
         }
     </div>
+
+
 
     @* ************************ INFO TAB ****************************** *@
 
