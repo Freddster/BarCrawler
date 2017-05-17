@@ -353,7 +353,7 @@
     <div role="tabpanel" class="tab-pane fade in" id="Galleri">
         <h2>
             Galleri
-            @if (User.Identity.GetUserName() == Model.BarName)
+            @if (User.Identity.GetUserId() == Model.userID)
             {
                 <a href="@Url.Action("CreatePicture", "BarProfil", new {id = @Model.BarID})">
                     <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
@@ -405,7 +405,7 @@
     <div role="tabpanel" class="tab-pane fade in" id="Info">
         <h2>
             Kontaktinformation
-            @if (User.Identity.GetUserName() == Model.BarName)
+            @if (User.Identity.GetUserId() == Model.userID)
             {
                 <a href="@Url.Action("Edit", "BarProfil", new {id = @Model.BarID})">
                     <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
@@ -457,7 +457,7 @@
             <div class="row">
                 <h2>
                     Om os
-                    @if (User.Identity.GetUserName() == Model.BarName)
+                    @if (User.Identity.GetUserId() == Model.userID)
                     {
                         <a href="@Url.Action("Edit", "BarProfil", new {id = Model.BarID})">
                             <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
@@ -475,7 +475,7 @@
             @*<div class="row">*@
             <h2>
                 Drinkskort
-                @if (User.Identity.GetUserName() == Model.BarName)
+                @if (User.Identity.GetUserId() == Model.userID)
             {
                     <a href="@Url.Action("CreateDrink", "BarProfil", new {id = @Model.BarID})">
                         <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
@@ -493,7 +493,7 @@
                             <th class="col-md-2">@Html.LabelFor(d => d.Drinks[0].Title)</th>
                             <th class="col-md-1">@Html.LabelFor(d => d.Drinks[0].Price)</th>
                             <th class="col-md-4">@Html.LabelFor(d => d.Drinks[0].Description)</th>
-                            @if (User.Identity.GetUserName() == Model.BarName)
+                            @if (User.Identity.GetUserId() == Model.userID)
                             {
                                 <th class="col-md-1, text-right">Action</th>
                             }
@@ -506,7 +506,7 @@
                                 <td>@item.Title</td>
                                 <td>@item.Price kr</td>
                                 <td>@item.Description</td>
-                                @if (User.Identity.GetUserName() == Model.BarName)
+                                @if (User.Identity.GetUserId() == Model.userID)
                                 {
                                     <td class="col-md-1, text-right">
                                         @Html.ActionLink("Rediger", "EditDrink", new { id = item.DrinkID, barId = Model.BarID })

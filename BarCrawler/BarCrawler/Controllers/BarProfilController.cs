@@ -54,7 +54,7 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == barmodel.BarName))
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == barmodel.userID))
             {
                 EditViewModel viewModel = barmodel.Pictures.Count > 0
                     ? new EditViewModel(barmodel, barmodel.Pictures[0].Directory)
@@ -112,7 +112,7 @@ namespace BarCrawler.Controllers
             var bm = db.BarModels.Find(barId); 
             if (bm == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == bm.BarName))
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
             {
                 DrinkViewModel dm = new DrinkViewModel(drinkModel);
                 return View(dm);
@@ -154,7 +154,7 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == bm.BarName))
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
             {
                 _unitOfWork.DrinkRepository.Remove(drink);
                 _unitOfWork.Save();
@@ -176,7 +176,7 @@ namespace BarCrawler.Controllers
             var bm = db.BarModels.Find(id); 
             if(bm == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == bm.BarName))
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
             {
                 drinkModel.BarID = id;
                 return View(drinkModel);
@@ -215,7 +215,7 @@ namespace BarCrawler.Controllers
             var bm = db.BarModels.Find(id); 
             if(bm == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == bm.BarName))
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
             {
                 picture.BarID = id;
                 return View(picture);
@@ -253,7 +253,7 @@ namespace BarCrawler.Controllers
                 var bm = db.BarModels.Find(id);
                 if (bm == null)
                     return HttpNotFound();
-                if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == bm.BarName))
+                if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
                 {
                     db.PictureModels.Remove(picture);
                     db.SaveChanges();
@@ -274,7 +274,7 @@ namespace BarCrawler.Controllers
             var bm = db.BarModels.Find(id);
             if(bm == null)
                 return HttpNotFound();
-            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == bm.BarName))
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
             {
                 PictureViewModel viewModel = new PictureViewModel(picture);
                 return View(viewModel);
@@ -300,7 +300,6 @@ namespace BarCrawler.Controllers
 
         /* Feed */
         /************************* NYT FEED *******************************/
-        //Virker stadig ikke 
         [HttpGet]
         public ActionResult CreateFeed(int id, string t/**/)
         {
@@ -329,6 +328,8 @@ namespace BarCrawler.Controllers
             return RedirectToAction("Index", new {id = id});
         }
 
+        /* BarLink */
+        /************************* Link oppe i toppen *******************************/
         [HttpGet]
         public ActionResult BarLink()
         {
@@ -343,7 +344,9 @@ namespace BarCrawler.Controllers
 
             return RedirectToAction("Index", new {id = bar.BarID});
         }
-        
+
+        /* Events */
+        /************************* NYT EVENT *******************************/
         public ActionResult CreateEvent(int id)
         {
             var bar = db.BarModels.Find(id);
@@ -375,6 +378,8 @@ namespace BarCrawler.Controllers
             return RedirectToAction("Index", new {id = EventModel.BarID});
         }
 
+        /* BAD REQUEST */
+        /************************* BAD REQUEST *******************************/
         public ActionResult BadRequestView()
         {
             return View();
