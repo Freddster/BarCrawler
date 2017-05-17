@@ -8,6 +8,7 @@ using BarCrawler.Models;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Net;
+using System.Net.Configuration;
 using DataAccessLogic.UnitOfWork;
 using BarCrawler.ViewModels;
 using Microsoft.Ajax.Utilities;
@@ -53,10 +54,14 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            EditViewModel viewModel = barmodel.Pictures.Count > 0
-                ? new EditViewModel(barmodel, barmodel.Pictures[0].Directory)
-                : new EditViewModel(barmodel);
-            return View(viewModel);
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == barmodel.BarName))
+            {
+                EditViewModel viewModel = barmodel.Pictures.Count > 0
+                    ? new EditViewModel(barmodel, barmodel.Pictures[0].Directory)
+                    : new EditViewModel(barmodel);
+                return View(viewModel);
+            }
+            return RedirectToAction("BadRequestView");
         }
 
         [HttpPost]
@@ -93,7 +98,7 @@ namespace BarCrawler.Controllers
 
         /* Drink */
         /************************* ÆNDRE DRINK *******************************/
-        public ActionResult EditDrink(int? id)
+        public ActionResult EditDrink(int? id, int? barId)
         {
             if (id == null)
             {
@@ -104,8 +109,15 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            DrinkViewModel dm = new DrinkViewModel(drinkModel);
-            return View(dm);
+            var bm = db.BarModels.Find(barId); 
+            if (bm == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == bm.BarName))
+            {
+                DrinkViewModel dm = new DrinkViewModel(drinkModel);
+                return View(dm);
+            }
+            return RedirectToAction("BadRequestView");
         }
 
         [HttpPost]
@@ -122,18 +134,6 @@ namespace BarCrawler.Controllers
                 return RedirectToAction("Index", new {id = drinkViewModel.BarID});
             }
             return View(drinkViewModel);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult UpdateDrinks(DrinkModel drinkModel)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(drinkModel).State = EntityState.Modified;
-                db.SaveChanges();
-            }
-            return RedirectToAction("Index", new {id = drinkModel.BarModel.BarID});
         }
 
 
@@ -154,9 +154,13 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            _unitOfWork.DrinkRepository.Remove(drink);
-            _unitOfWork.Save();
-            return RedirectToAction("Index", new {id = bm.BarID});
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == bm.BarName))
+            {
+                _unitOfWork.DrinkRepository.Remove(drink);
+                _unitOfWork.Save();
+                return RedirectToAction("Index", new {id = bm.BarID});
+            }
+            return RedirectToAction("BadRequestView");
         }
 
 
@@ -169,8 +173,16 @@ namespace BarCrawler.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             DrinkModel drinkModel = new DrinkModel();
-            drinkModel.BarID = id;
-            return View(drinkModel);
+            var bm = db.BarModels.Find(id); 
+            if(bm == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == bm.BarName))
+            {
+                drinkModel.BarID = id;
+                return View(drinkModel);
+            }
+            return RedirectToAction("BadRequestView");
+
         }
 
         [HttpPost]
@@ -200,8 +212,16 @@ namespace BarCrawler.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PictureModel picture = new PictureModel();
-            picture.BarID = id;
-            return View(picture);
+            var bm = db.BarModels.Find(id); 
+            if(bm == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == bm.BarName))
+            {
+                picture.BarID = id;
+                return View(picture);
+            }
+            return RedirectToAction("BadRequestView");
+
         }
 
         [HttpPost]
@@ -221,14 +241,68 @@ namespace BarCrawler.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Index", new { id = picture.BarID });
-
-
         }
 
+        /************************* SLET BILLEDE *******************************/
+        [HttpGet]
+        public ActionResult DeletePicture(int id, int Pid/**/)
+        {
+            var picture = this.db.PictureModels.FirstOrDefault(p => p.PictureID == Pid);
+            if (picture != null)
+            {
+                var bm = db.BarModels.Find(id);
+                if (bm == null)
+                    return HttpNotFound();
+                if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == bm.BarName))
+                {
+                    db.PictureModels.Remove(picture);
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index", new { id = id });
+        }
 
+        /************************* ÆNDRE BILLEDE *******************************/
+        [HttpGet]
+        public ActionResult EditPicture(int id, int Pid/**/)
+        {
+            var picture = this.db.PictureModels.FirstOrDefault(p => p.PictureID == Pid);
+            if (picture == null)
+            {
+                return HttpNotFound();
+            }
+            var bm = db.BarModels.Find(id);
+            if(bm == null)
+                return HttpNotFound();
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == bm.BarName))
+            {
+                PictureViewModel viewModel = new PictureViewModel(picture);
+                return View(viewModel);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPicture(PictureViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var model = db.PictureModels.Find(viewModel.PictureID);
+                model.Directory = viewModel.Directory;
+                model.Description = viewModel.Description; 
+                db.Entry(model).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index", new {id = model.BarID});
+            }
+            return RedirectToAction("BadRequestView"); 
+        }
+
+        /* Feed */
+        /************************* NYT FEED *******************************/
         //Virker stadig ikke 
         [HttpGet]
-        public ActionResult CreateFeed(int id, string t /**/)
+        public ActionResult CreateFeed(int id, string t/**/)
         {
             if (!t.IsNullOrWhiteSpace())
             {
@@ -240,7 +314,7 @@ namespace BarCrawler.Controllers
                 db.SaveChanges();
             }
 
-            return RedirectToAction("Index", new {id = id});
+            return RedirectToAction("Index", new { id = id });
         }
 
         [HttpGet]
@@ -299,6 +373,12 @@ namespace BarCrawler.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index", new {id = EventModel.BarID});
+        }
+
+        public ActionResult BadRequestView()
+        {
+            return View();
+
         }
     }
 }
