@@ -19,6 +19,11 @@ namespace BarCrawler.DataAccessLogic.Repositories
             _context = context;
         }
 
+        /// <summary>
+        /// Gets the by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public TEntity GetByID(int? id)
         {
             return _context.Set<TEntity>().Find(id);
