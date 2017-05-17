@@ -12,23 +12,72 @@ using DataAccessLogic.Repositories;
 
 namespace DataAccessLogic.UnitOfWork
 {
+    /// <summary>
+    /// sdffds
+    /// </summary>
+    /// <seealso cref="DataAccessLogic.UnitOfWork.IUnitOfWork" />
     public class UnitOfWork : IUnitOfWork
     {
+        /// <summary>
+        /// The context
+        /// </summary>
         private BarCrawlerContext _context;// = new BarCrawlerContext();
+        /// <summary>
+        /// The bar repository
+        /// </summary>
         private BarRepository _barRepository;
+        /// <summary>
+        /// The drink repository
+        /// </summary>
         private DrinkRepository _drinkRepository;
+        /// <summary>
+        /// The event repository
+        /// </summary>
         private EventRepository _eventRepository;
+        /// <summary>
+        /// The feed repository
+        /// </summary>
         private FeedRepository _feedRepository;
+        /// <summary>
+        /// The picture repository
+        /// </summary>
         private PictureRepository _pictureRepository;
         //private IDrinkRepository DrinkRepositoryyyyy;
 
+        /// <summary>
+        /// Gets the bar repository.
+        /// </summary>
+        /// <value>
+        /// The bar repository.
+        /// </value>
         public BarRepository BarRepository => _barRepository ?? new BarRepository(_context);
         //public DrinkRepository DrinkRepository => _drinkRepository ?? new DrinkRepository(_context);
+        /// <summary>
+        /// Gets the event repository.
+        /// </summary>
+        /// <value>
+        /// The event repository.
+        /// </value>
         public EventRepository EventRepository => _eventRepository ?? new EventRepository(_context);
+        /// <summary>
+        /// Gets the feed repository.
+        /// </summary>
+        /// <value>
+        /// The feed repository.
+        /// </value>
         public FeedRepository FeedRepository => _feedRepository ?? new FeedRepository(_context);
+        /// <summary>
+        /// Gets the picture repository.
+        /// </summary>
+        /// <value>
+        /// The picture repository.
+        /// </value>
         public PictureRepository PictureRepository => _pictureRepository ?? new PictureRepository(_context);
         //public DrinkRepository UgabugaDrinkRepository => DrinkRepositoryyyyy ?? new DrinkRepository(_context);
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnitOfWork"/> class.
+        /// </summary>
         public UnitOfWork()
         {
             //Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
@@ -36,12 +85,19 @@ namespace DataAccessLogic.UnitOfWork
             InitializeRepositories();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnitOfWork"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public UnitOfWork(BarCrawlerContext context)
         {
             _context = context;
             InitializeRepositories();
         }
 
+        /// <summary>
+        /// Initializes the repositories.
+        /// </summary>
         private void InitializeRepositories()
         {
             DrinkRepository = new DrinkRepository(_context);
@@ -50,11 +106,19 @@ namespace DataAccessLogic.UnitOfWork
         public IDrinkRepository DrinkRepository { get; private set; }
 
 
+        /// <summary>
+        /// Saves this instance.
+        /// </summary>
         public void Save()
         {
             _context.SaveChanges();
         }
 
+        /// <summary>
+        /// Gets the barprofile.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public BarModel GetBarprofile(int? id)
         {
 
@@ -85,6 +149,10 @@ namespace DataAccessLogic.UnitOfWork
         }
         private const int TimeToSubtract = -12;
 
+        /// <summary>
+        /// Gets all bars for home.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<BarModel> GetAllBarsForHome()
         {
             var allModels = _context.BarModels
@@ -111,6 +179,9 @@ namespace DataAccessLogic.UnitOfWork
             return listToReturn;
         }
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
         public void Dispose()
         {
             _context.Dispose();
