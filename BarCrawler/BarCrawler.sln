@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarCrawler", "BarCrawler\BarCrawler.csproj", "{7C0AD712-0CAE-4489-A003-05501B004B86}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarCrawler.Tests", "BarCrawler.Tests\BarCrawler.Tests.csproj", "{4CB25A68-E83D-458F-8116-D407533974BE}"
+EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Documentation", "Documentation\Documentation.shfbproj", "{23C3F007-1907-4576-8280-784CAECA2509}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{4CB25A68-E83D-458F-8116-D407533974BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CB25A68-E83D-458F-8116-D407533974BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CB25A68-E83D-458F-8116-D407533974BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23C3F007-1907-4576-8280-784CAECA2509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23C3F007-1907-4576-8280-784CAECA2509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23C3F007-1907-4576-8280-784CAECA2509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23C3F007-1907-4576-8280-784CAECA2509}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
