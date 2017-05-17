@@ -131,7 +131,7 @@
             <h2>Feedoversigt</h2>
         </div>
         <div style="width: 70%; float: left; margin-top: 5px;">
-            @if (User.Identity.GetUserName() == Model.BarName)
+            @if (User.Identity.GetUserId() == Model.userID)
             {
                 @*Opret feed text felt*@
                 <ul class="list-group" style="width: 99%;">
@@ -189,7 +189,7 @@
                             @Model.BarName
 
 
-                            @if (User.Identity.GetUserName() == Model.BarName)
+                            @if (User.Identity.GetUserId() == Model.userID)
                             {
                                 <button class="btn btn-default pull-right" onclick="deleteFeed(@item.FeedID)" style="font-size: 8px;">
                                     <i class="glyphicon glyphicon-remove"></i>
@@ -254,13 +254,20 @@
 
     @* ************************ EVENT TAB ****************************** *@
 
+
     <div role="tabpanel" class="tab-pane fade in" id="Events">
         <h2>
-            Kalender
-            <button type="submit" class="btn btn-default">
-                <i class="glyphicon glyphicon-plus"></i>
-            </button>
+            Events
+            @if (User.Identity.GetUserId() == Model.userID)
+            {
+                <a href="@Url.Action("CreateEvent", "BarProfil", new {id = @Model.BarID})">
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+                </a>
+            }
         </h2>
+        
+        
+
         <div class="container">
             @if (Model.Events != null)
             {
@@ -314,7 +321,10 @@
 
     <div role="tabpanel" class="tab-pane fade in" id="Galleri">
         <h2>
-            Galleri <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+            Galleri
+            <a href="@Url.Action("CreatePicture", "BarProfil", new {id = @Model.BarID})">
+                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+            </a>
         </h2>
         @if (@Model.Pictures.Count > 0)
         {
@@ -325,10 +335,10 @@
                         <div class="row">
                             <img class="resize"
                                  src="@Url.Content(item.Directory)"
-                                 style="max-height: 200px; max-width: 290px; margin-left: auto; margin-right: auto; display: block;" />
+                                 style="max-height: 200px; max-width: 290px; margin-left: auto; margin-right: auto; vertical-align: middle; display: inline-block; height: 100%;" />
                         </div>
                         <div class="row">
-                            @Html.LabelFor(modelItem => modelItem.Description)
+                            @Html.DisplayFor(b => item.Description)
                         </div>
                     </div>
                 }

@@ -14,6 +14,7 @@ namespace BarCrawler.Models
         [ForeignKey("BarModel")]
         public int BarID { get; set; }
         public BarModel BarModel { get; set; }
+        [Display(Name= "URL link")]
         public string Directory { get; set; }
 
         [Timestamp]
