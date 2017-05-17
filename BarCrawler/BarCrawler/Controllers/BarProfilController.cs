@@ -154,30 +154,6 @@ namespace BarCrawler.Controllers
         }
         #endregion
 
-        /************************* SLET BILLEDE *******************************/
-
-        #region SletBillede
-
-        [HttpGet]
-        public ActionResult DeletePicture(int id, int Pid/**/)
-        {
-            var picture = this.db.PictureModels.FirstOrDefault(p => p.PictureID == Pid);
-            if (picture != null)
-            {
-                var bm = db.BarModels.Find(id);
-                if (bm == null)
-                    return HttpNotFound();
-                if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
-                {
-                    db.PictureModels.Remove(picture);
-                    db.SaveChanges();
-                }
-            }
-            return RedirectToAction("Index", new { id = id });
-        }
-
-        #endregion
-
         /************************* ÆNDRE BILLEDE *******************************/
         #region ÆndreBillede
         [HttpGet]
@@ -215,6 +191,31 @@ namespace BarCrawler.Controllers
             return RedirectToAction("BadRequestView");
         }
         #endregion
+
+        /************************* SLET BILLEDE *******************************/
+
+        #region SletBillede
+
+        [HttpGet]
+        public ActionResult DeletePicture(int id, int Pid/**/)
+        {
+            var picture = this.db.PictureModels.FirstOrDefault(p => p.PictureID == Pid);
+            if (picture != null)
+            {
+                var bm = db.BarModels.Find(id);
+                if (bm == null)
+                    return HttpNotFound();
+                if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
+                {
+                    db.PictureModels.Remove(picture);
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index", new { id = id });
+        }
+
+        #endregion
+        
         #endregion
         #region Kontakinformation
         /******************************* Kontaktinformation *******************************/
@@ -276,6 +277,47 @@ namespace BarCrawler.Controllers
         #endregion
         #region Drink
         /******************************* Drink *******************************/
+        /************************* NY DRINK *******************************/
+        #region Opret Drink
+        public ActionResult CreateDrink(int id)
+        {
+            DrinkViewModel viewModel;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DrinkModel drinkModel = new DrinkModel();
+            var bm = db.BarModels.Find(id);
+            if (bm == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
+            {
+                drinkModel.BarID = id;
+                return View(drinkModel);
+            }
+            return RedirectToAction("BadRequestView");
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateDrink(DrinkModel drinkmodel)
+        {
+            if (ModelState.IsValid)
+            {
+                db.DrinkModels.Add(drinkmodel);
+                BarModel barmodel = db.BarModels.Find(drinkmodel.BarID);
+                if (barmodel == null)
+                {
+                    return HttpNotFound();
+                }
+                barmodel.Drinks.Add(drinkmodel);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", new { id = drinkmodel.BarID });
+        }
+        #endregion
+
         /************************* ÆNDRE DRINK *******************************/
         #region Ændre Drink
         public ActionResult EditDrink(int? id, int? barId)
@@ -345,46 +387,6 @@ namespace BarCrawler.Controllers
         }
         #endregion
 
-        /************************* NY DRINK *******************************/
-        #region Opret Drink
-        public ActionResult CreateDrink(int id)
-        {
-            DrinkViewModel viewModel;
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DrinkModel drinkModel = new DrinkModel();
-            var bm = db.BarModels.Find(id);
-            if (bm == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
-            {
-                drinkModel.BarID = id;
-                return View(drinkModel);
-            }
-            return RedirectToAction("BadRequestView");
-
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateDrink(DrinkModel drinkmodel)
-        {
-            if (ModelState.IsValid)
-            {
-                db.DrinkModels.Add(drinkmodel);
-                BarModel barmodel = db.BarModels.Find(drinkmodel.BarID);
-                if (barmodel == null)
-                {
-                    return HttpNotFound();
-                }
-                barmodel.Drinks.Add(drinkmodel);
-                db.SaveChanges();
-            }
-            return RedirectToAction("Index", new { id = drinkmodel.BarID });
-        }
-        #endregion
         #endregion
         #region Diverse
         /* BAD REQUEST */
