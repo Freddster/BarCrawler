@@ -12,6 +12,7 @@ using System.Net.Configuration;
 using DataAccessLogic.UnitOfWork;
 using BarCrawler.ViewModels;
 using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
 
 namespace BarCrawler.Controllers
 {
@@ -52,10 +53,14 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            EditViewModel viewModel = barmodel.Pictures.Count > 0
-                ? new EditViewModel(barmodel, barmodel.Pictures[0].Directory)
-                : new EditViewModel(barmodel);
-            return View(viewModel);
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == barmodel.BarName))
+            {
+                EditViewModel viewModel = barmodel.Pictures.Count > 0
+                    ? new EditViewModel(barmodel, barmodel.Pictures[0].Directory)
+                    : new EditViewModel(barmodel);
+                return View(viewModel);
+            }
+            return RedirectToAction("BadRequestView");
         }
 
         [HttpPost]
@@ -103,8 +108,12 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            DrinkViewModel dm = new DrinkViewModel(drinkModel);
-            return View(dm);
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == drinkModel.BarModel.BarName))
+            {
+                DrinkViewModel dm = new DrinkViewModel(drinkModel);
+                return View(dm);
+            }
+            return RedirectToAction("BadRequestView");
         }
 
         [HttpPost]
@@ -127,12 +136,14 @@ namespace BarCrawler.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult UpdateDrinks(DrinkModel drinkModel)
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(drinkModel).State = EntityState.Modified;
                 db.SaveChanges();
             }
             return RedirectToAction("Index", new { id = drinkModel.BarModel.BarID });
+
         }
 
 
@@ -153,9 +164,13 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            _unitOfWork.DrinkRepository.Remove(drink);
-            _unitOfWork.Save();
-            return RedirectToAction("Index", new { id = bm.BarID });
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == bm.BarName))
+            {
+                _unitOfWork.DrinkRepository.Remove(drink);
+                _unitOfWork.Save();
+                return RedirectToAction("Index", new {id = bm.BarID});
+            }
+            return RedirectToAction("BadRequestView");
         }
 
 
@@ -168,8 +183,13 @@ namespace BarCrawler.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             DrinkModel drinkModel = new DrinkModel();
-            drinkModel.BarID = id;
-            return View(drinkModel);
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == drinkModel.BarModel.BarName))
+            {
+                drinkModel.BarID = id;
+                return View(drinkModel);
+            }
+            return RedirectToAction("BadRequestView");
+
         }
 
         [HttpPost]
@@ -199,8 +219,13 @@ namespace BarCrawler.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PictureModel picture = new PictureModel();
-            picture.BarID = id;
-            return View(picture);
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == picture.BarModel.BarName))
+            {
+                picture.BarID = id;
+                return View(picture);
+            }
+            return RedirectToAction("BadRequestView");
+
         }
 
         [HttpPost]
@@ -223,23 +248,54 @@ namespace BarCrawler.Controllers
         }
 
         /************************* SLET BILLEDE *******************************/
-        [HttpPost]
+        [HttpGet]
         public ActionResult DeletePicture(int id, int Pid/**/)
         {
             var picture = this.db.PictureModels.FirstOrDefault(p => p.PictureID == Pid);
             if (picture != null)
             {
-                db.PictureModels.Remove(picture);
-                db.SaveChanges();
+                if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == picture.BarModel.BarName))
+                {
+                    db.PictureModels.Remove(picture);
+                    db.SaveChanges();
+                }
             }
             return RedirectToAction("Index", new { id = id });
+        }
+
+        /************************* ÆNDRE BILLEDE *******************************/
+        [HttpGet]
+        public ActionResult EditPicture(int id, int Pid/**/)
+        {
+            var picture = this.db.PictureModels.FirstOrDefault(p => p.PictureID == Pid);
+            if (picture == null)
+            {
+                return HttpNotFound();
+            }
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserName() == picture.BarModel.BarName))
+            {
+                return View(picture);
+            }
+            return RedirectToAction("BadRequestView");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPicture(PictureModel picture)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(picture).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", new { id = picture.BarID });
         }
 
         /* Feed */
         /************************* NYT FEED *******************************/
         //Virker stadig ikke 
         [HttpGet]
-        public ActionResult CreateFeed(int id , string t/**/)
+        public ActionResult CreateFeed(int id, string t/**/)
         {
             if (!t.IsNullOrWhiteSpace())
             {
@@ -251,7 +307,7 @@ namespace BarCrawler.Controllers
                 db.SaveChanges();
             }
 
-            return RedirectToAction("Index", new {id = id});
+            return RedirectToAction("Index", new { id = id });
         }
 
         [HttpGet]
@@ -264,6 +320,12 @@ namespace BarCrawler.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Index", new { id = id });
+        }
+
+        public ActionResult BadRequestView()
+        {
+            return View();
+
         }
     }
 }

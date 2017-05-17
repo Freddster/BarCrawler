@@ -323,6 +323,8 @@
     <Content Include="Views\BarProfil\CreateDrink.cshtml" />
     <Content Include="Views\BarProfil\EditDrink.cshtml" />
     <Content Include="Views\BarProfil\CreatePicture.cshtml" />
+    <Content Include="Views\BarProfil\EditPicture.cshtml" />
+    <Content Include="Views\BarProfil\BadRequestView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

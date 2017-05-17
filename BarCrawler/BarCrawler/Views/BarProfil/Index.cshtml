@@ -270,21 +270,35 @@
             position: absolute;
             top: 0;
             left: 0;
-            display:none; 
+            display: none;
+        }
+        .EditButton {
+            position: absolute;
+            top: 174px;
+            left: 0;
+            display: none;
         }
 
-        .show-button:hover .DeleteButton{
+        .show-button:hover .DeleteButton {
             display: block;
-            opacity: 1; 
+            opacity: 0.9;
+        }
+
+        .show-button:hover .EditButton {
+            display: block;
+            opacity: 0.9;
         }
     </style>
 
     <div role="tabpanel" class="tab-pane fade in" id="Galleri">
         <h2>
             Galleri
-            <a href="@Url.Action("CreatePicture", "BarProfil", new {id = @Model.BarID})">
-                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
-            </a>
+            @if (User.Identity.GetUserName() == Model.BarName)
+            {
+                <a href="@Url.Action("CreatePicture", "BarProfil", new {id = @Model.BarID})">
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+                </a>
+            }
         </h2>
         @if (@Model.Pictures.Count > 0)
         {
@@ -297,7 +311,11 @@
                                 <img class="resize" id="picutre"
                                      src="@Url.Content(item.Directory)"
                                      style="max-height: 200px; max-width: 290px; margin-left: auto; margin-right: auto; vertical-align: middle; display: inline-block; height: 100%;" />
-                                <input class="DeleteButton" type="button" onclick="deletePicture(@item.PictureID)" value="Slet" />
+                                @if (User.Identity.GetUserName() == Model.BarName)
+                                {
+                                    <input class="DeleteButton" type="button" onclick="deletePicture(@item.PictureID)" value="Slet" />
+                                    <input class="EditButton" type="button" onclick="EditPicture(@item.PictureID)" value="Ændre" />
+                                }
                             </div>
 
                         </div>
@@ -311,19 +329,28 @@
     </div>
 
 <script>
-    function deletePicture(pictureId){
+    function deletePicture(pictureId) {
         window.location.href = '@Url.Action("DeletePicture", new {id = Model.BarID})' + '?Pid=' + pictureId;
     }
 </script>
+    
+<script>
+    function EditPicture(pictureId) {
+        window.location.href = '@Url.Action("EditPicture", new {id = Model.BarID})' + '?Pid=' + pictureId;
+    }
+</script>
 
-    @* ************************ INFO TAB ****************************** *@
+@* ************************ INFO TAB ****************************** *@
 
     <div role="tabpanel" class="tab-pane fade in" id="Info">
         <h2>
             Kontaktinformation
-            <a href="@Url.Action("Edit", "BarProfil", new {id = @Model.BarID})">
-                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
-            </a>
+            @if (User.Identity.GetUserName() == Model.BarName)
+            {
+                <a href="@Url.Action("Edit", "BarProfil", new {id = @Model.BarID})">
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
+                </a>
+            }
 
         </h2>
 
@@ -370,9 +397,12 @@
             <div class="row">
                 <h2>
                     Om os
-                    <a href="@Url.Action("Edit", "BarProfil", new {id = @Model.BarID})">
-                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
-                    </a>
+                    @if (User.Identity.GetUserName() == Model.BarName)
+                    {
+                        <a href="@Url.Action("Edit", "BarProfil", new {id = @Model.BarID})">
+                            <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-cog"></i></button>
+                        </a>
+                    }
                 </h2>
             </div>
             <div class="row">
@@ -385,9 +415,12 @@
             @*<div class="row">*@
             <h2>
                 Drinkskort
-                <a href="@Url.Action("CreateDrink", "BarProfil", new {id = @Model.BarID})">
-                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
-                </a>
+                @if (User.Identity.GetUserName() == Model.BarName)
+            {
+                    <a href="@Url.Action("CreateDrink", "BarProfil", new {id = @Model.BarID})">
+                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+                    </a>
+                }
             </h2>
         </div>
         @if (Model.Drinks.Count > 0)
@@ -400,7 +433,10 @@
                             <th class="col-md-2">@Html.LabelFor(d => d.Drinks[0].Title)</th>
                             <th class="col-md-1">@Html.LabelFor(d => d.Drinks[0].Price)</th>
                             <th class="col-md-4">@Html.LabelFor(d => d.Drinks[0].Description)</th>
-                            <th class="col-md-1, text-right">Action</th>
+                            @if (User.Identity.GetUserName() == Model.BarName)
+                            {
+                                <th class="col-md-1, text-right">Action</th>
+                            }
                         </tr>
                     </thead>
                     <tbody>
@@ -410,11 +446,15 @@
                                 <td>@item.Title</td>
                                 <td>@item.Price kr</td>
                                 <td>@item.Description</td>
-                                <td class="col-md-1, text-right">
-                                    @Html.ActionLink("Rediger", "EditDrink", new { id = item.DrinkID }) |
-                                    @Html.ActionLink("Slet", "DeleteDrink", new { id = item.DrinkID })
-                                    @* VI VED IKKE, HVAD DER SKER!! *@
-                                </td>
+                                @if (User.Identity.GetUserName() == Model.BarName)
+                                {
+                                    <td class="col-md-1, text-right">
+                                        @Html.ActionLink("Rediger", "EditDrink", new { id = item.DrinkID })
+                                        @*@Html.Display(" | ")*@ |
+                                        @Html.ActionLink("Slet", "DeleteDrink", new {id = item.DrinkID})
+
+                                    </td>
+                                }
                             </tr>
                         }
                     </tbody>
