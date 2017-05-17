@@ -279,13 +279,6 @@
         }
     </style>
 
-@*<script type="text/javascript">
-    $("div.DeleteButton").hide();
-    $('.show-button').hover(function() {
-        $('.DeleteButton').show(); 
-    });
-</script>*@
-
     <div role="tabpanel" class="tab-pane fade in" id="Galleri">
         <h2>
             Galleri
@@ -304,7 +297,7 @@
                                 <img class="resize" id="picutre"
                                      src="@Url.Content(item.Directory)"
                                      style="max-height: 200px; max-width: 290px; margin-left: auto; margin-right: auto; vertical-align: middle; display: inline-block; height: 100%;" />
-                                <input class="DeleteButton" type="button" value="Slet" />
+                                <input class="DeleteButton" type="button" onclick="deletePicture(@item.PictureID)" value="Slet" />
                             </div>
 
                         </div>
@@ -317,7 +310,11 @@
         }
     </div>
 
-
+<script>
+    function deletePicture(pictureId){
+        window.location.href = '@Url.Action("DeletePicture", new {id = Model.BarID})' + '?Pid=' + pictureId;
+    }
+</script>
 
     @* ************************ INFO TAB ****************************** *@
 

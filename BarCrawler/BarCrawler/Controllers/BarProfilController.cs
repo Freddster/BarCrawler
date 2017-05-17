@@ -8,6 +8,7 @@ using BarCrawler.Models;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Net;
+using System.Net.Configuration;
 using DataAccessLogic.UnitOfWork;
 using BarCrawler.ViewModels;
 using Microsoft.Ajax.Utilities;
@@ -219,11 +220,23 @@ namespace BarCrawler.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Index", new { id = picture.BarID });
-
-
         }
 
+        /************************* SLET BILLEDE *******************************/
+        [HttpPost]
+        public ActionResult DeletePicture(int id, int Pid/**/)
+        {
+            var picture = this.db.PictureModels.FirstOrDefault(p => p.PictureID == Pid);
+            if (picture != null)
+            {
+                db.PictureModels.Remove(picture);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", new { id = id });
+        }
 
+        /* Feed */
+        /************************* NYT FEED *******************************/
         //Virker stadig ikke 
         [HttpGet]
         public ActionResult CreateFeed(int id , string t/**/)
