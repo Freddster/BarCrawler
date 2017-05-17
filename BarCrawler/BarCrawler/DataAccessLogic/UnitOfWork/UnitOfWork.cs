@@ -13,13 +13,13 @@ using DataAccessLogic.Repositories;
 namespace DataAccessLogic.UnitOfWork
 {
     /// <summary>
-    /// sdffds
+    /// UnitOfWork class implementing IUnitOfWork. 
     /// </summary>
     /// <seealso cref="DataAccessLogic.UnitOfWork.IUnitOfWork" />
     public class UnitOfWork : IUnitOfWork
     {
         /// <summary>
-        /// The context
+        /// The DbContext
         /// </summary>
         private BarCrawlerContext _context;// = new BarCrawlerContext();
         /// <summary>
@@ -107,7 +107,7 @@ namespace DataAccessLogic.UnitOfWork
 
 
         /// <summary>
-        /// Saves this instance.
+        /// Saves the context.
         /// </summary>
         public void Save()
         {
@@ -115,9 +115,9 @@ namespace DataAccessLogic.UnitOfWork
         }
 
         /// <summary>
-        /// Gets the barprofile.
+        /// Gets the barprofile with all the drinks, feeds, pictures, profilPicture and comming events.
         /// </summary>
-        /// <param name="id">The identifier.</param>
+        /// <param name="id">The bar identifier.</param>
         /// <returns></returns>
         public BarModel GetBarprofile(int? id)
         {
@@ -150,9 +150,9 @@ namespace DataAccessLogic.UnitOfWork
         private const int TimeToSubtract = -12;
 
         /// <summary>
-        /// Gets all bars for home.
+        /// Gets all the bars for the frontpage, with profilePicture, feeds and comming events.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Generic container</returns>
         public IEnumerable<BarModel> GetAllBarsForHome()
         {
             var allModels = _context.BarModels

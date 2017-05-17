@@ -8,8 +8,15 @@ using BarCrawler.Models;
 
 namespace DataAccessLogic.Repositories
 {
+    /// <summary>
+    /// Repository for Events
+    /// </summary>
+    /// <seealso cref="System.IDisposable" />
     public class EventRepository : IDisposable
     {
+        /// <summary>
+        /// The Dbcontext
+        /// </summary>
         private BarCrawlerContext _context;
         private DbSet<EventModel> _eventDbSet;
 
@@ -20,6 +27,10 @@ namespace DataAccessLogic.Repositories
         }
 
 
+        /// <summary>
+        /// Gets all events.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<EventModel> GetAllEvents()
         {
             return _eventDbSet.ToList();
@@ -27,6 +38,11 @@ namespace DataAccessLogic.Repositories
 
         //Lav en funktion der kun returnere x antal events
 
+        /// <summary>
+        /// Gets the event by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public EventModel GetEventByID(int? id)
         {
             return _eventDbSet.Find(id);
