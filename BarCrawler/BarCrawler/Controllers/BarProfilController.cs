@@ -24,8 +24,8 @@ namespace BarCrawler.Controllers
         // GET: BarProfil
 
 
-        /* Index */
-        /************************* INDEX *******************************/
+        /******************************* Index *******************************/
+        /************* INDEX *************/
         public ActionResult Index(int? id)
         {
             if (id == null)
@@ -40,8 +40,165 @@ namespace BarCrawler.Controllers
             return View(barModel);
         }
 
-        /* Kontaktinformation */
-        /************************* ÆNDRE KONTAKINFORMATION *******************************/
+        /******************************* Feed *******************************/
+        /************************* NYT FEED *******************************/
+        [HttpGet]
+        public ActionResult CreateFeed(int id, string t/**/)
+        {
+            if (!t.IsNullOrWhiteSpace())
+            {
+                FeedModel feed = new FeedModel();
+                feed.Text = t;
+                feed.BarID = id;
+                feed.CreateTime = DateTime.Now;
+                db.FeedModels.Add(feed);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index", new { id = id });
+        }
+
+        [HttpGet]
+        public ActionResult DeleteFeed(int id, int Fid /**/)
+        {
+            var feed = this.db.FeedModels.FirstOrDefault(b => b.FeedID == Fid);
+            if (feed != null)
+            {
+                db.FeedModels.Remove(feed);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", new { id = id });
+        }
+
+        /************************* Events *************************/
+        /************* NYT EVENT *************/
+        public ActionResult CreateEvent(int id)
+        {
+            var bar = db.BarModels.Find(id);
+            EventModel EventModel = new EventModel();
+            EventModel.BarID = id;
+            EventModel.Address1 = bar.Address1;
+            EventModel.Address2 = bar.Address2;
+            EventModel.City = bar.City;
+            EventModel.StreetNumber = bar.StreetNumber;
+            EventModel.Zipcode = bar.Zipcode;
+
+            return View(EventModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateEvent(EventModel EventModel)
+        {
+            var bar = db.BarModels.Find(EventModel.BarID);
+            if (bar == null)
+            {
+                return HttpNotFound();
+            }
+
+            EventModel.CreateTime = DateTime.Now;
+            db.EventModels.Add(EventModel);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", new { id = EventModel.BarID });
+        }
+
+        /************************* GALLERI *******************************/
+        /************* NYT BILLEDE *************/
+        public ActionResult CreatePicture(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PictureModel picture = new PictureModel();
+            var bm = db.BarModels.Find(id);
+            if (bm == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
+            {
+                picture.BarID = id;
+                return View(picture);
+            }
+            return RedirectToAction("BadRequestView");
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreatePicture(PictureModel picture)
+        {
+            if (ModelState.IsValid)
+            {
+                picture.CreateTime = DateTime.Now;
+                db.PictureModels.Add(picture);
+                BarModel barmodel = db.BarModels.Find(picture.BarID);
+                if (barmodel == null)
+                {
+                    return HttpNotFound();
+                }
+                barmodel.Pictures.Add(picture);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", new { id = picture.BarID });
+
+        /************* SLET BILLEDE *************/
+        [HttpGet]
+        public ActionResult DeletePicture(int id, int Pid/**/)
+        {
+            var picture = this.db.PictureModels.FirstOrDefault(p => p.PictureID == Pid);
+            if (picture != null)
+            {
+                var bm = db.BarModels.Find(id);
+                if (bm == null)
+                    return HttpNotFound();
+                if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
+                {
+                    db.PictureModels.Remove(picture);
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index", new { id = id });
+        }
+
+        /************* ÆNDRE BILLEDE *************/
+        [HttpGet]
+        public ActionResult EditPicture(int id, int Pid/**/)
+        {
+            var picture = this.db.PictureModels.FirstOrDefault(p => p.PictureID == Pid);
+            if (picture == null)
+            {
+                return HttpNotFound();
+            }
+            var bm = db.BarModels.Find(id);
+            if (bm == null)
+                return HttpNotFound();
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
+            {
+                PictureViewModel viewModel = new PictureViewModel(picture);
+                return View(viewModel);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPicture(PictureViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var model = db.PictureModels.Find(viewModel.PictureID);
+                model.Directory = viewModel.Directory;
+                model.Description = viewModel.Description;
+                db.Entry(model).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index", new { id = model.BarID });
+            }
+            return RedirectToAction("BadRequestView");
+        }
+
+        /******************************* Kontaktinformation *******************************/
+        /************* ÆNDRE KONTAKINFORMATION *************/
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -53,10 +210,14 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            EditViewModel viewModel = barmodel.Pictures.Count > 0
-                ? new EditViewModel(barmodel, barmodel.Pictures[0].Directory)
-                : new EditViewModel(barmodel);
-            return View(viewModel);
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == barmodel.userID))
+            {
+                EditViewModel viewModel = barmodel.Pictures.Count > 0
+                    ? new EditViewModel(barmodel, barmodel.Pictures[0].Directory)
+                    : new EditViewModel(barmodel);
+                return View(viewModel);
+            }
+            return RedirectToAction("BadRequestView");
         }
 
         [HttpPost]
@@ -91,9 +252,48 @@ namespace BarCrawler.Controllers
             }
         }
 
-        /* Drink */
-        /************************* ÆNDRE DRINK *******************************/
-        public ActionResult EditDrink(int? id)
+        /******************************* Drink *******************************/
+        /************* NY DRINK *************/
+        public ActionResult CreateDrink(int id)
+        {
+            DrinkViewModel viewModel;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DrinkModel drinkModel = new DrinkModel();
+            var bm = db.BarModels.Find(id);
+            if (bm == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
+            {
+                drinkModel.BarID = id;
+                return View(drinkModel);
+            }
+            return RedirectToAction("BadRequestView");
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateDrink(DrinkModel drinkmodel)
+        {
+            if (ModelState.IsValid)
+            {
+                db.DrinkModels.Add(drinkmodel);
+                BarModel barmodel = db.BarModels.Find(drinkmodel.BarID);
+                if (barmodel == null)
+                {
+                    return HttpNotFound();
+                }
+                barmodel.Drinks.Add(drinkmodel);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index", new { id = drinkmodel.BarID });
+        }
+
+        /************* ÆNDRE DRINK *************/
+        public ActionResult EditDrink(int? id, int? barId)
         {
             if (id == null)
             {
@@ -104,8 +304,15 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            DrinkViewModel dm = new DrinkViewModel(drinkModel);
-            return View(dm);
+            var bm = db.BarModels.Find(barId); 
+            if (bm == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
+            {
+                DrinkViewModel dm = new DrinkViewModel(drinkModel);
+                return View(dm);
+            }
+            return RedirectToAction("BadRequestView");
         }
 
         [HttpPost]
@@ -124,20 +331,8 @@ namespace BarCrawler.Controllers
             return View(drinkViewModel);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult UpdateDrinks(DrinkModel drinkModel)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(drinkModel).State = EntityState.Modified;
-                db.SaveChanges();
-            }
-            return RedirectToAction("Index", new {id = drinkModel.BarModel.BarID});
-        }
 
-
-        /************************* SLET DRINK *******************************/
+        /************* SLET DRINK *************/
         public ActionResult DeleteDrink(int id)
         {
             if (id == null)
@@ -154,106 +349,25 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            _unitOfWork.DrinkRepository.Remove(drink);
-            _unitOfWork.Save();
-            return RedirectToAction("Index", new {id = bm.BarID});
-        }
-
-
-        /************************* NY DRINK *******************************/
-        public ActionResult CreateDrink(int id)
-        {
-            DrinkViewModel viewModel;
-            if (id == null)
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                _unitOfWork.DrinkRepository.Remove(drink);
+                _unitOfWork.Save();
+                return RedirectToAction("Index", new {id = bm.BarID});
             }
-            DrinkModel drinkModel = new DrinkModel();
-            drinkModel.BarID = id;
-            return View(drinkModel);
+            return RedirectToAction("BadRequestView");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateDrink(DrinkModel drinkmodel)
+        /******************************* BAD REQUEST *******************************/
+        /************* BAD REQUEST *************/
+        public ActionResult BadRequestView()
         {
-            if (ModelState.IsValid)
-            {
-                db.DrinkModels.Add(drinkmodel);
-                BarModel barmodel = db.BarModels.Find(drinkmodel.BarID);
-                if (barmodel == null)
-                {
-                    return HttpNotFound();
-                }
-                barmodel.Drinks.Add(drinkmodel);
-                db.SaveChanges();
-            }
-            return RedirectToAction("Index", new {id = drinkmodel.BarID});
-        }
-
-        /* Galleri */
-        /************************* NYT BILLEDE *******************************/
-        public ActionResult CreatePicture(int id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PictureModel picture = new PictureModel();
-            picture.BarID = id;
-            return View(picture);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreatePicture(PictureModel picture)
-        {
-            if (ModelState.IsValid)
-            {
-                picture.CreateTime = DateTime.Now;
-                db.PictureModels.Add(picture);
-                BarModel barmodel = db.BarModels.Find(picture.BarID);
-                if (barmodel == null)
-                {
-                    return HttpNotFound();
-                }
-                barmodel.Pictures.Add(picture);
-                db.SaveChanges();
-            }
-            return RedirectToAction("Index", new { id = picture.BarID });
-
+            return View();
 
         }
 
-
-        //Virker stadig ikke 
-        [HttpGet]
-        public ActionResult CreateFeed(int id, string t /**/)
-        {
-            if (!t.IsNullOrWhiteSpace())
-            {
-                FeedModel feed = new FeedModel();
-                feed.Text = t;
-                feed.BarID = id;
-                feed.CreateTime = DateTime.Now;
-                db.SaveChanges();
-            }
-
-            return RedirectToAction("Index", new {id = id});
-        }
-
-        [HttpGet]
-        public ActionResult DeleteFeed(int id, int Fid /**/)
-        {
-            var feed = this.db.FeedModels.FirstOrDefault(b => b.FeedID == Fid);
-            if (feed != null)
-            {
-                db.FeedModels.Remove(feed);
-                db.SaveChanges();
-            }
-            return RedirectToAction("Index", new {id = id});
-        }
-
+        /******************************* BarLink *******************************/
+        /************* Link oppe i toppen *************/
         [HttpGet]
         public ActionResult BarLink()
         {
@@ -266,38 +380,7 @@ namespace BarCrawler.Controllers
                 return HttpNotFound();
             }
 
-            return RedirectToAction("Index", new {id = bar.BarID});
-        }
-        
-        public ActionResult CreateEvent(int id)
-        {
-            var bar = db.BarModels.Find(id);
-            EventModel EventModel = new EventModel();
-            EventModel.BarID = id;
-            EventModel.Address1 = bar.Address1;
-            EventModel.Address2 = bar.Address2;
-            EventModel.City = bar.City;
-            EventModel.StreetNumber = bar.StreetNumber;
-            EventModel.Zipcode = bar.Zipcode;
-
-            return View(EventModel);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateEvent(EventModel EventModel)
-        {
-            var bar = db.BarModels.Find(EventModel.BarID);
-            if (bar == null)
-            {
-                return HttpNotFound();
-            }
-            
-            EventModel.CreateTime = DateTime.Now;
-            db.EventModels.Add(EventModel);
-            db.SaveChanges();
-
-            return RedirectToAction("Index", new {id = EventModel.BarID});
+            return RedirectToAction("Index", new { id = bar.BarID });
         }
     }
 }
