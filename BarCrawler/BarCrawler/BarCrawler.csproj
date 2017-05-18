@@ -203,7 +203,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BarProfilController.cs" />
-    <Compile Include="Controllers\BarModelsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DataAccessLogic\Repositories\BarRepository.cs" />
