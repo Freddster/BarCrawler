@@ -1,4 +1,5 @@
-﻿@using System.Net.Configuration
+﻿@using System.Globalization
+@using System.Net.Configuration
 @using BarCrawler.Models
 @using Microsoft.AspNet.Identity
 @using System.Reflection.Emit
@@ -294,7 +295,9 @@
                                     <div class="col-lg-1">
                                         <div class="row">
                                             <p style="color: #22662f">
-                                                @eventobj.DateAndTimeForEvent
+                                                @eventobj.DateAndTimeForEvent.ToString("dddd", CultureInfo.CreateSpecificCulture("da-DK"))
+                                                <br/>
+                                                @eventobj.DateAndTimeForEvent.ToString("dd-MM-yyyy HH:mm")
                                             </p>
                                         </div>
                                     </div>
