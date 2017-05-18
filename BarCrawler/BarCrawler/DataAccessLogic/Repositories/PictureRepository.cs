@@ -4,32 +4,26 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BarCrawler.DataAccessLogic.Repositories;
+using BarCrawler.DataAccessLogic.Repositories.Interface;
 using BarCrawler.Models;
+using BarCrawler.ViewModels;
 
 namespace DataAccessLogic.Repositories
 {
-    public class PictureRepository : IDisposable
+    public class PictureRepository : GenericRepository<PictureModel>, IPictureRepository
     {
-        private BarCrawlerContext _context;
-        private DbSet<BarModel> _pictureDbSet;
-
-        public PictureRepository(BarCrawlerContext ReceivedContext)
+        public PictureRepository(BarCrawlerContext ReceivedContext) : base(ReceivedContext)
         {
-            _context = ReceivedContext;
-            _pictureDbSet = ReceivedContext.BarModels;
+            
         }
 
-        public void Dispose()
+
+        public void AddModelForUpdate(ref PictureViewModel viewModel, ref PictureModel pictureModel)
         {
-            _context?.Dispose();
+            pictureModel.Directory = viewModel.Directory;
+            pictureModel.Description = viewModel.Description;
+            MarkAsDirty(pictureModel);
         }
-
-        //Find
-
-        //Add
-
-        //Delete
-
-        //Remove
     }
 }

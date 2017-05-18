@@ -6,6 +6,7 @@ namespace BarCrawler.DataAccessLogic.Repositories.Interface
     {
         TEntity GetByID(int? id);
         IEnumerable<TEntity> GetAll();
+        void Add(TEntity entity);
         void Remove(TEntity entity);
     }
 }

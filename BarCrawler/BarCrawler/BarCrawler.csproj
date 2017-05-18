@@ -211,7 +211,11 @@
     <Compile Include="DataAccessLogic\Repositories\EventRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\FeedRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\GenericRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\Interface\IBarRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\Interface\IPictureRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\Interface\IDrinkRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\Interface\IEventRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\Interface\IFeedRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\Interface\IRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\PictureRepository.cs" />
     <Compile Include="DataAccessLogic\UnitOfWork\IUnitOfWork.cs" />

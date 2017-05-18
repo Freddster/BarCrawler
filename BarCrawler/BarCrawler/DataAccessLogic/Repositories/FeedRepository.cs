@@ -4,32 +4,21 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BarCrawler.DataAccessLogic.Repositories;
+using BarCrawler.DataAccessLogic.Repositories.Interface;
 using BarCrawler.Models;
 
 namespace DataAccessLogic.Repositories
 {
-    public class FeedRepository : IDisposable
+    public class FeedRepository : GenericRepository<FeedModel>, IFeedRepository
     {
-        private BarCrawlerContext _context;
-        private DbSet<BarModel> _feedDbSet;
-
-        public FeedRepository(BarCrawlerContext ReceivedContext)
+        public FeedRepository(BarCrawlerContext receivedContext) : base(receivedContext)
         {
-            _context = ReceivedContext;
-            _feedDbSet = ReceivedContext.BarModels;
         }
 
-        public void Dispose()
+        public BarCrawlerContext BarCrawlerContext
         {
-            _context?.Dispose();
+            get { return _context as BarCrawlerContext; }
         }
-
-        //Find
-
-        //Add
-
-        //Delete
-
-        //Remove
     }
 }
