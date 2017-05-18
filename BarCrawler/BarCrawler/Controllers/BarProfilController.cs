@@ -90,15 +90,19 @@ namespace BarCrawler.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateEvent(EventModel EventModel)
         {
-            var bar = _unitOfWork.BarRepository.GetByID(EventModel.BarID);
-            if (bar == null)
+            
+            if (ModelState.IsValid)
             {
-                return HttpNotFound();
-            }
+                var bar = _unitOfWork.BarRepository.GetByID(EventModel.BarID);
+                if (bar == null)
+                {
+                    return HttpNotFound();
+                }
 
-            EventModel.CreateTime = DateTime.Now;
-            _unitOfWork.EventRepository.Add(EventModel);
-            _unitOfWork.Save();
+                EventModel.CreateTime = DateTime.Now;
+                _unitOfWork.EventRepository.Add(EventModel);
+                _unitOfWork.Save();
+            }
 
             return RedirectToAction("Index", new { id = EventModel.BarID });
         }

@@ -20,6 +20,15 @@ namespace BarCrawler.ViewModels
             Directory = pm.Directory;
             BarID = pm.BarID; 
         }
+
+        public PictureViewModel(BarProfilPictureModel pm)
+        {
+            PictureID = 0; 
+            Description = pm.Description;
+            Directory = pm.Directory;
+            BarID = pm.BarID;
+        }
+
         [Key]
         public int PictureID { get; set; }
         public int BarID { get; set; }
