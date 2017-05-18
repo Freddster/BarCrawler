@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BarCrawler.Models;
 using BarCrawler.ViewModels;
+using DataAccessLogic.UnitOfWork;
 
 namespace BarCrawler.Controllers
 {
@@ -18,7 +19,7 @@ namespace BarCrawler.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private BarCrawlerContext db = new BarCrawlerContext();
+        private UnitOfWork _unitOfWork;
 
         public AccountController()
         {
@@ -28,6 +29,7 @@ namespace BarCrawler.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _unitOfWork = new UnitOfWork();
         }
 
         public ApplicationSignInManager SignInManager
@@ -157,25 +159,9 @@ namespace BarCrawler.Controllers
                 var result = await UserManager.CreateAsync(user, model.RegisterViewModel.Password);
                 if (result.Succeeded)
                 {
-                    var bar = new BarModel()
-                    {
-                        Address1 = model.BarModel.Address1,
-                        Address2 = model.BarModel.Address2,
-                        PhoneNumber = model.BarModel.PhoneNumber,
-                        Zipcode = model.BarModel.Zipcode,
-                        BarName = model.BarModel.BarName,
-                        Description = model.BarModel.Description,
-                        StreetNumber = model.BarModel.StreetNumber,
-                        City = model.BarModel.City,
-                        userID = user.Id,
-                        Email = model.BarModel.Email,
-                        Faculty = model.BarModel.Faculty,
-                        OpenTime = model.BarModel.OpenTime,
-                        CloseTime = model.BarModel.CloseTime
-                    };
-
-                    db.BarModels.Add(bar);
-                    db.SaveChanges();
+                    var bar = new BarModel();
+                    _unitOfWork.BarRepository.CreateAndAddBar(ref bar, ref model, ref user);
+                    _unitOfWork.Save();
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

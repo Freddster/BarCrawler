@@ -10,5 +10,6 @@ namespace DataAccessLogic.Repositories
         BarModel GetEditInfo(int? id);
         void EditInfo(EditViewModel editviewmodel, BarModel bar);
         BarModel GetByUserID(string userId);
+        void CreateAndAddBar(ref BarModel bar, ref BigRegisterViewModel model, ref ApplicationUser user);
     }
 }

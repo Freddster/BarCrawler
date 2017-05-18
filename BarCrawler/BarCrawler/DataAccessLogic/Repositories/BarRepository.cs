@@ -49,5 +49,23 @@ namespace DataAccessLogic.Repositories
         {
             return _context.Set<BarModel>().SingleOrDefault(x => x.userID == userId);
         }
+
+        public void CreateAndAddBar(ref BarModel bar, ref BigRegisterViewModel model, ref ApplicationUser user)
+        {
+            bar.Address1 = model.BarModel.Address1;
+            bar.Address2 = model.BarModel.Address2;
+            bar.PhoneNumber = model.BarModel.PhoneNumber;
+            bar.Zipcode = model.BarModel.Zipcode;
+            bar.BarName = model.BarModel.BarName;
+            bar.Description = model.BarModel.Description;
+            bar.StreetNumber = model.BarModel.StreetNumber;
+            bar.City = model.BarModel.City;
+            bar.userID = model.BarModel.userID;
+            bar.Email = model.BarModel.Email;
+            bar.Faculty = model.BarModel.Faculty;
+            bar.OpenTime = model.BarModel.OpenTime;
+            bar.CloseTime = model.BarModel.CloseTime;
+            Add(bar);
+        }
     }
 }
