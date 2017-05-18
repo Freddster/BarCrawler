@@ -30,7 +30,7 @@ namespace DataAccessLogic.UnitOfWork
         /// </summary>
         public UnitOfWork()
         {
-            Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
+            //Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
             _context = new BarCrawlerContext();
             InitializeRepositories();
             //_barRepository = new BarRepository(_context);
@@ -99,6 +99,9 @@ namespace DataAccessLogic.UnitOfWork
                 .Include(p => p.Pictures)
                 .Include(pp => pp.BarProfilPictureModel)
                 .SingleOrDefault(x => x.BarID == id);
+
+            if (modelToReturn == null)
+                return null;
 
             modelToReturn.Feeds = modelToReturn.Feeds.OrderByDescending(o => o.CreateTime).ToList();
 
