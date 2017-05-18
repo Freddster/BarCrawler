@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using BarCrawler.DataAccessLogic;
+using BarCrawler.DataAccessLogic.Repositories;
 using BarCrawler.DataAccessLogic.Repositories.Interface;
 using BarCrawler.Migrations;
 using BarCrawler.Models;
@@ -56,18 +57,23 @@ namespace DataAccessLogic.UnitOfWork
         /// </summary>
         private void InitializeRepositories()
         {
+            CoverPictureRepository = new CoverPictureRepository(_context);
+            BarProfilPictureRepository = new BarProfilPictureRepository(_context);
             BarRepository = new BarRepository(_context);
-            EventRepository = new EventRepository(_context);
             DrinkRepository = new DrinkRepository(_context);
+            EventRepository = new EventRepository(_context);
             FeedRepository = new FeedRepository(_context);
             PictureRepository = new PictureRepository(_context);
         }
 
+        public ICoverPictureRepository CoverPictureRepository { get; set; }
+        public IBarProfilPictureRepository BarProfilPictureRepository { get; set; }
         public IBarRepository BarRepository { get; private set; }
         public IDrinkRepository DrinkRepository { get; private set; }
         public IEventRepository EventRepository { get; private set; }
         public IFeedRepository FeedRepository { get; private set; }
         public IPictureRepository PictureRepository { get; private set; }
+
 
         /// <summary>
         /// Saves this instance.
@@ -91,7 +97,7 @@ namespace DataAccessLogic.UnitOfWork
                 .Include(d => d.Drinks)
                 .Include(f => f.Feeds)
                 .Include(p => p.Pictures)
-                .Include(pp => pp.ProfilPictureModel)
+                .Include(pp => pp.BarProfilPictureModel)
                 .SingleOrDefault(x => x.BarID == id);
 
             modelToReturn.Feeds = modelToReturn.Feeds.OrderByDescending(o => o.CreateTime).ToList();
@@ -123,7 +129,7 @@ namespace DataAccessLogic.UnitOfWork
         public IEnumerable<BarModel> GetAllBarsForHome()
         {
             var allModels = _context.BarModels
-                .Include(p => p.ProfilPictureModel)
+                .Include(p => p.BarProfilPictureModel)
                 .Include(f => f.Feeds)
                 .OrderBy(model => model.BarName)
                 .ToList();
