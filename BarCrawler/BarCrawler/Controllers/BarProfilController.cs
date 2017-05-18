@@ -19,8 +19,6 @@ namespace BarCrawler.Controllers
 {
     public class BarProfilController : Controller
     {
-        BarCrawlerContext db = new BarCrawlerContext();
-
         private UnitOfWork _unitOfWork = new UnitOfWork();
 
         #region Index
@@ -72,7 +70,7 @@ namespace BarCrawler.Controllers
         #endregion
         #endregion
         #region Events
-        
+
         #region Create Event
         public ActionResult CreateEvent(int id)
         {
@@ -106,18 +104,18 @@ namespace BarCrawler.Controllers
         }
         #endregion
 
-        #region Ændre Event
+        #region Edit Event
         [HttpGet]
         public ActionResult EditEvent(int id, int Eid)
         {
-            if(id == null || Eid == null)
+            if (id == null || Eid == null)
                 return HttpNotFound();
-            var _event = this.db.EventModels.Find(Eid);
+            var _event = _unitOfWork.EventRepository.GetByID(Eid);
             if (_event == null)
             {
                 return HttpNotFound();
             }
-            var bm = db.BarModels.Find(id);
+            var bm = _unitOfWork.BarRepository.GetByID(id);
             if (bm == null)
                 return HttpNotFound();
             if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
@@ -134,33 +132,26 @@ namespace BarCrawler.Controllers
         {
             if (ModelState.IsValid)
             {
-                var model = db.EventModels.Find(viewModel.EventID);
-                model.Title = viewModel.Title;
-                model.Description = viewModel.Description;
-                model.DateAndTimeForEvent = viewModel.DateAndTimeForEvent;
-                model.Address1 = viewModel.Address1;
-                model.Address2 = viewModel.Address2;
-                model.StreetNumber = viewModel.StreetNumber;
-                model.City = viewModel.City;
-                model.Zipcode = viewModel.Zipcode;
-                db.SaveChanges();
+                var model = _unitOfWork.EventRepository.GetByID(viewModel.EventID);
+                _unitOfWork.EventRepository.EditInfo(viewModel, model);
+                _unitOfWork.Save();
                 return RedirectToAction("Index", new { id = model.BarID });
             }
             return RedirectToAction("BadRequestView");
         }
         #endregion
 
-        #region Slet Event
+        #region Delete Event
         [HttpGet]
         public ActionResult DeleteEvent(int id, int Eid /**/)
         {
-            if(Eid == null || id == null)
+            if (Eid == null || id == null)
                 return HttpNotFound();
-            var _event = this.db.EventModels.Find(Eid);
+            var _event = _unitOfWork.EventRepository.GetByID(Eid);
             if (_event != null)
             {
-                db.EventModels.Remove(_event);
-                db.SaveChanges();
+                _unitOfWork.EventRepository.Remove(_event);
+                _unitOfWork.Save();
             }
             return RedirectToAction("Index", new { id = id });
         }
@@ -177,7 +168,6 @@ namespace BarCrawler.Controllers
             }
             PictureModel picture = new PictureModel();
             var bm = _unitOfWork.BarRepository.GetByID(id);
-            //var bm = db.BarModels.Find(id);
             if (bm == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
@@ -197,8 +187,6 @@ namespace BarCrawler.Controllers
             {
                 picture.CreateTime = DateTime.Now;
                 _unitOfWork.PictureRepository.Add(picture);
-                //db.PictureModels.Add(picture);
-                //BarModel barmodel = db.BarModels.Find(picture.BarID);
                 BarModel barModel = _unitOfWork.BarRepository.GetByID(picture.BarID);
                 if (barModel == null)
                 {
@@ -206,25 +194,21 @@ namespace BarCrawler.Controllers
                 }
                 barModel.Pictures.Add(picture);
                 _unitOfWork.Save();
-                //db.SaveChanges();
             }
             return RedirectToAction("Index", new { id = picture.BarID });
         }
         #endregion
 
-        
-        #region Change Picture
+        #region Edit Picture
         [HttpGet]
         public ActionResult EditPicture(int id, int Pid/**/)
         {
-            //var picture = this.db.PictureModels.FirstOrDefault(p => p.PictureID == Pid);
             var picture = _unitOfWork.PictureRepository.GetByID(Pid);
             if (picture == null)
             {
                 return HttpNotFound();
             }
             var bm = _unitOfWork.BarRepository.GetByID(id);
-            //var bm = db.BarModels.Find(id);
             if (bm == null)
                 return HttpNotFound();
             if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
@@ -241,28 +225,23 @@ namespace BarCrawler.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var model = db.PictureModels.Find(viewModel.PictureID);
                 var model = _unitOfWork.PictureRepository.GetByID(viewModel.PictureID);
                 _unitOfWork.PictureRepository.AddModelForUpdate(ref viewModel, ref model);
                 _unitOfWork.Save();
-                //db.SaveChanges();
                 return RedirectToAction("Index", new { id = model.BarID });
             }
             return RedirectToAction("BadRequestView");
         }
         #endregion
 
-
         #region Delete Picture
 
         [HttpGet]
         public ActionResult DeletePicture(int id, int Pid/**/)
         {
-            //var picture = this.db.PictureModels.FirstOrDefault(p => p.PictureID == Pid);
             var picture = _unitOfWork.PictureRepository.GetByID(Pid);
             if (picture != null)
             {
-                //var bm = db.BarModels.Find(id);
                 var bm = _unitOfWork.BarRepository.GetByID(id);
                 if (bm == null)
                     return HttpNotFound();
@@ -270,34 +249,33 @@ namespace BarCrawler.Controllers
                 {
                     _unitOfWork.PictureRepository.Remove(picture);
                     _unitOfWork.Save();
-                    //db.PictureModels.Remove(picture);
-                    //db.SaveChanges();
                 }
             }
             return RedirectToAction("Index", new { id = id });
         }
 
         #endregion
-        
+
         #endregion
         #region Contact Information
-        #region Change Contact Information
+        #region Edit Contact Information
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BarModel barmodel = db.BarModels.Include(i => i.Pictures).SingleOrDefault(x => x.BarID == id);
-            if (barmodel == null)
+            BarModel barModel = _unitOfWork.BarRepository.GetEditInfo(id);
+            //BarModel barmodel = db.BarModels.Include(i => i.Pictures).SingleOrDefault(x => x.BarID == id);
+            if (barModel == null)
             {
                 return HttpNotFound();
             }
-            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == barmodel.userID))
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == barModel.userID))
             {
-                EditViewModel viewModel = barmodel.Pictures.Count > 0
-                    ? new EditViewModel(barmodel, barmodel.Pictures[0].Directory)
-                    : new EditViewModel(barmodel);
+                EditViewModel viewModel = barModel.Pictures.Count > 0
+                    ? new EditViewModel(barModel, barModel.ProfilPictureModel.Directory)
+                    : new EditViewModel(barModel);
                 return View(viewModel);
             }
             return RedirectToAction("BadRequestView");
@@ -309,19 +287,13 @@ namespace BarCrawler.Controllers
         {
             if (ModelState.IsValid)
             {
-                var bar = db.BarModels.FirstOrDefault(m => m.BarID == editviewmodel.BarID);
+                //var bar = db.BarModels.FirstOrDefault(m => m.BarID == editviewmodel.BarID);
+                var bar = _unitOfWork.BarRepository.GetByID(editviewmodel.BarID);
                 if (bar != null)
                 {
-                    bar.Address1 = editviewmodel.Address1;
-                    bar.Address2 = editviewmodel.Address2;
-                    bar.PhoneNumber = editviewmodel.PhoneNumber;
-                    bar.Zipcode = editviewmodel.Zipcode;
-                    bar.Description = editviewmodel.Description;
-                    bar.StreetNumber = editviewmodel.StreetNumber;
-                    bar.City = editviewmodel.City;
-                    bar.Faculty = editviewmodel.Faculty;
-                    db.Entry(bar).State = EntityState.Modified;
-                    db.SaveChanges();
+                    _unitOfWork.BarRepository.EditInfo(editviewmodel, bar);
+                    _unitOfWork.Save();
+                    //db.SaveChanges();
                 }
                 else
                 {
@@ -337,7 +309,7 @@ namespace BarCrawler.Controllers
         #endregion
         #endregion
         #region Drink
-        
+
         #region Create Drink
         public ActionResult CreateDrink(int id)
         {
@@ -347,7 +319,7 @@ namespace BarCrawler.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             DrinkModel drinkModel = new DrinkModel();
-            var bm = db.BarModels.Find(id);
+            var bm = _unitOfWork.BarRepository.GetByID(id);
             if (bm == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
@@ -365,21 +337,22 @@ namespace BarCrawler.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.DrinkModels.Add(drinkmodel);
-                BarModel barmodel = db.BarModels.Find(drinkmodel.BarID);
+                _unitOfWork.DrinkRepository.Add(drinkmodel);
+                //db.DrinkModels.Add(drinkmodel);
+                BarModel barmodel = _unitOfWork.BarRepository.GetByID(drinkmodel.BarID);
+                //= db.BarModels.Find(drinkmodel.BarID);
                 if (barmodel == null)
                 {
                     return HttpNotFound();
                 }
                 barmodel.Drinks.Add(drinkmodel);
-                db.SaveChanges();
+                _unitOfWork.Save();
             }
             return RedirectToAction("Index", new { id = drinkmodel.BarID });
         }
         #endregion
 
-        
-        #region Change Drink
+        #region Edit Drink
         public ActionResult EditDrink(int? id, int? barId)
         {
             if (id == null)
@@ -391,7 +364,7 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            var bm = db.BarModels.Find(barId);
+            var bm = _unitOfWork.BarRepository.GetByID(id);
             if (bm == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
@@ -419,7 +392,6 @@ namespace BarCrawler.Controllers
         }
         #endregion
 
-        
         #region Delete Drink
         public ActionResult DeleteDrink(int id)
         {
@@ -449,7 +421,7 @@ namespace BarCrawler.Controllers
 
         #endregion
         #region Diverse
-        
+
         #region Bad Request
         public ActionResult BadRequestView()
         {
@@ -457,7 +429,7 @@ namespace BarCrawler.Controllers
 
         }
         #endregion
-        
+
         /************************* Link oppe i toppen *******************************/
         #region BarLink
         [HttpGet]
@@ -465,8 +437,7 @@ namespace BarCrawler.Controllers
         {
             var UserId = User.Identity.GetUserId();
 
-            var bar = db.BarModels.SingleOrDefault(b => b.userID == UserId);
-
+            var bar = _unitOfWork.BarRepository.GetByUserID(UserId);
             if (bar == null)
             {
                 return HttpNotFound();

@@ -403,7 +403,7 @@
                                 <img class="resize" id="picutre"
                                      src="@Url.Content(item.Directory)"
                                      style="max-height: 200px; max-width: 290px; margin-left: auto; margin-right: auto; vertical-align: middle; display: inline-block; height: 100%;" />
-                                @if (User.Identity.GetUserName() == Model.BarName)
+                                @if (User.Identity.GetUserId() == Model.userID)
                                 {
                                     <input class="DeleteButton" type="button" onclick="deletePicture(@item.PictureID)" value="Slet" />
                                     <input class="EditButton" type="button" onclick="EditPicture(@item.PictureID)" value="Ændre" />
