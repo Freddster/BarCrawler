@@ -50,6 +50,7 @@ namespace BarCrawler.Migrations
             List<BarModel> barModels = new List<BarModel>();
             List<EventModel> eventModels = new List<EventModel>();
             List<DrinkModel> drinkModels = new List<DrinkModel>();
+            List<FeedModel> feedModels = new List<FeedModel>();
             BarProfilPictureModel barProfilPictureModels;
             List<PictureModel> pictureModels = new List<PictureModel>();
 
@@ -81,7 +82,8 @@ namespace BarCrawler.Migrations
                 userID = user.Id,
                 Events = eventModels.FindAll(model => model.BarID == 1),
                 Drinks = drinkModels.FindAll(model => model.BarID == 1),
-                Pictures = pictureModels.FindAll(model => model.BarID == 1)
+                Pictures = pictureModels.FindAll(model => model.BarID == 1),
+                Feeds = feedModels.FindAll(model => model.BarID == 1)
             });
 
             eventModels.Add(new EventModel()
@@ -154,12 +156,22 @@ namespace BarCrawler.Migrations
                 BarModel = barModels.Find(b => b.BarName == "Katrines Kælder")
             });
 
+            feedModels.Add(new FeedModel()
+            {
+                BarID = 1,
+                CreateTime = DateTime.Now,
+                Text = "Første feed indtastning :)",
+                BarModel = barModels.Find(b => b.BarName == "Katrines Kælder")
+            });
+
             barModels[0].Events.AddRange(eventModels.FindAll(model => model.BarID == 1));
             barModels[0].Drinks.AddRange(drinkModels.FindAll(model => model.BarID == 1));
             barModels[0].ProfilPictureModel = barProfilPictureModels;
             List<PictureModel> pm = new List<PictureModel>();
             pm.AddRange(pictureModels.FindAll(model => model.BarID == 1));
             barModels[0].Pictures.AddRange(pm);
+            barModels[0].Feeds.AddRange(feedModels.FindAll(model => model.BarID == 1));
+
 
             var user1 = new ApplicationUser { UserName = "rich@kid.com", Email = "rich@kid.com" };
             var result1 = userManager.Create(user1, "qwertY1!");
