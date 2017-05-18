@@ -25,7 +25,6 @@ namespace BarCrawler.Controllers
 
         #region Index
         /******************************* Index *******************************/
-        /************************* INDEX *******************************/
         public ActionResult Index(int? id)
         {
             if (id == null)
@@ -97,16 +96,18 @@ namespace BarCrawler.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateEvent(EventModel EventModel)
         {
-            var bar = db.BarModels.Find(EventModel.BarID);
-            if (bar == null)
+            if (ModelState.IsValid)
             {
-                return HttpNotFound();
+                var bar = db.BarModels.Find(EventModel.BarID);
+                if (bar == null)
+                {
+                    return HttpNotFound();
+                }
+
+                EventModel.CreateTime = DateTime.Now;
+                db.EventModels.Add(EventModel);
+                db.SaveChanges();
             }
-
-            EventModel.CreateTime = DateTime.Now;
-            db.EventModels.Add(EventModel);
-            db.SaveChanges();
-
             return RedirectToAction("Index", new { id = EventModel.BarID });
         }
         #endregion
@@ -247,7 +248,7 @@ namespace BarCrawler.Controllers
                 model.Description = viewModel.Description;
                 db.Entry(model).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", new { id = model.BarID });
+                return RedirectToAction("Index", new {id = model.BarID});
             }
             return RedirectToAction("BadRequestView");
         }
