@@ -15,7 +15,6 @@ namespace BarCrawler.Models
         public int BarID { get; set; }
         public BarModel BarModel { get; set; }
 
-
         [Timestamp]
         public Byte[] TimeStamp { get; set; }
         [Required]

@@ -27,7 +27,7 @@ namespace DataAccessLogic.Repositories
             drinkModel.Description = viewModel.Description;
             drinkModel.Price = viewModel.Price;
             drinkModel.Title = viewModel.Title;
-            _context.Entry(drinkModel).State = EntityState.Modified;
+            MarkAsDirty(drinkModel);
         }
     }
 }
