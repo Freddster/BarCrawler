@@ -23,6 +23,7 @@ namespace BarCrawler.Controllers
 
         public AccountController()
         {
+            _unitOfWork = new UnitOfWork();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -151,7 +152,7 @@ namespace BarCrawler.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(BigRegisterViewModel model)
+        public async Task<ActionResult> Register(HttpPostedFileBase file, BigRegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -159,9 +160,24 @@ namespace BarCrawler.Controllers
                 var result = await UserManager.CreateAsync(user, model.RegisterViewModel.Password);
                 if (result.Succeeded)
                 {
+                    
                     var bar = new BarModel();
                     _unitOfWork.BarRepository.CreateAndAddBar(ref bar, ref model, ref user);
                     _unitOfWork.Save();
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        file.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Images"),file.FileName));
+
+                        var profilbillede = new BarProfilPictureModel()
+                        {
+                            Directory = Server.MapPath(System.IO.Path.Combine(Server.MapPath("~/Images"), file.FileName)),
+                            CreateTime = DateTime.Now,
+                            BarID = bar.BarID,
+                            BarModel = bar,
+                        };
+                    }
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

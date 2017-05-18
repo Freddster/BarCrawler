@@ -60,7 +60,7 @@ namespace DataAccessLogic.Repositories
             bar.Description = model.BarModel.Description;
             bar.StreetNumber = model.BarModel.StreetNumber;
             bar.City = model.BarModel.City;
-            bar.userID = model.BarModel.userID;
+            bar.userID = user.Id;
             bar.Email = model.BarModel.Email;
             bar.Faculty = model.BarModel.Faculty;
             bar.OpenTime = model.BarModel.OpenTime;
