@@ -76,7 +76,7 @@ namespace BarCrawler.Models
         public List<EventModel> Events { get; set; }        //Overvej at bruge et Dictionary til at gemme i. Brug evt. dato + tid for hvornår event finder sted, for som key til at gemme i dictionary 
         public List<FeedModel> Feeds { get; set; }          //Overvej at bruge et Dictionary til at gemme i. Burg evt. tidspunkt for oprettelse som key
         public List<PictureModel> Pictures { get; set; }
-        public virtual BarProfilPictureModel ProfilPictureModel { get; set; }
+        public virtual BarProfilPictureModel BarProfilPictureModel { get; set; }
         public virtual CoverPictureModel CoverPictureModel { get; set; }
         
 
