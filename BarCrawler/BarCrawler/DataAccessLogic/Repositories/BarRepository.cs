@@ -29,7 +29,7 @@ namespace DataAccessLogic.Repositories
 
         public BarModel GetEditInfo(int? id)
         {
-            return _context.Set<BarModel>().Include(p => p.ProfilPictureModel).SingleOrDefault(x => x.BarID == id);
+            return _context.Set<BarModel>().Include(p => p.BarProfilPictureModel).SingleOrDefault(x => x.BarID == id);
         }
 
         public void EditInfo(EditViewModel editviewmodel, BarModel bar)
