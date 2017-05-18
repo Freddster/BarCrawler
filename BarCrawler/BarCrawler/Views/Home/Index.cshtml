@@ -15,9 +15,17 @@
     <li class="active"><a data-toggle="tab" href="#oversigt">Oversigt</a></li>
     <li><a data-toggle="tab" href="#event">Event</a></li>
     <li><a data-toggle="tab" href="#feed">Feed</a></li>
-    <li><a onclick="initMap" data-toggle="tab" href="#kort">Kort</a></li>
+    <li><a @*onclick="initMap"*@ data-toggle="tab" href="#kort">Kort</a></li>
 </ul>
 
+<script type="text/javascript">
+    console.log("Nav script start!");
+    $("a[href=#kort]").click(function() {
+            console.log("On click called!");
+            //initMap();
+
+        });
+</script>
 
 
 @* ************************ OVERSIGT TAB ****************************** *@
@@ -26,31 +34,40 @@
     <div id="oversigt" class="tab-pane fade in active" role="tabpanel">
         <div class="list-group">
 
+            <p id="count" hidden>@Model.Count()</p>
+
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                <p hidden id="@("address" + i)">@Model.ToList()[i].Address1 @Model.ToList()[i].StreetNumber @Model.ToList()[i].Zipcode @Model.ToList()[i].City</p>
+                <p hidden id="@("name" + i)">@Model.ToList()[i].BarName</p>
+                <p hidden id="@("description" + i)">@Model.ToList()[i].Description</p>
+            }
+
             @* Placeholder for en barprofil *@
             @foreach (var item in Model)
             {
-                
-                    <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID})" class="list-group-item">
 
-                        <div class="media">
-                            <div class="pull-left">
-                                @if (item.ProfilPictureModel != null)
-                                {
-                                    <img src="@Url.Content(item.ProfilPictureModel.Directory)" alt="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="width: 64px; height: 64px" ; position relative; />
-                                }
-                                else
-                                {
-                                    <img src="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="width: 64px; height: 64px; position: relative;" />
-                                }
+                <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID})" class="list-group-item">
 
-                                @*<img class="media-object" src="@Url.Content(item.ProfilPictureModel.Directory == null ? "hej" : item.ProfilPictureModel.Directory)" alt="N/A" style="width: 64px; height: 64px" />*@
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">@item.BarName</h4>
-                                @item.Description
-                            </div>
+                    <div class="media">
+                        <div class="pull-left">
+                            @if (item.ProfilPictureModel != null)
+                            {
+                                <img src="@Url.Content(item.ProfilPictureModel.Directory)" alt="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="width: 64px; height: 64px" ; position relative; />
+                            }
+                            else
+                            {
+                                <img src="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="width: 64px; height: 64px; position: relative;" />
+                            }
+
+                            @*<img class="media-object" src="@Url.Content(item.ProfilPictureModel.Directory == null ? "hej" : item.ProfilPictureModel.Directory)" alt="N/A" style="width: 64px; height: 64px" />*@
                         </div>
-                    </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">@item.BarName</h4>
+                            @item.Description
+                        </div>
+                    </div>
+                </a>
             }
         </div>
     </div>
@@ -173,24 +190,91 @@
 
 <script>
     var map;
+    console.log("Just from script!");
     function initMap() {
+        console.log("Hello from initMap!");
         var aarhus = { lat: 56.158170, lng: 10.198101 };
         map = new google.maps.Map(document.getElementById('map'),
             {
                 zoom: 13,
                 center: aarhus
             });
+
+        console.log($("#count").val());
+
+        for (var i = 0; i < $("#count").text() ; i++) {
+            //addressArray.push();
+        }
+
+        var address = $("#address").text() + " " + $("#City").text();
+
+        //    console.log("Adressen er: " + address);
+
+        //    var heading = $("#Name").text();
+        //    var content = $("#Description").text();
+        //    var contentString = '<h3 id="firstHeading">' + heading + '</h3>' + '<div id="body">' + content + '</div>';
     }
 
 
     function resize() {
+        var addressArray = new Array();
+        var geocoder = new google.maps.Geocoder();
+        var nameArray = new Array();
+        var desArray = new Array();
+
+        var latitude = 0;
+        var longitude = 0;
 
         /* Trigger map resize event */
-        google.maps.event.trigger(map, 'resize');
+        console.log($("#count").text());
+        for (var i = 0; i < $("#count").text() ; i++) {
+            addressArray.push($("#address" + i).text());
+            nameArray.push($("#name" + i).text());
+            desArray.push($("description" + i).text());
+            //console.log($("#address" + i).text());
+            var contentString = '<h3 id="firstHeading">' +
+                nameArray[i] +
+                '</h3>' +
+                '<div id="body">' +
+                desArray[i] +
+                '</div>';
+            console.log(contentString);
+
+            geocoder.geocode({ 'address': addressArray[i] },
+                function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        latitude = results[0].geometry.location.lat();
+                        longitude = results[0].geometry.location.lng();
+
+                        //console.log("LatLng function running!");
+                        //console.log(latitude);
+                        //console.log(longitude);
+
+                        var LatLng = { lat: latitude, lng: longitude };
+
+                        console.log(contentString);
+                        var infoWindow = new google.maps.InfoWindow({
+                            content: contentString
+                        });
+
+                        var marker = new google.maps.Marker({
+                            position: LatLng,
+                            map: map
+                        });
+
+                        marker.addListener('click',
+                            function () {
+                                infoWindow.open(map, marker);
+                            });
+                    }
+
+
+                    google.maps.event.trigger(map, 'resize');
+                });
+
+
+        }
     }
-
-
-
 </script>
 <script async defer
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU&callback=initMap">
