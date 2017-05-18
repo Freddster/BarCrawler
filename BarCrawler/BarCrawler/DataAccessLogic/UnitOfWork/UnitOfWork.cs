@@ -33,7 +33,6 @@ namespace DataAccessLogic.UnitOfWork
             _context = new BarCrawlerContext();
             InitializeRepositories();
             //_barRepository = new BarRepository(_context);
-            _dummyBarRepository = new DummyBarRepository(_context);
         }
 
         /// <summary>
@@ -47,10 +46,11 @@ namespace DataAccessLogic.UnitOfWork
             InitializeRepositories();
         }
 
-        public UnitOfWork(DummyBarRepository barRepo)
+        public UnitOfWork(BarRepository barRepo)
         {
-            _dummyBarRepository = barRepo;
+            this.barRepo = barRepo;
         }
+
         /// <summary>
         /// Initializes the repositories.
         /// </summary>
@@ -114,6 +114,7 @@ namespace DataAccessLogic.UnitOfWork
             return modelToReturn;
         }
         private const int TimeToSubtract = -12;
+        private BarRepository barRepo;
 
         /// <summary>
         /// Gets all bars for home.

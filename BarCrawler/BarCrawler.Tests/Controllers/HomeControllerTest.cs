@@ -24,7 +24,7 @@ namespace BarCrawler.Tests.Controllers
         List<BarModel> bar = null;
         UnitOfWork uow = null;
         HomeController controller = null;
-        DummyBarRepository BarRepo = null;
+       BarRepository BarRepo = null;
 
         [SetUp]
         public void BarControllerTest()
@@ -54,7 +54,7 @@ namespace BarCrawler.Tests.Controllers
             };
 
             ////// Lets create our dummy repository
-            BarRepo = new DummyBarRepository(bar);
+            BarRepo = new BarRepository(bar);
             ////// Let us now create the Unit of work with our dummy repository
             uow = new UnitOfWork(BarRepo);
             ////// Now lets create the BooksController object to test and pass our unit of work
