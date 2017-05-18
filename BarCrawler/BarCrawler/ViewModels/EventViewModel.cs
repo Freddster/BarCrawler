@@ -10,6 +10,23 @@ namespace BarCrawler.ViewModels
 {
     public class EventViewModel
     {
+        public EventViewModel()
+        {}
+        public EventViewModel(EventModel model)
+        {
+            EventID = model.EventID;
+            BarID = model.BarID;
+            Title = model.Title;
+            Description = model.Description;
+            DateAndTimeForEvent = model.DateAndTimeForEvent;
+            Address1 = model.Address1;
+            Address2 = model.Address2;
+            StreetNumber = model.StreetNumber;
+            City = model.City;
+            Zipcode = model.Zipcode;
+
+        }
+
         [Key]
         public int EventID { get; set; }
         [ForeignKey("BarModel")]

@@ -1,4 +1,5 @@
-﻿@using BarCrawler.Models
+﻿@using System.Globalization
+@using BarCrawler.Models
 @model IEnumerable<BarCrawler.Models.BarModel>
 
 
@@ -19,7 +20,6 @@
 </ul>
 
 
-
 @* ************************ OVERSIGT TAB ****************************** *@
 
 <div id="ForsideTabContext" class="tab-content">
@@ -29,28 +29,28 @@
             @* Placeholder for en barprofil *@
             @foreach (var item in Model)
             {
-                
-                    <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID})" class="list-group-item">
 
-                        <div class="media">
-                            <div class="pull-left">
-                                @if (item.ProfilPictureModel != null)
-                                {
-                                    <img src="@Url.Content(item.ProfilPictureModel.Directory)" alt="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="width: 64px; height: 64px" ; position relative; />
-                                }
-                                else
-                                {
-                                    <img src="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="width: 64px; height: 64px; position: relative;" />
-                                }
+                <a href="@Url.Action("Index", "BarProfil", new {id = item.BarID})" class="list-group-item">
 
-                                @*<img class="media-object" src="@Url.Content(item.ProfilPictureModel.Directory == null ? "hej" : item.ProfilPictureModel.Directory)" alt="N/A" style="width: 64px; height: 64px" />*@
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">@item.BarName</h4>
-                                @item.Description
-                            </div>
+                    <div class="media">
+                        <div class="pull-left">
+                            @if (item.ProfilPictureModel != null)
+                            {
+                                <img src="@Url.Content(item.ProfilPictureModel.Directory)" alt="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="width: 64px; height: 64px" ; position relative; />
+                            }
+                            else
+                            {
+                                <img src="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="width: 64px; height: 64px; position: relative;" />
+                            }
+
+                            @*<img class="media-object" src="@Url.Content(item.ProfilPictureModel.Directory == null ? "hej" : item.ProfilPictureModel.Directory)" alt="N/A" style="width: 64px; height: 64px" />*@
                         </div>
-                    </a>
+                        <div class="media-body">
+                            <h4 class="media-heading">@item.BarName</h4>
+                            @item.Description
+                        </div>
+                    </div>
+                </a>
             }
         </div>
     </div>
@@ -85,7 +85,9 @@
                     <div class="col-lg-1">
                         <div class="row">
                             <p style="color: #22662f">
-                                @eventobj.DateAndTimeForEvent
+                                @eventobj.DateAndTimeForEvent.ToString("dddd", CultureInfo.CreateSpecificCulture("da-DK"))
+                                <br />
+                                @eventobj.DateAndTimeForEvent.ToString("dd-MM-yyyy HH:mm")
                             </p>
                         </div>
                     </div>
@@ -113,48 +115,76 @@
 
 
     @* ************************ FEED TAB ****************************** *@
-    @*Lav feed tabel snart!*@
-
-    @foreach (var item in Model)
-    {
-        if (item.Feeds != null)
-        {
-            foreach (var feed in item.Feeds)
+    <div id="feed" class="tab-pane fade">
+        @{
+            //opretter en liste med EventModeller
+            List<FeedModel> feedList = new List<FeedModel>();
+            foreach (var item in Model)
             {
-                <div id="feed" class="tab-pane fade">
-                    <a class="list-group-item">
-                        <div class="container">
-                            <div class="col-lg-1">
-                                <div class="row">
-                                    <p style="color: #22662f">
-                                        @* MAngler tid for post / DateTime prop *@
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-lg-10">
-                                <div class="row">
-                                    <p>
-                                        <b>
-                                            @item.BarName
-                                        </b>
-                                    </p>
-                                </div>
-
-                                <div class="row">
-                                    <p>
-                                        @feed.Text
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                if (item.Feeds != null)
+                {
+                    foreach (var feed in item.Feeds)
+                    {
+                        feedList.Add(feed);
+                    }
+                }
             }
+            feedList = feedList.OrderBy(o => o.CreateTime).ToList();
         }
-    }
 
 
+        @foreach (var feedobj in feedList)
+        {
+            <a href="@Url.Action("Index", "BarProfil", new {id = feedobj.BarID})" class="list-group-item">
+                <div>
+                    <div style="font-size: 18px; ">
+                        <b>@feedobj.BarModel.BarName</b>
+                    </div>
+                    <div style="font-size: 12px">
+                        <i>@feedobj.CreateTime.ToString("HH:mm dd-MM-yyyy")</i> 
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <p id="feedPara">
+                        @feedobj.Text
+                    </p>
+                    <style>
+                        #feedPara {
+                            width: inherit;
+                            font-size: 20px;
+                            word-wrap: break-word;
+                        }
+                    </style>
+                </div>
+            </a>
+        }
 
+        @*@foreach (var feedobj in feedList) //Udskriver den sorterede liste på event-fanen
+        {
+            <a href="@Url.Action("Index", "BarProfil", new {id = feedobj.BarID})" class="list-group-item">
+                <div class="container">
+                    <div class="col-lg-1">
+                        <div class="row">
+                            <p style="color: #22662f">
+                                @feedobj.CreateTime
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="row">
+                            <h4><b>@feedobj.BarModel.BarName</b></h4>
+                        </div>
+
+                        <div class="row">
+                            <p>
+                                @feedobj.Text
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>*@
 
     @* ************************ GOOGLE MAPS TAB ****************************** *@
 

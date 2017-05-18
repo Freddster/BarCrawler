@@ -345,6 +345,7 @@
     <Content Include="Views\BarProfil\CreatePicture.cshtml" />
     <Content Include="Views\BarProfil\EditPicture.cshtml" />
     <Content Include="Views\BarProfil\BadRequestView.cshtml" />
+    <Content Include="Views\BarProfil\EditEvent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

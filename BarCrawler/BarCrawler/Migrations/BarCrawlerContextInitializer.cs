@@ -187,9 +187,10 @@ namespace BarCrawler.Migrations
             {
                 context.BarModels.Add(barModel);
             }
-            
-            base.Seed(context);
+
             applicationDbContext.SaveChanges();
+            base.Seed(context);
+            
             //SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
         }

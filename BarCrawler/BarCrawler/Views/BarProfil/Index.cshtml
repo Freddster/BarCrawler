@@ -1,4 +1,5 @@
-﻿@using System.Net.Configuration
+﻿@using System.Globalization
+@using System.Net.Configuration
 @using BarCrawler.Models
 @using Microsoft.AspNet.Identity
 @using System.Reflection.Emit
@@ -43,10 +44,10 @@
         var contentString = '<h3 id="firstHeading">' + heading + '</h3>' + '<div id="body">' + content + '</div>';
 
 
-            
+
 
         geocoder.geocode({ 'address': address },
-            function(results, status) {
+            function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     latitude = results[0].geometry.location.lat();
                     longitude = results[0].geometry.location.lng();
@@ -67,7 +68,7 @@
                     });
 
                     marker.addListener('click',
-                        function() {
+                        function () {
                             infoWindow.open(map, marker);
                         });
 
@@ -75,7 +76,7 @@
                 }
             });
 
-        
+
 
     }
 
@@ -162,7 +163,7 @@
                         </style>
                     </li>
                 </ul>
-                
+
                 <script>
                     function passText() {
                         var text = $("#feedInput").val();
@@ -228,7 +229,7 @@
                         <tr>
                             @*Vejnavn og nummer*@
                             <td style="width: 27px"><span class="glyphicon glyphicon-home"></span></td>
-                            <td id ="address">@Model.Address1 @Model.StreetNumber</td>
+                            <td id="address">@Model.Address1 @Model.StreetNumber</td>
                         </tr>
                         <tr>
                             @*Postnummer og by*@
@@ -255,6 +256,18 @@
     @* ************************ EVENT TAB ****************************** *@
 
 
+    <script>
+    function EditEvent(eventId) {
+        window.location.href = '@Url.Action("EditEvent", new {id = Model.BarID})' + '?Eid=' + eventId;
+    }
+    </script>
+
+    <script>
+    function DeleteEvent(eventId) {
+        window.location.href = '@Url.Action("DeleteEvent", new {id = Model.BarID})' + '?Eid=' + eventId;
+    }
+    </script>
+
     <div role="tabpanel" class="tab-pane fade in" id="Events">
         <h2>
             Events
@@ -265,8 +278,8 @@
                 </a>
             }
         </h2>
-        
-        
+
+
 
         <div class="container">
             @if (Model.Events != null)
@@ -282,11 +295,14 @@
                                     <div class="col-lg-1">
                                         <div class="row">
                                             <p style="color: #22662f">
-                                                @eventobj.DateAndTimeForEvent
+                                                @eventobj.DateAndTimeForEvent.ToString("dddd", CultureInfo.CreateSpecificCulture("da-DK"))
+                                                <br/>
+                                                @eventobj.DateAndTimeForEvent.ToString("dd-MM-yyyy HH:mm")
                                             </p>
                                         </div>
                                     </div>
                                     <div class="col-lg-5">
+
                                         <div class="row">
                                             <h4><b>@eventobj.Title</b></h4>
                                         </div>
@@ -302,6 +318,21 @@
                                             </p>
                                         </div>
                                     </div>
+                                    @if (User.Identity.GetUserId() == Model.userID)
+                                    {
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <button class="btn btn-default pull-right" onclick="EditEvent(@eventobj.EventID)" style="font-size: 8px;">
+                                                    <i class="glyphicon glyphicon-cog"></i>
+                                                </button>
+                                            </div>
+                                            <div class="row">
+                                                <button class="btn btn-default pull-right" onclick="DeleteEvent(@eventobj.EventID)" style="font-size: 8px;">
+                                                    <i class="glyphicon glyphicon-remove"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    }
                                 </div>
                             </a>
                         }
@@ -332,6 +363,7 @@
             left: 0;
             display: none;
         }
+
         .EditButton {
             position: absolute;
             top: 174px;
@@ -388,19 +420,19 @@
         }
     </div>
 
-<script>
+    <script>
     function deletePicture(pictureId) {
         window.location.href = '@Url.Action("DeletePicture", new {id = Model.BarID})' + '?Pid=' + pictureId;
     }
-</script>
-    
-<script>
+    </script>
+
+    <script>
     function EditPicture(pictureId) {
         window.location.href = '@Url.Action("EditPicture", new {id = Model.BarID})' + '?Pid=' + pictureId;
     }
-</script>
+    </script>
 
-@* ************************ INFO TAB ****************************** *@
+    @* ************************ INFO TAB ****************************** *@
 
     <div role="tabpanel" class="tab-pane fade in" id="Info">
         <h2>
@@ -511,7 +543,7 @@
                                     <td class="col-md-1, text-right">
                                         @Html.ActionLink("Rediger", "EditDrink", new { id = item.DrinkID, barId = Model.BarID })
                                         @*@Html.Display(" | ")*@ |
-                                        @Html.ActionLink("Slet", "DeleteDrink", new {id = item.DrinkID})
+                                        @Html.ActionLink("Slet", "DeleteDrink", new { id = item.DrinkID })
 
                                     </td>
                                 }
