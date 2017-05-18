@@ -255,12 +255,17 @@
     <Compile Include="Migrations\201705161136555_BarnameOnApplicationuser.Designer.cs">
       <DependentUpon>201705161136555_BarnameOnApplicationuser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705181129115_AddedCoverPictureModel.cs" />
+    <Compile Include="Migrations\201705181129115_AddedCoverPictureModel.Designer.cs">
+      <DependentUpon>201705181129115_AddedCoverPictureModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\BarCrawlerContextInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BarCrawlerContext.cs" />
     <Compile Include="Models\BarModel.cs" />
     <Compile Include="Models\BarProfilPictureModel.cs" />
+    <Compile Include="Models\CoverPictureModel.cs" />
     <Compile Include="Models\ICustomBarContext.cs" />
     <Compile Include="ViewModels\BigRegisterViewModel.cs" />
     <Compile Include="Models\DrinkModel.cs" />
@@ -394,6 +399,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705161136555_BarnameOnApplicationuser.resx">
       <DependentUpon>201705161136555_BarnameOnApplicationuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705181129115_AddedCoverPictureModel.resx">
+      <DependentUpon>201705181129115_AddedCoverPictureModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
