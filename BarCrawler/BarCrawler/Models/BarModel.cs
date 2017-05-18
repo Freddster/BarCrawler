@@ -77,6 +77,7 @@ namespace BarCrawler.Models
         public List<FeedModel> Feeds { get; set; }          //Overvej at bruge et Dictionary til at gemme i. Burg evt. tidspunkt for oprettelse som key
         public List<PictureModel> Pictures { get; set; }
         public virtual BarProfilPictureModel ProfilPictureModel { get; set; }
+        public virtual CoverPictureModel CoverPictureModel { get; set; }
         
 
         public string userID { get; set; }
