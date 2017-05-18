@@ -32,6 +32,8 @@ namespace DataAccessLogic.UnitOfWork
             Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
             _context = new BarCrawlerContext();
             InitializeRepositories();
+            //_barRepository = new BarRepository(_context);
+            _dummyBarRepository = new DummyBarRepository(_context);
         }
 
         /// <summary>
@@ -45,6 +47,10 @@ namespace DataAccessLogic.UnitOfWork
             InitializeRepositories();
         }
 
+        public UnitOfWork(DummyBarRepository barRepo)
+        {
+            _dummyBarRepository = barRepo;
+        }
         /// <summary>
         /// Initializes the repositories.
         /// </summary>

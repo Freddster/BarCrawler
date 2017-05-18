@@ -13,6 +13,7 @@ namespace BarCrawler.Controllers
     {
         BarCrawlerContext db; // = new BarCrawlerContext();
         private readonly UnitOfWork _unitOfWork;// = new UnitOfWork();
+        private UnitOfWork uow;
 
         public HomeController()
         {
@@ -24,9 +25,15 @@ namespace BarCrawler.Controllers
             _unitOfWork = new UnitOfWork(context);
         }
 
+        public HomeController(UnitOfWork _uow)
+        {
+            this.uow = _uow;
+        }
+
         public ActionResult Index()
         {
-            return View(_unitOfWork.GetAllBarsForHome());
+            List<BarModel> barModelList = (List<BarModel>)_unitOfWork.GetAllBarsForHome();
+            return View(barModelList);
         }
 
         public ActionResult Contact()

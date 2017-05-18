@@ -207,6 +207,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DataAccessLogic\Repositories\BarRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\DrinkRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\DummyBarRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\EventRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\FeedRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\GenericRepository.cs" />
