@@ -163,6 +163,87 @@ namespace BarCrawler.Controllers
 
         #endregion
         #region Gallery
+
+        #region Edit Coverbillede
+
+        [HttpGet]
+        public ActionResult EditCoverPicture(int id)
+        {
+            var picture = _unitOfWork.CoverPictureRepository.GetByID(id);
+            if (picture == null)
+            {
+                return HttpNotFound();
+            }
+            var bm = _unitOfWork.BarRepository.GetByID(id);
+            if (bm == null)
+                return HttpNotFound();
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
+            {
+                PictureViewModel viewModel = new PictureViewModel(picture);
+                return View(viewModel);
+            }
+            return RedirectToAction("BadRequestView");
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditCoverPicture(PictureViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var model = _unitOfWork.CoverPictureRepository.GetByID(viewModel.PictureID);
+                if (model == null)
+                    return HttpNotFound();
+                _unitOfWork.CoverPictureRepository.AddModelForUpdate(ref viewModel, ref model);
+                _unitOfWork.Save();
+                return RedirectToAction("Index", new { id = model.BarID });
+
+            }
+            return RedirectToAction("BadRequestView");
+        }
+        #endregion
+
+        #region Edit Profilbillede
+
+        [HttpGet]
+        public ActionResult EditProfilPicture(int id)
+        {
+            var picture = _unitOfWork.BarProfilPictureRepository.GetByID(id);
+            if (picture == null)
+            {
+                return HttpNotFound();
+            }
+            var bm = _unitOfWork.BarRepository.GetByID(id);
+            if (bm == null)
+                return HttpNotFound();
+            if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
+            {
+                PictureViewModel viewModel = new PictureViewModel(picture);
+                return View(viewModel);
+            }
+            return RedirectToAction("BadRequestView");
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProfilPicture(PictureViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var model = _unitOfWork.BarProfilPictureRepository.GetByID(viewModel.PictureID);
+                if (model == null)
+                    return HttpNotFound();
+                _unitOfWork.BarProfilPictureRepository.AddModelForUpdate(ref viewModel, ref model);
+                _unitOfWork.Save();
+                return RedirectToAction("Index", new { id = model.BarID });
+
+            }
+            return RedirectToAction("BadRequestView");
+        }
+        #endregion
+
         #region Create Picture
         public ActionResult CreatePicture(int id)
         {
@@ -203,32 +284,6 @@ namespace BarCrawler.Controllers
         }
         #endregion
 
-        #region Edit Profilbillede
-
-        [HttpGet]
-        public ActionResult EditProfilPicture(int id)
-        {
-            //if(id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditProfilPicture(PictureViewModel viewModel)
-        {
-            if (ModelState.IsValid)
-            {
-                var model = _unitOfWork.BarProfilPictureRepository.GetByID(viewModel.BarID);
-                _unitOfWork.BarProfilPictureRepository.AddModelForUpdate(ref viewModel, ref model);
-                _unitOfWork.Save();
-                return RedirectToAction("Index", new { id = model.BarID });
-
-            }
-            return RedirectToAction("BadRequestView");
-        }
-        #endregion
-
         #region Edit Picture
         [HttpGet]
         public ActionResult EditPicture(int id, int Pid/**/)
@@ -255,7 +310,6 @@ namespace BarCrawler.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 var model = _unitOfWork.PictureRepository.GetByID(viewModel.PictureID);
                 _unitOfWork.PictureRepository.AddModelForUpdate(ref viewModel, ref model);
                 _unitOfWork.Save();

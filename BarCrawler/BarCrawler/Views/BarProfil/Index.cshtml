@@ -90,7 +90,7 @@
 @* ************************ CoverBillede ****************************** *@
 <script>
     function EditCover() {
-        window.location.href = '@Url.Action("EditPicture", new {id = Model.BarID})';
+        window.location.href = '@Url.Action("EditCoverPicture", new {id = Model.BarID})';
     }
 </script>
 <style>
@@ -107,9 +107,9 @@
 </style>
 
 <div class="coverbillede" style="width: 100%; height: 350px; overflow: hidden;">
-    @if (Model.BarProfilPictureModel != null)
+    @if (Model.CoverPictureModel != null)
     {
-        <img class="resize" src="@Url.Content(Model.BarProfilPictureModel.Directory)" alt="N/A" style="max-height: 350px; position: relative;" />
+        <img class="resize" src="@Url.Content(Model.CoverPictureModel.Directory)" alt="N/A" style="max-height: 350px; position: relative;" />
     }
     else
     {
@@ -117,7 +117,7 @@
     }
     @if (User.Identity.GetUserId() == Model.userID)
     {
-        <input class="EditCoverButton" type="button" @*onclick="EditPicture()"*@ value="Ændre" />
+        <input class="EditCoverButton" type="button" onclick="EditCover()" value="Ændre" />
     }
 </div>
 
@@ -437,36 +437,37 @@
 <div role="tabpanel" class="tab-pane fade in" id="Galleri">
     
     @* PROFILBILLEDE *@
-    <div>
+    <div class="row">
         <h2>
             Profilbillede
         </h2>
-        <div class="show-button" style="clear: right">
-            @if (Model.BarProfilPictureModel != null)
+            <div class="show-button" style="clear: right">
+                @if (Model.BarProfilPictureModel != null)
             {
-                <img class="resize" id="picture" src="@Url.Content(Model.BarProfilPictureModel.Directory)" alt="N/A" />
-            }
-            else
+                    <img class="resize" id="picture" src="@Url.Content(Model.BarProfilPictureModel.Directory)" alt="N/A" />
+                }
+                else
+                {
+                    <img class="resize" id="picture" src="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" />
+                }
+                @if (User.Identity.GetUserId() == Model.userID)
             {
-                <img class="resize" id="picture" src="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" />
-            }
-            @if (User.Identity.GetUserId() == Model.userID)
-            {
-                <input class="EditButton" type="button" onclick="EditProfilPicture()" value="Ændre" />
-            }
-        </div>
+                    <input class="EditButton" type="button" onclick="EditProfilPicture()" value="Ændre" />
+                }
+            </div>
     </div>
     @*Galleri*@
-
-    <h2>
-        Galleri
-        @if (User.Identity.GetUserId() == Model.userID)
-        {
-            <a href="@Url.Action("CreatePicture", "BarProfil", new {id = @Model.BarID})">
-                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
-            </a>
-        }
-    </h2>
+    <div class="row">
+        <h2>
+            Galleri
+            @if (User.Identity.GetUserId() == Model.userID)
+            {
+                <a href="@Url.Action("CreatePicture", "BarProfil", new {id = @Model.BarID})">
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+                </a>
+            }
+        </h2>
+    </div>
     @if (@Model.Pictures.Count > 0)
     {
         <div class="row">
