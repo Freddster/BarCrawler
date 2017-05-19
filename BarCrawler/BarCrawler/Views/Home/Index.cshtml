@@ -75,7 +75,7 @@
             }
         </div>
     </div>
-    </div>
+
     @* ************************ EVENT TAB ****************************** *@
 
     <div id="event" class="tab-pane fade">
@@ -162,7 +162,7 @@
                         <b>@feedobj.BarModel.BarName</b>
                     </div>
                     <div style="font-size: 12px">
-                        <i>@feedobj.CreateTime.ToString("HH:mm dd-MM-yyyy")</i> 
+                        <i>@feedobj.CreateTime.ToString("HH:mm dd-MM-yyyy")</i>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -180,32 +180,6 @@
             </a>
         }
     </div>
-        @*@foreach (var feedobj in feedList) //Udskriver den sorterede liste på event-fanen
-        {
-            <a href="@Url.Action("Index", "BarProfil", new {id = feedobj.BarID})" class="list-group-item">
-                <div class="container">
-                    <div class="col-lg-1">
-                        <div class="row">
-                            <p style="color: #22662f">
-                                @feedobj.CreateTime
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="row">
-                            <h4><b>@feedobj.BarModel.BarName</b></h4>
-                        </div>
-
-                        <div class="row">
-                            <p>
-                                @feedobj.Text
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        }
-    </div>*@
 
     @* ************************ GOOGLE MAPS TAB ****************************** *@
 
@@ -234,7 +208,7 @@
 
         console.log($("#count").text());
 
-        for (var i = 0; i < $("#count").text() ; i++) {
+        for (var i = 0; i < $("#count").text(); i++) {
             addressArray.push($("#address" + i).text());
             nameArray.push($("#name" + i).text());
             desArray.push($("#description" + i).text());
