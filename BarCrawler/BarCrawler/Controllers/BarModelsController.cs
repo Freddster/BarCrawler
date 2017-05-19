@@ -19,6 +19,12 @@ namespace BarCrawler.Controllers
     {
         private BarCrawlerContext db = new BarCrawlerContext();
         private UnitOfWork unitOfWork = new UnitOfWork();
+        private UnitOfWork uow;
+
+        public BarModelsController(UnitOfWork _uow)
+        {
+            this.uow = _uow;
+        }
 
         // GET: api/BarModels
         public IQueryable<BarModel> GetBarModels()

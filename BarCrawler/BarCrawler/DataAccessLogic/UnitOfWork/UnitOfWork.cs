@@ -33,6 +33,7 @@ namespace DataAccessLogic.UnitOfWork
             //Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
             _context = new BarCrawlerContext();
             InitializeRepositories();
+            //_barRepository = new BarRepository(_context);
         }
 
         /// <summary>
@@ -44,6 +45,11 @@ namespace DataAccessLogic.UnitOfWork
             Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
             _context = context;
             InitializeRepositories();
+        }
+
+        public UnitOfWork(BarRepository barRepo)
+        {
+            this.barRepo = barRepo;
         }
 
         /// <summary>
@@ -95,6 +101,9 @@ namespace DataAccessLogic.UnitOfWork
                 .Include(ppp => ppp.CoverPictureModel)
                 .SingleOrDefault(x => x.BarID == id);
 
+            if (modelToReturn == null)
+                return null;
+
             modelToReturn.Feeds = modelToReturn.Feeds.OrderByDescending(o => o.CreateTime).ToList();
 
             if (modelToReturn != null)
@@ -115,6 +124,7 @@ namespace DataAccessLogic.UnitOfWork
             return modelToReturn;
         }
         private const int TimeToSubtract = -12;
+        private BarRepository barRepo;
 
         /// <summary>
         /// Gets all bars for home.

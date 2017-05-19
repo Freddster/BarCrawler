@@ -14,6 +14,11 @@ namespace BarCrawler.DataAccessLogic.Repositories
     {
         protected DbContext _context;
 
+        public GenericRepository()
+        {
+            
+        }
+
         public GenericRepository(DbContext context)
         {
             _context = context;

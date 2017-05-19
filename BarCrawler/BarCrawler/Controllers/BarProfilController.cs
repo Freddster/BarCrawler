@@ -512,7 +512,6 @@ namespace BarCrawler.Controllers
         public ActionResult BadRequestView()
         {
             return View();
-
         }
         #endregion
 

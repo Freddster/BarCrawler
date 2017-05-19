@@ -11,11 +11,17 @@ namespace DataAccessLogic.Repositories
     public class BarRepository : GenericRepository<BarModel>, IBarRepository
     {
         private DbSet<BarModel> _dbSet;
+        private List<BarModel> bar;
 
         public BarRepository(BarCrawlerContext receivedContext) : base(receivedContext)
         {
             //_context = receivedContext;
             _dbSet = receivedContext.BarModels;
+        }
+
+        public BarRepository(List<BarModel> bar1)
+        {
+            this.bar = bar1;
         }
 
         public BarModel GetProfile(int? id)
