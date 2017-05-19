@@ -43,6 +43,16 @@ namespace BarCrawler.Tests.Controllers
             controller = new HomeController();
         }
 
+
+        [Test]
+        public void Index_NotNull_ExpectedTrue()
+        {
+            // Act
+            ViewResult result = controller.Index() as ViewResult;
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
         [Test]
         public void Index_TwoBarsInModel_ExpectedTrue()
         {
@@ -55,7 +65,7 @@ namespace BarCrawler.Tests.Controllers
         }
 
         [Test]
-        public void Index_1FeedInModel_ExpectedTrue()
+        public void Index_OneFeedInModel_ExpectedTrue()
         {
             // Arrange
             ViewResult result = controller.Index() as ViewResult;
@@ -66,10 +76,8 @@ namespace BarCrawler.Tests.Controllers
         }
 
         [Test]
-        public void ContactNotNull_ExpectedTrue()
+        public void Contact_ViewIsCalled_ExpectedTrue()
         {
-            // Arrange
-            HomeController controller = new HomeController();
             // Act
             ViewResult result = controller.Contact() as ViewResult;
             // Assert
@@ -77,26 +85,13 @@ namespace BarCrawler.Tests.Controllers
         }
 
         [Test]
-        public void Contact_ViewBagMessage_ExpectedTrue()
+        public void Contact_ViewBagMessageIsShown_ExpectedMessageMatch()
         {
-            // Arrange
-            HomeController controller = new HomeController();
             // Act
             ViewResult result = controller.Contact() as ViewResult;
             ;
             // Assert
             Assert.AreEqual("Your contact page.", result.ViewBag.Message);
-        }
-
-        [Test]
-        public void Index_NotNull_ExpectedTrue()
-        {
-            // Arrange
-           
-            // Act
-            ViewResult result = controller.Index() as ViewResult;
-            // Assert
-            Assert.IsNotNull(result);
         }
     }
 }
