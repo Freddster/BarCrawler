@@ -44,7 +44,7 @@ namespace BarCrawler.Tests.Controllers
         }
 
         [Test]
-        public void IndexWithTwoBar_ExpectedTrue()
+        public void Index_TwoBarsInModel_ExpectedTrue()
         {
             // Arrange
             ViewResult result = controller.Index() as ViewResult;
@@ -55,7 +55,7 @@ namespace BarCrawler.Tests.Controllers
         }
 
         [Test]
-        public void IndexWithOneBar_ExpectedTrue()
+        public void Index_1FeedInModel_ExpectedTrue()
         {
             // Arrange
             ViewResult result = controller.Index() as ViewResult;
