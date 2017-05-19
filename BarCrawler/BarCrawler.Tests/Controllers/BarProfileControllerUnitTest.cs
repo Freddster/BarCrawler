@@ -83,6 +83,7 @@ namespace BarCrawler.Tests.Controllers
         [Test]
         public void BarLink_UserLoggedIn_ExpectSomethingWhoKnowWhat()
         {
+
             //Lav noget med at logge ind som en bruger.
             //Log ind som kk@ase.au.dk
             //Prøv herefter at kalde barlink
