@@ -35,7 +35,7 @@ namespace DataAccessLogic.Repositories
 
         public BarModel GetEditInfo(int? id)
         {
-            return _context.Set<BarModel>().Include(p => p.ProfilPictureModel).SingleOrDefault(x => x.BarID == id);
+            return _context.Set<BarModel>().Include(p => p.BarProfilPictureModel).SingleOrDefault(x => x.BarID == id);
         }
 
         public void EditInfo(EditViewModel editviewmodel, BarModel bar)
@@ -66,7 +66,7 @@ namespace DataAccessLogic.Repositories
             bar.Description = model.BarModel.Description;
             bar.StreetNumber = model.BarModel.StreetNumber;
             bar.City = model.BarModel.City;
-            bar.userID = model.BarModel.userID;
+            bar.userID = user.Id;
             bar.Email = model.BarModel.Email;
             bar.Faculty = model.BarModel.Faculty;
             bar.OpenTime = model.BarModel.OpenTime;

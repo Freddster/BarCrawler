@@ -205,12 +205,16 @@
     <Compile Include="Controllers\BarProfilController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DataAccessLogic\Repositories\BarProfilPictureRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\BarRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\DrinkRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\EventRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\FeedRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\GenericRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\CoverPictureRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\Interface\IBarProfilPictureRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\Interface\IBarRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\Interface\ICoverPictureRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\Interface\IPictureRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\Interface\IDrinkRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\Interface\IEventRepository.cs" />
@@ -289,6 +293,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="SharedImage\FrontpageJumbotron.jpg" />
     <Content Include="Images\bar.jpg" />
     <Content Include="Scripts\googleMaps.js" />
@@ -301,11 +313,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -354,7 +363,7 @@
     <Content Include="Views\BarProfil\EditPicture.cshtml" />
     <Content Include="Views\BarProfil\BadRequestView.cshtml" />
     <Content Include="Views\BarProfil\EditEvent.cshtml" />
-    <Content Include="Views\BarProfil\EditProfilePicture.cshtml" />
+    <Content Include="Views\BarProfil\EditProfilPicture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -371,9 +380,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201704210849293_Initial.resx">

@@ -96,6 +96,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BarProfileControllerUnitTest.cs" />
     <Compile Include="Models\BarModelUnitTest.cs" />
     <Compile Include="Models\DrinkModelUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
