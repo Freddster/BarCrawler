@@ -152,7 +152,7 @@ namespace BarCrawler.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(HttpPostedFileBase file, BigRegisterViewModel model)
+        public async Task<ActionResult> Register(/*HttpPostedFileBase file,*/ BigRegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -165,19 +165,40 @@ namespace BarCrawler.Controllers
                     _unitOfWork.BarRepository.CreateAndAddBar(ref bar, ref model, ref user);
                     _unitOfWork.Save();
 
-                    if (file != null && file.ContentLength > 0)
+                    var profilbillede = new BarProfilPictureModel()
                     {
-                        file.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Images"),file.FileName));
+                        CreateTime = DateTime.Now,
+                        BarID = bar.BarID,
+                        BarModel = bar,
+                    };
 
-                        var profilbillede = new BarProfilPictureModel()
-                        {
-                            Directory = Server.MapPath(System.IO.Path.Combine(Server.MapPath("~/Images"), file.FileName)),
-                            CreateTime = DateTime.Now,
-                            BarID = bar.BarID,
-                            BarModel = bar,
-                        };
-                    }
+                    var coverbillede = new CoverPictureModel()
+                    {
+                        CreateTime = DateTime.Now,
+                        BarID = bar.BarID,
+                        BarModel = bar,
+                    };
 
+                    profilbillede.Directory = model.BarModel.BarProfilPictureModel.Directory ??
+                                              "http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1"; 
+
+                    coverbillede.Directory = model.BarModel.CoverPictureModel.Directory ?? "http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1";
+
+                    //if (file != null && file.ContentLength > 0)
+                    //{
+                    //    string pic = System.IO.Path.GetFileName(file.FileName); 
+                    //    file.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Images"), pic));
+
+                    //    profilbillede.Directory = Server.MapPath(
+                    //        System.IO.Path.Combine(Server.MapPath("~/Images"), file.FileName));
+                    //}
+                    //else
+                    //    profilbillede.Directory = Server.MapPath("~/Images/Fingers.png");
+
+                    _unitOfWork.BarProfilPictureRepository.Add(profilbillede);
+                    _unitOfWork.CoverPictureRepository.Add(coverbillede);
+                    _unitOfWork.Save();
+                    
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

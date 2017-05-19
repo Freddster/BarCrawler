@@ -19,6 +19,7 @@ namespace BarCrawler.Models
         [Display(Name = "Oprettelses tidspunkt")]
         public DateTime CreateTime { get; set; }
 
+        [Display(Name = "Coverbillede URL")]
         public string Directory { get; set; }
 
         [MaxLength(200)]

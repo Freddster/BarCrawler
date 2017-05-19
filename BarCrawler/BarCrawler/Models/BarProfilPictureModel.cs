@@ -16,6 +16,7 @@ namespace BarCrawler.Models
         [Display(Name = "Oprettelses tidspunkt")]
         public DateTime CreateTime { get; set; }
 
+        [Display(Name = "Profilbillede URL")]
         public string Directory { get; set; }
 
         [MaxLength(200)]
