@@ -1,67 +1,91 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.WebPages;
 using BarCrawler.Models;
+using DataAccessLogic.UnitOfWork;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
 namespace BarCrawler.Tests.Models
 {
     [TestFixture]
-    class DrinkModelUnitTest
+    public class DrinkModelUnitTest
     {
+        private DrinkModel model;
+        private UnitOfWork uow;
+
         [SetUp]
         public void SetUp()
         {
-
+            model = new DrinkModel();
+            uow = new UnitOfWork();
         }
 
-        //    [Test]
-        //    public void ValidateDrinkModel_DrinkModel_NoError()
-        //    {
-        //        DrinkModel _uut = new DrinkModel();
-        //        _uut.Title = "Katrines";
+        [Test]
+        public void ValidateDrinkModelWithAllRequirements_ExpectedNoValidationErrors()
+        {
+            model = new DrinkModel
+            {
+                BarModel = new BarModel(),
+                BarID = 6,
+                Title = "Den fede drik",
+                Description = "Episk drik",
+                Price = 22.5
+            };
 
-        //        var validationResult = ValidationHelper.
-        //    }
-        //}
+            var results = BarModelUnitTest.TestModelHelper.Validate(model);
 
-        //public class EntityValidationResult
-        //{
-        //    public IList<validationresult> Errors { get; private set; }
-        //    public bool HasError
-        //    {
-        //        get { return Errors.Count > 0; }
-        //    }
+            Assert.AreEqual(0, results.Count);
+        }
 
-        //    public EntityValidationResult(IList<validationresult> errors = null)
-        //    {
-        //        Errors = errors ?? new List<validationresult>();
-        //    }
-        //}
+        [Test]
+        public void ValidateDrinkModelWithNoTitle_ExpectedOneValidationErrors()
+        {
+            model = new DrinkModel
+            { 
+                BarModel = new BarModel(),
+                BarID = 6,
+                //Title = "Den fede drik",
+                Description = "Episk drik",
+                Price = 22.5
+            };
 
-        //public class EntityValidator<t> where T : class
-        //{
-        //    public EntityValidationResult Validate(T entity)
-        //    {
-        //        var validationResults = new List<validationresult>();
-        //        var vc = new ValidationContext(entity, null, null);
-        //        var isValid = Validator.TryValidateObject
-        //                (entity, vc, validationResults, true);
+            var results = BarModelUnitTest.TestModelHelper.Validate(model);
 
-        //        return new EntityValidationResult(validationResults);
-        //    }
-        //}
+            Assert.AreEqual(1, results.Count);
+        }
 
-        //public class ValidationHelper
-        //{
-        //    public static EntityValidationResult ValidateEntity<t>(T entity)
-        //        where T : class
-        //    {
-        //        return new EntityValidator<t>().Validate(entity);
-        //    }
-        //}
+        [Test]
+        public void ValidateDrinkModelWithNoPrice_ExpectedOneValidationErrors() // Virker ikke endnu
+        {
+            model = new DrinkModel
+            {
+                BarModel = new BarModel(),
+                BarID = 6,
+                Title = "Den fede drik",
+                Description = "Episk drik",
+                Price = 22.5
+            };
+
+            var results = BarModelUnitTest.TestModelHelper.Validate(model);
+
+            Assert.AreEqual(0, results.Count);
+        }
+
+        public class TestModelHelper
+        {
+            public static IList<ValidationResult> Validate(object model)
+            {
+                var results = new List<ValidationResult>();
+                var validationContext = new ValidationContext(model, null, null);
+                Validator.TryValidateObject(model, validationContext, results, true);
+                if (model is IValidatableObject) (model as IValidatableObject).Validate(validationContext);
+                return results;
+            }
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace BarCrawler.Controllers
 
         public AccountController()
         {
+            _unitOfWork = new UnitOfWork();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )

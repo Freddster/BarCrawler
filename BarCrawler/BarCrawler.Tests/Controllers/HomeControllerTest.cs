@@ -69,8 +69,19 @@ namespace BarCrawler.Tests.Controllers
             // Act
             var model = (List<BarModel>)result.ViewData.Model;
             // Assert
-            NUnit.Framework.CollectionAssert.Contains(model, bar1);
+            NUnit.Framework.Assert.That(model.Count, Is.EqualTo(1));
+            //NUnit.Framework.CollectionAssert.Contains(model, bar1);
+
         }
+
+
+        [TestMethod]
+        public void IndexWithOneBarAgain_ExpectedTrue()
+        {
+            ViewResult result = controller.Index() as ViewResult;
+            Assert.AreEqual(result.Model, bar1);
+        }
+
 
         [TestMethod]
         public void ContactNotNull_ExpectedTrue()
