@@ -294,6 +294,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Images\Fingers.png" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -364,6 +365,7 @@
     <Content Include="Views\BarProfil\BadRequestView.cshtml" />
     <Content Include="Views\BarProfil\EditEvent.cshtml" />
     <Content Include="Views\BarProfil\EditProfilPicture.cshtml" />
+    <Content Include="Views\BarProfil\EditCoverPicture.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

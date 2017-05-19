@@ -23,10 +23,18 @@ namespace BarCrawler.ViewModels
 
         public PictureViewModel(BarProfilPictureModel pm)
         {
-            PictureID = -1; 
+            PictureID = pm.BarID; 
             Description = pm.Description;
             Directory = pm.Directory;
             BarID = pm.BarID;
+        }
+
+        public PictureViewModel(CoverPictureModel cm)
+        {
+            PictureID = cm.BarID;
+            Description = cm.Description;
+            Directory = cm.Directory;
+            BarID = cm.BarID;
         }
 
         [Key]
