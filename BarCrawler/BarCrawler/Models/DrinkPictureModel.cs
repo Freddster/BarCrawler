@@ -13,7 +13,7 @@ namespace BarCrawler.Models
         public int DrinkPictureID { get; set; }
         [ForeignKey("DrinkModel")]
         public int DrinkID { get; set; }
-        public DrinkModel DrinkModel { get; set; }
+        public virtual DrinkModel DrinkModel { get; set; }
 
         public string Directory { get; set; }
 

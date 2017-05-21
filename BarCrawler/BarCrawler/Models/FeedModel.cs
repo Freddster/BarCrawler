@@ -13,7 +13,7 @@ namespace BarCrawler.Models
         public int FeedID { get; set; }
         [ForeignKey("BarModel")]
         public int BarID { get; set; }
-        public BarModel BarModel { get; set; }
+        public virtual BarModel BarModel { get; set; }
 
         [Timestamp]
         public Byte[] TimeStamp { get; set; }

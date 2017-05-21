@@ -61,8 +61,6 @@ namespace BarCrawler.Migrations
             var user = new ApplicationUser { UserName = "kk@ase.au.dk", Email = "kk@ase.au.dk" };
             var result = userManager.Create(user, "qwertY1!");
 
-
-
             if (result.Succeeded)
                 Debug.WriteLine("Shit succeeded\n\n\n\n");
 
@@ -80,7 +78,7 @@ namespace BarCrawler.Migrations
                 Longitude = 456,
                 OpenTime = "13:00",
                 PhoneNumber = "12345678",
-                StreetNumber = "2",
+                StreetNumber = "22",
                 Zipcode = "8200",
                 userID = user.Id,
                 Events = eventModels.FindAll(model => model.BarID == 1),

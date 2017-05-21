@@ -13,7 +13,7 @@ namespace BarCrawler.Models
         public int PictureID { get; set; }
         [ForeignKey("BarModel")]
         public int BarID { get; set; }
-        public BarModel BarModel { get; set; }
+        public virtual BarModel BarModel { get; set; }
         [Display(Name= "URL link")]
         public string Directory { get; set; }
 

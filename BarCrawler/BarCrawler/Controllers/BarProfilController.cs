@@ -399,11 +399,6 @@ namespace BarCrawler.Controllers
         #region Create Drink
         public ActionResult CreateDrink(int id)
         {
-            DrinkViewModel viewModel;
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             DrinkModel drinkModel = new DrinkModel();
             var bm = _unitOfWork.BarRepository.GetByID(id);
             if (bm == null)
@@ -450,7 +445,7 @@ namespace BarCrawler.Controllers
             {
                 return HttpNotFound();
             }
-            var bm = _unitOfWork.BarRepository.GetByID(id);
+            var bm = _unitOfWork.BarRepository.GetByID(barId);
             if (bm == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
@@ -476,6 +471,8 @@ namespace BarCrawler.Controllers
             }
             return View(drinkViewModel);
         }
+
+
         #endregion
 
         #region Delete Drink

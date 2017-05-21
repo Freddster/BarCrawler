@@ -28,12 +28,12 @@ namespace BarCrawler.ViewModels
         //[ForeignKey("BarModel")]
         public int BarID { get; set; }
 
-        //[Required]
+        [Required]
         public string Title { get; set; }
-        //[MaxLength(500)]
+        [MaxLength(500)]
         public string Description { get; set; }
 
-        //[Required]
+        [Required]
         public double Price { get; set; }
     }
 }
