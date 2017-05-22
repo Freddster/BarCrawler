@@ -19,18 +19,6 @@
     <li><a id="kortTab" data-toggle="tab" href="#kort">Kort</a></li>
 </ul>
 
-@*Script til active tabs*@
-
-@**@
-<script type="text/javascript">
-    window.addEventListener("load", function () {
-        $('a[href="#kort"]').on('shown.bs.tab',
-            function () {
-                console.log("Kort kald!");
-                initMap();
-            });
-    });
-</script>
 
 
 @* ************************ OVERSIGT TAB ****************************** *@
@@ -207,6 +195,8 @@
         }
     </div>*@
 
+        </div>
+
     @* ************************ GOOGLE MAPS TAB ****************************** *@
 
     <div id="kort" class="tab-pane fade">
@@ -304,6 +294,16 @@
         addressGet(markCreator);
     }
 
+</script>
+
+<script type="text/javascript">
+    window.addEventListener("load", function () {
+        $('a[href="#kort"]').on('shown.bs.tab',
+            function () {
+                console.log("Kort kald!");
+                initMap();
+            });
+    });
 </script>
 
 <script async defer
