@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using BarCrawler.DataAccessLogic;
+using BarCrawler.DataAccessLogic.Repositories;
 using BarCrawler.DataAccessLogic.Repositories.Interface;
 using BarCrawler.Migrations;
 using BarCrawler.Models;
@@ -32,6 +33,7 @@ namespace DataAccessLogic.UnitOfWork
             //Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
             _context = new BarCrawlerContext();
             InitializeRepositories();
+            //_barRepository = new BarRepository(_context);
         }
 
         /// <summary>
@@ -40,9 +42,14 @@ namespace DataAccessLogic.UnitOfWork
         /// <param name="context">The context.</param>
         public UnitOfWork(BarCrawlerContext context)
         {
-            //Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
+            Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
             _context = context;
             InitializeRepositories();
+        }
+
+        public UnitOfWork(BarRepository barRepo)
+        {
+            this.barRepo = barRepo;
         }
 
         /// <summary>
@@ -50,18 +57,23 @@ namespace DataAccessLogic.UnitOfWork
         /// </summary>
         private void InitializeRepositories()
         {
+            CoverPictureRepository = new CoverPictureRepository(_context);
+            BarProfilPictureRepository = new BarProfilPictureRepository(_context);
             BarRepository = new BarRepository(_context);
-            EventRepository = new EventRepository(_context);
             DrinkRepository = new DrinkRepository(_context);
+            EventRepository = new EventRepository(_context);
             FeedRepository = new FeedRepository(_context);
             PictureRepository = new PictureRepository(_context);
         }
 
+        public ICoverPictureRepository CoverPictureRepository { get; set; }
+        public IBarProfilPictureRepository BarProfilPictureRepository { get; set; }
         public IBarRepository BarRepository { get; private set; }
         public IDrinkRepository DrinkRepository { get; private set; }
         public IEventRepository EventRepository { get; private set; }
         public IFeedRepository FeedRepository { get; private set; }
         public IPictureRepository PictureRepository { get; private set; }
+
 
         /// <summary>
         /// Saves this instance.
@@ -85,8 +97,12 @@ namespace DataAccessLogic.UnitOfWork
                 .Include(d => d.Drinks)
                 .Include(f => f.Feeds)
                 .Include(p => p.Pictures)
-                .Include(pp => pp.ProfilPictureModel)
+                .Include(pp => pp.BarProfilPictureModel)
+                .Include(ppp => ppp.CoverPictureModel)
                 .SingleOrDefault(x => x.BarID == id);
+
+            if (modelToReturn == null)
+                return null;
 
             modelToReturn.Feeds = modelToReturn.Feeds.OrderByDescending(o => o.CreateTime).ToList();
 
@@ -108,6 +124,7 @@ namespace DataAccessLogic.UnitOfWork
             return modelToReturn;
         }
         private const int TimeToSubtract = -12;
+        private BarRepository barRepo;
 
         /// <summary>
         /// Gets all bars for home.
@@ -116,7 +133,7 @@ namespace DataAccessLogic.UnitOfWork
         public IEnumerable<BarModel> GetAllBarsForHome()
         {
             var allModels = _context.BarModels
-                .Include(p => p.ProfilPictureModel)
+                .Include(p => p.BarProfilPictureModel)
                 .Include(f => f.Feeds)
                 .OrderBy(model => model.BarName)
                 .ToList();

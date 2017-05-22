@@ -26,7 +26,7 @@
         var Aarhus = new google.maps.LatLng(56.158170, 10.198101);
 
         var mapOptions = {
-            zoom: 12,
+            zoom: 14,
             center: Aarhus,
             disableDefaultUI: true,
             mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -90,7 +90,7 @@
 @* ************************ CoverBillede ****************************** *@
 <script>
     function EditCover() {
-        window.location.href = '@Url.Action("EditPicture", new {id = Model.BarID})';
+        window.location.href = '@Url.Action("EditCoverPicture", new {id = Model.BarID})';
     }
 </script>
 <style>
@@ -107,9 +107,9 @@
 </style>
 
 <div class="coverbillede" style="width: 100%; height: 350px; overflow: hidden;">
-    @if (Model.ProfilPictureModel != null)
+    @if (Model.CoverPictureModel != null)
     {
-        <img class="resize" src="@Url.Content(Model.ProfilPictureModel.Directory)" alt="N/A" style="max-height: 350px; position: relative;" />
+        <img class="resize" src="@Url.Content(Model.CoverPictureModel.Directory)" alt="N/A" style="max-height: 350px; position: relative;" />
     }
     else
     {
@@ -117,7 +117,7 @@
     }
     @if (User.Identity.GetUserId() == Model.userID)
     {
-        <input class="EditCoverButton" type="button" @*onclick="EditPicture()"*@ value="Ændre" />
+        <input class="EditCoverButton" type="button" onclick="EditCover()" value="Ændre" />
     }
 </div>
 
@@ -429,42 +429,45 @@
 </script>
   
 <script>
-    function EditPicture(pictureId) {
-        window.location.href = '@Url.Action("EditPicture", new {id = Model.BarID})' + '?Pid=' + pictureId;
+    function EditProfilPicture() {
+        window.location.href = '@Url.Action("EditProfilPicture", new {id = Model.BarID})';
     }
 </script>
 
 <div role="tabpanel" class="tab-pane fade in" id="Galleri">
     
     @* PROFILBILLEDE *@
-    <h2>
-        Profilbillede
-    </h2>
-
-    @if (Model.ProfilPictureModel != null)
-    {
-        <img class="resize" id="picture" src="@Url.Content(Model.ProfilPictureModel.Directory)" alt="N/A"/>
-    }
-    else
-    {
-        <img class="resize" id="picture" src="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1"/>
-    }
-    @if (User.Identity.GetUserId() == Model.userID)
-    {
-        <input class="EditCoverButton" type="button" @*onclick="EditPicture()"*@ value="Ændre"/>
-    }
-
+    <div class="row">
+        <h2>
+            Profilbillede
+        </h2>
+            <div class="show-button" style="clear: right">
+                @if (Model.BarProfilPictureModel != null)
+            {
+                    <img class="resize" id="picture" src="@Url.Content(Model.BarProfilPictureModel.Directory)" alt="N/A" />
+                }
+                else
+                {
+                    <img class="resize" id="picture" src="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" />
+                }
+                @if (User.Identity.GetUserId() == Model.userID)
+            {
+                    <input class="EditButton" type="button" onclick="EditProfilPicture()" value="Ændre" />
+                }
+            </div>
+    </div>
     @*Galleri*@
-
-    <h2>
-        Galleri
-        @if (User.Identity.GetUserId() == Model.userID)
-        {
-            <a href="@Url.Action("CreatePicture", "BarProfil", new {id = @Model.BarID})">
-                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
-            </a>
-        }
-    </h2>
+    <div class="row">
+        <h2>
+            Galleri
+            @if (User.Identity.GetUserId() == Model.userID)
+            {
+                <a href="@Url.Action("CreatePicture", "BarProfil", new {id = @Model.BarID})">
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+                </a>
+            }
+        </h2>
+    </div>
     @if (@Model.Pictures.Count > 0)
     {
         <div class="row">
@@ -512,9 +515,9 @@
 
         <div id="Container1">
             <div id="Profilbillede" style="float: right; clear: left;">
-                @if (Model.ProfilPictureModel != null)
+                @if (Model.BarProfilPictureModel != null)
                 {
-                    <img class="resize" src="@Url.Content(Model.ProfilPictureModel.Directory)" alt="N/A" style="max-height: 350px; position: relative;"/>
+                    <img class="resize" src="@Url.Content(Model.BarProfilPictureModel.Directory)" alt="N/A" style="max-height: 350px; position: relative;"/>
                 }
                 else
                 {

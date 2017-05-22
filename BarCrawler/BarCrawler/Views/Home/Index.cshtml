@@ -44,9 +44,9 @@
 
                     <div class="media">
                         <div class="pull-left">
-                            @if (item.ProfilPictureModel != null)
+                            @if (item.BarProfilPictureModel != null)
                             {
-                                <img src="@Url.Content(item.ProfilPictureModel.Directory)" alt="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="width: 64px; height: 64px" ; position relative; />
+                                <img src="@Url.Content(item.BarProfilPictureModel.Directory)" alt="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="width: 64px; height: 64px" ; position relative; />
                             }
                             else
                             {
@@ -150,7 +150,7 @@
                         <b>@feedobj.BarModel.BarName</b>
                     </div>
                     <div style="font-size: 12px">
-                        <i>@feedobj.CreateTime.ToString("HH:mm dd-MM-yyyy")</i> 
+                        <i>@feedobj.CreateTime.ToString("HH:mm dd-MM-yyyy")</i>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -167,33 +167,7 @@
                 </div>
             </a>
         }
-
-        @*@foreach (var feedobj in feedList) //Udskriver den sorterede liste på event-fanen
-        {
-            <a href="@Url.Action("Index", "BarProfil", new {id = feedobj.BarID})" class="list-group-item">
-                <div class="container">
-                    <div class="col-lg-1">
-                        <div class="row">
-                            <p style="color: #22662f">
-                                @feedobj.CreateTime
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="row">
-                            <h4><b>@feedobj.BarModel.BarName</b></h4>
-                        </div>
-
-                        <div class="row">
-                            <p>
-                                @feedobj.Text
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        }
-    </div>*@
+    </div>
 
         </div>
 
@@ -224,7 +198,7 @@
 
         console.log($("#count").text());
 
-        for (var i = 0; i < $("#count").text() ; i++) {
+        for (var i = 0; i < $("#count").text(); i++) {
             addressArray.push($("#address" + i).text());
             nameArray.push($("#name" + i).text());
             desArray.push($("#description" + i).text());
@@ -310,4 +284,3 @@
         src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDJU97le-qA2klWf9XxpEziqQNcNAFMCHU">
 </script>
 @*&callback=initMap*@
-

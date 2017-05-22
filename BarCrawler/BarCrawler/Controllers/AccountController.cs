@@ -23,6 +23,7 @@ namespace BarCrawler.Controllers
 
         public AccountController()
         {
+            _unitOfWork = new UnitOfWork();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -151,7 +152,7 @@ namespace BarCrawler.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(BigRegisterViewModel model)
+        public async Task<ActionResult> Register(/*HttpPostedFileBase file,*/ BigRegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -159,9 +160,45 @@ namespace BarCrawler.Controllers
                 var result = await UserManager.CreateAsync(user, model.RegisterViewModel.Password);
                 if (result.Succeeded)
                 {
+                    
                     var bar = new BarModel();
                     _unitOfWork.BarRepository.CreateAndAddBar(ref bar, ref model, ref user);
                     _unitOfWork.Save();
+
+                    var profilbillede = new BarProfilPictureModel()
+                    {
+                        CreateTime = DateTime.Now,
+                        BarID = bar.BarID,
+                        BarModel = bar,
+                    };
+
+                    var coverbillede = new CoverPictureModel()
+                    {
+                        CreateTime = DateTime.Now,
+                        BarID = bar.BarID,
+                        BarModel = bar,
+                    };
+
+                    profilbillede.Directory = model.BarModel.BarProfilPictureModel.Directory ??
+                                              "http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1"; 
+
+                    coverbillede.Directory = model.BarModel.CoverPictureModel.Directory ?? "http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1";
+
+                    //if (file != null && file.ContentLength > 0)
+                    //{
+                    //    string pic = System.IO.Path.GetFileName(file.FileName); 
+                    //    file.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Images"), pic));
+
+                    //    profilbillede.Directory = Server.MapPath(
+                    //        System.IO.Path.Combine(Server.MapPath("~/Images"), file.FileName));
+                    //}
+                    //else
+                    //    profilbillede.Directory = Server.MapPath("~/Images/Fingers.png");
+
+                    _unitOfWork.BarProfilPictureRepository.Add(profilbillede);
+                    _unitOfWork.CoverPictureRepository.Add(coverbillede);
+                    _unitOfWork.Save();
+                    
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

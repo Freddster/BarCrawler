@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
+using System.Data.Odbc;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
@@ -37,6 +39,7 @@ namespace BarCrawler.Migrations
         protected override void Seed(BarCrawlerContext context)
         {
             Debug.WriteLine("part 2\n\n\n\n");
+
             ApplicationContextInitializer<ApplicationDbContext> applicationContextInitializer = new ApplicationContextInitializer<ApplicationDbContext>();
 
 
@@ -55,15 +58,15 @@ namespace BarCrawler.Migrations
             List<PictureModel> pictureModels = new List<PictureModel>();
 
 
-            var user = new ApplicationUser { UserName ="kk@ase.au.dk", Email = "kk@ase.au.dk" };
+            var user = new ApplicationUser { UserName = "kk@ase.au.dk", Email = "kk@ase.au.dk" };
             var result = userManager.Create(user, "qwertY1!");
 
-            
+
 
             if (result.Succeeded)
                 Debug.WriteLine("Shit succeeded\n\n\n\n");
 
-                barModels.Add(new BarModel()
+            barModels.Add(new BarModel()
             {
                 Address1 = "Finlandsgade",
                 BarID = 1,
@@ -166,7 +169,7 @@ namespace BarCrawler.Migrations
 
             barModels[0].Events.AddRange(eventModels.FindAll(model => model.BarID == 1));
             barModels[0].Drinks.AddRange(drinkModels.FindAll(model => model.BarID == 1));
-            barModels[0].ProfilPictureModel = barProfilPictureModels;
+            barModels[0].BarProfilPictureModel = barProfilPictureModels;
             List<PictureModel> pm = new List<PictureModel>();
             pm.AddRange(pictureModels.FindAll(model => model.BarID == 1));
             barModels[0].Pictures.AddRange(pm);
@@ -202,7 +205,7 @@ namespace BarCrawler.Migrations
 
             applicationDbContext.SaveChanges();
             base.Seed(context);
-            
+
             //SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
         }
