@@ -10,8 +10,6 @@ using BarCrawler;
 using BarCrawler.Controllers;
 using BarCrawler.Migrations;
 using BarCrawler.Models;
-using DataAccessLogic.Repositories;
-using DataAccessLogic.UnitOfWork;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using Assert = NUnit.Framework.Assert;
@@ -20,16 +18,6 @@ using Assert = NUnit.Framework.Assert;
 
 namespace BarCrawler.Tests.Controllers
 {
-
-    /*******************************************************
-     
-         READ ME GOD DAMMIT
-        læs beskeden i den anden unit test
-
-
- ************************************/
-
-
     [TestFixture]
     public class HomeControllerTest
     {
@@ -39,8 +27,17 @@ namespace BarCrawler.Tests.Controllers
         public void BarControllerTest()
         {
             Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
-            ////// Now lets create the BooksController object to test and pass our unit of work
             controller = new HomeController();
+        }
+
+
+        [Test]
+        public void Index_NotNull_ExpectedTrue()
+        {
+            // Act
+            ViewResult result = controller.Index() as ViewResult;
+            // Assert
+            Assert.IsNotNull(result);
         }
 
         [Test]
@@ -54,8 +51,8 @@ namespace BarCrawler.Tests.Controllers
             Assert.That(model.Count, Is.EqualTo(2));
         }
 
-        [Test]
-        public void Index_1FeedInModel_ExpectedTrue()
+        /*[Test]
+        public void Index_OneFeedInModel_ExpectedTrue()
         {
             // Arrange
             ViewResult result = controller.Index() as ViewResult;
@@ -63,13 +60,11 @@ namespace BarCrawler.Tests.Controllers
             var model = (List<BarModel>)result.ViewData.Model;
             // Assert
             Assert.That(model[0].Feeds.Count, Is.EqualTo(1));
-        }
+        }*/
 
         [Test]
-        public void ContactNotNull_ExpectedTrue()
+        public void Contact_ViewIsCalled_ExpectedTrue()
         {
-            // Arrange
-            HomeController controller = new HomeController();
             // Act
             ViewResult result = controller.Contact() as ViewResult;
             // Assert
@@ -77,26 +72,13 @@ namespace BarCrawler.Tests.Controllers
         }
 
         [Test]
-        public void Contact_ViewBagMessage_ExpectedTrue()
+        public void Contact_ViewBagMessageIsShown_ExpectedMessageMatch()
         {
-            // Arrange
-            HomeController controller = new HomeController();
             // Act
             ViewResult result = controller.Contact() as ViewResult;
             ;
             // Assert
             Assert.AreEqual("Your contact page.", result.ViewBag.Message);
-        }
-
-        [Test]
-        public void Index_NotNull_ExpectedTrue()
-        {
-            // Arrange
-           
-            // Act
-            ViewResult result = controller.Index() as ViewResult;
-            // Assert
-            Assert.IsNotNull(result);
         }
     }
 }

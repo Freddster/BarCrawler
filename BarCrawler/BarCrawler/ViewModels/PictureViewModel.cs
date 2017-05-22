@@ -21,7 +21,7 @@ namespace BarCrawler.ViewModels
             BarID = pm.BarID; 
         }
 
-        public PictureViewModel(BarProfilPictureModel pm)
+        public PictureViewModel(BarProfilePictureModel pm)
         {
             PictureID = pm.BarID; 
             Description = pm.Description;

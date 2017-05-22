@@ -5,12 +5,12 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using BarCrawler.DataAccessLogic.UnitOfWork;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BarCrawler.Models;
 using BarCrawler.ViewModels;
-using DataAccessLogic.UnitOfWork;
 
 namespace BarCrawler.Controllers
 {
@@ -165,7 +165,7 @@ namespace BarCrawler.Controllers
                     _unitOfWork.BarRepository.CreateAndAddBar(ref bar, ref model, ref user);
                     _unitOfWork.Save();
 
-                    var profilbillede = new BarProfilPictureModel()
+                    var profilbillede = new BarProfilePictureModel()
                     {
                         CreateTime = DateTime.Now,
                         BarID = bar.BarID,

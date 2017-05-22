@@ -9,13 +9,13 @@ using BarCrawler.ViewModels;
 
 namespace BarCrawler.DataAccessLogic.Repositories
 {
-    public class BarProfilPictureRepository : GenericRepository<BarProfilPictureModel>, IBarProfilPictureRepository
+    public class BarProfilPictureRepository : GenericRepository<BarProfilePictureModel>, IBarProfilPictureRepository
     {
         public BarProfilPictureRepository(DbContext context) : base(context)
         {
         }
 
-        public void AddModelForUpdate(ref PictureViewModel viewModel, ref BarProfilPictureModel pictureModel)
+        public void AddModelForUpdate(ref PictureViewModel viewModel, ref BarProfilePictureModel pictureModel)
         {
             pictureModel.Directory = viewModel.Directory;
             pictureModel.Description = viewModel.Description;
