@@ -25,17 +25,6 @@ using System.Threading.Tasks;
 
 namespace BarCrawler.Tests.Controllers
 {
-
-    /*******************************************************
-     
-         READ ME GOD DAMMIT
-        Forsøg at gå i krig med covertest først og fremmest, hvis der er tid og/eller overskud,
-        så kan vi overveje om vi skal lave nogle test på data, men cover tager absolut prioritet.
-         
- ************************************/
-
-
-
     [TestFixture]
     public class BarProfileControllerUnitTest
     {

@@ -28,7 +28,6 @@ namespace BarCrawler.DataAccessLogic.UnitOfWork
             Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
             _context = new BarCrawlerContext();
             InitializeRepositories();
-            //_barRepository = new BarRepository(_context);
         }
 
         /// <summary>

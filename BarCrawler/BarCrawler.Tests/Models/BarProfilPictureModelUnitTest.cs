@@ -16,7 +16,7 @@ namespace BarCrawler.Tests.Models
         [Test]
         public void ValidateCoverPictureModelWithAllRequirements_ExpectedNoValidationErrors()
         {
-            var model = new BarProfilPictureModel()
+            var model = new BarProfilePictureModel()
             {
                 BarID = 1,
                 Description = "Description goes here",
@@ -32,7 +32,7 @@ namespace BarCrawler.Tests.Models
         [Test]
         public void ValidateCoverPictureModelWithNoBarId_ExpectedNoValidationErrors()
         {
-            var model = new BarProfilPictureModel()
+            var model = new BarProfilePictureModel()
             {
                 //BarID = 1,
                 Description = "Description goes here",
@@ -48,7 +48,7 @@ namespace BarCrawler.Tests.Models
         [Test]
         public void ValidateCoverPictureModelWithNoDescription_ExpectedNoValidationErrors()
         {
-            var model = new BarProfilPictureModel()
+            var model = new BarProfilePictureModel()
             {
                 BarID = 1,
                 //Description = "Description goes here",
@@ -64,7 +64,7 @@ namespace BarCrawler.Tests.Models
         [Test]
         public void ValidateCoverPictureModelWithNoDirectory_ExpectedNoValidationErrors()
         {
-            var model = new BarProfilPictureModel()
+            var model = new BarProfilePictureModel()
             {
                 BarID = 1,
                 Description = "Description goes here",
@@ -80,7 +80,7 @@ namespace BarCrawler.Tests.Models
         //[Test]
         //public void ValidateCoverPictureModelWithNoCreateTime_ExpectedNoValidationErrors()
         //{
-        //    var model = new BarProfilPictureModel()
+        //    var model = new BarProfilePictureModel()
         //    {
         //        BarID = 1,
         //        Description = "Description goes here",
