@@ -1,8 +1,7 @@
-﻿using BarCrawler.DataAccessLogic.Repositories.Interface;
-using BarCrawler.Models;
+﻿using BarCrawler.Models;
 using BarCrawler.ViewModels;
 
-namespace DataAccessLogic.Repositories
+namespace BarCrawler.DataAccessLogic.Repositories.Interface
 {
     public interface IBarRepository : IRepository<BarModel>
     {

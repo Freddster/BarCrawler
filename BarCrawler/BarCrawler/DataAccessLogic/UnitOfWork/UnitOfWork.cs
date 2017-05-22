@@ -2,22 +2,17 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
-using BarCrawler.DataAccessLogic;
 using BarCrawler.DataAccessLogic.Repositories;
 using BarCrawler.DataAccessLogic.Repositories.Interface;
 using BarCrawler.Migrations;
 using BarCrawler.Models;
-using DataAccessLogic.Repositories;
 
-namespace DataAccessLogic.UnitOfWork
+namespace BarCrawler.DataAccessLogic.UnitOfWork
 {
     /// <summary>
     /// sdffds
     /// </summary>
-    /// <seealso cref="DataAccessLogic.UnitOfWork.IUnitOfWork" />
+    /// <seealso cref="IUnitOfWork" />
     public class UnitOfWork : IUnitOfWork
     {
         /// <summary>

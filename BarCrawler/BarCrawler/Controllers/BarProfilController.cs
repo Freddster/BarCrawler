@@ -10,7 +10,7 @@ using System.Data.Entity.Infrastructure;
 using System.Diagnostics.Eventing.Reader;
 using System.Net;
 using System.Net.Configuration;
-using DataAccessLogic.UnitOfWork;
+using BarCrawler.DataAccessLogic.UnitOfWork;
 using BarCrawler.ViewModels;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;

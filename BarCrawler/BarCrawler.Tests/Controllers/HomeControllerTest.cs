@@ -10,8 +10,6 @@ using BarCrawler;
 using BarCrawler.Controllers;
 using BarCrawler.Migrations;
 using BarCrawler.Models;
-using DataAccessLogic.Repositories;
-using DataAccessLogic.UnitOfWork;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using Assert = NUnit.Framework.Assert;

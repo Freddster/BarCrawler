@@ -54,7 +54,7 @@ namespace BarCrawler.Migrations
             List<EventModel> eventModels = new List<EventModel>();
             List<DrinkModel> drinkModels = new List<DrinkModel>();
             List<FeedModel> feedModels = new List<FeedModel>();
-            BarProfilPictureModel barProfilPictureModels;
+            BarProfilePictureModel barProfilPictureModels;
             List<PictureModel> pictureModels = new List<PictureModel>();
 
 
@@ -131,7 +131,7 @@ namespace BarCrawler.Migrations
                 BarModel = barModels.Find(b => b.BarName == "Katrines Kælder")
             });
 
-            barProfilPictureModels = new BarProfilPictureModel()
+            barProfilPictureModels = new BarProfilePictureModel()
             {
                 Description = "Det er vores logo",
                 CreateTime = DateTime.Now,

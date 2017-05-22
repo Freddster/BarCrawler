@@ -1,7 +1,7 @@
 ﻿using System;
 using BarCrawler.DataAccessLogic.Repositories.Interface;
 
-namespace DataAccessLogic.UnitOfWork
+namespace BarCrawler.DataAccessLogic.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {

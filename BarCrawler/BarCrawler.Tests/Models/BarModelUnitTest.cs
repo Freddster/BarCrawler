@@ -9,8 +9,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BarCrawler;
 using BarCrawler.Controllers;
 using BarCrawler.Models;
-using DataAccessLogic.Repositories;
-using DataAccessLogic.UnitOfWork;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;

@@ -30,6 +30,7 @@ namespace BarCrawler.ViewModels
 
         [Required]
         public string Title { get; set; }
+
         [MaxLength(500)]
         public string Description { get; set; }
 
