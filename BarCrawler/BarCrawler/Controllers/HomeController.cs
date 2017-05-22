@@ -30,10 +30,6 @@ namespace BarCrawler.Controllers
             _unitOfWork = new UnitOfWork(context);
         }
 
-        public HomeController(UnitOfWork _uow)
-        {
-            this.uow = _uow;
-        }
 
 
         /// <summary>

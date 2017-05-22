@@ -31,7 +31,6 @@ namespace BarCrawler.Tests.Controllers
          READ ME GOD DAMMIT
         Forsøg at gå i krig med covertest først og fremmest, hvis der er tid og/eller overskud,
         så kan vi overveje om vi skal lave nogle test på data, men cover tager absolut prioritet.
-
          
  ************************************/
 
@@ -332,16 +331,13 @@ namespace BarCrawler.Tests.Controllers
 
         #region Create View
 
-        /*[Test]
+        //[Test]
+        //public void EditDrink_ValidDrinkIdValidBarIdNotLoggedIn_ExpectTrue()
+        //{
+        //   var result = controller.EditDrink(1, 1) as HttpStatusCodeResult;
 
-        public void EditDrink_ValidDrinkIdValidBarIdNotLoggedIn_ExpectTrue()
-        {
-            var result = controller.EditDrink(1, 1) as HttpStatusCodeResult;
-
-            int ting = (int)HttpStatusCode.BadRequest;
-
-            Assert.That(result.StatusCode, Is.EqualTo((int)HttpStatusCode.BadRequest));
-        }*/
+        //    Assert.That(result.StatusCode, Is.EqualTo((int)HttpStatusCode.BadRequest));
+        //}
 
         [Test]
         public void EditDrink_ValidDrinkIdNotValidBarId_ExpectTrue()
@@ -474,10 +470,413 @@ namespace BarCrawler.Tests.Controllers
 
         #endregion
 
+        #endregion
+
+        #region Contact Info
+
+        #region Create View
+
+        [Test]
+        public void Edit_BarIdIsNull_ExpectBadRequest()
+        {
+            var result = controller.Edit((int?)null) as HttpStatusCodeResult;
+
+            Assert.That(result.StatusCode, Is.EqualTo((int)HttpStatusCode.BadRequest));
+        }
+
+        [Test]
+        public void Edit_BarIdIsNotValid_ExpectNotFound()
+        {
+            var result = controller.Edit(0) as HttpStatusCodeResult;
+
+            Assert.That(result.StatusCode, Is.EqualTo((int)HttpStatusCode.NotFound));
+        }
+
+        #endregion
+
+        #region Save Data
+
+        [Test]
+        public void Edit_ContactInfoIsValidRedirectToIndex_Expect2RouteValues()
+        {
+            EditViewModel model = new EditViewModel()
+            {
+                BarID = 1,
+                PhoneNumber = "12345678",
+                Description = "Description goes here",
+                Address1 = "Skanderborgvej",
+                City = "Aarhus",
+                CloseTime = "05:00",
+                Faculty = "Matematik",
+                OpenTime = "06:00",
+                StreetNumber = "30",
+                Zipcode = "8000"
+            };
+
+            var result = controller.Edit(model) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues.Values.Count, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void Edit_ContactInfoIsValidRedirectToIndex_ExpectRouteToIndex()
+        {
+            EditViewModel model = new EditViewModel()
+            {
+                BarID = 1,
+                PhoneNumber = "12345678",
+                Description = "Description goes here",
+                Address1 = "Skanderborgvej",
+                City = "Aarhus",
+                CloseTime = "05:00",
+                Faculty = "Matematik",
+                OpenTime = "06:00",
+                StreetNumber = "30",
+                Zipcode = "8000"
+            };
+
+            var result = controller.Edit(model) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues.ContainsValue("Index"), Is.True);
+        }
+
+        [Test]
+        public void Edit_ContactInfoIsValidRedirectToIndex_ExpectRouteWithBarId()
+        {
+            EditViewModel model = new EditViewModel()
+            {
+                BarID = 1,
+                PhoneNumber = "12345678",
+                Description = "Description goes here",
+                Address1 = "Skanderborgvej",
+                City = "Aarhus",
+                CloseTime = "05:00",
+                Faculty = "Matematik",
+                OpenTime = "06:00",
+                StreetNumber = "30",
+                Zipcode = "8000"
+            };
+
+            var result = controller.Edit(model) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues.ContainsValue(model.BarID), Is.True);
+        }
+
+        [Test]
+        public void Edit_ContactInfoNotValid_ExpectView()
+        {
+            EditViewModel model = new EditViewModel()
+            {
+                BarID = 1,
+                PhoneNumber = "12345678",
+                Description = "Description goes here",
+                Address1 = "Skanderborgvej",
+                City = "Aarhus",
+                Faculty = "Matematik",
+                OpenTime = "06:00",
+                StreetNumber = "30",
+                Zipcode = "8000"
+            };
+
+            controller.ModelState.AddModelError("Close Time", "Close time not correct");
+            var result = controller.Edit(model) as ViewResult;
+
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void Edit_ContactInfoValidBarIdIsNotDoesNotExist_ExpectBadRequest()
+        {
+            EditViewModel model = new EditViewModel()
+            {
+                BarID = 0,
+                PhoneNumber = "12345678",
+                Description = "Description goes here",
+                Address1 = "Skanderborgvej",
+                City = "Aarhus",
+                Faculty = "Matematik",
+                OpenTime = "06:00",
+                StreetNumber = "30",
+                Zipcode = "8000"
+            };
+
+            var result = controller.Edit(model) as HttpStatusCodeResult;
+
+            Assert.That(result.StatusCode, Is.EqualTo((int)HttpStatusCode.BadRequest));
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Event
+
+        #region Create Event
+
+        #region Create View
+
+        [Test]
+        public void CreateEvent_BarIdIsValid_ExpectViewReturned()
+        {
+            var result = controller.CreateEvent(1) as ViewResult;
+
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void CreateEvent_BarIdIsNotValid_ExpectViewReturned()
+        {
+            var result = controller.CreateEvent(0) as HttpStatusCodeResult;
+
+            Assert.That(result.StatusCode, Is.EqualTo((int)HttpStatusCode.BadRequest));
+        }
+
+        #endregion
+
+        #region Save Data
+
+        [Test]
+        public void CreateEvent_EventModelIsValidRedirectToIndex_Expect2RouteValues()
+        {
+            EventModel model = new EventModel()
+            { 
+                BarID = 1,
+                Description = "Description goes here",
+                Address1 = "Finlandsgade",
+                StreetNumber = "22",
+                City = "Aarhus",
+                Zipcode = "8200",
+                Title = "Event Title goes here",
+                DateAndTimeForEvent = DateTime.Now
+            };
+
+            var result = controller.CreateEvent(model) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues.Values.Count, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void CreateEvent_EventModelIsValidRedirectToIndex_ExpectRouteToIndex()
+        {
+            EventModel model = new EventModel()
+            {
+                BarID = 1,
+                Description = "Description goes here",
+                Address1 = "Finlandsgade",
+                StreetNumber = "22",
+                City = "Aarhus",
+                Zipcode = "8200",
+                Title = "Event Title goes here",
+                DateAndTimeForEvent = DateTime.Now
+            };
+
+            var result = controller.CreateEvent(model) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues.ContainsValue("Index"), Is.True);
+        }
+
+        [Test]
+        public void CreateEvent_EventModelIsValiRedirectToIndex_ExpectRouteWithBarId()
+        {
+            EventModel model = new EventModel()
+            {
+                BarID = 1,
+                Description = "Description goes here",
+                Address1 = "Finlandsgade",
+                StreetNumber = "22",
+                City = "Aarhus",
+                Zipcode = "8200",
+                Title = "Event Title goes here",
+                DateAndTimeForEvent = DateTime.Now
+            };
+
+            var result = controller.CreateEvent(model) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues.ContainsValue(1), Is.True);
+        }
+
+        [Test]
+        public void CreateEvent_EventModelIsNotValid_ExpectHttpNotFound()
+        {
+            EventModel model = new EventModel()
+            {
+                BarID = 0,
+                Description = "Description goes here",
+                Address1 = "Finlandsgade",
+                StreetNumber = "22",
+                City = "Aarhus",
+                Zipcode = "8200",
+                Title = "Event Title goes here",
+                DateAndTimeForEvent = DateTime.Now
+            };
+
+            var result = controller.CreateEvent(model) as HttpStatusCodeResult;
+
+            Assert.That(result.StatusCode, Is.EqualTo((int)HttpStatusCode.NotFound));
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Edit Event
+
+        #region Create View
+
+        //[Test]
+        //public void EditEvent_ValidBarIdValidEventIdUserNotLoggedIn_ExpectRedirectToBadRequestView()
+        //{
+        //    var result = controller.EditEvent(1, 1) as RedirectToRouteResult;
+
+        //    Assert.That(result.RouteValues.ContainsValue("BadRequestView"), Is.True);
+        //}
+
+        [Test]
+        public void EditEvent_BarIdIsNullValidEventIdUserNotLoggedIn_ExpectHttpNotFound()
+        {
+            var result = controller.EditEvent(null, 1) as HttpStatusCodeResult;
+
+            Assert.That(result.StatusCode, Is.EqualTo((int)HttpStatusCode.NotFound));
+        }
+
+        [Test]
+        public void EditEvent_ValidBarIdEventIdIsNullUserNotLoggedIn_ExpectHttpNotFound()
+        {
+            var result = controller.EditEvent(1, null) as HttpStatusCodeResult;
+
+            Assert.That(result.StatusCode, Is.EqualTo((int)HttpStatusCode.NotFound));
+
+        }
+
+        [Test]
+        public void EditEvent_BarIdIsNullEventIdIsNullUserNotLoggedIn_ExpectHttpNotFound()
+        {
+            var result = controller.EditEvent(null, null) as HttpStatusCodeResult;
+
+            Assert.That(result.StatusCode, Is.EqualTo((int)HttpStatusCode.NotFound));
+
+        }
+
+        [Test]
+        public void EditEvent_NotValidBarIdValidEventIdUserNotLoggedIn_ExpectHttpNotFound()
+        {
+            var result = controller.EditEvent(0, 1) as HttpStatusCodeResult;
+
+            Assert.That(result.StatusCode, Is.EqualTo((int)HttpStatusCode.NotFound));
+
+        }
+
+        [Test]
+        public void EditEvent_ValidBarIdNotValidEventIdUserNotLoggedIn_ExpectHttpNotFound()
+        {
+            var result = controller.EditEvent(1, 0) as HttpStatusCodeResult;
+
+            Assert.That(result.StatusCode, Is.EqualTo((int)HttpStatusCode.NotFound));
+
+        }
+
+        
+
+        #endregion
+
+        #region Save Data
+
+        [Test]
+        public void EditEvent_EventViewModelIsValidRedirectToIndex_Expect2RouteValues()
+        {
+            EventViewModel model = new EventViewModel()
+            {
+                BarID = 1,
+                EventID = 1,
+                Description = "Description goes here",
+                Address1 = "Finlandsgade",
+                StreetNumber = "22",
+                City = "Aarhus",
+                Zipcode = "8200",
+                Title = "Event Title goes here",
+                DateAndTimeForEvent = DateTime.Now
+            };
+
+            var result = controller.EditEvent(model) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues.Values.Count, Is.EqualTo(2));
+        }
+
+        [Test]
+        public void EditEvent_EventViewModelIsValidRedirectToIndex_ExpectRouteToIndex()
+        {
+            EventViewModel model = new EventViewModel()
+            {
+                BarID = 1,
+                EventID = 1,
+                Description = "Description goes here",
+                Address1 = "Finlandsgade",
+                StreetNumber = "22",
+                City = "Aarhus",
+                Zipcode = "8200",
+                Title = "Event Title goes here",
+                DateAndTimeForEvent = DateTime.Now
+            };
+
+            var result = controller.EditEvent(model) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues.ContainsValue("Index"), Is.True);
+        }
+
+        [Test]
+        public void EditEvent_EventViewModelIsValidRedirectToIndex_ExpectRouteWithBarId()
+        {
+            EventViewModel model = new EventViewModel()
+            {
+                BarID = 1,
+                EventID = 1,
+                Description = "Description goes here",
+                Address1 = "Finlandsgade",
+                StreetNumber = "22",
+                City = "Aarhus",
+                Zipcode = "8200",
+                Title = "Event Title goes here",
+                DateAndTimeForEvent = DateTime.Now
+            };
+
+            var result = controller.EditEvent(model) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues.ContainsValue(model.BarID), Is.True);
+        }
+
+        [Test]
+        public void EditEvent_EventViewModelIsNotValid_ExpectView()
+        {
+            EventViewModel model = new EventViewModel()
+            {
+                BarID = 1,
+                EventID = 1,
+                Description = "Description goes here",
+                Address1 = "Finlandsgade",
+                StreetNumber = "22",
+                City = "Aarhus",
+                Zipcode = "8200",
+                Title = "Event Title goes here",
+                DateAndTimeForEvent = DateTime.Now
+            };
+
+            controller.ModelState.AddModelError("Addresse 1", "Address 1 is not correct");
+            var result = controller.EditEvent(model) as RedirectToRouteResult;
+
+            Assert.That(result.RouteValues.ContainsValue("BadRequestView"), Is.True);
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Delete Event
+
 
 
         #endregion
 
+        #endregion
 
         [Test]
         public void BadRequest_IsNotNull_ExpectedTrue()
@@ -496,7 +895,6 @@ namespace BarCrawler.Tests.Controllers
         [Test]
         public void BarLink_UserLoggedIn_ExpectSomethingWhoKnowWhat()
         {
-
             //Lav noget med at logge ind som en bruger.
             //Log ind som kk@ase.au.dk
             //Prøv herefter at kalde barlink

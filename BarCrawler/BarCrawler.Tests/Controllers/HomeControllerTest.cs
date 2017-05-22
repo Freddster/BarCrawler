@@ -18,16 +18,6 @@ using Assert = NUnit.Framework.Assert;
 
 namespace BarCrawler.Tests.Controllers
 {
-
-    /*******************************************************
-     
-         READ ME GOD DAMMIT
-        læs beskeden i den anden unit test
-
-
- ************************************/
-
-
     [TestFixture]
     public class HomeControllerTest
     {
@@ -37,7 +27,6 @@ namespace BarCrawler.Tests.Controllers
         public void BarControllerTest()
         {
             Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
-            ////// Now lets create the BooksController object to test and pass our unit of work
             controller = new HomeController();
         }
 
