@@ -17,7 +17,6 @@ namespace BarCrawler.ViewModels
         {
             PictureID = pm.PictureID;
             Description = pm.Description;
-            Directory = pm.Directory;
             BarID = pm.BarID; 
         }
 
@@ -25,7 +24,6 @@ namespace BarCrawler.ViewModels
         {
             PictureID = pm.BarID; 
             Description = pm.Description;
-            Directory = pm.Directory;
             BarID = pm.BarID;
         }
 
@@ -33,7 +31,6 @@ namespace BarCrawler.ViewModels
         {
             PictureID = cm.BarID;
             Description = cm.Description;
-            Directory = cm.Directory;
             BarID = cm.BarID;
         }
 
@@ -44,9 +41,5 @@ namespace BarCrawler.ViewModels
         [MaxLength(200)]
         [Display(Name = "Beskrivelse")]
         public string Description { get; set; }
-
-        [Required]
-        [Display(Name = "URL link")]
-        public string Directory { get; set; }
     }
 }

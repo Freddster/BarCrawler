@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -26,7 +27,7 @@ namespace BarCrawler.Controllers
             _unitOfWork = new UnitOfWork();
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -39,9 +40,9 @@ namespace BarCrawler.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -77,7 +78,7 @@ namespace BarCrawler.Controllers
             {
                 return View(model);
             }
-            
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -125,7 +126,7 @@ namespace BarCrawler.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -152,24 +153,47 @@ namespace BarCrawler.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(/*HttpPostedFileBase file,*/ BigRegisterViewModel model)
+        public async Task<ActionResult> Register(HttpPostedFileBase Profilbillede, HttpPostedFileBase Coverbillede, BigRegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.BarModel.Email, Email = model.BarModel.Email};
+                var user = new ApplicationUser { UserName = model.BarModel.Email, Email = model.BarModel.Email };
                 var result = await UserManager.CreateAsync(user, model.RegisterViewModel.Password);
                 if (result.Succeeded)
                 {
-                    
+
                     var bar = new BarModel();
                     _unitOfWork.BarRepository.CreateAndAddBar(ref bar, ref model, ref user);
                     _unitOfWork.Save();
+
+                    string[] validExt = new[] { ".png", ".jpg", ".jpeg", ".gif", ".bmp" };
+                    string profilPath = "~/Images/Fingers.png";
+                    string coverPath = "~/Images/Fingers.png";
+
+                    if (Profilbillede != null && Profilbillede.ContentLength > 0 &&
+                        validExt.Contains(Path.GetExtension(Profilbillede.FileName)))
+                    {
+                        profilPath = Path.Combine("~/Images",
+                            Guid.NewGuid().ToString() + Path.GetExtension(Profilbillede.FileName));
+
+                        Profilbillede.SaveAs(Server.MapPath(profilPath));
+                    }
+
+                    if (Coverbillede != null && Coverbillede.ContentLength > 0 &&
+                        validExt.Contains(Path.GetExtension(Coverbillede.FileName)))
+                    {
+                        coverPath = Path.Combine("~/Images",
+                            Guid.NewGuid().ToString() + Path.GetExtension(Coverbillede.FileName));
+
+                        Coverbillede.SaveAs(Server.MapPath(coverPath));
+                    }
 
                     var profilbillede = new BarProfilPictureModel()
                     {
                         CreateTime = DateTime.Now,
                         BarID = bar.BarID,
                         BarModel = bar,
+                        Directory = profilPath,
                     };
 
                     var coverbillede = new CoverPictureModel()
@@ -177,30 +201,15 @@ namespace BarCrawler.Controllers
                         CreateTime = DateTime.Now,
                         BarID = bar.BarID,
                         BarModel = bar,
+                        Directory = coverPath,
                     };
-
-                    profilbillede.Directory = model.BarModel.BarProfilPictureModel.Directory ??
-                                              "http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1"; 
-
-                    coverbillede.Directory = model.BarModel.CoverPictureModel.Directory ?? "http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1";
-
-                    //if (file != null && file.ContentLength > 0)
-                    //{
-                    //    string pic = System.IO.Path.GetFileName(file.FileName); 
-                    //    file.SaveAs(System.IO.Path.Combine(Server.MapPath("~/Images"), pic));
-
-                    //    profilbillede.Directory = Server.MapPath(
-                    //        System.IO.Path.Combine(Server.MapPath("~/Images"), file.FileName));
-                    //}
-                    //else
-                    //    profilbillede.Directory = Server.MapPath("~/Images/Fingers.png");
 
                     _unitOfWork.BarProfilPictureRepository.Add(profilbillede);
                     _unitOfWork.CoverPictureRepository.Add(coverbillede);
                     _unitOfWork.Save();
-                    
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -208,6 +217,7 @@ namespace BarCrawler.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
+
                 }
                 AddErrors(result);
             }

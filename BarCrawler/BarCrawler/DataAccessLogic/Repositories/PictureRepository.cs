@@ -19,11 +19,17 @@ namespace DataAccessLogic.Repositories
         }
 
 
-        public void AddModelForUpdate(ref PictureViewModel viewModel, ref PictureModel pictureModel)
+        public void AddModelForUpdate(ref PictureViewModel viewModel, ref PictureModel pictureModel, string imageDir)
         {
-            pictureModel.Directory = viewModel.Directory;
+            pictureModel.Directory = imageDir;
             pictureModel.Description = viewModel.Description;
             MarkAsDirty(pictureModel);
+        }
+
+        public void AddModelForUpdate(ref PictureViewModel viewModel, ref PictureModel picturemodel)
+        {
+            picturemodel.Description = viewModel.Description;
+            MarkAsDirty(picturemodel);
         }
     }
 }

@@ -15,9 +15,9 @@ namespace BarCrawler.DataAccessLogic.Repositories
         {
         }
 
-        public void AddModelForUpdate(ref PictureViewModel viewModel, ref BarProfilPictureModel pictureModel)
+        public void AddModelForUpdate(ref PictureViewModel viewModel, ref BarProfilPictureModel pictureModel, string imgDir)
         {
-            pictureModel.Directory = viewModel.Directory;
+            pictureModel.Directory = imgDir;
             pictureModel.Description = viewModel.Description;
             MarkAsDirty(pictureModel);
         }

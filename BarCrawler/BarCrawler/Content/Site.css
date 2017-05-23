@@ -21,3 +21,10 @@ input,
 select {
     max-width: 280px;
 }
+
+.EditButton,
+.EditCoverButton,
+.DeleteButton {
+    background-color: white;
+    border-radius: 5px;
+}

@@ -8,7 +8,7 @@
 
 <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
@@ -42,7 +42,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.BarModel.Description, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextAreaFor(m => m.BarModel.Description, new { @class = "form-control" })
+            @Html.TextAreaFor(m => m.BarModel.Description, new { @class = "form-control", maxlength = "200",style = "width: 280px; height: 200px; resize: none" })
         </div>
     </div>
 
@@ -105,16 +105,16 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.BarModel.BarProfilPictureModel.Directory, new { @class = "col-md-2 control-label" })
+        <label class="col-md-2 control-label" for="ProfilUpload">Upload Profilbillede</label>
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.BarModel.BarProfilPictureModel.Directory, new { @class = "form-control" })
+            <input id="ProfilUpload" type="file" value="Upload" name="Profilbillede" />
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.BarModel.CoverPictureModel.Directory, new { @class = "col-md-2 control-label" })
+        <label class="col-md-2 control-label" for="CoverUpload">Upload Coverbillede</label>
         <div class="col-md-10">
-            @Html.TextBoxFor(m => m.BarModel.CoverPictureModel.Directory, new { @class = "form-control" })
+            <input id="CoverUpload" type="file" value ="Upload" name="Coverbillede"/>
         </div>
     </div>
 

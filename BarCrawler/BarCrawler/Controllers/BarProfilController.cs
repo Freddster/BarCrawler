@@ -9,6 +9,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Diagnostics.Eventing.Reader;
 using System.Net;
+using System.IO;
 using System.Net.Configuration;
 using DataAccessLogic.UnitOfWork;
 using BarCrawler.ViewModels;
@@ -170,13 +171,22 @@ namespace BarCrawler.Controllers
         public ActionResult EditCoverPicture(int id)
         {
             var picture = _unitOfWork.CoverPictureRepository.GetByID(id);
-            if (picture == null)
-            {
-                return HttpNotFound();
-            }
             var bm = _unitOfWork.BarRepository.GetByID(id);
             if (bm == null)
                 return HttpNotFound();
+            if (picture == null)
+            {
+                var coverbillede = new CoverPictureModel()
+                {
+                    CreateTime = DateTime.Now,
+                    BarID = bm.BarID,
+                    BarModel = bm,
+                    Directory = "~/Images/Fingers.png",
+                };
+                _unitOfWork.CoverPictureRepository.Add(coverbillede);
+                _unitOfWork.Save();
+            }
+            
             if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
             {
                 PictureViewModel viewModel = new PictureViewModel(picture);
@@ -188,17 +198,31 @@ namespace BarCrawler.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditCoverPicture(PictureViewModel viewModel)
+        public ActionResult EditCoverPicture(HttpPostedFileBase file, PictureViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
                 var model = _unitOfWork.CoverPictureRepository.GetByID(viewModel.PictureID);
-                if (model == null)
-                    return HttpNotFound();
-                _unitOfWork.CoverPictureRepository.AddModelForUpdate(ref viewModel, ref model);
-                _unitOfWork.Save();
-                return RedirectToAction("Index", new { id = model.BarID });
+                string[] validExt = new[] { ".png", ".jpg", ".jpeg", ".gif", ".bmp" };
 
+                if (file != null && file.ContentLength > 0 && validExt.Contains(System.IO.Path.GetExtension(file.FileName)))
+                {
+                    string filePath = Path.Combine("~/Images",
+                        Guid.NewGuid().ToString() + Path.GetExtension(file.FileName));
+
+                    file.SaveAs(Server.MapPath(filePath));
+                    var ImageDir = filePath;
+
+                   
+                    if (model == null)
+                        return HttpNotFound();
+
+                    System.IO.File.Delete(Server.MapPath(model.Directory));
+                    _unitOfWork.CoverPictureRepository.AddModelForUpdate(ref viewModel, ref model, ImageDir);
+                    _unitOfWork.Save();
+                    
+                }
+                return RedirectToAction("Index", new { id = model.BarID });
             }
             return RedirectToAction("BadRequestView");
         }
@@ -210,13 +234,21 @@ namespace BarCrawler.Controllers
         public ActionResult EditProfilPicture(int id)
         {
             var picture = _unitOfWork.BarProfilPictureRepository.GetByID(id);
-            if (picture == null)
-            {
-                return HttpNotFound();
-            }
             var bm = _unitOfWork.BarRepository.GetByID(id);
             if (bm == null)
                 return HttpNotFound();
+            if (picture == null)
+            {
+                var profilbillede = new BarProfilPictureModel()
+                {
+                    CreateTime = DateTime.Now,
+                    BarID = id,
+                    BarModel = bm,
+                    Directory = "~/Images/Fingers.png",
+                };
+                _unitOfWork.BarProfilPictureRepository.Add(profilbillede);
+                _unitOfWork.Save();
+            }
             if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
             {
                 PictureViewModel viewModel = new PictureViewModel(picture);
@@ -228,17 +260,31 @@ namespace BarCrawler.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditProfilPicture(PictureViewModel viewModel)
+        public ActionResult EditProfilPicture(HttpPostedFileBase file, PictureViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
                 var model = _unitOfWork.BarProfilPictureRepository.GetByID(viewModel.PictureID);
-                if (model == null)
-                    return HttpNotFound();
-                _unitOfWork.BarProfilPictureRepository.AddModelForUpdate(ref viewModel, ref model);
-                _unitOfWork.Save();
-                return RedirectToAction("Index", new { id = model.BarID });
+                string[] validExt = new[] { ".png", ".jpg", ".jpeg", ".gif", ".bmp" };
 
+                if (file != null && file.ContentLength > 0 && validExt.Contains(Path.GetExtension(file.FileName)))
+                {
+                    string filePath = Path.Combine("~/Images",
+                        Guid.NewGuid().ToString() + Path.GetExtension(file.FileName));
+                    
+                    file.SaveAs(Server.MapPath(filePath));
+                    var ImageDir = filePath;
+
+                    
+                    if (model == null)
+                        return HttpNotFound();
+
+                    System.IO.File.Delete(Server.MapPath(model.Directory));
+
+                    _unitOfWork.BarProfilPictureRepository.AddModelForUpdate(ref viewModel, ref model, ImageDir);
+                    _unitOfWork.Save();
+                   }
+                return RedirectToAction("Index", new { id = model.BarID });
             }
             return RedirectToAction("BadRequestView");
         }
@@ -251,6 +297,7 @@ namespace BarCrawler.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             PictureModel picture = new PictureModel();
             var bm = _unitOfWork.BarRepository.GetByID(id);
             if (bm == null)
@@ -266,19 +313,32 @@ namespace BarCrawler.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreatePicture(PictureModel picture)
+        public ActionResult CreatePicture(HttpPostedFileBase file, PictureModel picture)
         {
+
             if (ModelState.IsValid)
             {
-                picture.CreateTime = DateTime.Now;
-                _unitOfWork.PictureRepository.Add(picture);
-                BarModel barModel = _unitOfWork.BarRepository.GetByID(picture.BarID);
-                if (barModel == null)
+                string[] validExt = new[] {".png", ".jpg", ".jpeg", ".gif", ".bmp"};
+
+                if (file != null && file.ContentLength > 0 && validExt.Contains(System.IO.Path.GetExtension(file.FileName)))
                 {
-                    return HttpNotFound();
+                    string filePath = Path.Combine("~/Images",
+                        Guid.NewGuid().ToString() + Path.GetExtension(file.FileName));
+
+                    file.SaveAs(Server.MapPath(filePath));
+
+                    picture.Directory = filePath;
+                    picture.CreateTime = DateTime.Now;
+                    _unitOfWork.PictureRepository.Add(picture);
+                    BarModel barModel = _unitOfWork.BarRepository.GetByID(picture.BarID);
+                    if (barModel == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    barModel.Pictures.Add(picture);
+                    _unitOfWork.Save();
                 }
-                barModel.Pictures.Add(picture);
-                _unitOfWork.Save();
+
             }
             return RedirectToAction("Index", new { id = picture.BarID });
         }
@@ -333,6 +393,7 @@ namespace BarCrawler.Controllers
                     return HttpNotFound();
                 if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
                 {
+                    System.IO.File.Delete(Server.MapPath(picture.Directory));
                     _unitOfWork.PictureRepository.Remove(picture);
                     _unitOfWork.Save();
                 }
