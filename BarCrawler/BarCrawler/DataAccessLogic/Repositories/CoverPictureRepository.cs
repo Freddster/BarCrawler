@@ -7,8 +7,6 @@ namespace BarCrawler.DataAccessLogic.Repositories
     /// <summary>
     /// The CoverPictureRepository contains functions to store, edit and get the correct cover pictures from the database.
     /// </summary>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.GenericRepository{BarCrawler.Models.CoverPictureModel}" />
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.ICoverPictureRepository" />
     public class CoverPictureRepository : GenericRepository<CoverPictureModel>, ICoverPictureRepository
     {
         /// <summary>

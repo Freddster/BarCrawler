@@ -7,8 +7,6 @@ namespace BarCrawler.DataAccessLogic.Repositories
     /// <summary>
     /// The DrinkRepository contains functions to store, edit and get the correct drinks from the database.
     /// </summary>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.GenericRepository{BarCrawler.Models.DrinkModel}" />
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IDrinkRepository" />
     public class DrinkRepository : GenericRepository<DrinkModel>, IDrinkRepository
     {
         /// <summary>

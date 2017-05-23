@@ -13,8 +13,6 @@ namespace BarCrawler.DataAccessLogic.Repositories
     /// <summary>
     /// Most of the repositories share some of the same functionality, and therefore there has been created a GenericRepository for those functions.
     /// </summary>
-    /// <typeparam name="TEntity">The type of the entity.</typeparam>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IRepository{TEntity}" />
     public class GenericRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
 

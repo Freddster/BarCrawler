@@ -7,8 +7,6 @@ namespace BarCrawler.DataAccessLogic.Repositories
     /// <summary>
     /// The PictureRepository contains functions to store, edit and get the correct pictures from the database.
     /// </summary>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.GenericRepository{BarCrawler.Models.PictureModel}" />
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IPictureRepository" />
     public class PictureRepository : GenericRepository<PictureModel>, IPictureRepository
     {
         /// <summary>

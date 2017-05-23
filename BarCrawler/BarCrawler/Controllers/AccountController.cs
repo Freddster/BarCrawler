@@ -204,7 +204,7 @@ namespace BarCrawler.Controllers
                         Directory = coverPath,
                     };
 
-                    _unitOfWork.BarProfilPictureRepository.Add(profilbillede);
+                    _unitOfWork.BarProfilePictureRepository.Add(profilbillede);
                     _unitOfWork.CoverPictureRepository.Add(coverbillede);
                     _unitOfWork.Save();
 

@@ -26,7 +26,7 @@ namespace BarCrawler.DataAccessLogic.UnitOfWork
         /// </summary>
         public UnitOfWork()
         {
-            //Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
+            Database.SetInitializer(new BarCrawlerContextInitializer<BarCrawlerContext>());
             _context = new BarCrawlerContext();
             InitializeRepositories();
         }
@@ -48,7 +48,7 @@ namespace BarCrawler.DataAccessLogic.UnitOfWork
         private void InitializeRepositories()
         {
             CoverPictureRepository = new CoverPictureRepository(_context);
-            BarProfilPictureRepository = new BarProfilePictureRepository(_context);
+            BarProfilePictureRepository = new BarProfilePictureRepository(_context);
             BarRepository = new BarRepository(_context);
             DrinkRepository = new DrinkRepository(_context);
             EventRepository = new EventRepository(_context);
@@ -71,8 +71,8 @@ namespace BarCrawler.DataAccessLogic.UnitOfWork
         /// <value>
         /// The bar profil picture repository.
         /// </value>
-        /// <seealso cref="IBarProfilPictureRepository" />
-        public IBarProfilPictureRepository BarProfilPictureRepository { get; set; }
+        /// <seealso cref="IBarProfilePictureRepository" />
+        public IBarProfilePictureRepository BarProfilePictureRepository { get; set; }
         
         /// <summary>
         /// Gets the bar repository.
@@ -141,7 +141,7 @@ namespace BarCrawler.DataAccessLogic.UnitOfWork
                 .Include(d => d.Drinks)
                 .Include(f => f.Feeds)
                 .Include(p => p.Pictures)
-                .Include(pp => pp.BarProfilPicture)
+                .Include(pp => pp.BarProfilePicture)
                 .Include(ppp => ppp.CoverPicture)
                 .SingleOrDefault(x => x.BarID == id);
 
@@ -183,7 +183,7 @@ namespace BarCrawler.DataAccessLogic.UnitOfWork
         public IEnumerable<BarModel> GetAllBarsForHome()
         {
             var allModels = _context.BarModels
-                .Include(p => p.BarProfilPicture)
+                .Include(p => p.BarProfilePicture)
                 .Include(f => f.Feeds)
                 .OrderBy(model => model.BarName)
                 .ToList();

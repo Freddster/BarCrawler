@@ -49,7 +49,7 @@ namespace BarCrawler.DataAccessLogic.Repositories
         /// </summary>
         public BarModel GetEditInfo(int? id)
         {
-            return _context.Set<BarModel>().Include(p => p.BarProfilPicture).SingleOrDefault(x => x.BarID == id);
+            return _context.Set<BarModel>().Include(p => p.BarProfilePicture).SingleOrDefault(x => x.BarID == id);
         }
 
         /// <summary>

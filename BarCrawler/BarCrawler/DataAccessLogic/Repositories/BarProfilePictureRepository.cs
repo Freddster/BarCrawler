@@ -10,11 +10,9 @@ using BarCrawler.ViewModels;
 namespace BarCrawler.DataAccessLogic.Repositories
 {
     /// <summary>
-    /// The BarProfilPictureRepository contains functions to store, edit and get the correct bar profile pictures from the database.
+    /// The BarProfilePictureRepository contains functions to store, edit and get the correct bar profile pictures from the database.
     /// </summary>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.GenericRepository{BarCrawler.Models.BarProfilePictureModel}" />
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IBarProfilPictureRepository" />
-    public class BarProfilePictureRepository : GenericRepository<BarProfilePictureModel>, IBarProfilPictureRepository
+    public class BarProfilePictureRepository : GenericRepository<BarProfilePictureModel>, IBarProfilePictureRepository
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BarProfilePictureRepository" /> class.

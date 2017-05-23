@@ -261,7 +261,7 @@ namespace BarCrawler.Models
         /// Navigational property to <see cref="BarProfilePictureModel"/>.
         /// </value>
         /// <seealso cref="BarProfilePictureModel"/>    
-        public virtual BarProfilePictureModel BarProfilPicture { get; set; }
+        public virtual BarProfilePictureModel BarProfilePicture { get; set; }
         
         /// <summary>
         /// Gets or sets the cover picture.

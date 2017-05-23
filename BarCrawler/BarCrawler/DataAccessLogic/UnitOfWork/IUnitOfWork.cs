@@ -23,8 +23,8 @@ namespace BarCrawler.DataAccessLogic.UnitOfWork
         /// <value>
         /// The bar profil picture repository.
         /// </value>
-        /// <seealso cref="IBarProfilPictureRepository"/>
-        IBarProfilPictureRepository BarProfilPictureRepository { get; }
+        /// <seealso cref="IBarProfilePictureRepository"/>
+        IBarProfilePictureRepository BarProfilePictureRepository { get; }
         /// <summary>
         /// Gets the cover picture repository.
         /// </summary>
