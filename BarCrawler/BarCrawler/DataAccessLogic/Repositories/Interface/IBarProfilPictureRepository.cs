@@ -3,7 +3,7 @@ using BarCrawler.ViewModels;
 
 namespace BarCrawler.DataAccessLogic.Repositories.Interface
 {
-    public interface IBarProfilPictureRepository : IRepository<BarProfilPictureModel>
+    public interface IBarProfilPictureRepository : IRepository<BarProfilePictureModel>
     {
         void AddModelForUpdate(ref PictureViewModel viewModel, ref BarProfilPictureModel pictureModel, string imgDir);
     }

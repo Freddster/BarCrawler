@@ -9,7 +9,7 @@ using BarCrawler.ViewModels;
 
 namespace BarCrawler.DataAccessLogic.Repositories
 {
-    public class BarProfilPictureRepository : GenericRepository<BarProfilPictureModel>, IBarProfilPictureRepository
+    public class BarProfilPictureRepository : GenericRepository<BarProfilePictureModel>, IBarProfilPictureRepository
     {
         public BarProfilPictureRepository(DbContext context) : base(context)
         {

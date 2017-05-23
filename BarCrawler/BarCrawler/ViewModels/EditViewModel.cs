@@ -50,6 +50,7 @@ namespace BarCrawler.ViewModels
         [StringLength(5)]
         [Display(Name = "Åbningstid")]
         public string OpenTime { get; set; }
+
         [Required]
         [StringLength(5)]
         [Display(Name = "Lukketid")]
@@ -59,6 +60,7 @@ namespace BarCrawler.ViewModels
         [Required]
         [Display(Name = "Address")]
         public string Address1 { get; set; }
+
         [Display(Name = "Etage")]
         public string Address2 { get; set; }
 

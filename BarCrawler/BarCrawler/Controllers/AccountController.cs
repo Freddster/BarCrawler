@@ -11,7 +11,6 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BarCrawler.Models;
 using BarCrawler.ViewModels;
-using DataAccessLogic.UnitOfWork;
 
 namespace BarCrawler.Controllers
 {
