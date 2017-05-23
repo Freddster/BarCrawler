@@ -107,9 +107,9 @@
 </style>
 
 <div class="coverbillede" style="width: 100%; height: 350px; overflow: hidden;">
-    @if (Model.CoverPictureModel != null)
+    @if (Model.CoverPicture != null)
     {
-        <img class="resize" src="@Url.Content(Model.CoverPictureModel.Directory)" alt="N/A" style="max-height: 350px; position: relative;" />
+        <img class="resize" src="@Url.Content(Model.CoverPicture.Directory)" alt="N/A" style="max-height: 350px; position: relative;" />
     }
     else
     {
@@ -442,9 +442,9 @@
             Profilbillede
         </h2>
             <div class="show-button" style="clear: right">
-                @if (Model.BarProfilPictureModel != null)
+                @if (Model.BarProfilPicture != null)
             {
-                    <img class="resize" id="picture" src="@Url.Content(Model.BarProfilPictureModel.Directory)" alt="N/A" />
+                    <img class="resize" id="picture" src="@Url.Content(Model.BarProfilPicture.Directory)" alt="N/A" />
                 }
                 else
                 {
@@ -515,9 +515,9 @@
 
         <div id="Container1">
             <div id="Profilbillede" style="float: right; clear: left;">
-                @if (Model.BarProfilPictureModel != null)
+                @if (Model.BarProfilPicture != null)
                 {
-                    <img class="resize" src="@Url.Content(Model.BarProfilPictureModel.Directory)" alt="N/A" style="max-height: 350px; position: relative;"/>
+                    <img class="resize" src="@Url.Content(Model.BarProfilPicture.Directory)" alt="N/A" style="max-height: 350px; position: relative;"/>
                 }
                 else
                 {

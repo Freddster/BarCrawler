@@ -5,17 +5,22 @@ using BarCrawler.ViewModels;
 namespace BarCrawler.DataAccessLogic.Repositories
 {
     /// <summary>
-    /// The PictureRepository is making sure to update the correct tables in case of any changes
+    /// The PictureRepository contains functions to store, edit and get the correct pictures from the database.
     /// </summary>
+    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.GenericRepository{BarCrawler.Models.PictureModel}" />
+    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IPictureRepository" />
     public class PictureRepository : GenericRepository<PictureModel>, IPictureRepository
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PictureRepository"/> class.
+        /// </summary>
+        /// <param name="ReceivedContext">The received context.</param>
         public PictureRepository(BarCrawlerContext ReceivedContext) : base(ReceivedContext)
         {
-            
         }
 
         /// <summary>
-        /// Adds the pictureModel for update. <br/>
+        /// Adds the pictureModel for update. <br />
         /// And after marks the pictureModel as dirty to indicate a change in the pictureModel.
         /// </summary>
         /// <param name="viewModel">The view model.</param>

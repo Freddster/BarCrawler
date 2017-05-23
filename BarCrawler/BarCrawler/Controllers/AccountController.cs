@@ -19,7 +19,7 @@ namespace BarCrawler.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private UnitOfWork _unitOfWork;
+        private IUnitOfWork _unitOfWork;
 
         public AccountController()
         {
@@ -179,10 +179,10 @@ namespace BarCrawler.Controllers
                         BarModel = bar,
                     };
 
-                    profilbillede.Directory = model.BarModel.BarProfilPictureModel.Directory ??
+                    profilbillede.Directory = model.BarModel.BarProfilPicture.Directory ??
                                               "http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1"; 
 
-                    coverbillede.Directory = model.BarModel.CoverPictureModel.Directory ?? "http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1";
+                    coverbillede.Directory = model.BarModel.CoverPicture.Directory ?? "http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1";
 
                     //if (file != null && file.ContentLength > 0)
                     //{
