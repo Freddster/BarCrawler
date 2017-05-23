@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using BarCrawler.DataAccessLogic.UnitOfWork;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -187,7 +188,7 @@ namespace BarCrawler.Controllers
                         Coverbillede.SaveAs(Server.MapPath(coverPath));
                     }
 
-                    var profilbillede = new BarProfilPictureModel()
+                    var profilbillede = new BarProfilePictureModel()
                     {
                         CreateTime = DateTime.Now,
                         BarID = bar.BarID,

@@ -5,6 +5,6 @@ namespace BarCrawler.DataAccessLogic.Repositories.Interface
 {
     public interface IBarProfilPictureRepository : IRepository<BarProfilePictureModel>
     {
-        void AddModelForUpdate(ref PictureViewModel viewModel, ref BarProfilPictureModel pictureModel, string imgDir);
+        void AddModelForUpdate(ref PictureViewModel viewModel, ref BarProfilePictureModel pictureModel, string imgDir);
     }
 }

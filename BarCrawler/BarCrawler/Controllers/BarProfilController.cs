@@ -243,7 +243,7 @@ namespace BarCrawler.Controllers
                 return HttpNotFound();
             if (picture == null)
             {
-                var profilbillede = new BarProfilPictureModel()
+                var profilbillede = new BarProfilePictureModel()
                 {
                     CreateTime = DateTime.Now,
                     BarID = id,
