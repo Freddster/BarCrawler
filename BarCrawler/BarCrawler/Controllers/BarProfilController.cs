@@ -425,7 +425,7 @@ namespace BarCrawler.Controllers
             }
             if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == barModel.userID))
             {
-                EditViewModel viewModel = barModel.Pictures.Count > 0
+                EditViewModel viewModel = barModel.BarProfilPictureModel != null
                     ? new EditViewModel(barModel, barModel.BarProfilPictureModel.Directory)
                     : new EditViewModel(barModel);
                 return View(viewModel);

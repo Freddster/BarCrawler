@@ -6,7 +6,7 @@
 
 <h2>CreateEvent</h2>
 
-@using (Html.BeginForm("CreateEvent","BarProfil",FormMethod.Post, new { id = "CreateEvent" }))
+@using (Html.BeginForm("CreateEvent","BarProfil",FormMethod.Post@*, new { id = "CreateEvent" }*@))
 {
     @Html.AntiForgeryToken()
 

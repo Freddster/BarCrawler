@@ -13,7 +13,7 @@
 <hr />
 <h2>Opret drink</h2>
 
-@using (Html.BeginForm("CreateDrink", "BarProfil", FormMethod.Post, new {id = "CreateDrink"}))
+@using (Html.BeginForm("CreateDrink", "BarProfil", FormMethod.Post@*, new {id = "CreateDrink"}*@))
  {
 @Html.AntiForgeryToken()
 

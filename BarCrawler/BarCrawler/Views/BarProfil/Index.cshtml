@@ -406,12 +406,12 @@
         }
 
         #picture {
-            max-height: 200px; 
-            max-width: 290px; 
-            margin-left: auto; 
-            margin-right: auto; 
-            vertical-align: middle; 
-            display: inline-block; 
+            max-height: 200px;
+            max-width: 290px;
+            margin-left: auto;
+            margin-right: auto;
+            vertical-align: middle;
+            display: inline-block;
             height: 100%;
         }
     </style>
@@ -422,25 +422,25 @@
     }
     </script>
 
-<script>
+    <script>
     function EditPicture(pictureId) {
         window.location.href = '@Url.Action("EditPicture", new {id = Model.BarID})' + '?Pid=' + pictureId;
     }
-</script>
-  
-<script>
+    </script>
+
+    <script>
     function EditProfilPicture() {
         window.location.href = '@Url.Action("EditProfilPicture", new {id = Model.BarID})';
     }
-</script>
+    </script>
 
-<div role="tabpanel" class="tab-pane fade in" id="Galleri">
-    
-    @* PROFILBILLEDE *@
-    <div class="row">
-        <h2>
-            Profilbillede
-        </h2>
+    <div role="tabpanel" class="tab-pane fade in" id="Galleri">
+
+        @* PROFILBILLEDE *@
+        <div class="row">
+            <h2>
+                Profilbillede
+            </h2>
             <div class="show-button" style="clear: right">
                 @if (Model.BarProfilPictureModel != null)
             {
@@ -455,46 +455,45 @@
                     <input class="EditButton" type="button" onclick="EditProfilPicture()" value="Ændre" />
                 }
             </div>
-    </div>
-    @*Galleri*@
-    <div class="row">
-        <h2>
-            Galleri
-            @if (User.Identity.GetUserId() == Model.userID)
-            {
-                <a href="@Url.Action("CreatePicture", "BarProfil", new {id = @Model.BarID})">
-                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
-                </a>
-            }
-        </h2>
-    </div>
-    @if (@Model.Pictures.Count > 0)
-    {
-        <div class="row">
-            @foreach (var item in Model.Pictures)
-            {
-                <div class="col-lg-3">
-                    <div class="row">
-                        <div class="show-button">
-                            <img class="resize" id="picture"
-                                 src="@Url.Content(item.Directory)"
-                                 />
-                            @if (User.Identity.GetUserId() == Model.userID)
-                            {
-                                <input class="DeleteButton" type="button" onclick="deletePicture(@item.PictureID)" value="Slet"/>
-                                <input class="EditButton" type="button" onclick="EditPicture(@item.PictureID)" value="Ændr beskrivelse"/>
-                            }
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        @Html.DisplayFor(b => item.Description)
-                    </div>
-                </div>
-            }
         </div>
-    }
-</div>
+        @*Galleri*@
+        <div class="row">
+            <h2>
+                Galleri
+                @if (User.Identity.GetUserId() == Model.userID)
+            {
+                    <a href="@Url.Action("CreatePicture", "BarProfil", new {id = @Model.BarID})">
+                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+                    </a>
+                }
+            </h2>
+        </div>
+        @if (@Model.Pictures.Count > 0)
+        {
+            <div class="row">
+                @foreach (var item in Model.Pictures)
+                {
+                    <div class="col-lg-3">
+                        <div class="row">
+                            <div class="show-button">
+                                <img class="resize" id="picture"
+                                     src="@Url.Content(item.Directory)" />
+                                @if (User.Identity.GetUserId() == Model.userID)
+                                {
+                                    <input class="DeleteButton" type="button" onclick="deletePicture(@item.PictureID)" value="Slet" />
+                                    <input class="EditButton" type="button" onclick="EditPicture(@item.PictureID)" value="Ændr beskrivelse" />
+                                }
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            @Html.DisplayFor(b => item.Description)
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
 
 
 
@@ -513,24 +512,10 @@
 
         </h2>
 
-        <div id="Container1">
-            <div id="Profilbillede" style="float: right; clear: left;">
-                @if (Model.BarProfilPictureModel != null)
-                {
-                    <img class="resize" src="@Url.Content(Model.BarProfilPictureModel.Directory)" alt="N/A" style="max-height: 350px; position: relative;"/>
-                }
-                else
-                {
-                    <img class="resize" src="http://www.nice.com/PublishingImages/Career%20images/J---HR_Page-4st-strip-green-hair%20(2).png?RenditionID=-1" style="max-width: 100%; position: relative;"/>
-                }
-                @if (User.Identity.GetUserId() == Model.userID)
-                {
-                    <input class="EditCoverButton" type="button" onclick="EditPicture()" value="Ændre"/>
-                }
-            </div>
-            <div class="container-fluid">
-                <table class="table table" style="max-width: 400px;">
-                    <tbody>
+
+        <div class="container-fluid">
+            <table class="table table" style="max-width: 400px;">
+                <tbody>
                     <tr>
                         <td>@Html.LabelFor(m => m.OpenTime):</td>
                         <td>@Model.OpenTime - @Model.CloseTime</td>
@@ -563,9 +548,8 @@
                         <td>@Html.LabelFor(m => m.StreetNumber):</td>
                         <td>@Model.StreetNumber</td>
                     </tr>
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
         <div class="row">
             <h2>
@@ -599,34 +583,34 @@
                     @* Denne version af tabellen skal kun vises hvis det er baren selv der er logget ind*@
                     <table class="table table">
                         <thead>
-                        <tr>
-                            <th class="col-md-2">@Html.LabelFor(d => d.Drinks[0].Title)</th>
-                            <th class="col-md-1">@Html.LabelFor(d => d.Drinks[0].Price)</th>
-                            <th class="col-md-4">@Html.LabelFor(d => d.Drinks[0].Description)</th>
-                            @if (User.Identity.GetUserId() == Model.userID)
-                            {
-                                <th class="col-md-1, text-right">Action</th>
-                            }
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach (var item in Model.Drinks)
-                        {
                             <tr>
-                                <td>@item.Title</td>
-                                <td>@item.Price kr</td>
-                                <td>@item.Description</td>
+                                <th class="col-md-2">@Html.LabelFor(d => d.Drinks[0].Title)</th>
+                                <th class="col-md-1">@Html.LabelFor(d => d.Drinks[0].Price)</th>
+                                <th class="col-md-4">@Html.LabelFor(d => d.Drinks[0].Description)</th>
                                 @if (User.Identity.GetUserId() == Model.userID)
                                 {
-                                    <td class="col-md-1, text-right">
-                                        @Html.ActionLink("Rediger", "EditDrink", new {id = item.DrinkID, barId = Model.BarID})
-                                        @*@Html.Display(" | ")*@ |
-                                        @Html.ActionLink("Slet", "DeleteDrink", new {id = item.DrinkID})
-
-                                    </td>
+                                    <th class="col-md-1, text-right">Action</th>
                                 }
                             </tr>
-                        }
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Drinks)
+                            {
+                                <tr>
+                                    <td>@item.Title</td>
+                                    <td>@item.Price kr</td>
+                                    <td>@item.Description</td>
+                                    @if (User.Identity.GetUserId() == Model.userID)
+                                    {
+                                        <td class="col-md-1, text-right">
+                                            @Html.ActionLink("Rediger", "EditDrink", new { id = item.DrinkID, barId = Model.BarID })
+                                            @*@Html.Display(" | ")*@ |
+                                            @Html.ActionLink("Slet", "DeleteDrink", new { id = item.DrinkID })
+
+                                        </td>
+                                    }
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
