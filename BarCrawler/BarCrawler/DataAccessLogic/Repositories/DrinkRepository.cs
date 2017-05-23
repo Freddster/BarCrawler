@@ -7,12 +7,15 @@ namespace BarCrawler.DataAccessLogic.Repositories
     /// <summary>
     /// The DrinkRepository contains functions to store, edit and get the correct drinks from the database.
     /// </summary>
+    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.GenericRepository{BarCrawler.Models.DrinkModel}" />
+    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IDrinkRepository" />
     public class DrinkRepository : GenericRepository<DrinkModel>, IDrinkRepository
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DrinkRepository"/> class.
+        /// Initializes a new instance of the <see cref="DrinkRepository" /> class.
         /// </summary>
         /// <param name="ReceivedContext">The received context.</param>
+        /// <seealso cref="BarCrawlerContext"/>
         public DrinkRepository(BarCrawlerContext ReceivedContext) : base(ReceivedContext)
         {
         }
@@ -33,7 +36,8 @@ namespace BarCrawler.DataAccessLogic.Repositories
         /// And after marks the drinkModel as dirty to indicate a change in the DrinkModel.
         /// </summary>
         /// <param name="viewModel">The view model.</param>
-        /// <param name="drinkModel">The drink model.</param>
+        /// <param name="drinkModel">The <see cref="DrinkModel"/>.</param>
+        /// <seealso cref="DrinkModel" />
         public void AddModelForUpdate(ref DrinkViewModel viewModel, ref DrinkModel drinkModel)
         {
             drinkModel.Description = viewModel.Description;
