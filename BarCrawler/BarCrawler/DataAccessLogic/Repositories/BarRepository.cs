@@ -8,7 +8,7 @@ using BarCrawler.ViewModels;
 namespace BarCrawler.DataAccessLogic.Repositories
 {
     /// <summary>
-    /// The BarRepository is making sure to store, edit and get the correct bars from the tables. 
+    /// The BarRepository contains functions to store, edit and get the correct bars from the database. 
     /// </summary>
     public class BarRepository : GenericRepository<BarModel>, IBarRepository
     {
@@ -19,8 +19,10 @@ namespace BarCrawler.DataAccessLogic.Repositories
         private DbSet<BarModel> _dbSet;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BarRepository"/> class.
+        /// Initializes a new instance of the <see cref="BarRepository" /> class.
         /// </summary>
+        /// <param name="receivedContext">The received context.</param>
+        /// <remarks>The received context is passed on to the base class.</remarks>
         public BarRepository(BarCrawlerContext receivedContext) : base(receivedContext)
         {
             //_context = receivedContext;
@@ -31,6 +33,8 @@ namespace BarCrawler.DataAccessLogic.Repositories
         /// <summary>
         /// Gets the specific bar profile through a BarID.
         /// </summary>
+        /// <param name="id">The Bar identifier.</param>
+        /// <returns></returns>
         public BarModel GetProfile(int? id)
         {
             return (_dbSet.Include(d => d.Drinks)
@@ -45,7 +49,7 @@ namespace BarCrawler.DataAccessLogic.Repositories
         /// </summary>
         public BarModel GetEditInfo(int? id)
         {
-            return _context.Set<BarModel>().Include(p => p.BarProfilPictureModel).SingleOrDefault(x => x.BarID == id);
+            return _context.Set<BarModel>().Include(p => p.BarProfilPicture).SingleOrDefault(x => x.BarID == id);
         }
 
         /// <summary>

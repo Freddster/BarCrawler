@@ -9,12 +9,26 @@ using BarCrawler.ViewModels;
 
 namespace BarCrawler.DataAccessLogic.Repositories
 {
-    public class BarProfilPictureRepository : GenericRepository<BarProfilePictureModel>, IBarProfilPictureRepository
+    /// <summary>
+    /// The BarProfilPictureRepository contains functions to store, edit and get the correct bar profile pictures from the database.
+    /// </summary>
+    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.GenericRepository{BarCrawler.Models.BarProfilePictureModel}" />
+    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IBarProfilPictureRepository" />
+    public class BarProfilePictureRepository : GenericRepository<BarProfilePictureModel>, IBarProfilPictureRepository
     {
-        public BarProfilPictureRepository(DbContext context) : base(context)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BarProfilePictureRepository" /> class.
+        /// </summary>
+        /// <param name="context"></param>
+        public BarProfilePictureRepository(BarCrawlerContext context) : base(context)
         {
         }
 
+        /// <summary>
+        /// Updates the Directory and Description for the model before marking it as dirty.
+        /// </summary>
+        /// <param name="viewModel">The view model.</param>
+        /// <param name="pictureModel">The picture model.</param>
         public void AddModelForUpdate(ref PictureViewModel viewModel, ref BarProfilePictureModel pictureModel, string imgDir)
         {
             pictureModel.Directory = imgDir;

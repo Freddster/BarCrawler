@@ -10,8 +10,9 @@ using BarCrawler.Models;
 namespace BarCrawler.DataAccessLogic.UnitOfWork
 {
     /// <summary>
-    /// sdffds
+    /// Unit of work for storing the functions of the repositories, and have one place to access them all.
     /// </summary>
+    /// <seealso cref="BarCrawler.DataAccessLogic.UnitOfWork.IUnitOfWork" />
     /// <seealso cref="IUnitOfWork" />
     public class UnitOfWork : IUnitOfWork
     {
@@ -21,7 +22,7 @@ namespace BarCrawler.DataAccessLogic.UnitOfWork
         private BarCrawlerContext _context;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnitOfWork"/> class.
+        /// Initializes a new instance of the <see cref="UnitOfWork" /> class.
         /// </summary>
         public UnitOfWork()
         {
@@ -31,7 +32,7 @@ namespace BarCrawler.DataAccessLogic.UnitOfWork
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnitOfWork"/> class.
+        /// Initializes a new instance of the <see cref="UnitOfWork" /> class.
         /// </summary>
         /// <param name="context">The context.</param>
         public UnitOfWork(BarCrawlerContext context)
@@ -41,18 +42,13 @@ namespace BarCrawler.DataAccessLogic.UnitOfWork
             InitializeRepositories();
         }
 
-        public UnitOfWork(BarRepository barRepo)
-        {
-            this.barRepo = barRepo;
-        }
-
         /// <summary>
         /// Initializes the repositories.
         /// </summary>
         private void InitializeRepositories()
         {
             CoverPictureRepository = new CoverPictureRepository(_context);
-            BarProfilPictureRepository = new BarProfilPictureRepository(_context);
+            BarProfilPictureRepository = new BarProfilePictureRepository(_context);
             BarRepository = new BarRepository(_context);
             DrinkRepository = new DrinkRepository(_context);
             EventRepository = new EventRepository(_context);
@@ -60,12 +56,67 @@ namespace BarCrawler.DataAccessLogic.UnitOfWork
             PictureRepository = new PictureRepository(_context);
         }
 
+        /// <summary>
+        /// Gets the cover picture repository.
+        /// </summary>
+        /// <value>
+        /// The cover picture repository.
+        /// </value>
+        /// <seealso cref="ICoverPictureRepository" />
         public ICoverPictureRepository CoverPictureRepository { get; set; }
+
+        /// <summary>
+        /// Gets the bar profil picture repository.
+        /// </summary>
+        /// <value>
+        /// The bar profil picture repository.
+        /// </value>
+        /// <seealso cref="IBarProfilPictureRepository" />
         public IBarProfilPictureRepository BarProfilPictureRepository { get; set; }
+        
+        /// <summary>
+        /// Gets the bar repository.
+        /// </summary>
+        /// <value>
+        /// The bar repository.
+        /// </value>
+        /// <seealso cref="IBarRepository" />
         public IBarRepository BarRepository { get; private set; }
+
+        /// <summary>
+        /// Gets the drink repository.
+        /// </summary>
+        /// <value>
+        /// The drink repository.
+        /// </value>
+        /// <seealso cref="IDrinkRepository" />
+
         public IDrinkRepository DrinkRepository { get; private set; }
+        /// <summary>
+        /// Gets the event repository.
+        /// </summary>
+        /// <value>
+        /// The event repository.
+        /// </value>
+        /// <seealso cref="IEventRepository" />
         public IEventRepository EventRepository { get; private set; }
+        
+        /// <summary>
+        /// Gets the feed repository.
+        /// </summary>
+        /// <value>
+        /// The feed repository.
+        /// </value>
+        /// <seealso cref="IFeedRepository" />
         public IFeedRepository FeedRepository { get; private set; }
+        
+        /// <summary>
+        /// Gets the picture repository.
+        /// </summary>
+        /// <value>
+        /// The picture repository.
+        /// </value>
+        /// <seealso cref="IPictureRepository" />
         public IPictureRepository PictureRepository { get; private set; }
 
 
@@ -77,22 +128,21 @@ namespace BarCrawler.DataAccessLogic.UnitOfWork
             _context.SaveChanges();
         }
 
-        
+
 
         /// <summary>
-        /// Gets the barprofile.
+        /// Gets the barprofile for the bar with the given id.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns></returns>
+        /// <returns>Barmodel with associated drinks, events, feeds, profile picture, cover picture and picutes</returns>
         public BarModel GetBarprofile(int? id)
         {
-
             var modelToReturn = _context.BarModels
                 .Include(d => d.Drinks)
                 .Include(f => f.Feeds)
                 .Include(p => p.Pictures)
-                .Include(pp => pp.BarProfilPictureModel)
-                .Include(ppp => ppp.CoverPictureModel)
+                .Include(pp => pp.BarProfilPicture)
+                .Include(ppp => ppp.CoverPicture)
                 .SingleOrDefault(x => x.BarID == id);
 
             if (modelToReturn == null)
@@ -117,17 +167,23 @@ namespace BarCrawler.DataAccessLogic.UnitOfWork
 
             return modelToReturn;
         }
-        private const int TimeToSubtract = -12;
-        private BarRepository barRepo;
+
 
         /// <summary>
-        /// Gets all bars for home.
+        /// The time to subtract from events to search for in database
         /// </summary>
-        /// <returns></returns>
+        private const int TimeToSubtract = -12;
+
+        /// <summary>
+        /// Gets all bars for home index with associated events, feeds and profile picture.
+        /// </summary>
+        /// <returns>
+        /// All the Barmodels with associated events, feeds and profile picture in an unidentified collection.
+        /// </returns>
         public IEnumerable<BarModel> GetAllBarsForHome()
         {
             var allModels = _context.BarModels
-                .Include(p => p.BarProfilPictureModel)
+                .Include(p => p.BarProfilPicture)
                 .Include(f => f.Feeds)
                 .OrderBy(model => model.BarName)
                 .ToList();

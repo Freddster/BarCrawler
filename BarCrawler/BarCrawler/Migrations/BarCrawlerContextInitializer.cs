@@ -167,7 +167,7 @@ namespace BarCrawler.Migrations
 
             barModels[0].Events.AddRange(eventModels.FindAll(model => model.BarID == 1));
             barModels[0].Drinks.AddRange(drinkModels.FindAll(model => model.BarID == 1));
-            barModels[0].BarProfilPictureModel = barProfilPictureModels;
+            barModels[0].BarProfilPicture = barProfilPictureModels;
             List<PictureModel> pm = new List<PictureModel>();
             pm.AddRange(pictureModels.FindAll(model => model.BarID == 1));
             barModels[0].Pictures.AddRange(pm);

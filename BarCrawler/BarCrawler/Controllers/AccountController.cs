@@ -20,7 +20,7 @@ namespace BarCrawler.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private UnitOfWork _unitOfWork;
+        private IUnitOfWork _unitOfWork;
 
         public AccountController()
         {
