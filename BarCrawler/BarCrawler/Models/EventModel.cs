@@ -9,81 +9,128 @@ using System.Web;
 namespace BarCrawler.Models
 {
     /// <summary>
-    /// The EventModel defines all the neccesary properties for creation. 
+    /// The EventModel defines all the requirements for a bar in the database.
     /// </summary>
     public class EventModel
     {
         /// <summary>
-        /// Gets or sets the EventID <br/>
+        /// Gets or sets the EventID
         /// </summary>
-        /// <summary>
-        /// This property has a uniquely [Key] tag for identification <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.keyattribute(v=vs.110).aspx">Keyattribute</see>
-        /// </summary>
+        /// <value>
+        /// The event identifier.
+        /// </value>
+        /// <remarks>
+        /// This property has a uniquely [Key] tag for identification <see cref="KeyAttribute" />
+        /// </remarks>
+        /// <seealso cref="KeyAttribute"/>
         [Key]
         public int EventID { get; set; }
 
         /// <summary>
-        /// Gets or sets the BarID and has a [ForeignKey] to BarModel <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.schema.foreignkeyattribute(v=vs.110).aspx">Foreignkeyattribute</see> <br/>
+        /// Gets or sets the BarID.
         /// </summary>
+        /// <value>
+        /// The bar identifier.
+        /// </value>
+        /// <remarks>
+        /// Has a [ForeignKey] to BarModel <see cref="ForeignKeyAttribute"/>
+        /// </remarks>
+        /// <seealso cref="ForeignKeyAttribute"/>
         [ForeignKey("BarModel")]
         public int BarID { get; set; }
 
         /// <summary>
-        /// Gets or sets the BarModel. <br/>
+        /// Gets or sets the BarModel.
         /// </summary>
+        /// <value>
+        /// The bar model.
+        /// </value>
         public virtual BarModel BarModel { get; set; }
 
-
+        /// <summary>
+        /// Used for optimistic locking
+        /// </summary>
+        /// <value>
+        /// The row version.
+        /// </value>
+        /// <remarks>
+        /// The property [Timestamp] defines optimistic locking using <see cref="TimestampAttribute"/>
+        /// </remarks>
+        /// <seealso cref="TimestampAttribute" />
         [Timestamp]
         public Byte[] TimeStamp { get; set; }
 
         /// <summary>
-        /// Gets or sets the Title. <br/>
+        /// Gets or sets the Title for the event.
         /// </summary>
-        /// <summary>
-        /// This property is required and is marked with a [Required] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute(v=vs.110).aspx">Requiredattribute</see><br/>
-        /// It also has a [Display] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute(v=vs.110).aspx">Displayattribute</see>
-        /// </summary>
+        /// <value>
+        /// The title for the event.
+        /// </value>
+        /// <remarks>
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute" /><br />
+        /// It also has a [Display] tag <see cref="DisplayAttribute" />
+        /// </remarks>
+        /// <seealso cref="RequiredAttribute"/>
+        /// <seealso cref="DisplayAttribute"/>
         [Required]
         [Display(Name = "Event navn")]
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or sets the Description. <br/>
+        /// Gets or sets the Description for the event.
         /// </summary>
-        /// <summary>
-        /// This property is marked with a [MaxLength] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.maxlengthattribute(v=vs.110).aspx">Maxlengthattribute</see><br/>
-        /// It also has a [Display] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute(v=vs.110).aspx">Displayattribute</see>
-        /// </summary>
+        /// <value>
+        /// The description for the event.
+        /// </value>
+        /// <remarks>
+        /// This property is marked with a [MaxLength] tag <see cref="MaxLengthAttribute" /><br />
+        /// It also has a [Display] tag <see cref="DisplayAttribute" />
+        /// </remarks>
+        /// <seealso cref="MaxLengthAttribute"/>
+        /// <seealso cref="DisplayAttribute"/>
         [MaxLength(1000)]
         [Display(Name = "Beskrivelse")]
         public string Description { get; set; }
 
-
         /// <summary>
-        /// Gets or sets the time for an event to occur. <br/>
+        /// Gets or sets the time for an event to occur.
         /// </summary>
-        /// <summary>
-        /// This property is required and is marked with a [Required] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute(v=vs.110).aspx">Requiredattribute</see><br/>
-        /// It also has a [Display] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute(v=vs.110).aspx">Displayattribute</see>
-        /// </summary>
+        /// <value>
+        /// The date and time for event.
+        /// </value>
+        /// <remarks>
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute" /><br />
+        /// It also has a [Display] tag <see cref="DisplayAttribute" />
+        /// </remarks>
+        /// <seealso cref="RequiredAttribute" />
+        /// <seealso cref="DisplayAttribute" />
         [Required]
         [Display(Name = "Tidspunkt for event")]
         public DateTime DateAndTimeForEvent { get; set; }
-        
+
         /// <summary>
-        /// Get or sets the created time of an event. <br/>
+        /// Gets or sets the created time of a feed <br/>
         /// </summary>
-        //[Required]
+        /// <remarks>
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute"/><br/>
+        /// It also has a [Display] tag <see cref="DisplayAttribute"/>
+        /// </remarks>
+        /// <seealso cref="RequiredAttribute"/>
+        /// <seealso cref="DisplayAttribute"/>        //[Required]
         public DateTime CreateTime { get; set; }
 
         /// <summary>
         /// Gets or sets the Address1.
         /// </summary>
-        /// <summary>
-        /// The property for Address1 is required and is marked with a [Required] tag. <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute(v=vs.110).aspx">Requiredattribute</see><br/>
-        /// The property also has a [Display] tag <see href ="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute(v=vs.110).aspx">Displayattribute</see>
-        /// </summary>
+        /// <value>
+        /// The address 1.
+        /// </value>
+        /// <remarks>
+        /// The property for Address1 is required and is marked with a [Required] tag. <see cref="RequiredAttribute" /><br />
+        /// The property also has a [Display] tag <see cref="DisplayAttribute" />
+        /// </remarks>
+        /// <seealso cref="RequiredAttribute" />
+        /// <seealso cref="DisplayAttribute" />
         [Required]
         [Display(Name = "Address")]
         public string Address1 { get; set; }
@@ -91,30 +138,44 @@ namespace BarCrawler.Models
         /// <summary>
         /// Gets or sets the Address2.
         /// </summary>
-        /// /// <summary>
-        /// The property only has a [Display] tag <see href ="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute(v=vs.110).aspx">Displayattribute</see>
-        /// </summary>
+        /// <value>
+        /// The address 2.
+        /// </value>
+        /// <remarks>
+        /// The property only has a [Display] tag <see cref="DisplayAttribute" />
+        /// </remarks>
+        /// <seealso cref="DisplayAttribute"/>
         [Display(Name = "Etage")]
         public string Address2 { get; set; }
 
         /// <summary>
-        /// Gets or sets the StreetNumber <br/>
+        /// Gets or sets the StreetNumber
         /// </summary>
-        /// <summary>
-        /// This property is required and is marked with a [Required] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute(v=vs.110).aspx">Requiredattribute</see><br/>
-        /// It also has a [Display] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute(v=vs.110).aspx">Displayattribute</see>
-        /// </summary>
+        /// <value>
+        /// The street number.
+        /// </value>
+        /// <remarks>
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute" /><br />
+        /// It also has a [Display] tag <see cref="DisplayAttribute" />
+        /// </remarks>
+        /// <seealso cref="RequiredAttribute"/>
+        /// <seealso cref="DisplayAttribute"/>
         [Required]
         [Display(Name = "Hus nr.")]
         public string StreetNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets the City <br/>
+        /// Gets or sets the City
         /// </summary>
-        /// <summary>
-        /// This property is required and is marked with a [Required] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute(v=vs.110).aspx">Requiredattribute</see><br/>
-        /// It also has a [Display] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute(v=vs.110).aspx">Displayattribute</see>
-        /// </summary>
+        /// <value>
+        /// The city.
+        /// </value>
+        /// <remarks>
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute" /><br />
+        /// It also has a [Display] tag <see cref="DisplayAttribute" />
+        /// </remarks>
+        /// <seealso cref="RequiredAttribute" />
+        /// <seealso cref="DisplayAttribute" />
         [Required]
         [Display(Name = "By")]
         public string City { get; set; }
@@ -122,12 +183,16 @@ namespace BarCrawler.Models
         /// <summary>
         /// Gets or sets the Zipcode.
         /// </summary>
-        /// <summary>
-        /// This property is required and is marked with a [Required] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute(v=vs.110).aspx">Requiredattribute</see><br/>
-        /// This property is also marked with a [StringLength] tag <see href ="https://msdn.microsoft.com/da-dk/library/system.componentmodel.dataannotations.stringlengthattribute(v=vs.110).aspx">Stringlengthattribute</see><br/>
-        /// It also has a [Display] tag <see href ="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute(v=vs.110).aspx">Displayattribute</see><br/>
-        /// and a [RegularExpression] tag for allowing only 4 numbers <see href = "https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.regularexpressionattribute(v=vs.110).aspx">Regularexpressionattrbute</see>
-        /// </summary>
+        /// <remarks>
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute"/><br/>
+        /// This property is also marked with a [StringLength] tag <see cref ="StringLengthAttribute"/><br/>
+        /// It also has a [Display] tag <see cref ="DisplayAttribute"/><br/>
+        /// and a [RegularExpression] tag for allowing only 4 numbers <see cref = "RegularExpressionAttribute"/>
+        /// </remarks>
+        /// <seealso cref="RequiredAttribute"/>
+        /// <seealso cref="StringLengthAttribute"/>
+        /// <seealso cref="DisplayAttribute"/>
+        /// <seealso cref="RegularExpressionAttribute"/>
         [Required]
         [StringLength(4)]
         [Display(Name = "Post nr.")]
