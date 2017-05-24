@@ -20,7 +20,7 @@ namespace BarCrawler.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private UnitOfWork _unitOfWork;
+        private IUnitOfWork _unitOfWork;
 
         public AccountController()
         {
@@ -204,7 +204,7 @@ namespace BarCrawler.Controllers
                         Directory = coverPath,
                     };
 
-                    _unitOfWork.BarProfilPictureRepository.Add(profilbillede);
+                    _unitOfWork.BarProfilePictureRepository.Add(profilbillede);
                     _unitOfWork.CoverPictureRepository.Add(coverbillede);
                     _unitOfWork.Save();
 

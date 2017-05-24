@@ -16,9 +16,7 @@ namespace BarCrawler.Controllers
     /// <seealso cref="System.Web.Mvc.Controller" />
     public class HomeController : Controller
     {
-        BarCrawlerContext db; // = new BarCrawlerContext();
         private readonly UnitOfWork _unitOfWork;// = new UnitOfWork();
-        private UnitOfWork uow;
 
         public HomeController()
         {

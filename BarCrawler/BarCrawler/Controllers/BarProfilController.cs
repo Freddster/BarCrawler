@@ -8,7 +8,6 @@ using BarCrawler.Models;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Diagnostics.Eventing.Reader;
-using System.Net;
 using System.IO;
 using System.Net.Configuration;
 using BarCrawler.DataAccessLogic.UnitOfWork;
@@ -237,7 +236,7 @@ namespace BarCrawler.Controllers
         [HttpGet]
         public ActionResult EditProfilPicture(int id)
         {
-            var picture = _unitOfWork.BarProfilPictureRepository.GetByID(id);
+            var picture = _unitOfWork.BarProfilePictureRepository.GetByID(id);
             var bm = _unitOfWork.BarRepository.GetByID(id);
             if (bm == null)
                 return HttpNotFound();
@@ -250,7 +249,7 @@ namespace BarCrawler.Controllers
                     BarModel = bm,
                     Directory = "~/Images/Fingers.png",
                 };
-                _unitOfWork.BarProfilPictureRepository.Add(profilbillede);
+                _unitOfWork.BarProfilePictureRepository.Add(profilbillede);
                 _unitOfWork.Save();
             }
             if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == bm.userID))
@@ -268,7 +267,7 @@ namespace BarCrawler.Controllers
         {
             if (ModelState.IsValid)
             {
-                var model = _unitOfWork.BarProfilPictureRepository.GetByID(viewModel.PictureID);
+                var model = _unitOfWork.BarProfilePictureRepository.GetByID(viewModel.PictureID);
                 string[] validExt = new[] { ".png", ".jpg", ".jpeg", ".gif", ".bmp" };
 
                 if (file != null && file.ContentLength > 0 && validExt.Contains(Path.GetExtension(file.FileName)))
@@ -285,7 +284,7 @@ namespace BarCrawler.Controllers
 
                     System.IO.File.Delete(Server.MapPath(model.Directory));
 
-                    _unitOfWork.BarProfilPictureRepository.AddModelForUpdate(ref viewModel, ref model, ImageDir);
+                    _unitOfWork.BarProfilePictureRepository.AddModelForUpdate(ref viewModel, ref model, ImageDir);
                     _unitOfWork.Save();
                    }
                 return RedirectToAction("Index", new { id = model.BarID });
@@ -425,8 +424,8 @@ namespace BarCrawler.Controllers
             }
             if (User.Identity.IsAuthenticated && (User.Identity.GetUserId() == barModel.userID))
             {
-                EditViewModel viewModel = barModel.BarProfilPictureModel != null
-                    ? new EditViewModel(barModel, barModel.BarProfilPictureModel.Directory)
+                EditViewModel viewModel = barModel.BarProfilePicture != null
+                    ? new EditViewModel(barModel, barModel.BarProfilePicture.Directory)
                     : new EditViewModel(barModel);
                 return View(viewModel);
             }
@@ -540,10 +539,6 @@ namespace BarCrawler.Controllers
         #region Delete Drink
         public ActionResult DeleteDrink(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             DrinkModel drink = _unitOfWork.DrinkRepository.GetByID(id);
             if (drink == null)
             {

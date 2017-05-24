@@ -205,7 +205,7 @@
     <Compile Include="Controllers\BarProfilController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DataAccessLogic\Repositories\BarProfilPictureRepository.cs" />
+    <Compile Include="DataAccessLogic\Repositories\BarProfilePictureRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\BarRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\DrinkRepository.cs" />
     <Compile Include="DataAccessLogic\Repositories\EventRepository.cs" />
@@ -265,6 +265,10 @@
     <Compile Include="Migrations\201705221613053_WeirdChanged.cs" />
     <Compile Include="Migrations\201705221613053_WeirdChanged.Designer.cs">
       <DependentUpon>201705221613053_WeirdChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705231454242_ChangeNameOfBarProfilePicture.cs" />
+    <Compile Include="Migrations\201705231454242_ChangeNameOfBarProfilePicture.Designer.cs">
+      <DependentUpon>201705231454242_ChangeNameOfBarProfilePicture.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\BarCrawlerContextInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -417,6 +421,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705221613053_WeirdChanged.resx">
       <DependentUpon>201705221613053_WeirdChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705231454242_ChangeNameOfBarProfilePicture.resx">
+      <DependentUpon>201705231454242_ChangeNameOfBarProfilePicture.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -5,11 +5,15 @@ using BarCrawler.ViewModels;
 namespace BarCrawler.DataAccessLogic.Repositories
 {
     /// <summary>
-    /// The EventRepository is making sure to update the correct tables in case of any changes
+    /// The EventRepository contains functions to store, edit and get the correct events from the database.
     /// </summary>
     public class EventRepository : GenericRepository<EventModel>, IEventRepository
     {
-       
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EventRepository"/> class.
+        /// </summary>
+        /// <param name="ReceivedContext">The received context.</param>
         public EventRepository(BarCrawlerContext ReceivedContext) : base(ReceivedContext)
         {     
         }
