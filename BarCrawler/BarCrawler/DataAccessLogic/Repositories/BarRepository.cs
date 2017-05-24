@@ -10,8 +10,8 @@ namespace BarCrawler.DataAccessLogic.Repositories
     /// <summary>
     /// The BarRepository contains functions to store, edit and get the correct bars from the database.
     /// </summary>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.GenericRepository{BarCrawler.Models.BarModel}" />
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IBarRepository" />
+    /// <seealso cref="BarModel" />
+    /// <seealso cref="IBarRepository" />
     public class BarRepository : GenericRepository<BarModel>, IBarRepository
     {
 

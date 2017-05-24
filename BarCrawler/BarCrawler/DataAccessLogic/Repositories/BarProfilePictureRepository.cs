@@ -12,8 +12,8 @@ namespace BarCrawler.DataAccessLogic.Repositories
     /// <summary>
     /// The BarProfilePictureRepository contains functions to store, edit and get the correct bar profile pictures from the database.
     /// </summary>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.GenericRepository{BarCrawler.Models.BarProfilePictureModel}" />
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IBarProfilePictureRepository" />
+    /// <seealso cref="BarProfilePictureModel" />
+    /// <seealso cref="IBarProfilePictureRepository" />
     public class BarProfilePictureRepository : GenericRepository<BarProfilePictureModel>, IBarProfilePictureRepository
     {
         /// <summary>

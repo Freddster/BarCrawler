@@ -6,8 +6,8 @@ namespace BarCrawler.DataAccessLogic.Repositories
     /// <summary>
     /// The FeedRepository contains functions to store, edit and get the correct feeds from the database.
     /// </summary>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.GenericRepository{BarCrawler.Models.FeedModel}" />
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IFeedRepository" />
+    /// <seealso cref="FeedModel" />
+    /// <seealso cref="IFeedRepository" />
     public class FeedRepository : GenericRepository<FeedModel>, IFeedRepository
     {
         /// <summary>

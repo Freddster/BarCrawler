@@ -7,8 +7,8 @@ namespace BarCrawler.DataAccessLogic.Repositories
     /// <summary>
     /// The EventRepository contains functions to store, edit and get the correct events from the database.
     /// </summary>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.GenericRepository{BarCrawler.Models.EventModel}" />
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IEventRepository" />
+    /// <seealso cref="EventModel" />
+    /// <seealso cref="IEventRepository" />
     public class EventRepository : GenericRepository<EventModel>, IEventRepository
     {
 
