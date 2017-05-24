@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BarCrawler.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

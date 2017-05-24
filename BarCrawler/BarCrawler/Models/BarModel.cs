@@ -20,7 +20,7 @@ namespace BarCrawler.Models
         /// The bar identifier.
         /// </value>
         /// <remarks>
-        /// This property has a unique [Key] tag for identification <see cref="KeyAttribute">Keyattribute</see>
+        /// This property has a unique [Key] tag for identification <see cref="KeyAttribute"/>
         /// </remarks>
         /// <seealso cref="KeyAttribute" />
         [Key]
@@ -46,9 +46,9 @@ namespace BarCrawler.Models
         /// The name of the bar.
         /// </value>
         /// <remarks>
-        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute">Requiredattribute</see><br />
-        /// This property is marked with a [MaxLength] tag <see cref="MaxLengthAttribute">Maxlengthattribute</see><br />
-        /// It also has a [Display] tag <see cref="DisplayAttribute">Displayattribute</see>
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute"/><br />
+        /// This property is marked with a [MaxLength] tag <see cref="MaxLengthAttribute"/><br />
+        /// It also has a [Display] tag <see cref="DisplayAttribute"/>
         /// </remarks>
         /// <seealso cref="RequiredAttribute" />
         /// <seealso cref="MaxLengthAttribute" />
@@ -65,8 +65,8 @@ namespace BarCrawler.Models
         /// The description.
         /// </value>
         /// <remarks>
-        /// This property is marked with a [MaxLength] tag<see cref="MaxLengthAttribute"> Maxlengthattribute </see><br />
-        /// It also has a [Display] tag <see cref="DisplayAttribute">Displayattribute</see>
+        /// This property is marked with a [MaxLength] tag<see cref="MaxLengthAttribute"/><br />
+        /// It also has a [Display] tag <see cref="DisplayAttribute"/>
         /// </remarks>
         /// <seealso cref="MaxLengthAttribute" />
         /// <seealso cref="DisplayAttribute" />
@@ -81,9 +81,9 @@ namespace BarCrawler.Models
         /// The email.
         /// </value>
         /// <remarks>
-        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute">Requiredattribute</see><br />
-        /// it is also marked with a [EmailAddress] tag <see cref="EmailAddressAttribute"></see><br />
-        /// It also has a [Display] tag <see cref="DisplayAttribute">Displayattribute</see>
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute"/><br />
+        /// it is also marked with a [EmailAddress] tag <see cref="EmailAddressAttribute"/><br />
+        /// It also has a [Display] tag <see cref="DisplayAttribute"/>
         /// </remarks>
         /// <seealso cref="RequiredAttribute" />
         /// <seealso cref="EmailAddressAttribute" />
@@ -100,8 +100,8 @@ namespace BarCrawler.Models
         /// The faculty.
         /// </value>
         /// <remarks>
-        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute">Requiredattribute</see><br />
-        /// It also has a [Display] tag <see cref="DisplayAttribute">Displayattribute</see>
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute"/><br />
+        /// It also has a [Display] tag <see cref="DisplayAttribute"/>
         /// </remarks>
         /// <seealso cref="RequiredAttribute" />
         /// <seealso cref="DisplayAttribute" />
@@ -116,9 +116,9 @@ namespace BarCrawler.Models
         /// The phone number.
         /// </value>
         /// <remarks>
-        /// This property is marked with a [StringLength] tag <see cref="StringLengthAttribute">Stringlengthattribute</see><br />
-        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute">Displayattribute</see><br />
-        /// It also has a [RegularExpression] tag for allowing only 8 numbers <see cref="RegularExpressionAttribute">Regularexpressionattrbute</see>
+        /// This property is marked with a [StringLength] tag <see cref="StringLengthAttribute"/><br />
+        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute"/><br />
+        /// It also has a [RegularExpression] tag for allowing only 8 numbers <see cref="RegularExpressionAttribute"/>
         /// </remarks>
         /// <seealso cref="StringLengthAttribute" />
         /// <seealso cref="DisplayAttribute" />
@@ -135,9 +135,9 @@ namespace BarCrawler.Models
         /// The open time.
         /// </value>
         /// <remarks>
-        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute">Requiredattribute</see><br />
-        /// This property is marked with a [StringLength] tag <see cref="StringLengthAttribute">Stringlengthattribute</see><br />
-        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute">Displayattribute</see><br />
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute"/><br />
+        /// This property is marked with a [StringLength] tag <see cref="StringLengthAttribute"/><br />
+        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute"/><br />
         /// </remarks>
         /// <seealso cref="RequiredAttribute" />
         /// <seealso cref="StringLengthAttribute" />
@@ -154,9 +154,9 @@ namespace BarCrawler.Models
         /// The close time.
         /// </value>
         /// <remarks>
-        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute">Requiredattribute</see><br />
-        /// This property is marked with a [StringLength] tag <see cref="StringLengthAttribute">Stringlengthattribute</see><br />
-        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute">Displayattribute</see><br />
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute"/><br />
+        /// This property is marked with a [StringLength] tag <see cref="StringLengthAttribute"/><br />
+        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute"/><br />
         /// </remarks>
         /// <seealso cref="RequiredAttribute" />
         /// <seealso cref="StringLengthAttribute" />
@@ -173,8 +173,8 @@ namespace BarCrawler.Models
         /// The address1.
         /// </value>
         /// <remarks>
-        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute">Requiredattribute</see><br />
-        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute">Displayattribute</see><br />
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute"/><br />
+        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute"/><br />
         /// </remarks>
         /// <seealso cref="RequiredAttribute" />
         /// <seealso cref="DisplayAttribute" />
@@ -189,7 +189,7 @@ namespace BarCrawler.Models
         /// The address2.
         /// </value>
         /// <remarks>
-        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute">Displayattribute</see><br />
+        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute"/><br />
         /// </remarks>
         /// <seealso cref="DisplayAttribute" />
         [Display(Name = "Etage")]
@@ -202,8 +202,8 @@ namespace BarCrawler.Models
         /// The street number.
         /// </value>
         /// <remarks>
-        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute">Requiredattribute</see><br />
-        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute">Displayattribute</see><br />
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute"/><br />
+        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute"/><br />
         /// </remarks>
         /// <seealso cref="RequiredAttribute" />
         /// <seealso cref="DisplayAttribute" />
@@ -218,8 +218,8 @@ namespace BarCrawler.Models
         /// The city.
         /// </value>
         /// <remarks>
-        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute">Requiredattribute</see><br />
-        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute">Displayattribute</see><br />
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute"/><br />
+        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute"/><br />
         /// </remarks>
         /// <seealso cref="RequiredAttribute" />
         /// <seealso cref="DisplayAttribute" />
@@ -234,10 +234,10 @@ namespace BarCrawler.Models
         /// The zipcode.
         /// </value>
         /// <remarks>
-        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute">Requiredattribute</see><br />
-        /// This property is marked with a [StringLength] tag <see cref="StringLengthAttribute">Stringlengthattribute</see><br />
-        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute">Displayattribute</see><br />
-        /// It also has a [RegularExpression] tag for allowing only 8 numbers <see cref="RegularExpressionAttribute">Regularexpressionattrbute</see>
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute"/><br />
+        /// This property is marked with a [StringLength] tag <see cref="StringLengthAttribute"/><br />
+        /// This property is also marked with a [Display] tag <see cref="DisplayAttribute"/><br />
+        /// It also has a [RegularExpression] tag for allowing only 8 numbers <see cref="RegularExpressionAttribute"/>
         /// </remarks>
         /// <seealso cref="RequiredAttribute" />
         /// <seealso cref="StringLengthAttribute" />

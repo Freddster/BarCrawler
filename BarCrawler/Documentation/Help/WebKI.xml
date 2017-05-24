@@ -321,8 +321,11 @@
   </HelpKINode>
   <HelpKINode Title="BarCrawlerContext.BarCrawlerContext constructor" Url="html/0ed15017-c438-c65e-d258-64bddbd7d5a6.htm" />
   <HelpKINode Title="BarCrawlerContext.BarModels property" Url="html/2d4a7c3f-3280-e764-60b7-78f751427937.htm" />
+  <HelpKINode Title="BarCrawlerContext.BarProfilePictureModels property" Url="html/8628cde6-ada6-0e62-8d82-3bd5f032df37.htm" />
+  <HelpKINode Title="BarCrawlerContext.CoverPictureModels property" Url="html/00b7cb56-3b70-78e8-2909-752d6fdfd96d.htm" />
   <HelpKINode Title="BarCrawlerContext.Create method" Url="html/a2c14fe7-c7a1-c36c-2532-1275be816845.htm" />
   <HelpKINode Title="BarCrawlerContext.DrinkModels property" Url="html/24302987-fcb9-d1c6-024b-0efd19dd931e.htm" />
+  <HelpKINode Title="BarCrawlerContext.DrinkPictureModels property" Url="html/0b349fb7-d835-5bb5-2332-c580137dc9bc.htm" />
   <HelpKINode Title="BarCrawlerContext.EventModels property" Url="html/67b3f084-b1b2-52af-ab3d-5891da0360e8.htm" />
   <HelpKINode Title="BarCrawlerContext.FeedModels property" Url="html/80cf655a-9443-1e64-bf3d-4c2fd629e83b.htm" />
   <HelpKINode Title="BarCrawlerContext.PictureModels property" Url="html/13261790-58b4-f2e0-2312-b5aba6f338eb.htm" />
@@ -487,6 +490,7 @@
   <HelpKINode Title="BarProfilePictureModel.Description property" Url="html/d8659dfc-932a-330c-f112-b2f33082c55a.htm" />
   <HelpKINode Title="BarProfilePictureModel.Directory property" Url="html/5cb0d5c9-6864-f74b-fb42-24fe7fe591cc.htm" />
   <HelpKINode Title="BarProfilePictureModel.TimeStamp property" Url="html/b0712eac-9757-a268-77e8-a3fdfb89d32d.htm" />
+  <HelpKINode Title="BarProfilePictureModels property" Url="html/8628cde6-ada6-0e62-8d82-3bd5f032df37.htm" />
   <HelpKINode Title="BarProfilePictureRepository class">
     <HelpKINode Title="BarProfilePictureRepository Class" Url="html/7893e4f2-273e-f38a-2cae-aafcc9722d7f.htm" />
     <HelpKINode Title="about BarProfilePictureRepository class" Url="html/7893e4f2-273e-f38a-2cae-aafcc9722d7f.htm" />
@@ -613,6 +617,7 @@
   <HelpKINode Title="CoverPictureModel.Description property" Url="html/df27bd07-d9cf-975f-ea0c-b255a254e909.htm" />
   <HelpKINode Title="CoverPictureModel.Directory property" Url="html/c60da936-4838-65d1-d83e-10934607926c.htm" />
   <HelpKINode Title="CoverPictureModel.TimeStamp property" Url="html/347f96d2-e2de-f51f-10c0-c0e1ef253b10.htm" />
+  <HelpKINode Title="CoverPictureModels property" Url="html/00b7cb56-3b70-78e8-2909-752d6fdfd96d.htm" />
   <HelpKINode Title="CoverPictureRepository class">
     <HelpKINode Title="CoverPictureRepository Class" Url="html/1388ae1c-3129-0244-0d62-2588518595a7.htm" />
     <HelpKINode Title="about CoverPictureRepository class" Url="html/1388ae1c-3129-0244-0d62-2588518595a7.htm" />
@@ -732,7 +737,10 @@
   <HelpKINode Title="DrinkPictureModel.DrinkPictureID property" Url="html/487599cd-73e5-d3de-6fae-5b282f9373e0.htm" />
   <HelpKINode Title="DrinkPictureModel.DrinkPictureModel constructor" Url="html/a10e3d1f-f6b9-799a-dce0-52b79cbdec1d.htm" />
   <HelpKINode Title="DrinkPictureModel.TimeStamp property" Url="html/9ffb8bf0-6ca8-a8da-9065-5f24940c302d.htm" />
-  <HelpKINode Title="DrinkPictureModels property" Url="html/a1bef1f5-4bc9-4ac8-831e-6d549175e8fd.htm" />
+  <HelpKINode Title="DrinkPictureModels property">
+    <HelpKINode Title="BarCrawlerContext.DrinkPictureModels Property " Url="html/0b349fb7-d835-5bb5-2332-c580137dc9bc.htm" />
+    <HelpKINode Title="DrinkModel.DrinkPictureModels Property " Url="html/a1bef1f5-4bc9-4ac8-831e-6d549175e8fd.htm" />
+  </HelpKINode>
   <HelpKINode Title="DrinkRepository class">
     <HelpKINode Title="DrinkRepository Class" Url="html/0eb41fd4-cc52-d21a-e06b-48e3a9b6169c.htm" />
     <HelpKINode Title="about DrinkRepository class" Url="html/0eb41fd4-cc52-d21a-e06b-48e3a9b6169c.htm" />
