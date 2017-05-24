@@ -6,11 +6,12 @@ namespace BarCrawler.DataAccessLogic.Repositories.Interface
     /// <summary>
     /// Interface for Bar repositoiry to implement.
     /// </summary>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IRepository{BarCrawler.Models.BarModel}" />
+    /// <seealso cref="BarModel" />
+    /// <seealso cref="BarRepository"/>
     public interface IBarRepository : IRepository<BarModel>
     {
         /// <summary>
-        /// Gets the profile.
+        /// Gets the bar profile with the correct bar model, events, feeds and drinks.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>Returns the <see cref="BarModel"/> with the correct attributes.</returns>

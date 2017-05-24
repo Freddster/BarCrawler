@@ -6,7 +6,7 @@ namespace BarCrawler.DataAccessLogic.Repositories.Interface
     /// <summary>
     /// Interface for the Drink repositoiry to implement.
     /// </summary>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IRepository{BarCrawler.Models.DrinkModel}" />
+    /// <seealso cref="DrinkModel" />
     public interface IDrinkRepository : IRepository<DrinkModel>
     {
         /// <summary>

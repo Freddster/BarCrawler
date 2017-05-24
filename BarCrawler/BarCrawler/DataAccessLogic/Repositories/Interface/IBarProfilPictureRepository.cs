@@ -6,7 +6,7 @@ namespace BarCrawler.DataAccessLogic.Repositories.Interface
     /// <summary>
     /// Interface for the bar profile picture repositoiry
     /// </summary>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IRepository{BarCrawler.Models.BarProfilePictureModel}" />
+    /// <seealso cref="BarProfilePictureModel" />
     public interface IBarProfilePictureRepository : IRepository<BarProfilePictureModel>
     {
         /// <summary>

@@ -7,7 +7,7 @@ namespace BarCrawler.DataAccessLogic.Repositories.Interface
     /// <summary>
     /// Interface for the Picture repositoiry to implement.
     /// </summary>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IRepository{BarCrawler.Models.PictureModel}" />
+    /// <seealso cref="PictureModel" />
     public interface IPictureRepository : IRepository<PictureModel>
     {
         /// <summary>
@@ -15,7 +15,7 @@ namespace BarCrawler.DataAccessLogic.Repositories.Interface
         /// </summary>
         /// <param name="viewModel">The view model to take data from.</param>
         /// <param name="picturemodel">The <see cref="PictureModel" /> to insert data into, and add to the database.</param>
-        /// <seealso cref="PictureModel"/>
+        /// <seealso cref="PictureModel" />
         void AddModelForUpdate(ref PictureViewModel viewModel, ref PictureModel picturemodel);
 
         /// <summary>

@@ -6,7 +6,7 @@ namespace BarCrawler.DataAccessLogic.Repositories.Interface
     /// <summary>
     /// Interface for the CoverPicture repositoiry to implement.
     /// </summary>
-    /// <seealso cref="BarCrawler.DataAccessLogic.Repositories.Interface.IRepository{BarCrawler.Models.CoverPictureModel}" />
+    /// <seealso cref="CoverPictureModel" />
     public interface ICoverPictureRepository : IRepository<CoverPictureModel>
     {
         /// <summary>

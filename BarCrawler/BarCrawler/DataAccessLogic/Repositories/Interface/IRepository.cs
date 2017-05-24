@@ -12,29 +12,29 @@ namespace BarCrawler.DataAccessLogic.Repositories.Interface
         /// Gets the TEntity by identifier, in the database.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns>Returns the <see cref="TEntity"/></returns>
-        /// <seealso cref="TEntity"/>
+        /// <returns>
+        /// Returns the <see cref="IRepository{TEntity}">TEntity</see>
+        /// </returns>
         TEntity GetByID(int? id);
 
         /// <summary>
         /// Gets all the TEntities in the database.
         /// </summary>
-        /// <returns>Returns the <see cref="TEntity"/> contained in a generic container</returns>
-        /// <seealso cref="TEntity"/>
+        /// <returns>
+        /// Returns the <see cref="IRepository{TEntity}">TEntity</see> contained in a generic container
+        /// </returns>
         IEnumerable<TEntity> GetAll();
 
         /// <summary>
         /// Adds the specified entity to the database.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <seealso cref="TEntity"/>
+        /// <param name="entity">The entity to add to the database.</param>
         void Add(TEntity entity);
 
         /// <summary>
         /// Removes the specified entity from the database.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <seealso cref="TEntity"/>
+        /// <param name="entity">The entity to remove from the database.</param>
         void Remove(TEntity entity);
     }
 }
