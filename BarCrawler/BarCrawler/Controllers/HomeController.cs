@@ -11,18 +11,29 @@ namespace BarCrawler.Controllers
 {
 
     /// <summary>
-    /// The <see cref="HomeController"/> is used to show all the barModels on the HomePage and a contact page
+    /// The <see cref="HomeController" /> is used to show all the barModels on the HomePage and a contact page
     /// </summary>
     /// <seealso cref="System.Web.Mvc.Controller" />
     public class HomeController : Controller
     {
-        private readonly UnitOfWork _unitOfWork;// = new UnitOfWork();
+        /// <summary>
+        /// The unit of work
+        /// </summary>
+        private readonly UnitOfWork _unitOfWork;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HomeController"/> class.
+        /// </summary>
         public HomeController()
         {
             _unitOfWork = new UnitOfWork();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HomeController"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <seealso cref="BarCrawlerContext"/>
         public HomeController(BarCrawlerContext context)
         {
             _unitOfWork = new UnitOfWork(context);
@@ -33,7 +44,9 @@ namespace BarCrawler.Controllers
         /// <summary>
         /// When the homepage is loading all the bars are loaded as well, and returned to the view
         /// </summary>
-        /// <returns>View(barModelList)</returns>
+        /// <returns>
+        /// Returns a view with with all the BarModels in an IEnumerable.
+        /// </returns>
         public ActionResult Index()
         {
             List<BarModel> barModelList = (List<BarModel>)_unitOfWork.GetAllBarsForHome();
@@ -41,9 +54,11 @@ namespace BarCrawler.Controllers
         }
 
         /// <summary>
-        /// Contacts this instance.
+        /// Create the contact page.
         /// </summary>
-        /// <returns>return View()</returns>
+        /// <returns>
+        /// Return the Contact view
+        /// </returns>
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

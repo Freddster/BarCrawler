@@ -17,11 +17,25 @@ using Microsoft.AspNet.Identity;
 
 namespace BarCrawler.Controllers
 {
+    /// <summary>
+    /// BarProfilController containing the actions for the bar profile
+    /// </summary>
+    /// <seealso cref="System.Web.Mvc.Controller" />
     public class BarProfilController : Controller
     {
+        /// <summary>
+        /// The unit of work
+        /// </summary>
         private UnitOfWork _unitOfWork = new UnitOfWork();
 
         #region Index
+        /// <summary>
+        /// Create an index view with all the relevant bars, and their information.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// Return the Index view with all Bars.
+        /// </returns>
         public ActionResult Index(int? id)
         {
             if (id == null)
@@ -39,8 +53,16 @@ namespace BarCrawler.Controllers
 
         #region Feed
         #region Create Feed
+        /// <summary>
+        /// Creates the feed and returns to the bar profile.
+        /// </summary>
+        /// <param name="id">The bar identifier.</param>
+        /// <param name="t">The text to write in the feed.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
         [HttpGet]
-        public ActionResult CreateFeed(int id, string t/**/)
+        public ActionResult CreateFeed(int id, string t)
         {
             if (!t.IsNullOrWhiteSpace())
             {
@@ -57,6 +79,14 @@ namespace BarCrawler.Controllers
         #endregion
         #region Delete Feed
 
+        /// <summary>
+        /// Deletes the feed from the database, and returns to the bar profile.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="FeedId">The feed identifier.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
         [HttpGet]
         public ActionResult DeleteFeed(int? id, int? FeedId)
         {
@@ -74,6 +104,13 @@ namespace BarCrawler.Controllers
         #region Events
 
         #region Create Event
+        /// <summary>
+        /// Creates the event view, with the data from the bar given with the id.
+        /// </summary>
+        /// <param name="id">The bar identifier.</param>
+        /// <returns>
+        /// Return CreateEvent view.
+        /// </returns>
         public ActionResult CreateEvent(int id)
         {
             var bar = _unitOfWork.BarRepository.GetProfile(id);
@@ -90,6 +127,13 @@ namespace BarCrawler.Controllers
             return View(EventModel);
         }
 
+        /// <summary>
+        /// Creates the event with the data entered, and saves it to the database and redirects to the bar profile.
+        /// </summary>
+        /// <param name="EventModel">The event model.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateEvent(EventModel EventModel)
@@ -112,6 +156,14 @@ namespace BarCrawler.Controllers
         #endregion
 
         #region Edit Event
+        /// <summary>
+        /// Creates the view for the EditEvent page.
+        /// </summary>
+        /// <param name="id">The bar identifier.</param>
+        /// <param name="Eid">The event identifier.</param>
+        /// <returns>
+        /// Return EditEvent view.
+        /// </returns>
         [HttpGet]
         public ActionResult EditEvent(int? id, int? Eid)
         {
@@ -133,6 +185,15 @@ namespace BarCrawler.Controllers
             return RedirectToAction("BadRequestView");
         }
 
+        /// <summary>
+        /// Edits the event with the data entered, and saves it to the database and redirects to the bar profile.
+        /// </summary>
+        /// <param name="viewModel">The view model.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditEvent(EventViewModel viewModel)
@@ -149,8 +210,17 @@ namespace BarCrawler.Controllers
         #endregion
 
         #region Delete Event
+
+        /// <summary>
+        /// Deletes the event from the database and redirects to the bar profile.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="Eid">The event identifier.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
         [HttpGet]
-        public ActionResult DeleteEvent(int id, int Eid /**/)
+        public ActionResult DeleteEvent(int id, int Eid)
         {
             if (Eid == null || id == null)
                 return HttpNotFound();
@@ -170,6 +240,13 @@ namespace BarCrawler.Controllers
 
         #region Edit Coverbillede
 
+        /// <summary>
+        /// Create the view to change the cover picture with.
+        /// </summary>
+        /// <param name="id">The bar identifier.</param>
+        /// <returns>
+        /// Return EditCoverPicture view.
+        /// </returns>
         [HttpGet]
         public ActionResult EditCoverPicture(int id)
         {
@@ -199,6 +276,16 @@ namespace BarCrawler.Controllers
         }
 
 
+        /// <summary>
+        /// Edits the cover picture with the data entered, and saves it to the database and redirects to the bar profile.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <param name="viewModel">The view model with the data.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditCoverPicture(HttpPostedFileBase file, PictureViewModel viewModel)
@@ -233,6 +320,14 @@ namespace BarCrawler.Controllers
 
         #region Edit Profilbillede
 
+
+        /// <summary>
+        /// Create the view to change the profile picture with.
+        /// </summary>
+        /// <param name="id">The bar identifier.</param>
+        /// <returns>
+        /// Return EditProfilPicture view.
+        /// </returns>
         [HttpGet]
         public ActionResult EditProfilPicture(int id)
         {
@@ -261,6 +356,16 @@ namespace BarCrawler.Controllers
         }
 
 
+        /// <summary>
+        /// Edits the profile picture with the data entered, and saves it to the database and redirects to the bar profile.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <param name="viewModel">The view model.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditProfilPicture(HttpPostedFileBase file, PictureViewModel viewModel)
@@ -294,6 +399,13 @@ namespace BarCrawler.Controllers
         #endregion
 
         #region Create Picture
+        /// <summary>
+        /// Create the view to add a picture with.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// Return CreatePicture view.
+        /// </returns>
         public ActionResult CreatePicture(int id)
         {
             if (id == null)
@@ -314,6 +426,16 @@ namespace BarCrawler.Controllers
 
         }
 
+        /// <summary>
+        /// Create a picture with the data entered, and saves it to the database and redirects to the bar profile.
+        /// </summary>
+        /// <param name="file">The file.</param>
+        /// <param name="picture">The picture model with the data.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreatePicture(HttpPostedFileBase file, PictureModel picture)
@@ -348,8 +470,16 @@ namespace BarCrawler.Controllers
         #endregion
 
         #region Edit Picture
+        /// <summary>
+        /// Create the view to change the picture with.
+        /// </summary>
+        /// <param name="id">The bar identifier.</param>
+        /// <param name="Pid">The picture identifier.</param>
+        /// <returns>
+        /// Return CreatePicture view.
+        /// </returns>
         [HttpGet]
-        public ActionResult EditPicture(int id, int Pid/**/)
+        public ActionResult EditPicture(int id, int Pid)
         {
             var picture = _unitOfWork.PictureRepository.GetByID(Pid);
             if (picture == null)
@@ -367,6 +497,15 @@ namespace BarCrawler.Controllers
             return RedirectToAction("BadRequestView");
         }
 
+        /// <summary>
+        /// Edits the picture with the data entered, and saves it to the database and redirects to the bar profile.
+        /// </summary>
+        /// <param name="viewModel">The view model.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditPicture(PictureViewModel viewModel)
@@ -385,6 +524,14 @@ namespace BarCrawler.Controllers
 
         #region Delete Picture
 
+        /// <summary>
+        /// Deletes the picture from the database, and redirect to the bar profile.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="Pid">The pid.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
         [HttpGet]
         public ActionResult DeletePicture(int id, int Pid/**/)
         {
@@ -411,6 +558,13 @@ namespace BarCrawler.Controllers
         #region Contact Information
 
         #region Edit Contact Information
+        /// <summary>
+        /// Create the view to change the contact information.
+        /// </summary>
+        /// <param name="id">The bar identifier.</param>
+        /// <returns>
+        /// Return Edit view.
+        /// </returns>
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -432,6 +586,15 @@ namespace BarCrawler.Controllers
             return RedirectToAction("BadRequestView");
         }
 
+        /// <summary>
+        /// Edits the contact information with the data entered, and saves it to the database and redirects to the bar profile.
+        /// </summary>
+        /// <param name="editviewmodel">The editviewmodel with the data to change to.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EditViewModel editviewmodel)
@@ -460,6 +623,13 @@ namespace BarCrawler.Controllers
         #region Drink
 
         #region Create Drink
+        /// <summary>
+        /// Create the view to add a drink to the database.
+        /// </summary>
+        /// <param name="id">The bar identifier.</param>
+        /// <returns>
+        /// Return CreateDrink view
+        /// </returns>
         public ActionResult CreateDrink(int id)
         {
             DrinkModel drinkModel = new DrinkModel();
@@ -475,6 +645,15 @@ namespace BarCrawler.Controllers
 
         }
 
+        /// <summary>
+        /// Adds the drink with the data entered, and saves it to the database and redirects to the bar profile.
+        /// </summary>
+        /// <param name="drinkmodel">The drinkmodel.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateDrink(DrinkModel drinkmodel)
@@ -495,6 +674,14 @@ namespace BarCrawler.Controllers
         #endregion
 
         #region Edit Drink
+        /// <summary>
+        /// Create the view to change a drink in the database.
+        /// </summary>
+        /// <param name="id">The drink identifier.</param>
+        /// <param name="barId">The bar identifier.</param>
+        /// <returns>
+        /// Return EditDrink view
+        /// </returns>
         public ActionResult EditDrink(int? id, int? barId)
         {
             if (id == null)
@@ -517,6 +704,15 @@ namespace BarCrawler.Controllers
             return RedirectToAction("BadRequestView");
         }
 
+        /// <summary>
+        /// Edits the drink with the data entered, and saves it to the database and redirects to the bar profile.
+        /// </summary>
+        /// <param name="drinkViewModel">The drink view model.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditDrink(DrinkViewModel drinkViewModel)
@@ -537,6 +733,13 @@ namespace BarCrawler.Controllers
         #endregion
 
         #region Delete Drink
+        /// <summary>
+        /// Deletes the drink from the database and redirects to the bar profile.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>
+        /// Redirect to the bar profile index.
+        /// </returns>
         public ActionResult DeleteDrink(int id)
         {
             DrinkModel drink = _unitOfWork.DrinkRepository.GetByID(id);
@@ -563,6 +766,12 @@ namespace BarCrawler.Controllers
         #region Diverse
 
         #region Bad Request
+        /// <summary>
+        /// View for bad requests, for when useres don't have permissions to access certain pages.
+        /// </summary>
+        /// <returns>
+        /// Return BadRequest view.
+        /// </returns>
         public ActionResult BadRequestView()
         {
             return View();
@@ -571,6 +780,12 @@ namespace BarCrawler.Controllers
 
         /************************* Link oppe i toppen *******************************/
         #region BarLink
+        /// <summary>
+        /// Gets the bars id, and redirect to the bar profile
+        /// </summary>
+        /// <returns>
+        /// Redirect to bar profile index.
+        /// </returns>
         [HttpGet]
         public ActionResult BarLink()
         {

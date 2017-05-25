@@ -10,22 +10,46 @@ using BarCrawler.Models;
 
 namespace BarCrawler.Controllers
 {
+    /// <summary>
+    /// ManageController containing the actions to help manage the login system
+    /// </summary>
+    /// <seealso cref="System.Web.Mvc.Controller" />
     [Authorize]
     public class ManageController : Controller
     {
+        /// <summary>
+        /// The sign in manager
+        /// </summary>
         private ApplicationSignInManager _signInManager;
+        /// <summary>
+        /// The user manager
+        /// </summary>
         private ApplicationUserManager _userManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ManageController"/> class.
+        /// </summary>
         public ManageController()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ManageController"/> class.
+        /// </summary>
+        /// <param name="userManager">The user manager.</param>
+        /// <param name="signInManager">The sign in manager.</param>
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
         }
 
+        /// <summary>
+        /// Gets the sign in manager.
+        /// </summary>
+        /// <value>
+        /// The sign in manager.
+        /// </value>
         public ApplicationSignInManager SignInManager
         {
             get
@@ -38,6 +62,12 @@ namespace BarCrawler.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets the user manager.
+        /// </summary>
+        /// <value>
+        /// The user manager.
+        /// </value>
         public ApplicationUserManager UserManager
         {
             get
@@ -52,6 +82,11 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Manage/Index
+        /// <summary>
+        /// Returns an index view based on the massage.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <returns>Returns IndexViewModel.</returns>
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -77,6 +112,16 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Manage/RemoveLogin
+        /// <summary>
+        /// Removes the login.
+        /// </summary>
+        /// <param name="loginProvider">The login provider.</param>
+        /// <param name="providerKey">The provider key.</param>
+        /// <returns>
+        /// Redirect to ManageLogins view.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute"/>
+        /// <seealso cref=" ValidateAntiForgeryTokenAttribute"/>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
@@ -101,6 +146,10 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Manage/AddPhoneNumber
+        /// <summary>
+        /// Adds the phone number.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult AddPhoneNumber()
         {
             return View();
@@ -108,6 +157,15 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Manage/AddPhoneNumber
+        /// <summary>
+        /// Adds the phone number to the user in the database.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>
+        /// Redirect to VerifyPhoneNumber view.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute"/>
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute"/>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
@@ -132,6 +190,14 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Manage/EnableTwoFactorAuthentication
+        /// <summary>
+        /// Enables the two factor authentication.
+        /// </summary>
+        /// <returns>
+        /// Redirect to manage index view.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute"/>
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute"/>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EnableTwoFactorAuthentication()
@@ -147,6 +213,14 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Manage/DisableTwoFactorAuthentication
+        /// <summary>
+        /// Disables the two factor authentication.
+        /// </summary>
+        /// <returns>
+        /// Redirect to manage index view.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute"/>
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute"/>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DisableTwoFactorAuthentication()
@@ -162,6 +236,13 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Manage/VerifyPhoneNumber
+        /// <summary>
+        /// Verifies the phone number.
+        /// </summary>
+        /// <param name="phoneNumber">The phone number.</param>
+        /// <returns>
+        /// Return view with a VerifyPhoneNumberViewModel
+        /// </returns>
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), phoneNumber);
@@ -171,6 +252,15 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Manage/VerifyPhoneNumber
+        /// <summary>
+        /// Verifies the phone number and adds it tot the user in the database.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>
+        /// Redirect to index with a message.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute"/>
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute"/>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyPhoneNumber(VerifyPhoneNumberViewModel model)
@@ -196,6 +286,14 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Manage/RemovePhoneNumber
+        /// <summary>
+        /// Removes the phone number.
+        /// </summary>
+        /// <returns>
+        /// Redirect to index with a message.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute"/>
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute"/>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemovePhoneNumber()
@@ -215,6 +313,12 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Manage/ChangePassword
+        /// <summary>
+        /// Create change password view.
+        /// </summary>
+        /// <returns>
+        /// Return ChangePassword view.
+        /// </returns>
         public ActionResult ChangePassword()
         {
             return View();
@@ -222,6 +326,15 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Manage/ChangePassword
+        /// <summary>
+        /// Changes the password and update the data in the database and redirect to index.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>
+        /// Redirect to index with a message.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute"/>
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute"/>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
@@ -246,6 +359,12 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Manage/SetPassword
+        /// <summary>
+        /// Create a SetPassword view.
+        /// </summary>
+        /// <returns>
+        /// Return SetPassword view.
+        /// </returns>
         public ActionResult SetPassword()
         {
             return View();
@@ -253,6 +372,15 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Manage/SetPassword
+        /// <summary>
+        /// Sets the password and updates the database.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>
+        /// Redirect to index with a message.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute"/>
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute"/>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SetPassword(SetPasswordViewModel model)
@@ -278,6 +406,13 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Manage/ManageLogins
+        /// <summary>
+        /// Manages the logins.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <returns>
+        /// Return ManageLoginsViewModel.
+        /// </returns>
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -301,6 +436,15 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Manage/LinkLogin
+        /// <summary>
+        /// Links the login.
+        /// </summary>
+        /// <param name="provider">The provider.</param>
+        /// <returns>
+        /// Return a ChallengeResult.
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute"/>
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute"/>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LinkLogin(string provider)
@@ -311,6 +455,12 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Manage/LinkLoginCallback
+        /// <summary>
+        /// Links the login callback.
+        /// </summary>
+        /// <returns>
+        /// Redirect to ManageLogins
+        /// </returns>
         public async Task<ActionResult> LinkLoginCallback()
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, User.Identity.GetUserId());
@@ -322,6 +472,10 @@ namespace BarCrawler.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
+        /// <summary>
+        /// Releases unmanaged resources and optionally releases managed resources.
+        /// </summary>
+        /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
@@ -333,10 +487,19 @@ namespace BarCrawler.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
+        /// <summary>
+        /// The XSRF key
+        /// </summary>
         private const string XsrfKey = "XsrfId";
 
+        /// <summary>
+        /// Gets the authentication manager.
+        /// </summary>
+        /// <value>
+        /// The authentication manager.
+        /// </value>
         private IAuthenticationManager AuthenticationManager
         {
             get
@@ -345,6 +508,10 @@ namespace BarCrawler.Controllers
             }
         }
 
+        /// <summary>
+        /// Adds the errors.
+        /// </summary>
+        /// <param name="result">The result.</param>
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
@@ -353,6 +520,12 @@ namespace BarCrawler.Controllers
             }
         }
 
+        /// <summary>
+        /// Determines whether this instance has password.
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if this instance has password; otherwise, <c>false</c>.
+        /// </returns>
         private bool HasPassword()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -363,6 +536,12 @@ namespace BarCrawler.Controllers
             return false;
         }
 
+        /// <summary>
+        /// Determines whether [has phone number].
+        /// </summary>
+        /// <returns>
+        ///   <c>true</c> if [has phone number]; otherwise, <c>false</c>.
+        /// </returns>
         private bool HasPhoneNumber()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
@@ -373,14 +552,38 @@ namespace BarCrawler.Controllers
             return false;
         }
 
+        /// <summary>
+        /// Enum for messages
+        /// </summary>
         public enum ManageMessageId
         {
+            /// <summary>
+            /// The add phone success
+            /// </summary>
             AddPhoneSuccess,
+            /// <summary>
+            /// The change password success
+            /// </summary>
             ChangePasswordSuccess,
+            /// <summary>
+            /// The set two factor success
+            /// </summary>
             SetTwoFactorSuccess,
+            /// <summary>
+            /// The set password success
+            /// </summary>
             SetPasswordSuccess,
+            /// <summary>
+            /// The remove login success
+            /// </summary>
             RemoveLoginSuccess,
+            /// <summary>
+            /// The remove phone success
+            /// </summary>
             RemovePhoneSuccess,
+            /// <summary>
+            /// The error
+            /// </summary>
             Error
         }
 

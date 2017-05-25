@@ -2,9 +2,17 @@ namespace BarCrawler.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
+    /// <summary>
+    /// Initial migration to the database
+    /// </summary>
+    /// <seealso cref="System.Data.Entity.Migrations.DbMigration" />
+    /// <seealso cref="System.Data.Entity.Migrations.Infrastructure.IMigrationMetadata" />
     public partial class Initial : DbMigration
     {
+        /// <summary>
+        /// Operations to be performed during the upgrade process.
+        /// </summary>
         public override void Up()
         {
             CreateTable(
@@ -91,7 +99,10 @@ namespace BarCrawler.Migrations
                 .Index(t => t.BarID);
             
         }
-        
+
+        /// <summary>
+        /// Operations to be performed during the downgrade process.
+        /// </summary>
         public override void Down()
         {
             DropForeignKey("dbo.PictureModels", "BarID", "dbo.BarModels");

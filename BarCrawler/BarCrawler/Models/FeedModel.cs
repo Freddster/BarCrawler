@@ -60,7 +60,7 @@ namespace BarCrawler.Models
         public Byte[] TimeStamp { get; set; }
 
         /// <summary>
-        /// Gets or sets the created time of a feed.
+        /// Gets or sets the creation time of a feed.
         /// </summary>
         /// <value>
         /// The create time.
