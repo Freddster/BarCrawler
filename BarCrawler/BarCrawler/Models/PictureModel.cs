@@ -73,7 +73,7 @@ namespace BarCrawler.Models
         public Byte[] TimeStamp { get; set; }
 
         /// <summary>
-        /// Gets or sets the created time of a picture.
+        /// Gets or sets the creation time of a picture.
         /// </summary>
         /// <value>
         /// The create time.

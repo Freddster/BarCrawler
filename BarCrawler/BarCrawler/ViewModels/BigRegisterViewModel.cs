@@ -5,6 +5,8 @@ namespace BarCrawler.ViewModels
     /// <summary>
     /// Viewmodel to contain a BarModel and a RegisterViewModel
     /// </summary>
+    /// <seealso cref="BarModel"/>
+    /// <seealso cref="RegisterViewModel"/>
     public class BigRegisterViewModel
     {
         /// <summary>

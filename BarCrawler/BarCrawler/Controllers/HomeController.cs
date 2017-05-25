@@ -44,7 +44,9 @@ namespace BarCrawler.Controllers
         /// <summary>
         /// When the homepage is loading all the bars are loaded as well, and returned to the view
         /// </summary>
-        /// <returns>Returns a view with with all the BarModels in an IEnumerable</returns>
+        /// <returns>
+        /// Returns a view with with all the BarModels in an IEnumerable.
+        /// </returns>
         public ActionResult Index()
         {
             List<BarModel> barModelList = (List<BarModel>)_unitOfWork.GetAllBarsForHome();
@@ -52,9 +54,11 @@ namespace BarCrawler.Controllers
         }
 
         /// <summary>
-        /// Contacts this instance.
+        /// Create the contact page.
         /// </summary>
-        /// <returns>return View()</returns>
+        /// <returns>
+        /// Return the Contact view
+        /// </returns>
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
