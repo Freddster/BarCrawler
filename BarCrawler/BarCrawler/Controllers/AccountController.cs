@@ -15,18 +15,40 @@ using BarCrawler.ViewModels;
 
 namespace BarCrawler.Controllers
 {
+    /// <summary>
+    /// AccountController with functions to login and register accounts 
+    /// </summary>
+    /// <seealso cref="System.Web.Mvc.Controller" />
+    /// <seealso cref="AuthorizeAttribute"/>
     [Authorize]
     public class AccountController : Controller
     {
+        /// <summary>
+        /// The sign in manager
+        /// </summary>
         private ApplicationSignInManager _signInManager;
+        /// <summary>
+        /// The user manager
+        /// </summary>
         private ApplicationUserManager _userManager;
+        /// <summary>
+        /// The unit of work
+        /// </summary>
         private IUnitOfWork _unitOfWork;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountController"/> class.
+        /// </summary>
         public AccountController()
         {
             _unitOfWork = new UnitOfWork();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountController"/> class.
+        /// </summary>
+        /// <param name="userManager">The user manager.</param>
+        /// <param name="signInManager">The sign in manager.</param>
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
@@ -34,6 +56,12 @@ namespace BarCrawler.Controllers
             _unitOfWork = new UnitOfWork();
         }
 
+        /// <summary>
+        /// Gets the sign in manager.
+        /// </summary>
+        /// <value>
+        /// The sign in manager.
+        /// </value>
         public ApplicationSignInManager SignInManager
         {
             get
@@ -46,6 +74,12 @@ namespace BarCrawler.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets the user manager.
+        /// </summary>
+        /// <value>
+        /// The user manager.
+        /// </value>
         public ApplicationUserManager UserManager
         {
             get
@@ -60,6 +94,14 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Account/Login
+        /// <summary>
+        /// Logins the specified return URL.
+        /// </summary>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns>
+        /// Returns a view
+        /// </returns>
+        /// <seealso cref="AllowAnonymousAttribute" />
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -69,6 +111,17 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Account/Login
+        /// <summary>
+        /// Login with the data specified in the LoginViewModel.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns>
+        /// Return a view depending on the succes of the login attempt
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="AllowAnonymousAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -99,6 +152,16 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Account/VerifyCode
+        /// <summary>
+        /// Verifies the code.
+        /// </summary>
+        /// <param name="provider">The provider.</param>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <param name="rememberMe">if set to <c>true</c> [remember me].</param>
+        /// <returns>
+        /// Returns a view with the verified code
+        /// </returns>
+        /// <seealso cref="AllowAnonymousAttribute" />
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
@@ -112,6 +175,16 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Account/VerifyCode
+        /// <summary>
+        /// Verifies the code.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>
+        /// Returns a view with the verified code
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="AllowAnonymousAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -142,6 +215,12 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Account/Register
+        /// <summary>
+        /// Creates a view for the register page.
+        /// </summary>
+        /// <returns>
+        /// Return register view
+        /// </returns>
         [AllowAnonymous]
         public ActionResult Register()
         {
@@ -150,6 +229,18 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Account/Register
+        /// <summary>
+        /// Registers the specified profilbillede.
+        /// </summary>
+        /// <param name="Profilbillede">The profilbillede.</param>
+        /// <param name="Coverbillede">The coverbillede.</param>
+        /// <param name="model">The model.</param>
+        /// <returns>
+        /// Redirects to index if succes is a succes
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="AllowAnonymousAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -228,6 +319,15 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Account/ConfirmEmail
+        /// <summary>
+        /// Confirms the email.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        /// <param name="code">The code.</param>
+        /// <returns>
+        /// Return a view with the result of confirmation
+        /// </returns>
+        /// <seealso cref="AllowAnonymousAttribute" />
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
@@ -241,6 +341,13 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Account/ForgotPassword
+        /// <summary>
+        /// Create a view for the forgot password page.
+        /// </summary>
+        /// <returns>
+        /// Return forgot password view
+        /// </returns>
+        /// <seealso cref="AllowAnonymousAttribute" />
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
@@ -249,6 +356,16 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Account/ForgotPassword
+        /// <summary>
+        /// Create a view for entering the new password after confirming through email.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>
+        /// Return ForgotPasswordConfirmation view
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="AllowAnonymousAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -277,6 +394,11 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Account/ForgotPasswordConfirmation
+        /// <summary>
+        /// Create a view for ForgotPasswordConfirmation.
+        /// </summary>
+        /// <returns>Return view</returns>
+        /// <seealso cref="AllowAnonymousAttribute"/>
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
@@ -285,6 +407,14 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Account/ResetPassword
+        /// <summary>
+        /// Return a view depending on the success of the code.
+        /// </summary>
+        /// <param name="code">The code.</param>
+        /// <returns>
+        /// Return reset password view
+        /// </returns>
+        /// <seealso cref="AllowAnonymousAttribute" />
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
@@ -293,6 +423,16 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Account/ResetPassword
+        /// <summary>
+        /// Gets data of the new password and resets the password for the account.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>
+        /// Return view based on the success of the reset
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute"/>
+        /// <seealso cref="AllowAnonymousAttribute"/>
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute"/>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -319,6 +459,13 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Account/ResetPasswordConfirmation
+        /// <summary>
+        /// Create a view confirming the user want to reset the password.
+        /// </summary>
+        /// <returns>
+        /// Return ResetPasswordConfirmation view
+        /// </returns>
+        /// <seealso cref="AllowAnonymousAttribute"/>
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
@@ -327,6 +474,17 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Account/ExternalLogin
+        /// <summary>
+        /// Externals the login.
+        /// </summary>
+        /// <param name="provider">The provider.</param>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns>
+        /// Return <see cref="ChallengeResult" /> for external login
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="AllowAnonymousAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -338,6 +496,15 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Account/SendCode
+        /// <summary>
+        /// Sends the code.
+        /// </summary>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <param name="rememberMe">if set to <c>true</c> [remember me].</param>
+        /// <returns>
+        /// Return view the <see cref="SendCodeViewModel" />
+        /// </returns>
+        /// <seealso cref="AllowAnonymousAttribute" />
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
@@ -353,6 +520,16 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Account/SendCode
+        /// <summary>
+        /// Sends the code.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>
+        /// Return view for the VerifyCode view
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute" />
+        /// <seealso cref="AllowAnonymousAttribute" />
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute" />
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -373,6 +550,14 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Account/ExternalLoginCallback
+        /// <summary>
+        /// Externals the login callback.
+        /// </summary>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns>
+        /// Return depending on the result of the login
+        /// </returns>
+        /// <seealso cref="AllowAnonymousAttribute"/>
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
@@ -403,6 +588,17 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Account/ExternalLoginConfirmation
+        /// <summary>
+        /// Externals the login confirmation.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <param name="returnUrl">The return URL.</param>
+        /// <returns>
+        /// Return for the ExternalLoginConfirmation
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute"/>
+        /// <seealso cref="AllowAnonymousAttribute"/>
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute"/>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -441,6 +637,14 @@ namespace BarCrawler.Controllers
 
         //
         // POST: /Account/LogOff
+        /// <summary>
+        /// Logs the off.
+        /// </summary>
+        /// <returns>
+        /// Return Index view
+        /// </returns>
+        /// <seealso cref="HttpPostAttribute"/>
+        /// <seealso cref="ValidateAntiForgeryTokenAttribute"/>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
@@ -451,12 +655,23 @@ namespace BarCrawler.Controllers
 
         //
         // GET: /Account/ExternalLoginFailure
+        /// <summary>
+        /// Externals the login failure.
+        /// </summary>
+        /// <returns>
+        /// Return ExternalLoginFailure view
+        /// </returns>
+        /// <seealso cref="AllowAnonymousAttribute"/>
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
             return View();
         }
 
+        /// <summary>
+        /// Releases unmanaged resources and optionally releases managed resources.
+        /// </summary>
+        /// <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing)
