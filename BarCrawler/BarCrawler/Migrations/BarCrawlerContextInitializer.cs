@@ -21,21 +21,46 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BarCrawler.Migrations
 {
+    /// <summary>
+    /// Drops and creates the database used by the BarCrawlerContext, the first time an object of the class is called
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <seealso cref="BarCrawlerContext" />
+    /// <seealso cref="DropCreateDatabaseAlways{TContext}"/>
     public class BarCrawlerContextInitializer<T> : DropCreateDatabaseAlways<BarCrawlerContext>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BarCrawlerContextInitializer{T}"/> class.
+        /// </summary>
         public BarCrawlerContextInitializer()
         {
             Debug.WriteLine("read this\n\n\n\n");
-            //Seed(context);
         }
 
 
+        /// <summary>
+        /// The sign in manager
+        /// </summary>
         private ApplicationSignInManager _signInManager;
+        /// <summary>
+        /// The user manager
+        /// </summary>
         private ApplicationUserManager _userManager;
+        /// <summary>
+        /// Gets or sets the user manager.
+        /// </summary>
+        /// <value>
+        /// The user manager.
+        /// </value>
         public ApplicationUserManager UserManager { get; set; }
 
 
-        /**/
+
+        /// <summary>
+        /// A method that should be overridden to actually add data to the context for seeding.
+        /// The default implementation does nothing.
+        /// </summary>
+        /// <param name="context">The context to seed.</param>
         protected override void Seed(BarCrawlerContext context)
         {
             Debug.WriteLine("part 2\n\n\n\n");
@@ -210,13 +235,27 @@ namespace BarCrawler.Migrations
     }
 
 
+    /// <summary>
+    /// Drops and creates the database used by the ApplicationDbContext, the first time an object of the class is called
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <seealso cref="ApplicationDbContext" />
+    /// <seealso cref="DropCreateDatabaseAlways{TContext}"/>
     public class ApplicationContextInitializer<T> : DropCreateDatabaseAlways<ApplicationDbContext>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApplicationContextInitializer{T}"/> class.
+        /// </summary>
         public ApplicationContextInitializer()
         {
             Debug.WriteLine("ApplicationContextInitializer\n\n\n\n");
         }
 
+        /// <summary>
+        /// A method that should be overridden to actually add data to the context for seeding.
+        /// The default implementation does nothing.
+        /// </summary>
+        /// <param name="context">The context to seed.</param>
         protected override void Seed(ApplicationDbContext context)
         {
             base.Seed(context);

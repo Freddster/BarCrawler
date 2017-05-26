@@ -8,51 +8,85 @@ using System.Web;
 namespace BarCrawler.Models
 {
     /// <summary>
-    /// The FeedModel defines all the neccesary properties for creation. 
+    /// The FeedModel defines all the requirements for a bar in the database.
     /// </summary>
     public class FeedModel
     {
         /// <summary>
-        /// Gets or sets the FeedID <br/>
+        /// Gets or sets the FeedID
         /// </summary>
-        /// <summary>
-        /// This property has a uniquely [Key] tag for identification <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.keyattribute(v=vs.110).aspx">Keyattribute</see>
-        /// </summary>
+        /// <value>
+        /// The feed identifier.
+        /// </value>
+        /// <remarks>
+        /// This property has a uniquely [Key] tag for identification <see cref="KeyAttribute" />
+        /// </remarks>
+        /// <seealso cref="KeyAttribute" />
         [Key]
         public int FeedID { get; set; }
 
         /// <summary>
-        /// Gets or sets the BarID and has a [ForeignKey] to BarModel <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.schema.foreignkeyattribute(v=vs.110).aspx">Foreignkeyattribute</see> <br/>
+        /// Gets or sets the BarID.
         /// </summary>
+        /// <value>
+        /// The bar identifier.
+        /// </value>
+        /// <remarks>
+        /// Has a [ForeignKey] to BarModel <see cref="ForeignKeyAttribute" />
+        /// </remarks>
+        /// <seealso cref="ForeignKeyAttribute" />
         [ForeignKey("BarModel")]
         public int BarID { get; set; }
 
         /// <summary>
-        /// Gets or sets the BarModel. <br/>
+        /// Gets or sets the BarModel.
         /// </summary>
+        /// <value>
+        /// The bar model.
+        /// </value>
         public virtual BarModel BarModel { get; set; }
 
+        /// <summary>
+        /// Used for optimistic locking.
+        /// </summary>
+        /// <value>
+        /// The row version.
+        /// </value>
+        /// <remarks>
+        /// The property [Timestamp] defines optimistic locking using <see cref="TimestampAttribute" />
+        /// </remarks>
+        /// <seealso cref="TimestampAttribute" />
         [Timestamp]
         public Byte[] TimeStamp { get; set; }
 
         /// <summary>
-        /// Gets or sets the created time of a feed <br/>
+        /// Gets or sets the creation time of a feed.
         /// </summary>
-        /// <summary>
-        /// This property is required and is marked with a [Required] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.requiredattribute(v=vs.110).aspx">Requiredattribute</see><br/>
-        /// It also has a [Display] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute(v=vs.110).aspx">Displayattribute</see>
-        /// </summary>
+        /// <value>
+        /// The create time.
+        /// </value>
+        /// <remarks>
+        /// This property is required and is marked with a [Required] tag <see cref="RequiredAttribute" /><br />
+        /// It also has a [Display] tag <see cref="DisplayAttribute" />
+        /// </remarks>
+        /// <seealso cref="RequiredAttribute" />
+        /// <seealso cref="DisplayAttribute" />
         [Required]
         [Display(Name = "Oprettelses tidspunkt")]
         public DateTime CreateTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the Description. <br/>
+        /// Gets or sets the text.
         /// </summary>
-        /// <summary>
-        /// This property is marked with a [MaxLength] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.maxlengthattribute(v=vs.110).aspx">Maxlengthattribute</see><br/>
-        /// It also has a [Display] tag <see href="https://msdn.microsoft.com/en-us/library/system.componentmodel.dataannotations.displayattribute(v=vs.110).aspx">Displayattribute</see>
-        /// </summary>
+        /// <value>
+        /// The feed text.
+        /// </value>
+        /// <remarks>
+        /// This property is marked with a [Required] tag <see cref="RequiredAttribute" /><br />
+        /// It also has a [MaxLength] tag <see cref="MaxLengthAttribute" />
+        /// </remarks>
+        /// <seealso cref="RequiredAttribute"/>
+        /// <seealso cref="MaxLengthAttribute" />
         [Required]
         [MaxLength(200)]
         public string Text { get; set; }

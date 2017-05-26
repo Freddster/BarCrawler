@@ -2,9 +2,17 @@ namespace BarCrawler.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    
+
+    /// <summary>
+    /// Added bar profile picture and drink picture to the database
+    /// </summary>
+    /// <seealso cref="System.Data.Entity.Migrations.DbMigration" />
+    /// <seealso cref="System.Data.Entity.Migrations.Infrastructure.IMigrationMetadata" />
     public partial class AddedTwoPictureModels : DbMigration
     {
+        /// <summary>
+        /// Operations to be performed during the upgrade process.
+        /// </summary>
         public override void Up()
         {
             CreateTable(
@@ -35,7 +43,10 @@ namespace BarCrawler.Migrations
                 .Index(t => t.BarID);
             
         }
-        
+
+        /// <summary>
+        /// Operations to be performed during the downgrade process.
+        /// </summary>
         public override void Down()
         {
             DropForeignKey("dbo.BarProfilPictureModels", "BarID", "dbo.BarModels");

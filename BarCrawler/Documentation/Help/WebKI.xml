@@ -4,12 +4,15 @@
     <HelpKINode Title="AccountController Class" Url="html/95c9cf72-7e7c-6ca4-3d30-ddfb53db7ce6.htm" />
     <HelpKINode Title="about AccountController class" Url="html/95c9cf72-7e7c-6ca4-3d30-ddfb53db7ce6.htm" />
     <HelpKINode Title="constructor" Url="html/6822c475-e6f0-9ce3-ab37-b5769f9835d8.htm" />
+    <HelpKINode Title="fields" Url="html/421fe17f-6569-8968-305a-83cd53f25f7c.htm" />
     <HelpKINode Title="methods" Url="html/c2067a28-bf75-edb9-5f9a-0ca4c15e2332.htm" />
     <HelpKINode Title="properties" Url="html/5f49337c-0f00-a108-d617-e6e1dfd0c4d6.htm" />
   </HelpKINode>
   <HelpKINode Title="AccountController.AccountController constructor" Url="html/6822c475-e6f0-9ce3-ab37-b5769f9835d8.htm" />
+  <HelpKINode Title="AccountController.AddErrors method" Url="html/b6cefd07-3f59-fdc3-6c30-d44123e42a32.htm" />
+  <HelpKINode Title="AccountController.AuthenticationManager property" Url="html/4f2f7a50-39ce-cb27-83de-72be22be51df.htm" />
   <HelpKINode Title="AccountController.ConfirmEmail method" Url="html/e0163eed-b923-5365-ecec-2ad333a279d8.htm" />
-  <HelpKINode Title="AccountController.Dispose method" Url="html/4bd2e1cf-3e8e-ef64-3f34-1a90977043d0.htm" />
+  <HelpKINode Title="AccountController.Dispose method" Url="html/f49172da-2f90-4132-3792-b61c3344855c.htm" />
   <HelpKINode Title="AccountController.ExternalLogin method" Url="html/b2e5da63-31e7-5c1c-8440-7a32e72b6607.htm" />
   <HelpKINode Title="AccountController.ExternalLoginCallback method" Url="html/b5b19e63-8f0a-c2ab-e9fb-a807561dac4e.htm" />
   <HelpKINode Title="AccountController.ExternalLoginConfirmation method" Url="html/cc0daabd-8307-7e3f-f496-34c637c6b9a8.htm" />
@@ -18,6 +21,7 @@
   <HelpKINode Title="AccountController.ForgotPasswordConfirmation method" Url="html/0d9f936e-6e47-f851-d924-9430bd7d95cc.htm" />
   <HelpKINode Title="AccountController.Login method" Url="html/1844c92a-0a7e-4556-b19c-3b45920bd819.htm" />
   <HelpKINode Title="AccountController.LogOff method" Url="html/e610c6ef-6a75-49e3-d17b-9128987f4f30.htm" />
+  <HelpKINode Title="AccountController.RedirectToLocal method" Url="html/4564961e-1aa6-4b53-b35a-b341850e7105.htm" />
   <HelpKINode Title="AccountController.Register method" Url="html/e2f5e0fb-d593-382a-69fc-b91b7f7700c3.htm" />
   <HelpKINode Title="AccountController.ResetPassword method" Url="html/d5d65c4b-6fea-71ba-3b91-d9caa2260708.htm" />
   <HelpKINode Title="AccountController.ResetPasswordConfirmation method" Url="html/d3d8415c-2b60-2d03-14a3-3bf2825b0042.htm" />
@@ -25,27 +29,55 @@
   <HelpKINode Title="AccountController.SignInManager property" Url="html/24350913-fb5b-8c38-aeef-9c7f2d1a645a.htm" />
   <HelpKINode Title="AccountController.UserManager property" Url="html/4f4610f0-14ec-60d7-8c90-5d0f5b033287.htm" />
   <HelpKINode Title="AccountController.VerifyCode method" Url="html/3e387c9d-40e0-eca8-1775-700e9a86a923.htm" />
-  <HelpKINode Title="AddBar method" Url="html/a459577b-e5fb-e1f1-0f23-a6e5f79f8425.htm" />
+  <HelpKINode Title="AccountController.XsrfKey field" Url="html/1665e5fa-ba1d-bd52-6696-4f2e335588e4.htm" />
+  <HelpKINode Title="AccountController._signInManager field" Url="html/71cdb69c-2feb-68de-c1bf-fcd5f8cf55fc.htm" />
+  <HelpKINode Title="AccountController._unitOfWork field" Url="html/b0dd12f4-5e9d-59e5-9378-b563bcde14e5.htm" />
+  <HelpKINode Title="AccountController._userManager field" Url="html/067bed41-b30d-36cd-42ad-beea7dd8e5cb.htm" />
+  <HelpKINode Title="Add method">
+    <HelpKINode Title="GenericRepository(TEntity).Add Method " Url="html/2a27a33d-02a0-15ff-cb14-acdb8890082c.htm" />
+    <HelpKINode Title="IRepository(TEntity).Add Method " Url="html/8f219361-10f8-6fd8-c053-dffcbaf03708.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AddedCoverPictureModel class">
+    <HelpKINode Title="AddedCoverPictureModel Class" Url="html/e8a539d9-3d73-d2cb-d638-802f6c2fb2c5.htm" />
+    <HelpKINode Title="about AddedCoverPictureModel class" Url="html/e8a539d9-3d73-d2cb-d638-802f6c2fb2c5.htm" />
+    <HelpKINode Title="constructor" Url="html/67381b7b-a263-089b-b5c8-430639f0effd.htm" />
+    <HelpKINode Title="fields" Url="html/87eb37f4-4bfb-89b9-1619-6f4d5db0de6b.htm" />
+    <HelpKINode Title="methods" Url="html/5a951bd5-cf49-7e2d-297c-4363c4c5bf24.htm" />
+  </HelpKINode>
+  <HelpKINode Title="AddedCoverPictureModel.AddedCoverPictureModel constructor" Url="html/67381b7b-a263-089b-b5c8-430639f0effd.htm" />
+  <HelpKINode Title="AddedCoverPictureModel.Down method" Url="html/f18afb98-919e-2336-3fb4-08ec2488834d.htm" />
+  <HelpKINode Title="AddedCoverPictureModel.Resources field" Url="html/13997ff5-7eba-2e4a-53c0-740df05e614a.htm" />
+  <HelpKINode Title="AddedCoverPictureModel.Up method" Url="html/dda84166-8d26-7101-4163-8b6876005c54.htm" />
   <HelpKINode Title="AddedTwoPictureModels class">
     <HelpKINode Title="AddedTwoPictureModels Class" Url="html/64c322b0-bcda-afe0-53b4-6d2aded6f9a2.htm" />
     <HelpKINode Title="about AddedTwoPictureModels class" Url="html/64c322b0-bcda-afe0-53b4-6d2aded6f9a2.htm" />
     <HelpKINode Title="constructor" Url="html/f22e5165-5166-3946-fe6d-c21a7aec1c59.htm" />
+    <HelpKINode Title="fields" Url="html/1bae3210-fefd-0979-1229-7a0a85126e04.htm" />
     <HelpKINode Title="methods" Url="html/185af6af-4fc0-49ac-7456-ed6f0c0f0b89.htm" />
   </HelpKINode>
   <HelpKINode Title="AddedTwoPictureModels.AddedTwoPictureModels constructor" Url="html/f22e5165-5166-3946-fe6d-c21a7aec1c59.htm" />
   <HelpKINode Title="AddedTwoPictureModels.Down method" Url="html/468321a5-b3ad-9a60-4fd2-b508f0d76eca.htm" />
+  <HelpKINode Title="AddedTwoPictureModels.Resources field" Url="html/31b488c5-ecdb-ff56-111f-8c3a0406ea90.htm" />
   <HelpKINode Title="AddedTwoPictureModels.Up method" Url="html/601c0eb7-5b04-619a-4637-4248f720e965.htm" />
-  <HelpKINode Title="AddEvent method" Url="html/083aedd3-9a7e-a1ec-bd62-2f815f4a6b71.htm" />
+  <HelpKINode Title="AddErrors method">
+    <HelpKINode Title="AccountController.AddErrors Method " Url="html/b6cefd07-3f59-fdc3-6c30-d44123e42a32.htm" />
+    <HelpKINode Title="ManageController.AddErrors Method " Url="html/3bfd222a-08a7-f178-d53b-b793d1213c01.htm" />
+  </HelpKINode>
   <HelpKINode Title="AddModelForUpdate method">
-    <HelpKINode Title="DrinkRepository.AddModelForUpdate Method " Url="html/390e94d2-a999-dcf5-8756-8a80ae5acb5e.htm" />
+    <HelpKINode Title="BarProfilePictureRepository.AddModelForUpdate Method " Url="html/12d6a6ff-0e1a-2ef0-e77c-43223b3e2a6c.htm" />
+    <HelpKINode Title="CoverPictureRepository.AddModelForUpdate Method " Url="html/63fb901e-db2c-238b-f82e-7b7efb019ca2.htm" />
+    <HelpKINode Title="DrinkRepository.AddModelForUpdate Method " Url="html/c7c38955-8fa2-52eb-d10d-02828e4f4c6c.htm" />
+    <HelpKINode Title="IBarProfilePictureRepository.AddModelForUpdate Method " Url="html/21a2de83-8814-e7b8-ee56-35d009d1b8a3.htm" />
+    <HelpKINode Title="ICoverPictureRepository.AddModelForUpdate Method " Url="html/88b2e681-3622-a625-2d7e-f5b0849e4625.htm" />
     <HelpKINode Title="IDrinkRepository.AddModelForUpdate Method " Url="html/514d2153-8d48-ade5-0e00-8e90d8c82eae.htm" />
+    <HelpKINode Title="IPictureRepository.AddModelForUpdate Method " Url="html/d692c037-88b8-6752-4c20-9ad6ed73a121.htm" />
+    <HelpKINode Title="PictureRepository.AddModelForUpdate Method " Url="html/c6b91281-7efc-1336-3d05-b9a426594e7d.htm" />
   </HelpKINode>
   <HelpKINode Title="AddPhoneNumber method" Url="html/67c1c40e-f7c3-dc18-5f38-d1a5c4b9a9e8.htm" />
   <HelpKINode Title="AddPhoneNumberViewModel class">
     <HelpKINode Title="AddPhoneNumberViewModel Class" Url="html/d52ba241-cd90-4a1c-bb28-8006e2a963fe.htm" />
     <HelpKINode Title="about AddPhoneNumberViewModel class" Url="html/d52ba241-cd90-4a1c-bb28-8006e2a963fe.htm" />
     <HelpKINode Title="constructor" Url="html/fc429326-6c55-15cb-e8fb-b92ee5c7cdb4.htm" />
-    <HelpKINode Title="methods" Url="html/e704b9c1-7d49-b788-7df4-bb5378b83969.htm" />
     <HelpKINode Title="properties" Url="html/018d9d8a-6add-0139-cef7-ca364fa43b4e.htm" />
   </HelpKINode>
   <HelpKINode Title="AddPhoneNumberViewModel.AddPhoneNumberViewModel constructor" Url="html/fc429326-6c55-15cb-e8fb-b92ee5c7cdb4.htm" />
@@ -55,11 +87,13 @@
     <HelpKINode Title="BarModel.Address1 Property " Url="html/ca85b734-fde5-af4b-39af-0f94dcbe40fb.htm" />
     <HelpKINode Title="EditViewModel.Address1 Property " Url="html/92d5afe3-e8e5-84e2-dddf-8e80dd62214f.htm" />
     <HelpKINode Title="EventModel.Address1 Property " Url="html/7838d420-306f-4283-897f-2eeb822a0c1d.htm" />
+    <HelpKINode Title="EventViewModel.Address1 Property " Url="html/583000bc-10e0-edc6-f8fa-81d7a40fae66.htm" />
   </HelpKINode>
   <HelpKINode Title="Address2 property">
     <HelpKINode Title="BarModel.Address2 Property " Url="html/b8893c7d-6bc2-ae8f-7aa6-da66cf68de84.htm" />
     <HelpKINode Title="EditViewModel.Address2 Property " Url="html/53c8ddc5-7a2d-5d7f-74a0-52a9c2aea78a.htm" />
     <HelpKINode Title="EventModel.Address2 Property " Url="html/f7557997-b02f-361d-6e19-b476c710419a.htm" />
+    <HelpKINode Title="EventViewModel.Address2 Property " Url="html/ccf4d667-d81a-5181-3333-cac90eacd53f.htm" />
   </HelpKINode>
   <HelpKINode Title="ApplicationContextInitializer(Of T) class">
     <HelpKINode Title="ApplicationContextInitializer(T) Class" Url="html/64a1b8cc-568a-0351-52e3-5c2c5ae26483.htm" />
@@ -82,7 +116,6 @@
     <HelpKINode Title="about ApplicationDbContext class" Url="html/69bb0d1c-edaa-b364-71af-9a463e4ef7f2.htm" />
     <HelpKINode Title="constructor" Url="html/e8abd053-9977-c3c2-60dd-d7a2eaf1948f.htm" />
     <HelpKINode Title="methods" Url="html/12e368f2-aa7b-10c6-adf8-45253c8d1722.htm" />
-    <HelpKINode Title="properties" Url="html/a85c6525-ca14-0b39-6636-6f65e5c0bdf1.htm" />
   </HelpKINode>
   <HelpKINode Title="ApplicationDbContext.ApplicationDbContext constructor" Url="html/e8abd053-9977-c3c2-60dd-d7a2eaf1948f.htm" />
   <HelpKINode Title="ApplicationDbContext.Create method" Url="html/3449d833-eb29-f6e8-90e0-1d1854377eee.htm" />
@@ -91,7 +124,6 @@
     <HelpKINode Title="about ApplicationSignInManager class" Url="html/f5c97af4-ce41-ff84-f341-efa58ff8a1d3.htm" />
     <HelpKINode Title="constructor" Url="html/161d28ea-bb63-7f8b-d295-090869253dc0.htm" />
     <HelpKINode Title="methods" Url="html/13a54f1c-04fa-e9c8-3dc9-096db249d987.htm" />
-    <HelpKINode Title="properties" Url="html/cf88744d-da12-f757-0b26-c290234c2b5f.htm" />
   </HelpKINode>
   <HelpKINode Title="ApplicationSignInManager.ApplicationSignInManager constructor" Url="html/161d28ea-bb63-7f8b-d295-090869253dc0.htm" />
   <HelpKINode Title="ApplicationSignInManager.Create method" Url="html/867999cd-9ae6-535d-1995-4d2d9d228fda.htm" />
@@ -102,61 +134,97 @@
     <HelpKINode Title="constructor" Url="html/939b1ae9-ecf2-dd4d-984a-872bfc7cae21.htm" />
     <HelpKINode Title="fields" Url="html/a63f26fe-550b-a200-a324-16666fd5f416.htm" />
     <HelpKINode Title="methods" Url="html/84065287-90f6-c735-3cff-8586a6f01200.htm" />
-    <HelpKINode Title="properties" Url="html/8963d6ce-c049-fc66-6d75-dbaf6b455ceb.htm" />
   </HelpKINode>
   <HelpKINode Title="ApplicationUser field" Url="html/d754afbd-4aa7-9ba5-f278-34cf8fae2b70.htm" />
   <HelpKINode Title="ApplicationUser.ApplicationUser constructor" Url="html/939b1ae9-ecf2-dd4d-984a-872bfc7cae21.htm" />
-  <HelpKINode Title="ApplicationUser.barID field" Url="html/afff9ebf-bdf8-ef25-5ac5-d87cc6adc554.htm" />
+  <HelpKINode Title="ApplicationUser.BarModel field" Url="html/3c4af3a2-08dc-d84f-8a51-75d57a43910d.htm" />
   <HelpKINode Title="ApplicationUser.GenerateUserIdentityAsync method" Url="html/438fdbf3-9664-805a-a4a1-63522715314e.htm" />
   <HelpKINode Title="ApplicationUserManager class">
     <HelpKINode Title="ApplicationUserManager Class" Url="html/86411da0-92cd-aed8-1751-dcbe9d876471.htm" />
     <HelpKINode Title="about ApplicationUserManager class" Url="html/86411da0-92cd-aed8-1751-dcbe9d876471.htm" />
     <HelpKINode Title="constructor" Url="html/9d4ff57a-c7ea-7a77-0e8c-1c35792e5a5f.htm" />
     <HelpKINode Title="methods" Url="html/911e1e2a-4d47-047a-53c9-5e4a9947be55.htm" />
-    <HelpKINode Title="properties" Url="html/e397dddf-09cf-cf88-912b-51635b999bd6.htm" />
   </HelpKINode>
   <HelpKINode Title="ApplicationUserManager.ApplicationUserManager constructor" Url="html/9d4ff57a-c7ea-7a77-0e8c-1c35792e5a5f.htm" />
   <HelpKINode Title="ApplicationUserManager.Create method" Url="html/bfd6852b-28c9-68da-383b-01e6eadf66d1.htm" />
   <HelpKINode Title="Application_Start method" Url="html/21555b2b-5b1a-2785-5379-c6dd86ba61ee.htm" />
+  <HelpKINode Title="AuthenticationManager property">
+    <HelpKINode Title="AccountController.AuthenticationManager Property " Url="html/4f2f7a50-39ce-cb27-83de-72be22be51df.htm" />
+    <HelpKINode Title="ManageController.AuthenticationManager Property " Url="html/e8ef2c73-7767-b2c3-cd22-7d64dd50814f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BadRequestView method" Url="html/f34837be-4f8b-32c3-3232-cb63b0de74c2.htm" />
+  <HelpKINode Title="bar class">
+    <HelpKINode Title="bar Class" Url="html/b9188a1a-f1c4-a299-13fe-308d717262c8.htm" />
+    <HelpKINode Title="about bar class" Url="html/b9188a1a-f1c4-a299-13fe-308d717262c8.htm" />
+    <HelpKINode Title="constructor" Url="html/56bd2873-f100-91f2-a65a-c6fac217917c.htm" />
+    <HelpKINode Title="fields" Url="html/d7a9f4f6-10a9-5510-1104-36ece4ed8c3d.htm" />
+    <HelpKINode Title="methods" Url="html/8d89d380-ed4e-ada5-5a3b-2042e18cb370.htm" />
+  </HelpKINode>
+  <HelpKINode Title="bar.bar constructor" Url="html/56bd2873-f100-91f2-a65a-c6fac217917c.htm" />
+  <HelpKINode Title="bar.Down method" Url="html/610c8e59-5d9a-2cea-8328-89e4990dc2d6.htm" />
+  <HelpKINode Title="bar.Resources field" Url="html/f64fb952-7d55-4fae-9e02-fe0499fb5046.htm" />
+  <HelpKINode Title="bar.Up method" Url="html/e56068bf-70cb-1ea8-d1be-40089badb10d.htm" />
   <HelpKINode Title="BarCrawler namespace" Url="html/8047e493-801f-985a-5c70-a465b4c11895.htm" />
   <HelpKINode Title="BarCrawler.ApplicationSignInManager class" Url="html/f5c97af4-ce41-ff84-f341-efa58ff8a1d3.htm" />
   <HelpKINode Title="BarCrawler.ApplicationUserManager class" Url="html/86411da0-92cd-aed8-1751-dcbe9d876471.htm" />
   <HelpKINode Title="BarCrawler.BundleConfig class" Url="html/42e480d7-3049-5275-5c83-526799e541e3.htm" />
   <HelpKINode Title="BarCrawler.Controllers namespace" Url="html/37f5aa57-ddce-be79-3222-c792a37736dd.htm" />
   <HelpKINode Title="BarCrawler.Controllers.AccountController class" Url="html/95c9cf72-7e7c-6ca4-3d30-ddfb53db7ce6.htm" />
-  <HelpKINode Title="BarCrawler.Controllers.BarModelsController class" Url="html/d4cfe59d-4d84-ee8c-7730-91c235ade6f0.htm" />
   <HelpKINode Title="BarCrawler.Controllers.BarProfilController class" Url="html/b4cad255-13c2-4f18-8fad-eb72f358fc89.htm" />
   <HelpKINode Title="BarCrawler.Controllers.HomeController class" Url="html/e0592637-ca98-6a44-043d-79c2f03d8b3f.htm" />
   <HelpKINode Title="BarCrawler.Controllers.ManageController class" Url="html/8d462989-7ceb-3c07-dfc5-bd0b4bfebeb3.htm" />
   <HelpKINode Title="BarCrawler.Controllers.ManageController.ManageMessageId enumeration" Url="html/93684129-edfe-5d55-c8e1-192e9cd7726b.htm" />
   <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories namespace" Url="html/f288e0ec-4111-8302-5751-becff7df4f9e.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.BarProfilePictureRepository class" Url="html/7893e4f2-273e-f38a-2cae-aafcc9722d7f.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.BarRepository class" Url="html/1d24352f-a6c6-ee50-e46f-dd10bb0c0715.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.CoverPictureRepository class" Url="html/1388ae1c-3129-0244-0d62-2588518595a7.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.DrinkRepository class" Url="html/0eb41fd4-cc52-d21a-e06b-48e3a9b6169c.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.EventRepository class" Url="html/7c0e581d-6812-7422-e09d-afd0bd5c0c30.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.FeedRepository class" Url="html/398e8817-9333-67c5-4865-b7003cf96124.htm" />
   <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.GenericRepository(Of TEntity) class" Url="html/c7c2d3db-4181-01cb-3812-8ef80e898204.htm" />
   <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.GenericRepository&lt;TEntity&gt; class" Url="html/c7c2d3db-4181-01cb-3812-8ef80e898204.htm" />
   <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.Interface namespace" Url="html/adfa4fd9-5b11-13b7-b6e4-9c00c308660c.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.Interface.IBarProfilePictureRepository interface" Url="html/ffabc75e-20ca-1496-6b28-3c42a7f57883.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.Interface.IBarRepository interface" Url="html/0ae0aa65-68c5-5d1b-c361-dafa150c10df.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.Interface.ICoverPictureRepository interface" Url="html/79d34d67-9e62-7b9d-c9d0-311bae9a8bc8.htm" />
   <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.Interface.IDrinkRepository interface" Url="html/24f7a06f-82f9-267a-cae2-0eb0b31ed430.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.Interface.IEventRepository interface" Url="html/0300345b-b4bf-c28e-dbc3-7bb0d9287cc9.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.Interface.IFeedRepository interface" Url="html/41803e2a-b4ee-f281-3748-a8bcb335e867.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.Interface.IPictureRepository interface" Url="html/f284e2c3-a492-c5ad-986c-9d35c69b385e.htm" />
   <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.Interface.IRepository(Of TEntity) interface" Url="html/bbaf9ce2-93fb-d859-0acd-901361f14eb7.htm" />
   <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.Interface.IRepository&lt;TEntity&gt; interface" Url="html/bbaf9ce2-93fb-d859-0acd-901361f14eb7.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.Repositories.PictureRepository class" Url="html/6f481bc2-b549-9cb6-c746-bb5145286b31.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.UnitOfWork namespace" Url="html/995d4be4-de6b-22d2-6d85-fa29c64f5446.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.UnitOfWork.IUnitOfWork interface" Url="html/556ba12b-2b81-5b8b-7ab0-d1c61510e4fe.htm" />
+  <HelpKINode Title="BarCrawler.DataAccessLogic.UnitOfWork.UnitOfWork class" Url="html/28ee91fa-ce08-4295-a889-2a4b86200084.htm" />
   <HelpKINode Title="BarCrawler.EmailService class" Url="html/6c5ace7e-8701-4456-a0b6-d606656a62a2.htm" />
   <HelpKINode Title="BarCrawler.FilterConfig class" Url="html/aeff6606-7e48-dc94-d2ab-9ef610729512.htm" />
   <HelpKINode Title="BarCrawler.Migrations namespace" Url="html/db2f084d-5d43-6137-e9c8-67d24225b3c5.htm" />
+  <HelpKINode Title="BarCrawler.Migrations.AddedCoverPictureModel class" Url="html/e8a539d9-3d73-d2cb-d638-802f6c2fb2c5.htm" />
   <HelpKINode Title="BarCrawler.Migrations.AddedTwoPictureModels class" Url="html/64c322b0-bcda-afe0-53b4-6d2aded6f9a2.htm" />
   <HelpKINode Title="BarCrawler.Migrations.ApplicationContextInitializer(Of T) class" Url="html/64a1b8cc-568a-0351-52e3-5c2c5ae26483.htm" />
   <HelpKINode Title="BarCrawler.Migrations.ApplicationContextInitializer&lt;T&gt; class" Url="html/64a1b8cc-568a-0351-52e3-5c2c5ae26483.htm" />
+  <HelpKINode Title="BarCrawler.Migrations.bar class" Url="html/b9188a1a-f1c4-a299-13fe-308d717262c8.htm" />
   <HelpKINode Title="BarCrawler.Migrations.BarCrawlerContextInitializer(Of T) class" Url="html/4dca87d5-4837-dae0-1803-ce16164c7bc2.htm" />
   <HelpKINode Title="BarCrawler.Migrations.BarCrawlerContextInitializer&lt;T&gt; class" Url="html/4dca87d5-4837-dae0-1803-ce16164c7bc2.htm" />
+  <HelpKINode Title="BarCrawler.Migrations.barId class" Url="html/63242638-3acd-9e26-3497-a252ed21e717.htm" />
+  <HelpKINode Title="BarCrawler.Migrations.BarnameOnApplicationuser class" Url="html/066e8bdf-656b-c215-d482-07889957bf76.htm" />
+  <HelpKINode Title="BarCrawler.Migrations.ChangeNameOfBarProfilePicture class" Url="html/9f8cc5e2-3253-c738-596d-3a9f51f2cce7.htm" />
   <HelpKINode Title="BarCrawler.Migrations.Initial class" Url="html/d3823dad-fee7-1eeb-af5b-dfd2aaf2478f.htm" />
   <HelpKINode Title="BarCrawler.Migrations.OpdateretDrinksModelPris class" Url="html/1bb3183c-acd6-c620-7ebc-67dec03bb7f0.htm" />
   <HelpKINode Title="BarCrawler.Migrations.OpenCloseTimeInBarModel class" Url="html/b12d49c4-705b-fecb-b1de-18b99e6ba6c8.htm" />
   <HelpKINode Title="BarCrawler.Migrations.UpdatedModelsWithCreateTime class" Url="html/bc888137-d208-7ef4-5a31-4f292a123dac.htm" />
+  <HelpKINode Title="BarCrawler.Migrations.WeirdChanged class" Url="html/c4326702-5bd2-7b9d-0d37-2efd41f17e30.htm" />
   <HelpKINode Title="BarCrawler.Models namespace" Url="html/1ce53255-b5c0-839f-ffaf-414199b5a781.htm" />
   <HelpKINode Title="BarCrawler.Models.AddPhoneNumberViewModel class" Url="html/d52ba241-cd90-4a1c-bb28-8006e2a963fe.htm" />
   <HelpKINode Title="BarCrawler.Models.ApplicationDbContext class" Url="html/69bb0d1c-edaa-b364-71af-9a463e4ef7f2.htm" />
   <HelpKINode Title="BarCrawler.Models.ApplicationUser class" Url="html/59ebb3bd-f43e-4844-14c9-23a9a2c86fa2.htm" />
   <HelpKINode Title="BarCrawler.Models.BarCrawlerContext class" Url="html/a4793b5e-a818-4bae-d362-74d348cf6353.htm" />
   <HelpKINode Title="BarCrawler.Models.BarModel class" Url="html/bf35b0fe-bdbe-6e94-6523-bd62829837f2.htm" />
-  <HelpKINode Title="BarCrawler.Models.BarProfilPictureModel class" Url="html/4b95a291-b9d7-e150-424f-25716bed1ed1.htm" />
+  <HelpKINode Title="BarCrawler.Models.BarProfilePictureModel class" Url="html/34e707b2-47dc-f3f5-9ca4-53b7af72b65c.htm" />
   <HelpKINode Title="BarCrawler.Models.ChangePasswordViewModel class" Url="html/1226c027-3545-3cda-8804-67c8168ac235.htm" />
   <HelpKINode Title="BarCrawler.Models.ConfigureTwoFactorViewModel class" Url="html/5131e320-1a9c-1cb3-17ea-500143a63805.htm" />
+  <HelpKINode Title="BarCrawler.Models.CoverPictureModel class" Url="html/6783e39b-d18e-fab8-3957-814e786b2e53.htm" />
   <HelpKINode Title="BarCrawler.Models.DrinkModel class" Url="html/bf5b42df-2ce3-7e59-3510-94e6972334d7.htm" />
   <HelpKINode Title="BarCrawler.Models.DrinkPictureModel class" Url="html/e1815ea1-1f06-a4a5-6d5a-39f7ac514002.htm" />
   <HelpKINode Title="BarCrawler.Models.EventModel class" Url="html/1c1bdcda-dad0-7fc9-90e0-0e6b2b7b4e16.htm" />
@@ -185,6 +253,8 @@
   <HelpKINode Title="BarCrawler.ViewModels.BigRegisterViewModel class" Url="html/59037419-c65c-33d5-d9d3-abe880fd836b.htm" />
   <HelpKINode Title="BarCrawler.ViewModels.DrinkViewModel class" Url="html/b3dc4292-bc46-dff6-746d-a5ef85014db6.htm" />
   <HelpKINode Title="BarCrawler.ViewModels.EditViewModel class" Url="html/cd44244e-2b61-23a2-1cf1-dc3152137344.htm" />
+  <HelpKINode Title="BarCrawler.ViewModels.EventViewModel class" Url="html/6f8d9dfe-afcf-0615-ac59-10e9c38ae865.htm" />
+  <HelpKINode Title="BarCrawler.ViewModels.PictureViewModel class" Url="html/927bacec-f2c3-d034-6fdb-27b09be63b05.htm" />
   <HelpKINode Title="BarCrawlerContext class">
     <HelpKINode Title="BarCrawlerContext Class" Url="html/a4793b5e-a818-4bae-d362-74d348cf6353.htm" />
     <HelpKINode Title="about BarCrawlerContext class" Url="html/a4793b5e-a818-4bae-d362-74d348cf6353.htm" />
@@ -192,11 +262,17 @@
     <HelpKINode Title="methods" Url="html/12945027-5d9d-c139-814e-06abe142892b.htm" />
     <HelpKINode Title="properties" Url="html/026e2ab5-d396-6782-6e8a-045ac6d7b8c1.htm" />
   </HelpKINode>
-  <HelpKINode Title="BarCrawlerContext property" Url="html/b63d1b12-3fdf-1048-e1a2-ac489afa1888.htm" />
+  <HelpKINode Title="BarCrawlerContext property">
+    <HelpKINode Title="DrinkRepository.BarCrawlerContext Property " Url="html/a9db1d8f-9b05-93be-b128-f72b574da3d2.htm" />
+    <HelpKINode Title="FeedRepository.BarCrawlerContext Property " Url="html/e8bc74e0-a452-96da-2f09-1a643b515d56.htm" />
+  </HelpKINode>
   <HelpKINode Title="BarCrawlerContext.BarCrawlerContext constructor" Url="html/0ed15017-c438-c65e-d258-64bddbd7d5a6.htm" />
   <HelpKINode Title="BarCrawlerContext.BarModels property" Url="html/2d4a7c3f-3280-e764-60b7-78f751427937.htm" />
+  <HelpKINode Title="BarCrawlerContext.BarProfilePictureModels property" Url="html/8628cde6-ada6-0e62-8d82-3bd5f032df37.htm" />
+  <HelpKINode Title="BarCrawlerContext.CoverPictureModels property" Url="html/00b7cb56-3b70-78e8-2909-752d6fdfd96d.htm" />
   <HelpKINode Title="BarCrawlerContext.Create method" Url="html/a2c14fe7-c7a1-c36c-2532-1275be816845.htm" />
   <HelpKINode Title="BarCrawlerContext.DrinkModels property" Url="html/24302987-fcb9-d1c6-024b-0efd19dd931e.htm" />
+  <HelpKINode Title="BarCrawlerContext.DrinkPictureModels property" Url="html/0b349fb7-d835-5bb5-2332-c580137dc9bc.htm" />
   <HelpKINode Title="BarCrawlerContext.EventModels property" Url="html/67b3f084-b1b2-52af-ab3d-5891da0360e8.htm" />
   <HelpKINode Title="BarCrawlerContext.FeedModels property" Url="html/80cf655a-9443-1e64-bf3d-4c2fd629e83b.htm" />
   <HelpKINode Title="BarCrawlerContext.PictureModels property" Url="html/13261790-58b4-f2e0-2312-b5aba6f338eb.htm" />
@@ -204,44 +280,65 @@
     <HelpKINode Title="BarCrawlerContextInitializer(T) Class" Url="html/4dca87d5-4837-dae0-1803-ce16164c7bc2.htm" />
     <HelpKINode Title="about BarCrawlerContextInitializer(Of T) class" Url="html/4dca87d5-4837-dae0-1803-ce16164c7bc2.htm" />
     <HelpKINode Title="constructor" Url="html/41e550c0-6526-d988-0200-3a3ea497f86b.htm" />
+    <HelpKINode Title="fields" Url="html/6f3d8702-df7b-0073-12af-5cf9672c6717.htm" />
     <HelpKINode Title="methods" Url="html/68df7daa-034a-2d64-342c-a8c5463562cd.htm" />
     <HelpKINode Title="properties" Url="html/a8019e79-3636-9abb-114e-538871f7640b.htm" />
   </HelpKINode>
   <HelpKINode Title="BarCrawlerContextInitializer(Of T).BarCrawlerContextInitializer constructor" Url="html/41e550c0-6526-d988-0200-3a3ea497f86b.htm" />
   <HelpKINode Title="BarCrawlerContextInitializer(Of T).Seed method" Url="html/4538f00f-4268-2b08-8d73-af634419e114.htm" />
   <HelpKINode Title="BarCrawlerContextInitializer(Of T).UserManager property" Url="html/2e28b8d3-1790-1062-77a1-4fb6d90c9735.htm" />
+  <HelpKINode Title="BarCrawlerContextInitializer(Of T)._signInManager field" Url="html/15d2b7db-e58c-b6c1-5d1d-0463eb2f1f70.htm" />
+  <HelpKINode Title="BarCrawlerContextInitializer(Of T)._userManager field" Url="html/c82c81bd-7feb-2f25-6e1f-1480a532f36b.htm" />
   <HelpKINode Title="BarCrawlerContextInitializer&lt;T&gt; class">
     <HelpKINode Title="BarCrawlerContextInitializer(T) Class" Url="html/4dca87d5-4837-dae0-1803-ce16164c7bc2.htm" />
     <HelpKINode Title="about BarCrawlerContextInitializer&lt;T&gt; class" Url="html/4dca87d5-4837-dae0-1803-ce16164c7bc2.htm" />
     <HelpKINode Title="constructor" Url="html/41e550c0-6526-d988-0200-3a3ea497f86b.htm" />
+    <HelpKINode Title="fields" Url="html/6f3d8702-df7b-0073-12af-5cf9672c6717.htm" />
     <HelpKINode Title="methods" Url="html/68df7daa-034a-2d64-342c-a8c5463562cd.htm" />
     <HelpKINode Title="properties" Url="html/a8019e79-3636-9abb-114e-538871f7640b.htm" />
   </HelpKINode>
   <HelpKINode Title="BarCrawlerContextInitializer&lt;T&gt;.BarCrawlerContextInitializer constructor" Url="html/41e550c0-6526-d988-0200-3a3ea497f86b.htm" />
   <HelpKINode Title="BarCrawlerContextInitializer&lt;T&gt;.Seed method" Url="html/4538f00f-4268-2b08-8d73-af634419e114.htm" />
   <HelpKINode Title="BarCrawlerContextInitializer&lt;T&gt;.UserManager property" Url="html/2e28b8d3-1790-1062-77a1-4fb6d90c9735.htm" />
-  <HelpKINode Title="barID field" Url="html/afff9ebf-bdf8-ef25-5ac5-d87cc6adc554.htm" />
+  <HelpKINode Title="BarCrawlerContextInitializer&lt;T&gt;._signInManager field" Url="html/15d2b7db-e58c-b6c1-5d1d-0463eb2f1f70.htm" />
+  <HelpKINode Title="BarCrawlerContextInitializer&lt;T&gt;._userManager field" Url="html/c82c81bd-7feb-2f25-6e1f-1480a532f36b.htm" />
+  <HelpKINode Title="barId class">
+    <HelpKINode Title="barId Class" Url="html/63242638-3acd-9e26-3497-a252ed21e717.htm" />
+    <HelpKINode Title="about barId class" Url="html/63242638-3acd-9e26-3497-a252ed21e717.htm" />
+    <HelpKINode Title="constructor" Url="html/f25b9c2c-d105-1542-b060-7646cf34c95d.htm" />
+    <HelpKINode Title="fields" Url="html/92ae6733-3bd1-8fdf-6db9-931d8023d6c1.htm" />
+    <HelpKINode Title="methods" Url="html/565f33e4-0688-faad-f444-11c0c6c1f5af.htm" />
+  </HelpKINode>
   <HelpKINode Title="BarID property">
     <HelpKINode Title="BarModel.BarID Property " Url="html/bde796ea-5d3f-f9d5-2a44-db3756fe9c87.htm" />
-    <HelpKINode Title="BarProfilPictureModel.BarID Property " Url="html/2a24fff3-b4fb-75d5-4622-1e5801858f6d.htm" />
+    <HelpKINode Title="BarProfilePictureModel.BarID Property " Url="html/613d2b62-9fb0-0cf6-1b98-c9266b57642e.htm" />
+    <HelpKINode Title="CoverPictureModel.BarID Property " Url="html/c6a6ba8b-c985-0fe9-efad-9bc759b3efa7.htm" />
     <HelpKINode Title="DrinkModel.BarID Property " Url="html/c18cd931-52c4-6979-8cbc-c8516f162cf2.htm" />
     <HelpKINode Title="DrinkViewModel.BarID Property " Url="html/b4f8bda0-a274-edde-f185-ae35aadc9281.htm" />
     <HelpKINode Title="EditViewModel.BarID Property " Url="html/758c4168-56bc-fa78-615c-798eeb2efc4a.htm" />
     <HelpKINode Title="EventModel.BarID Property " Url="html/2ba98ff7-4f09-03f5-291c-fa1984968f17.htm" />
+    <HelpKINode Title="EventViewModel.BarID Property " Url="html/0e7cba8c-1eac-b179-3f31-f4373ed72ceb.htm" />
     <HelpKINode Title="FeedModel.BarID Property " Url="html/4c671c48-a3bb-f3e4-6da0-6d146036db6c.htm" />
     <HelpKINode Title="PictureModel.BarID Property " Url="html/d9fb5aad-b1da-b0c9-940e-68f346a5cb5b.htm" />
+    <HelpKINode Title="PictureViewModel.BarID Property " Url="html/783ee9a0-5d6b-04d7-064a-c1a1b9eacf94.htm" />
   </HelpKINode>
+  <HelpKINode Title="barId.barId constructor" Url="html/f25b9c2c-d105-1542-b060-7646cf34c95d.htm" />
+  <HelpKINode Title="barId.Down method" Url="html/d9c0099a-10e5-8411-9442-ff7f80a3acbb.htm" />
+  <HelpKINode Title="barId.Resources field" Url="html/eb9a02d2-4a42-0403-0d9f-04bcaef93840.htm" />
+  <HelpKINode Title="barId.Up method" Url="html/44efa0fd-75df-6d7b-5d5f-26a1cb23b8eb.htm" />
+  <HelpKINode Title="BarLink method" Url="html/3f1be22e-24eb-c2a7-08c9-83a9bdf0ba85.htm" />
   <HelpKINode Title="BarModel class">
     <HelpKINode Title="BarModel Class" Url="html/bf35b0fe-bdbe-6e94-6523-bd62829837f2.htm" />
     <HelpKINode Title="about BarModel class" Url="html/bf35b0fe-bdbe-6e94-6523-bd62829837f2.htm" />
     <HelpKINode Title="constructor" Url="html/26dff2af-a5e6-de7d-b0e2-a72ef589f8cf.htm" />
     <HelpKINode Title="fields" Url="html/47b3cfc0-cfbe-0975-1cde-50aeaccb7323.htm" />
-    <HelpKINode Title="methods" Url="html/05d49d9b-3012-053c-3071-3399a49cf468.htm" />
     <HelpKINode Title="properties" Url="html/bde88da5-b811-ac25-3c9a-722fcac715f7.htm" />
   </HelpKINode>
+  <HelpKINode Title="BarModel field" Url="html/3c4af3a2-08dc-d84f-8a51-75d57a43910d.htm" />
   <HelpKINode Title="BarModel property">
-    <HelpKINode Title="BarProfilPictureModel.BarModel Property " Url="html/e6416dd0-db42-39f3-28dc-ea631d727fa7.htm" />
+    <HelpKINode Title="BarProfilePictureModel.BarModel Property " Url="html/22aba3cb-6913-5322-9bde-dfd38ace3eea.htm" />
     <HelpKINode Title="BigRegisterViewModel.BarModel Property " Url="html/78370498-e3c6-e253-9fd1-5a1db0983dd2.htm" />
+    <HelpKINode Title="CoverPictureModel.BarModel Property " Url="html/bcefd493-4663-6062-732a-b751fdf7a3b3.htm" />
     <HelpKINode Title="DrinkModel.BarModel Property " Url="html/349fd49d-0c9a-8337-1b69-6e1b5ab970b4.htm" />
     <HelpKINode Title="EventModel.BarModel Property " Url="html/e8daadbf-4bc5-33ee-c4b7-44d06df46923.htm" />
     <HelpKINode Title="FeedModel.BarModel Property " Url="html/97a1dd2a-4545-5e07-70fc-e375135eb783.htm" />
@@ -253,8 +350,10 @@
   <HelpKINode Title="BarModel.BarID property" Url="html/bde796ea-5d3f-f9d5-2a44-db3756fe9c87.htm" />
   <HelpKINode Title="BarModel.BarModel constructor" Url="html/26dff2af-a5e6-de7d-b0e2-a72ef589f8cf.htm" />
   <HelpKINode Title="BarModel.BarName property" Url="html/326810f7-edfa-6648-15bc-8f6bd70ddc25.htm" />
+  <HelpKINode Title="BarModel.BarProfilePicture property" Url="html/02835881-0176-687b-16ab-c25c2596c756.htm" />
   <HelpKINode Title="BarModel.City property" Url="html/f4be918a-4a9a-0d0d-9fbb-57402c921364.htm" />
   <HelpKINode Title="BarModel.CloseTime property" Url="html/aa4521f8-f57f-0812-8ac5-d5f8142d90fd.htm" />
+  <HelpKINode Title="BarModel.CoverPicture property" Url="html/4d97aef4-f1c6-0dfd-e5a5-5c41ce004dd5.htm" />
   <HelpKINode Title="BarModel.Description property" Url="html/1adf5231-7821-f2a1-0ee1-b53e1c31433d.htm" />
   <HelpKINode Title="BarModel.Drinks property" Url="html/e975ca85-733f-7dd8-fcf4-b8c94a24d962.htm" />
   <HelpKINode Title="BarModel.Email property" Url="html/0a0cd177-5c8f-e2b7-013b-f2b4825c46bf.htm" />
@@ -266,81 +365,102 @@
   <HelpKINode Title="BarModel.OpenTime property" Url="html/66d446f0-d848-db3d-934e-267974f6316f.htm" />
   <HelpKINode Title="BarModel.PhoneNumber property" Url="html/2784bf20-c5e1-4093-c765-c992ffbdfe5f.htm" />
   <HelpKINode Title="BarModel.Pictures property" Url="html/bb42565e-366a-5614-e9eb-c901bb636651.htm" />
-  <HelpKINode Title="BarModel.ProfilPictureModel property" Url="html/cb52cb16-eb14-ba3e-a615-5a6b72d357bb.htm" />
   <HelpKINode Title="BarModel.StreetNumber property" Url="html/0de23eba-f17b-8365-2b18-c6cf4b127200.htm" />
   <HelpKINode Title="BarModel.TimeStamp property" Url="html/c96ef477-1dfb-f37a-fa5c-41bb272c5043.htm" />
-  <HelpKINode Title="BarModel.userID field" Url="html/ff0b6bec-452f-46d9-ca11-e0989bd1a7d7.htm" />
+  <HelpKINode Title="BarModel.userID property" Url="html/f99d3cb0-c512-300d-080b-c3ee11b4db0d.htm" />
   <HelpKINode Title="BarModel.Zipcode property" Url="html/40864d8e-85e0-a512-96eb-4fcd4c80b04f.htm" />
   <HelpKINode Title="BarModels property">
     <HelpKINode Title="BarCrawlerContext.BarModels Property " Url="html/2d4a7c3f-3280-e764-60b7-78f751427937.htm" />
     <HelpKINode Title="ICustomBarContext.BarModels Property " Url="html/fd5aeefb-7a91-49d9-f76f-8cf81ceebea5.htm" />
   </HelpKINode>
-  <HelpKINode Title="BarModelsController class">
-    <HelpKINode Title="BarModelsController Class" Url="html/d4cfe59d-4d84-ee8c-7730-91c235ade6f0.htm" />
-    <HelpKINode Title="about BarModelsController class" Url="html/d4cfe59d-4d84-ee8c-7730-91c235ade6f0.htm" />
-    <HelpKINode Title="constructor" Url="html/c1492590-8c39-0499-8958-76e205a2620b.htm" />
-    <HelpKINode Title="methods" Url="html/441f7131-ce43-3ba9-d0a9-2ce234cac440.htm" />
-    <HelpKINode Title="properties" Url="html/50abac43-fd5a-2795-da80-e892fd48d22a.htm" />
-  </HelpKINode>
-  <HelpKINode Title="BarModelsController.BarModelsController constructor" Url="html/c1492590-8c39-0499-8958-76e205a2620b.htm" />
-  <HelpKINode Title="BarModelsController.DeleteBarModel method" Url="html/8f0a7218-8ce2-1b40-2c87-4e99a20d26bc.htm" />
-  <HelpKINode Title="BarModelsController.Dispose method" Url="html/0ab03d7f-8f28-dd6e-033b-e38bdbcccc97.htm" />
-  <HelpKINode Title="BarModelsController.GetBarModel method" Url="html/6b5d703d-d97a-b94a-f9ac-bd1bdf31b720.htm" />
-  <HelpKINode Title="BarModelsController.GetBarModels method" Url="html/c586a7f3-f883-f53f-95ea-dcc162c784be.htm" />
-  <HelpKINode Title="BarModelsController.PostBarModel method" Url="html/91dea948-b8b2-a310-0ece-9913c53f0d0f.htm" />
-  <HelpKINode Title="BarModelsController.PutBarModel method" Url="html/3725c564-64ae-3e64-2cc6-d2680d264dde.htm" />
   <HelpKINode Title="BarName property" Url="html/326810f7-edfa-6648-15bc-8f6bd70ddc25.htm" />
+  <HelpKINode Title="BarnameOnApplicationuser class">
+    <HelpKINode Title="BarnameOnApplicationuser Class" Url="html/066e8bdf-656b-c215-d482-07889957bf76.htm" />
+    <HelpKINode Title="about BarnameOnApplicationuser class" Url="html/066e8bdf-656b-c215-d482-07889957bf76.htm" />
+    <HelpKINode Title="constructor" Url="html/bc6aede1-ce30-6a76-2dc0-47815c2ede39.htm" />
+    <HelpKINode Title="fields" Url="html/fe6c721d-28f2-996f-9ee7-30789febcdbe.htm" />
+    <HelpKINode Title="methods" Url="html/1d7d5c42-a781-f7b2-9d83-3db541354524.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BarnameOnApplicationuser.BarnameOnApplicationuser constructor" Url="html/bc6aede1-ce30-6a76-2dc0-47815c2ede39.htm" />
+  <HelpKINode Title="BarnameOnApplicationuser.Down method" Url="html/a1c4842f-010e-df16-0dc1-9a7e8d382b9a.htm" />
+  <HelpKINode Title="BarnameOnApplicationuser.Resources field" Url="html/6b91fa91-850c-b10f-325f-379c86ad1ea9.htm" />
+  <HelpKINode Title="BarnameOnApplicationuser.Up method" Url="html/a9d8ae29-b24d-3a60-ecdc-0225869d8b50.htm" />
   <HelpKINode Title="BarProfilController class">
     <HelpKINode Title="BarProfilController Class" Url="html/b4cad255-13c2-4f18-8fad-eb72f358fc89.htm" />
     <HelpKINode Title="about BarProfilController class" Url="html/b4cad255-13c2-4f18-8fad-eb72f358fc89.htm" />
     <HelpKINode Title="constructor" Url="html/b5995d8b-0996-487e-ee6b-47f9b1e6787a.htm" />
+    <HelpKINode Title="fields" Url="html/d341a9c4-a575-0697-3657-5c2b165654bc.htm" />
     <HelpKINode Title="methods" Url="html/71e72047-1afa-b2a4-31d8-1a50a51c30ab.htm" />
-    <HelpKINode Title="properties" Url="html/98e2e845-eb05-aba0-bb1d-d7084866c80a.htm" />
   </HelpKINode>
+  <HelpKINode Title="BarProfilController.BadRequestView method" Url="html/f34837be-4f8b-32c3-3232-cb63b0de74c2.htm" />
+  <HelpKINode Title="BarProfilController.BarLink method" Url="html/3f1be22e-24eb-c2a7-08c9-83a9bdf0ba85.htm" />
   <HelpKINode Title="BarProfilController.BarProfilController constructor" Url="html/b5995d8b-0996-487e-ee6b-47f9b1e6787a.htm" />
   <HelpKINode Title="BarProfilController.CreateDrink method" Url="html/e49e99fd-e65f-555a-aa02-67e3424da453.htm" />
+  <HelpKINode Title="BarProfilController.CreateEvent method" Url="html/71e57f1d-1e96-5ca1-4e4a-0ec27c16b88b.htm" />
   <HelpKINode Title="BarProfilController.CreateFeed method" Url="html/fa9299dc-bed8-9468-bcd9-4f1c49fceb1e.htm" />
   <HelpKINode Title="BarProfilController.CreatePicture method" Url="html/6bc4e9ec-5799-e243-826f-935a1c92498e.htm" />
   <HelpKINode Title="BarProfilController.DeleteDrink method" Url="html/de0a5978-82a7-7d1e-806d-1b0237f0bd1c.htm" />
-  <HelpKINode Title="BarProfilController.DeleteFeed method" Url="html/85d12f62-8eb0-ea6b-9932-b673688a2e7e.htm" />
+  <HelpKINode Title="BarProfilController.DeleteEvent method" Url="html/8b7569ff-f0bf-519e-39fa-4ae24b8c6ceb.htm" />
+  <HelpKINode Title="BarProfilController.DeleteFeed method" Url="html/ff510143-a7aa-e5a9-fc05-ebd24a02cc32.htm" />
+  <HelpKINode Title="BarProfilController.DeletePicture method" Url="html/3379b00d-6d93-2aa9-d01c-1326175ab8d7.htm" />
   <HelpKINode Title="BarProfilController.Edit method" Url="html/5a6cfcf3-4bb3-ffc2-f6c1-52a964fdab7b.htm" />
+  <HelpKINode Title="BarProfilController.EditCoverPicture method" Url="html/923c245b-ec0f-a0a4-2717-169eff7db0c2.htm" />
   <HelpKINode Title="BarProfilController.EditDrink method" Url="html/2bee2075-ad35-f841-9e69-ab9c0a4ed959.htm" />
+  <HelpKINode Title="BarProfilController.EditEvent method" Url="html/83d08258-32d8-573a-a4be-ac66808f7864.htm" />
+  <HelpKINode Title="BarProfilController.EditPicture method" Url="html/a9ca2ecb-90c4-b6d7-1258-b643c5220684.htm" />
+  <HelpKINode Title="BarProfilController.EditProfilPicture method" Url="html/89ae4b3d-c2f1-0528-bd4c-7c173275fb8e.htm" />
   <HelpKINode Title="BarProfilController.Index method" Url="html/20fa97b0-4876-5e7b-85a7-496aa6f7e4ea.htm" />
-  <HelpKINode Title="BarProfilController.UpdateDrinks method" Url="html/f260f07e-0309-6d28-93db-8f5d738d11cb.htm" />
-  <HelpKINode Title="BarProfilPictureModel class">
-    <HelpKINode Title="BarProfilPictureModel Class" Url="html/4b95a291-b9d7-e150-424f-25716bed1ed1.htm" />
-    <HelpKINode Title="about BarProfilPictureModel class" Url="html/4b95a291-b9d7-e150-424f-25716bed1ed1.htm" />
-    <HelpKINode Title="constructor" Url="html/5841b2cf-2484-f563-4c57-fc780d8d12dd.htm" />
-    <HelpKINode Title="methods" Url="html/9e22b76a-f886-ec9e-abc6-56693a01300c.htm" />
-    <HelpKINode Title="properties" Url="html/d5e53a10-6d06-2910-0ae1-6d673fb8bd2c.htm" />
+  <HelpKINode Title="BarProfilController._unitOfWork field" Url="html/77e2a55b-2990-9524-0e4e-7d8cdabe7f59.htm" />
+  <HelpKINode Title="BarProfilePicture property" Url="html/02835881-0176-687b-16ab-c25c2596c756.htm" />
+  <HelpKINode Title="BarProfilePictureModel class">
+    <HelpKINode Title="BarProfilePictureModel Class" Url="html/34e707b2-47dc-f3f5-9ca4-53b7af72b65c.htm" />
+    <HelpKINode Title="about BarProfilePictureModel class" Url="html/34e707b2-47dc-f3f5-9ca4-53b7af72b65c.htm" />
+    <HelpKINode Title="constructor" Url="html/f64dee35-f8d3-170b-aec7-0a7c771a1c31.htm" />
+    <HelpKINode Title="properties" Url="html/7a3368d1-e110-df87-98b6-5dac3f701295.htm" />
   </HelpKINode>
-  <HelpKINode Title="BarProfilPictureModel.BarID property" Url="html/2a24fff3-b4fb-75d5-4622-1e5801858f6d.htm" />
-  <HelpKINode Title="BarProfilPictureModel.BarModel property" Url="html/e6416dd0-db42-39f3-28dc-ea631d727fa7.htm" />
-  <HelpKINode Title="BarProfilPictureModel.BarProfilPictureModel constructor" Url="html/5841b2cf-2484-f563-4c57-fc780d8d12dd.htm" />
-  <HelpKINode Title="BarProfilPictureModel.CreateTime property" Url="html/23148014-99c6-6af0-ca44-b23ea5e031ff.htm" />
-  <HelpKINode Title="BarProfilPictureModel.Description property" Url="html/6285c6d0-4364-7474-fc07-b91df47c1d41.htm" />
-  <HelpKINode Title="BarProfilPictureModel.Directory property" Url="html/a643fd83-7004-f798-31b1-c9251b6634a7.htm" />
-  <HelpKINode Title="BarProfilPictureModel.TimeStamp property" Url="html/49fd579c-74ef-1ab8-6955-ff19704818ea.htm" />
+  <HelpKINode Title="BarProfilePictureModel.BarID property" Url="html/613d2b62-9fb0-0cf6-1b98-c9266b57642e.htm" />
+  <HelpKINode Title="BarProfilePictureModel.BarModel property" Url="html/22aba3cb-6913-5322-9bde-dfd38ace3eea.htm" />
+  <HelpKINode Title="BarProfilePictureModel.BarProfilePictureModel constructor" Url="html/f64dee35-f8d3-170b-aec7-0a7c771a1c31.htm" />
+  <HelpKINode Title="BarProfilePictureModel.CreateTime property" Url="html/639c83ff-71b7-2720-ab48-40b26645231b.htm" />
+  <HelpKINode Title="BarProfilePictureModel.Description property" Url="html/d8659dfc-932a-330c-f112-b2f33082c55a.htm" />
+  <HelpKINode Title="BarProfilePictureModel.Directory property" Url="html/5cb0d5c9-6864-f74b-fb42-24fe7fe591cc.htm" />
+  <HelpKINode Title="BarProfilePictureModel.TimeStamp property" Url="html/b0712eac-9757-a268-77e8-a3fdfb89d32d.htm" />
+  <HelpKINode Title="BarProfilePictureModels property" Url="html/8628cde6-ada6-0e62-8d82-3bd5f032df37.htm" />
+  <HelpKINode Title="BarProfilePictureRepository class">
+    <HelpKINode Title="BarProfilePictureRepository Class" Url="html/7893e4f2-273e-f38a-2cae-aafcc9722d7f.htm" />
+    <HelpKINode Title="about BarProfilePictureRepository class" Url="html/7893e4f2-273e-f38a-2cae-aafcc9722d7f.htm" />
+    <HelpKINode Title="constructor" Url="html/2ea0f5b0-c0fc-493e-1195-48ce1f06a57c.htm" />
+    <HelpKINode Title="fields" Url="html/573c23c1-a643-5897-de92-050fa2d4c51a.htm" />
+    <HelpKINode Title="methods" Url="html/c68f2c07-2034-6f25-eaf3-93d42905ac37.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BarProfilePictureRepository property">
+    <HelpKINode Title="IUnitOfWork.BarProfilePictureRepository Property " Url="html/f2db3d8e-578e-c1fb-d87c-023d9d5d08ee.htm" />
+    <HelpKINode Title="UnitOfWork.BarProfilePictureRepository Property " Url="html/f94a71f5-b89f-839c-556b-c98fc2c9e15e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BarProfilePictureRepository.AddModelForUpdate method" Url="html/12d6a6ff-0e1a-2ef0-e77c-43223b3e2a6c.htm" />
+  <HelpKINode Title="BarProfilePictureRepository.BarProfilePictureRepository constructor" Url="html/2ea0f5b0-c0fc-493e-1195-48ce1f06a57c.htm" />
   <HelpKINode Title="BarRepository class">
-    <HelpKINode Title="BarRepository Class" Url="html/6c803b37-7bc4-522b-2d34-aaeaa2e97642.htm" />
-    <HelpKINode Title="about BarRepository class" Url="html/6c803b37-7bc4-522b-2d34-aaeaa2e97642.htm" />
-    <HelpKINode Title="constructor" Url="html/ec175f14-ca3a-4b6c-2059-ded6dfdf4a98.htm" />
-    <HelpKINode Title="methods" Url="html/3c692e9d-614d-382f-0d35-133028ab54a2.htm" />
+    <HelpKINode Title="BarRepository Class" Url="html/1d24352f-a6c6-ee50-e46f-dd10bb0c0715.htm" />
+    <HelpKINode Title="about BarRepository class" Url="html/1d24352f-a6c6-ee50-e46f-dd10bb0c0715.htm" />
+    <HelpKINode Title="constructor" Url="html/fd7bf95c-be30-542d-21a8-e58b969e1067.htm" />
+    <HelpKINode Title="fields" Url="html/c5e4fea8-f917-f4ce-8d01-a667d15c0760.htm" />
+    <HelpKINode Title="methods" Url="html/2d2ffc0a-8c3c-d8f8-0fc4-d4632efe1961.htm" />
   </HelpKINode>
-  <HelpKINode Title="BarRepository property" Url="html/05027a55-6637-1d6f-a4cf-4d17a16f614b.htm" />
-  <HelpKINode Title="BarRepository.AddBar method" Url="html/a459577b-e5fb-e1f1-0f23-a6e5f79f8425.htm" />
-  <HelpKINode Title="BarRepository.BarRepository constructor" Url="html/ec175f14-ca3a-4b6c-2059-ded6dfdf4a98.htm" />
-  <HelpKINode Title="BarRepository.DeleteBar method" Url="html/b3f1113f-c653-cdf0-3cb8-247dc1e54cd1.htm" />
-  <HelpKINode Title="BarRepository.Dispose method" Url="html/62c60073-f98e-6448-92c6-31853c7e4aac.htm" />
-  <HelpKINode Title="BarRepository.GetAllBars method" Url="html/237d0a4c-01a9-e8f0-3695-d4b7227f376f.htm" />
-  <HelpKINode Title="BarRepository.GetBarByID method" Url="html/28e25104-abb8-5cad-5eec-cca3b10f814f.htm" />
-  <HelpKINode Title="BarRepository.GetProfile method" Url="html/4413e5ab-a1f5-a2a8-80ae-14e4bb2a07ed.htm" />
-  <HelpKINode Title="BarRepository.UpdateBarModel method" Url="html/f3581606-d014-5570-441d-afd9da27fcf0.htm" />
+  <HelpKINode Title="BarRepository property">
+    <HelpKINode Title="IUnitOfWork.BarRepository Property " Url="html/6e00a980-baf8-d923-f085-131ef4af24b5.htm" />
+    <HelpKINode Title="UnitOfWork.BarRepository Property " Url="html/1ab60e66-739b-e989-68fe-885f5fb799cd.htm" />
+  </HelpKINode>
+  <HelpKINode Title="BarRepository.BarRepository constructor" Url="html/fd7bf95c-be30-542d-21a8-e58b969e1067.htm" />
+  <HelpKINode Title="BarRepository.CreateAndAddBar method" Url="html/ba43e892-2c68-888c-e9dc-778d45d4e43a.htm" />
+  <HelpKINode Title="BarRepository.EditInfo method" Url="html/919ed117-9220-f034-0397-0fb90cf6fc2b.htm" />
+  <HelpKINode Title="BarRepository.GetByUserID method" Url="html/832bd976-2927-a8f2-d99e-d7d7314ad1d4.htm" />
+  <HelpKINode Title="BarRepository.GetEditInfo method" Url="html/8a1626e0-2d04-cead-a722-327eeff0b8ad.htm" />
+  <HelpKINode Title="BarRepository.GetProfile method" Url="html/e1ebc5b6-ab07-fa30-fd10-8b0f2e6ef0f7.htm" />
+  <HelpKINode Title="BarRepository._dbSet field" Url="html/4163be2c-17c8-db90-3eba-eb429c01ebe8.htm" />
   <HelpKINode Title="BigRegisterViewModel class">
     <HelpKINode Title="BigRegisterViewModel Class" Url="html/59037419-c65c-33d5-d9d3-abe880fd836b.htm" />
     <HelpKINode Title="about BigRegisterViewModel class" Url="html/59037419-c65c-33d5-d9d3-abe880fd836b.htm" />
     <HelpKINode Title="constructor" Url="html/9e1926a1-a787-549f-f375-1b886a54f32a.htm" />
-    <HelpKINode Title="methods" Url="html/f0ed3453-4f21-e1a0-630a-678f81d7eefd.htm" />
     <HelpKINode Title="properties" Url="html/84635c6b-567d-2ab3-c6d0-87e194057c33.htm" />
   </HelpKINode>
   <HelpKINode Title="BigRegisterViewModel.BarModel property" Url="html/78370498-e3c6-e253-9fd1-5a1db0983dd2.htm" />
@@ -355,13 +475,23 @@
   </HelpKINode>
   <HelpKINode Title="BundleConfig.BundleConfig constructor" Url="html/9c592d7e-118b-8c63-bf14-48a6ee3ae304.htm" />
   <HelpKINode Title="BundleConfig.RegisterBundles method" Url="html/e34720b8-6dbe-d3fb-02b8-987e7f470b54.htm" />
+  <HelpKINode Title="ChangeNameOfBarProfilePicture class">
+    <HelpKINode Title="ChangeNameOfBarProfilePicture Class" Url="html/9f8cc5e2-3253-c738-596d-3a9f51f2cce7.htm" />
+    <HelpKINode Title="about ChangeNameOfBarProfilePicture class" Url="html/9f8cc5e2-3253-c738-596d-3a9f51f2cce7.htm" />
+    <HelpKINode Title="constructor" Url="html/e232b2ce-44ef-1960-a644-aef7f44972e9.htm" />
+    <HelpKINode Title="fields" Url="html/7b0907f3-ebe2-e0fb-fb07-1b0ed2c90e19.htm" />
+    <HelpKINode Title="methods" Url="html/964ca219-7ee5-a5dc-5857-7ac30839763b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ChangeNameOfBarProfilePicture.ChangeNameOfBarProfilePicture constructor" Url="html/e232b2ce-44ef-1960-a644-aef7f44972e9.htm" />
+  <HelpKINode Title="ChangeNameOfBarProfilePicture.Down method" Url="html/98f991ce-fb86-beab-fe5b-df5182308ffd.htm" />
+  <HelpKINode Title="ChangeNameOfBarProfilePicture.Resources field" Url="html/6c036bc6-18e3-bacd-7117-9eec5c62a93c.htm" />
+  <HelpKINode Title="ChangeNameOfBarProfilePicture.Up method" Url="html/8716e548-f304-8fed-4c88-395322539987.htm" />
   <HelpKINode Title="ChangePassword method" Url="html/60093977-2079-d426-ffd7-5b87a48b6f2b.htm" />
   <HelpKINode Title="ChangePasswordSuccess enumeration member" Url="html/93684129-edfe-5d55-c8e1-192e9cd7726b.htm" />
   <HelpKINode Title="ChangePasswordViewModel class">
     <HelpKINode Title="ChangePasswordViewModel Class" Url="html/1226c027-3545-3cda-8804-67c8168ac235.htm" />
     <HelpKINode Title="about ChangePasswordViewModel class" Url="html/1226c027-3545-3cda-8804-67c8168ac235.htm" />
     <HelpKINode Title="constructor" Url="html/2d1427f9-2368-a920-9e93-48d6f4075627.htm" />
-    <HelpKINode Title="methods" Url="html/f22941a3-a625-ba89-9edc-a30ae64251a2.htm" />
     <HelpKINode Title="properties" Url="html/5e846b91-0e0d-e3c5-dc79-1e479bdb1cde.htm" />
   </HelpKINode>
   <HelpKINode Title="ChangePasswordViewModel.ChangePasswordViewModel constructor" Url="html/2d1427f9-2368-a920-9e93-48d6f4075627.htm" />
@@ -372,6 +502,7 @@
     <HelpKINode Title="BarModel.City Property " Url="html/f4be918a-4a9a-0d0d-9fbb-57402c921364.htm" />
     <HelpKINode Title="EditViewModel.City Property " Url="html/1f080b2a-58cf-0adc-fa51-4e11751b6942.htm" />
     <HelpKINode Title="EventModel.City Property " Url="html/97a36520-e114-669b-a460-c76ca757f38f.htm" />
+    <HelpKINode Title="EventViewModel.City Property " Url="html/d73b9f6f-507c-2efd-9c5c-7eff54128a2c.htm" />
   </HelpKINode>
   <HelpKINode Title="CloseTime property">
     <HelpKINode Title="BarModel.CloseTime Property " Url="html/aa4521f8-f57f-0812-8ac5-d5f8142d90fd.htm" />
@@ -388,7 +519,6 @@
     <HelpKINode Title="ConfigureTwoFactorViewModel Class" Url="html/5131e320-1a9c-1cb3-17ea-500143a63805.htm" />
     <HelpKINode Title="about ConfigureTwoFactorViewModel class" Url="html/5131e320-1a9c-1cb3-17ea-500143a63805.htm" />
     <HelpKINode Title="constructor" Url="html/cdeffc7d-2c2d-1a92-72a0-5349fc105b0d.htm" />
-    <HelpKINode Title="methods" Url="html/50c6a0ac-ff49-3917-4412-0b53d5d0ab59.htm" />
     <HelpKINode Title="properties" Url="html/59cfe406-693a-7293-b759-76b240acea5a.htm" />
   </HelpKINode>
   <HelpKINode Title="ConfigureTwoFactorViewModel.ConfigureTwoFactorViewModel constructor" Url="html/cdeffc7d-2c2d-1a92-72a0-5349fc105b0d.htm" />
@@ -402,69 +532,101 @@
     <HelpKINode Title="SetPasswordViewModel.ConfirmPassword Property " Url="html/c4099f7a-7720-1d6d-34ac-10b0b1c3d0df.htm" />
   </HelpKINode>
   <HelpKINode Title="Contact method" Url="html/2bba6ccd-7a06-7fae-310a-57b50f3d212c.htm" />
+  <HelpKINode Title="CoverPicture property" Url="html/4d97aef4-f1c6-0dfd-e5a5-5c41ce004dd5.htm" />
+  <HelpKINode Title="CoverPictureModel class">
+    <HelpKINode Title="CoverPictureModel Class" Url="html/6783e39b-d18e-fab8-3957-814e786b2e53.htm" />
+    <HelpKINode Title="about CoverPictureModel class" Url="html/6783e39b-d18e-fab8-3957-814e786b2e53.htm" />
+    <HelpKINode Title="constructor" Url="html/09c5b2b8-8eaa-224f-7a98-26176744425c.htm" />
+    <HelpKINode Title="properties" Url="html/788fa887-9c45-85f9-e118-b4e1e047800e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CoverPictureModel.BarID property" Url="html/c6a6ba8b-c985-0fe9-efad-9bc759b3efa7.htm" />
+  <HelpKINode Title="CoverPictureModel.BarModel property" Url="html/bcefd493-4663-6062-732a-b751fdf7a3b3.htm" />
+  <HelpKINode Title="CoverPictureModel.CoverPictureModel constructor" Url="html/09c5b2b8-8eaa-224f-7a98-26176744425c.htm" />
+  <HelpKINode Title="CoverPictureModel.CreateTime property" Url="html/443c64a2-c3f7-2f26-22aa-8565e7f919bb.htm" />
+  <HelpKINode Title="CoverPictureModel.Description property" Url="html/df27bd07-d9cf-975f-ea0c-b255a254e909.htm" />
+  <HelpKINode Title="CoverPictureModel.Directory property" Url="html/c60da936-4838-65d1-d83e-10934607926c.htm" />
+  <HelpKINode Title="CoverPictureModel.TimeStamp property" Url="html/347f96d2-e2de-f51f-10c0-c0e1ef253b10.htm" />
+  <HelpKINode Title="CoverPictureModels property" Url="html/00b7cb56-3b70-78e8-2909-752d6fdfd96d.htm" />
+  <HelpKINode Title="CoverPictureRepository class">
+    <HelpKINode Title="CoverPictureRepository Class" Url="html/1388ae1c-3129-0244-0d62-2588518595a7.htm" />
+    <HelpKINode Title="about CoverPictureRepository class" Url="html/1388ae1c-3129-0244-0d62-2588518595a7.htm" />
+    <HelpKINode Title="constructor" Url="html/0f17932f-60e2-6fe8-dd73-01f8b840d535.htm" />
+    <HelpKINode Title="fields" Url="html/cd0a1af7-be78-5e79-0834-05fac7c52a55.htm" />
+    <HelpKINode Title="methods" Url="html/9785c816-cd84-3b6b-391f-5ad342be8bc9.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CoverPictureRepository property">
+    <HelpKINode Title="IUnitOfWork.CoverPictureRepository Property " Url="html/b4cc80c5-0cac-ccc9-8850-a8bf5392fa6b.htm" />
+    <HelpKINode Title="UnitOfWork.CoverPictureRepository Property " Url="html/d2775483-b8eb-6438-6515-b817055d49b1.htm" />
+  </HelpKINode>
+  <HelpKINode Title="CoverPictureRepository.AddModelForUpdate method" Url="html/63fb901e-db2c-238b-f82e-7b7efb019ca2.htm" />
+  <HelpKINode Title="CoverPictureRepository.CoverPictureRepository constructor" Url="html/0f17932f-60e2-6fe8-dd73-01f8b840d535.htm" />
   <HelpKINode Title="Create method">
     <HelpKINode Title="ApplicationDbContext.Create Method " Url="html/3449d833-eb29-f6e8-90e0-1d1854377eee.htm" />
     <HelpKINode Title="ApplicationSignInManager.Create Method " Url="html/867999cd-9ae6-535d-1995-4d2d9d228fda.htm" />
     <HelpKINode Title="ApplicationUserManager.Create Method " Url="html/bfd6852b-28c9-68da-383b-01e6eadf66d1.htm" />
     <HelpKINode Title="BarCrawlerContext.Create Method " Url="html/a2c14fe7-c7a1-c36c-2532-1275be816845.htm" />
   </HelpKINode>
+  <HelpKINode Title="CreateAndAddBar method">
+    <HelpKINode Title="BarRepository.CreateAndAddBar Method " Url="html/ba43e892-2c68-888c-e9dc-778d45d4e43a.htm" />
+    <HelpKINode Title="IBarRepository.CreateAndAddBar Method " Url="html/af594fc2-7ef4-4af5-8c9b-a2bf90e41185.htm" />
+  </HelpKINode>
   <HelpKINode Title="CreateDrink method" Url="html/e49e99fd-e65f-555a-aa02-67e3424da453.htm" />
+  <HelpKINode Title="CreateEvent method" Url="html/71e57f1d-1e96-5ca1-4e4a-0ec27c16b88b.htm" />
   <HelpKINode Title="CreateFeed method" Url="html/fa9299dc-bed8-9468-bcd9-4f1c49fceb1e.htm" />
   <HelpKINode Title="CreatePicture method" Url="html/6bc4e9ec-5799-e243-826f-935a1c92498e.htm" />
   <HelpKINode Title="CreateTime property">
-    <HelpKINode Title="BarProfilPictureModel.CreateTime Property " Url="html/23148014-99c6-6af0-ca44-b23ea5e031ff.htm" />
+    <HelpKINode Title="BarProfilePictureModel.CreateTime Property " Url="html/639c83ff-71b7-2720-ab48-40b26645231b.htm" />
+    <HelpKINode Title="CoverPictureModel.CreateTime Property " Url="html/443c64a2-c3f7-2f26-22aa-8565e7f919bb.htm" />
     <HelpKINode Title="EventModel.CreateTime Property " Url="html/053e5f45-aca1-f0b7-3ef4-d0d9e74ca3c3.htm" />
     <HelpKINode Title="FeedModel.CreateTime Property " Url="html/aa776c98-1143-e184-a907-17fa42a2c7ff.htm" />
     <HelpKINode Title="PictureModel.CreateTime Property " Url="html/159a65c7-f522-1a68-1674-563c7cb5b482.htm" />
   </HelpKINode>
   <HelpKINode Title="CreateUserIdentityAsync method" Url="html/fed1931b-98ff-39d1-5ebe-035b65b60417.htm" />
   <HelpKINode Title="CurrentLogins property" Url="html/6b5267cb-30a8-8bf1-8ba2-b6febc647d0c.htm" />
-  <HelpKINode Title="DataAccessLogic.Repositories namespace" Url="html/a5cf9c21-ed8a-b030-1847-48597ecdf1b0.htm" />
-  <HelpKINode Title="DataAccessLogic.Repositories.BarRepository class" Url="html/6c803b37-7bc4-522b-2d34-aaeaa2e97642.htm" />
-  <HelpKINode Title="DataAccessLogic.Repositories.DrinkRepository class" Url="html/43e26fd3-afa3-f87e-d895-6a3fbdc09cfb.htm" />
-  <HelpKINode Title="DataAccessLogic.Repositories.EventRepository class" Url="html/885ff67e-748d-74be-70d9-1a09766ced72.htm" />
-  <HelpKINode Title="DataAccessLogic.Repositories.FeedRepository class" Url="html/ec9b3309-06cd-0325-0808-b838ad40677a.htm" />
-  <HelpKINode Title="DataAccessLogic.Repositories.PictureRepository class" Url="html/3d3ce2b8-d985-1390-1414-e28d8fe448c8.htm" />
-  <HelpKINode Title="DataAccessLogic.UnitOfWork namespace" Url="html/b42be61c-e3dc-cba1-fcc8-d7cf12cf431f.htm" />
-  <HelpKINode Title="DataAccessLogic.UnitOfWork.IUnitOfWork interface" Url="html/45723b5c-917a-d37d-34ad-72b6b23ee285.htm" />
-  <HelpKINode Title="DataAccessLogic.UnitOfWork.UnitOfWork class" Url="html/dd65e7b3-188e-0e3e-448c-82a7b92bd70f.htm" />
-  <HelpKINode Title="DateAndTimeForEvent property" Url="html/bd154745-efd7-6368-7f63-cffe3211cef0.htm" />
-  <HelpKINode Title="DeleteBar method" Url="html/b3f1113f-c653-cdf0-3cb8-247dc1e54cd1.htm" />
-  <HelpKINode Title="DeleteBarModel method" Url="html/8f0a7218-8ce2-1b40-2c87-4e99a20d26bc.htm" />
+  <HelpKINode Title="DateAndTimeForEvent property">
+    <HelpKINode Title="EventModel.DateAndTimeForEvent Property " Url="html/bd154745-efd7-6368-7f63-cffe3211cef0.htm" />
+    <HelpKINode Title="EventViewModel.DateAndTimeForEvent Property " Url="html/eb248bdf-8b04-2cdc-774a-32353be112e9.htm" />
+  </HelpKINode>
   <HelpKINode Title="DeleteDrink method" Url="html/de0a5978-82a7-7d1e-806d-1b0237f0bd1c.htm" />
-  <HelpKINode Title="DeleteEvent method" Url="html/330fb78e-4174-a628-b671-56ac693a170e.htm" />
-  <HelpKINode Title="DeleteFeed method" Url="html/85d12f62-8eb0-ea6b-9932-b673688a2e7e.htm" />
+  <HelpKINode Title="DeleteEvent method" Url="html/8b7569ff-f0bf-519e-39fa-4ae24b8c6ceb.htm" />
+  <HelpKINode Title="DeleteFeed method" Url="html/ff510143-a7aa-e5a9-fc05-ebd24a02cc32.htm" />
+  <HelpKINode Title="DeletePicture method" Url="html/3379b00d-6d93-2aa9-d01c-1326175ab8d7.htm" />
   <HelpKINode Title="Description property">
     <HelpKINode Title="BarModel.Description Property " Url="html/1adf5231-7821-f2a1-0ee1-b53e1c31433d.htm" />
-    <HelpKINode Title="BarProfilPictureModel.Description Property " Url="html/6285c6d0-4364-7474-fc07-b91df47c1d41.htm" />
+    <HelpKINode Title="BarProfilePictureModel.Description Property " Url="html/d8659dfc-932a-330c-f112-b2f33082c55a.htm" />
+    <HelpKINode Title="CoverPictureModel.Description Property " Url="html/df27bd07-d9cf-975f-ea0c-b255a254e909.htm" />
     <HelpKINode Title="DrinkModel.Description Property " Url="html/3ab6d50b-f591-5f08-73f0-45fb5e2c6b1d.htm" />
     <HelpKINode Title="DrinkViewModel.Description Property " Url="html/45f227aa-0b0c-30cd-3192-eb36a2c8174b.htm" />
     <HelpKINode Title="EditViewModel.Description Property " Url="html/d02018c7-624f-0c79-39bb-f83065463094.htm" />
     <HelpKINode Title="EventModel.Description Property " Url="html/ec495ef8-57f7-338a-f3d4-2fd794866696.htm" />
+    <HelpKINode Title="EventViewModel.Description Property " Url="html/a2208414-88ad-e2e1-9fdb-8463efd2ce0a.htm" />
     <HelpKINode Title="PictureModel.Description Property " Url="html/8a352ce4-3f0b-040e-7721-0c1876e170dc.htm" />
+    <HelpKINode Title="PictureViewModel.Description Property " Url="html/ba16ff5f-116b-658b-a2b5-7e282792d766.htm" />
   </HelpKINode>
   <HelpKINode Title="Directory property">
-    <HelpKINode Title="BarProfilPictureModel.Directory Property " Url="html/a643fd83-7004-f798-31b1-c9251b6634a7.htm" />
+    <HelpKINode Title="BarProfilePictureModel.Directory Property " Url="html/5cb0d5c9-6864-f74b-fb42-24fe7fe591cc.htm" />
+    <HelpKINode Title="CoverPictureModel.Directory Property " Url="html/c60da936-4838-65d1-d83e-10934607926c.htm" />
     <HelpKINode Title="DrinkPictureModel.Directory Property " Url="html/84f4d981-d7b2-a0ee-05b4-adf0bf5b273c.htm" />
     <HelpKINode Title="PictureModel.Directory Property " Url="html/051ad8b3-e10d-802d-2c6b-10f435549aa8.htm" />
   </HelpKINode>
   <HelpKINode Title="DisableTwoFactorAuthentication method" Url="html/c713c618-ab2f-ada4-ae24-89f97890c4bc.htm" />
   <HelpKINode Title="Dispose method">
-    <HelpKINode Title="AccountController.Dispose Method " Url="html/4bd2e1cf-3e8e-ef64-3f34-1a90977043d0.htm" />
-    <HelpKINode Title="BarModelsController.Dispose Method " Url="html/0ab03d7f-8f28-dd6e-033b-e38bdbcccc97.htm" />
-    <HelpKINode Title="BarRepository.Dispose Method " Url="html/62c60073-f98e-6448-92c6-31853c7e4aac.htm" />
-    <HelpKINode Title="EventRepository.Dispose Method " Url="html/2fd3f1b5-627f-7880-0abf-a108ebc95c71.htm" />
-    <HelpKINode Title="FeedRepository.Dispose Method " Url="html/b13e145c-530c-5574-6e3f-c40cd529053b.htm" />
-    <HelpKINode Title="ManageController.Dispose Method " Url="html/9cd61496-6368-6325-f5a5-310a05f4ec3b.htm" />
-    <HelpKINode Title="PictureRepository.Dispose Method " Url="html/37ea77d0-18c6-8413-0669-410cf0e08329.htm" />
-    <HelpKINode Title="UnitOfWork.Dispose Method " Url="html/cd21fc53-2323-1c9d-11d3-5924fce2aef5.htm" />
+    <HelpKINode Title="AccountController.Dispose Method " Url="html/f49172da-2f90-4132-3792-b61c3344855c.htm" />
+    <HelpKINode Title="ManageController.Dispose Method " Url="html/ea0df3b1-0c6b-1568-3733-61cdf36fa0a8.htm" />
+    <HelpKINode Title="UnitOfWork.Dispose Method " Url="html/e1e94229-d9cb-6c6c-76db-bc0e9613306d.htm" />
   </HelpKINode>
   <HelpKINode Title="Down method">
+    <HelpKINode Title="AddedCoverPictureModel.Down Method " Url="html/f18afb98-919e-2336-3fb4-08ec2488834d.htm" />
     <HelpKINode Title="AddedTwoPictureModels.Down Method " Url="html/468321a5-b3ad-9a60-4fd2-b508f0d76eca.htm" />
+    <HelpKINode Title="bar.Down Method " Url="html/610c8e59-5d9a-2cea-8328-89e4990dc2d6.htm" />
+    <HelpKINode Title="barId.Down Method " Url="html/d9c0099a-10e5-8411-9442-ff7f80a3acbb.htm" />
+    <HelpKINode Title="BarnameOnApplicationuser.Down Method " Url="html/a1c4842f-010e-df16-0dc1-9a7e8d382b9a.htm" />
+    <HelpKINode Title="ChangeNameOfBarProfilePicture.Down Method " Url="html/98f991ce-fb86-beab-fe5b-df5182308ffd.htm" />
     <HelpKINode Title="Initial.Down Method " Url="html/f98e7802-3f23-82d0-a5e9-f297d879b92b.htm" />
     <HelpKINode Title="OpdateretDrinksModelPris.Down Method " Url="html/3fea9045-9cfc-f5c5-7903-a0bb4314df1c.htm" />
     <HelpKINode Title="OpenCloseTimeInBarModel.Down Method " Url="html/00cd0216-beaa-bb19-ecbf-0b25c4e73b20.htm" />
     <HelpKINode Title="UpdatedModelsWithCreateTime.Down Method " Url="html/ab2d8638-de32-a092-3cab-bd61d2c88f19.htm" />
+    <HelpKINode Title="WeirdChanged.Down Method " Url="html/37e245e9-4421-f1e9-69fa-5fc5116ed625.htm" />
   </HelpKINode>
   <HelpKINode Title="DrinkID property">
     <HelpKINode Title="DrinkModel.DrinkID Property " Url="html/a1ea9522-6f71-ce69-b1c7-f5d393ca1c61.htm" />
@@ -475,7 +637,6 @@
     <HelpKINode Title="DrinkModel Class" Url="html/bf5b42df-2ce3-7e59-3510-94e6972334d7.htm" />
     <HelpKINode Title="about DrinkModel class" Url="html/bf5b42df-2ce3-7e59-3510-94e6972334d7.htm" />
     <HelpKINode Title="constructor" Url="html/30bb9860-246f-847f-e54f-353c232df077.htm" />
-    <HelpKINode Title="methods" Url="html/1ea2dd67-ee98-abe6-d746-8edfc26b089f.htm" />
     <HelpKINode Title="properties" Url="html/7117528e-f284-487f-af2c-68dc2f57aeb7.htm" />
   </HelpKINode>
   <HelpKINode Title="DrinkModel property" Url="html/15b83a8a-444f-9843-2874-87230696efa9.htm" />
@@ -497,7 +658,6 @@
     <HelpKINode Title="DrinkPictureModel Class" Url="html/e1815ea1-1f06-a4a5-6d5a-39f7ac514002.htm" />
     <HelpKINode Title="about DrinkPictureModel class" Url="html/e1815ea1-1f06-a4a5-6d5a-39f7ac514002.htm" />
     <HelpKINode Title="constructor" Url="html/a10e3d1f-f6b9-799a-dce0-52b79cbdec1d.htm" />
-    <HelpKINode Title="methods" Url="html/6bf0e900-13b6-af7c-efea-d19a15ef7a81.htm" />
     <HelpKINode Title="properties" Url="html/3e91cb81-c9a4-aacb-31eb-72885e13cffd.htm" />
   </HelpKINode>
   <HelpKINode Title="DrinkPictureModel.Directory property" Url="html/84f4d981-d7b2-a0ee-05b4-adf0bf5b273c.htm" />
@@ -506,28 +666,30 @@
   <HelpKINode Title="DrinkPictureModel.DrinkPictureID property" Url="html/487599cd-73e5-d3de-6fae-5b282f9373e0.htm" />
   <HelpKINode Title="DrinkPictureModel.DrinkPictureModel constructor" Url="html/a10e3d1f-f6b9-799a-dce0-52b79cbdec1d.htm" />
   <HelpKINode Title="DrinkPictureModel.TimeStamp property" Url="html/9ffb8bf0-6ca8-a8da-9065-5f24940c302d.htm" />
-  <HelpKINode Title="DrinkPictureModels property" Url="html/a1bef1f5-4bc9-4ac8-831e-6d549175e8fd.htm" />
+  <HelpKINode Title="DrinkPictureModels property">
+    <HelpKINode Title="BarCrawlerContext.DrinkPictureModels Property " Url="html/0b349fb7-d835-5bb5-2332-c580137dc9bc.htm" />
+    <HelpKINode Title="DrinkModel.DrinkPictureModels Property " Url="html/a1bef1f5-4bc9-4ac8-831e-6d549175e8fd.htm" />
+  </HelpKINode>
   <HelpKINode Title="DrinkRepository class">
-    <HelpKINode Title="DrinkRepository Class" Url="html/43e26fd3-afa3-f87e-d895-6a3fbdc09cfb.htm" />
-    <HelpKINode Title="about DrinkRepository class" Url="html/43e26fd3-afa3-f87e-d895-6a3fbdc09cfb.htm" />
-    <HelpKINode Title="constructor" Url="html/541c8c45-80d7-4aa2-4119-06f58af69a6d.htm" />
-    <HelpKINode Title="fields" Url="html/d198b9e6-7b8b-e54f-9668-281e76c0422a.htm" />
-    <HelpKINode Title="methods" Url="html/1c013a82-0d2f-b8d3-b0ad-e58d3ee76e11.htm" />
-    <HelpKINode Title="properties" Url="html/4c1ec8e8-9254-6be9-2679-953c01c57607.htm" />
+    <HelpKINode Title="DrinkRepository Class" Url="html/0eb41fd4-cc52-d21a-e06b-48e3a9b6169c.htm" />
+    <HelpKINode Title="about DrinkRepository class" Url="html/0eb41fd4-cc52-d21a-e06b-48e3a9b6169c.htm" />
+    <HelpKINode Title="constructor" Url="html/fde85965-0d05-4c95-fa57-ade7a039768c.htm" />
+    <HelpKINode Title="fields" Url="html/19b61dfe-0d4f-1eec-d80a-8f62ae3453f0.htm" />
+    <HelpKINode Title="methods" Url="html/f5889f49-3fe6-da6c-d56c-e347d046f978.htm" />
+    <HelpKINode Title="properties" Url="html/547ea13e-adc9-75fd-6719-5cfcb8fdfb94.htm" />
   </HelpKINode>
   <HelpKINode Title="DrinkRepository property">
-    <HelpKINode Title="IUnitOfWork.DrinkRepository Property " Url="html/48c8dae9-7a48-7127-95c3-48bf1e48de52.htm" />
-    <HelpKINode Title="UnitOfWork.DrinkRepository Property " Url="html/02ce9039-9b1b-1920-2373-84b62611264f.htm" />
+    <HelpKINode Title="IUnitOfWork.DrinkRepository Property " Url="html/cc8c6cff-b472-165a-32d1-4e4631a0f3ea.htm" />
+    <HelpKINode Title="UnitOfWork.DrinkRepository Property " Url="html/548e0514-57de-982d-1112-42676411eaf0.htm" />
   </HelpKINode>
-  <HelpKINode Title="DrinkRepository.AddModelForUpdate method" Url="html/390e94d2-a999-dcf5-8756-8a80ae5acb5e.htm" />
-  <HelpKINode Title="DrinkRepository.BarCrawlerContext property" Url="html/b63d1b12-3fdf-1048-e1a2-ac489afa1888.htm" />
-  <HelpKINode Title="DrinkRepository.DrinkRepository constructor" Url="html/541c8c45-80d7-4aa2-4119-06f58af69a6d.htm" />
+  <HelpKINode Title="DrinkRepository.AddModelForUpdate method" Url="html/c7c38955-8fa2-52eb-d10d-02828e4f4c6c.htm" />
+  <HelpKINode Title="DrinkRepository.BarCrawlerContext property" Url="html/a9db1d8f-9b05-93be-b128-f72b574da3d2.htm" />
+  <HelpKINode Title="DrinkRepository.DrinkRepository constructor" Url="html/fde85965-0d05-4c95-fa57-ade7a039768c.htm" />
   <HelpKINode Title="Drinks property" Url="html/e975ca85-733f-7dd8-fcf4-b8c94a24d962.htm" />
   <HelpKINode Title="DrinkViewModel class">
     <HelpKINode Title="DrinkViewModel Class" Url="html/b3dc4292-bc46-dff6-746d-a5ef85014db6.htm" />
     <HelpKINode Title="about DrinkViewModel class" Url="html/b3dc4292-bc46-dff6-746d-a5ef85014db6.htm" />
     <HelpKINode Title="constructor" Url="html/34c78765-e348-223b-2dbc-837b1b314a2a.htm" />
-    <HelpKINode Title="methods" Url="html/ba65b517-b1b0-21d7-933e-79b4632e5fd9.htm" />
     <HelpKINode Title="properties" Url="html/c71e5b49-788e-806e-d38f-1dcf5a8fabd3.htm" />
   </HelpKINode>
   <HelpKINode Title="DrinkViewModel.BarID property" Url="html/b4f8bda0-a274-edde-f185-ae35aadc9281.htm" />
@@ -537,12 +699,21 @@
   <HelpKINode Title="DrinkViewModel.Price property" Url="html/3b4e08aa-731f-b570-c20c-a10b93948f29.htm" />
   <HelpKINode Title="DrinkViewModel.Title property" Url="html/1dbaa576-4a59-587f-15d2-a582f6894283.htm" />
   <HelpKINode Title="Edit method" Url="html/5a6cfcf3-4bb3-ffc2-f6c1-52a964fdab7b.htm" />
+  <HelpKINode Title="EditCoverPicture method" Url="html/923c245b-ec0f-a0a4-2717-169eff7db0c2.htm" />
   <HelpKINode Title="EditDrink method" Url="html/2bee2075-ad35-f841-9e69-ab9c0a4ed959.htm" />
+  <HelpKINode Title="EditEvent method" Url="html/83d08258-32d8-573a-a4be-ac66808f7864.htm" />
+  <HelpKINode Title="EditInfo method">
+    <HelpKINode Title="BarRepository.EditInfo Method " Url="html/919ed117-9220-f034-0397-0fb90cf6fc2b.htm" />
+    <HelpKINode Title="EventRepository.EditInfo Method " Url="html/0a654634-0774-3c43-e310-dc2c884ccd9a.htm" />
+    <HelpKINode Title="IBarRepository.EditInfo Method " Url="html/a736c5df-39ae-8641-aebe-b33b7f201fd7.htm" />
+    <HelpKINode Title="IEventRepository.EditInfo Method " Url="html/7c63d5bf-ea87-b36e-b268-32186e67a93e.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EditPicture method" Url="html/a9ca2ecb-90c4-b6d7-1258-b643c5220684.htm" />
+  <HelpKINode Title="EditProfilPicture method" Url="html/89ae4b3d-c2f1-0528-bd4c-7c173275fb8e.htm" />
   <HelpKINode Title="EditViewModel class">
     <HelpKINode Title="EditViewModel Class" Url="html/cd44244e-2b61-23a2-1cf1-dc3152137344.htm" />
     <HelpKINode Title="about EditViewModel class" Url="html/cd44244e-2b61-23a2-1cf1-dc3152137344.htm" />
     <HelpKINode Title="constructor" Url="html/53b52b28-6044-799e-10fd-309abac4b3da.htm" />
-    <HelpKINode Title="methods" Url="html/a36118e7-62d5-ab59-579c-288f4eb1e820.htm" />
     <HelpKINode Title="properties" Url="html/b43497cb-0ae3-366a-1b25-0eea8da5502b.htm" />
   </HelpKINode>
   <HelpKINode Title="EditViewModel.Address1 property" Url="html/92d5afe3-e8e5-84e2-dddf-8e80dd62214f.htm" />
@@ -576,12 +747,14 @@
   <HelpKINode Title="EmailService.SendAsync method" Url="html/fb4f3432-b649-24f8-f935-b9e36699bf47.htm" />
   <HelpKINode Title="EnableTwoFactorAuthentication method" Url="html/1638ef6b-8789-4ed5-d935-d40ebb7647c6.htm" />
   <HelpKINode Title="Error enumeration member" Url="html/93684129-edfe-5d55-c8e1-192e9cd7726b.htm" />
-  <HelpKINode Title="EventID property" Url="html/db26a898-128e-76c6-cf02-9148fe522958.htm" />
+  <HelpKINode Title="EventID property">
+    <HelpKINode Title="EventModel.EventID Property " Url="html/db26a898-128e-76c6-cf02-9148fe522958.htm" />
+    <HelpKINode Title="EventViewModel.EventID Property " Url="html/4b945fdc-673c-e318-dee7-5f91e7e0ec1c.htm" />
+  </HelpKINode>
   <HelpKINode Title="EventModel class">
     <HelpKINode Title="EventModel Class" Url="html/1c1bdcda-dad0-7fc9-90e0-0e6b2b7b4e16.htm" />
     <HelpKINode Title="about EventModel class" Url="html/1c1bdcda-dad0-7fc9-90e0-0e6b2b7b4e16.htm" />
     <HelpKINode Title="constructor" Url="html/6f4e4e94-14b2-293e-db99-483037ec95bb.htm" />
-    <HelpKINode Title="methods" Url="html/25e2656a-7f96-3361-4293-05ccee6bfb27.htm" />
     <HelpKINode Title="properties" Url="html/2071fe23-69c1-f576-f877-e19b023e59ee.htm" />
   </HelpKINode>
   <HelpKINode Title="EventModel.Address1 property" Url="html/7838d420-306f-4283-897f-2eeb822a0c1d.htm" />
@@ -603,20 +776,36 @@
     <HelpKINode Title="ICustomBarContext.EventModels Property " Url="html/9c53a6d5-79e3-aa78-f51f-a0f456bc2442.htm" />
   </HelpKINode>
   <HelpKINode Title="EventRepository class">
-    <HelpKINode Title="EventRepository Class" Url="html/885ff67e-748d-74be-70d9-1a09766ced72.htm" />
-    <HelpKINode Title="about EventRepository class" Url="html/885ff67e-748d-74be-70d9-1a09766ced72.htm" />
-    <HelpKINode Title="constructor" Url="html/1084d98c-7251-2e27-305c-796b3dd1b423.htm" />
-    <HelpKINode Title="methods" Url="html/8cdb16f9-e573-3527-eed7-d82defa03a40.htm" />
+    <HelpKINode Title="EventRepository Class" Url="html/7c0e581d-6812-7422-e09d-afd0bd5c0c30.htm" />
+    <HelpKINode Title="about EventRepository class" Url="html/7c0e581d-6812-7422-e09d-afd0bd5c0c30.htm" />
+    <HelpKINode Title="constructor" Url="html/804ed2d1-0e8b-b03d-aa58-66104d21c3e6.htm" />
+    <HelpKINode Title="fields" Url="html/bf279d07-0984-b30a-bc2b-c1cc4cd74104.htm" />
+    <HelpKINode Title="methods" Url="html/60638a48-86eb-506b-267e-fd7e5e476256.htm" />
   </HelpKINode>
-  <HelpKINode Title="EventRepository property" Url="html/37828de8-7960-e49a-c075-860fbe16ccbf.htm" />
-  <HelpKINode Title="EventRepository.AddEvent method" Url="html/083aedd3-9a7e-a1ec-bd62-2f815f4a6b71.htm" />
-  <HelpKINode Title="EventRepository.DeleteEvent method" Url="html/330fb78e-4174-a628-b671-56ac693a170e.htm" />
-  <HelpKINode Title="EventRepository.Dispose method" Url="html/2fd3f1b5-627f-7880-0abf-a108ebc95c71.htm" />
-  <HelpKINode Title="EventRepository.EventRepository constructor" Url="html/1084d98c-7251-2e27-305c-796b3dd1b423.htm" />
-  <HelpKINode Title="EventRepository.GetAllEvents method" Url="html/efb21add-1651-59cd-328f-0aabcd4ddaa8.htm" />
-  <HelpKINode Title="EventRepository.GetEventByID method" Url="html/8217606c-f65c-582e-5f82-069f375fe227.htm" />
-  <HelpKINode Title="EventRepository.UpdateEventModel method" Url="html/33120982-aa1e-2cd8-6163-2f954cf1a4f1.htm" />
+  <HelpKINode Title="EventRepository property">
+    <HelpKINode Title="IUnitOfWork.EventRepository Property " Url="html/b3e7e7d4-23b2-aea1-43fe-ae16d3fe3f73.htm" />
+    <HelpKINode Title="UnitOfWork.EventRepository Property " Url="html/f5927221-b72a-0b07-acd2-2c0508dfec2a.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EventRepository.EditInfo method" Url="html/0a654634-0774-3c43-e310-dc2c884ccd9a.htm" />
+  <HelpKINode Title="EventRepository.EventRepository constructor" Url="html/804ed2d1-0e8b-b03d-aa58-66104d21c3e6.htm" />
   <HelpKINode Title="Events property" Url="html/a119d598-e05d-87e4-5846-d05bd34e721f.htm" />
+  <HelpKINode Title="EventViewModel class">
+    <HelpKINode Title="EventViewModel Class" Url="html/6f8d9dfe-afcf-0615-ac59-10e9c38ae865.htm" />
+    <HelpKINode Title="about EventViewModel class" Url="html/6f8d9dfe-afcf-0615-ac59-10e9c38ae865.htm" />
+    <HelpKINode Title="constructor" Url="html/d5953f84-95e6-c5d6-f71e-1b699177c028.htm" />
+    <HelpKINode Title="properties" Url="html/6ed60ee3-291a-8a0f-96a2-e66b777fd6b8.htm" />
+  </HelpKINode>
+  <HelpKINode Title="EventViewModel.Address1 property" Url="html/583000bc-10e0-edc6-f8fa-81d7a40fae66.htm" />
+  <HelpKINode Title="EventViewModel.Address2 property" Url="html/ccf4d667-d81a-5181-3333-cac90eacd53f.htm" />
+  <HelpKINode Title="EventViewModel.BarID property" Url="html/0e7cba8c-1eac-b179-3f31-f4373ed72ceb.htm" />
+  <HelpKINode Title="EventViewModel.City property" Url="html/d73b9f6f-507c-2efd-9c5c-7eff54128a2c.htm" />
+  <HelpKINode Title="EventViewModel.DateAndTimeForEvent property" Url="html/eb248bdf-8b04-2cdc-774a-32353be112e9.htm" />
+  <HelpKINode Title="EventViewModel.Description property" Url="html/a2208414-88ad-e2e1-9fdb-8463efd2ce0a.htm" />
+  <HelpKINode Title="EventViewModel.EventID property" Url="html/4b945fdc-673c-e318-dee7-5f91e7e0ec1c.htm" />
+  <HelpKINode Title="EventViewModel.EventViewModel constructor" Url="html/d5953f84-95e6-c5d6-f71e-1b699177c028.htm" />
+  <HelpKINode Title="EventViewModel.StreetNumber property" Url="html/d4faaf1c-dfb7-fec5-f548-e97e37ffb499.htm" />
+  <HelpKINode Title="EventViewModel.Title property" Url="html/e467f815-0c2e-820b-a525-3d79c92ce153.htm" />
+  <HelpKINode Title="EventViewModel.Zipcode property" Url="html/d6c9bddc-e6fa-92cb-0b39-fd1429ccedbe.htm" />
   <HelpKINode Title="ExternalLogin method" Url="html/b2e5da63-31e7-5c1c-8440-7a32e72b6607.htm" />
   <HelpKINode Title="ExternalLoginCallback method" Url="html/b5b19e63-8f0a-c2ab-e9fb-a807561dac4e.htm" />
   <HelpKINode Title="ExternalLoginConfirmation method" Url="html/cc0daabd-8307-7e3f-f496-34c637c6b9a8.htm" />
@@ -624,7 +813,6 @@
     <HelpKINode Title="ExternalLoginConfirmationViewModel Class" Url="html/a86cc24a-9256-115a-2a25-4bf59981d715.htm" />
     <HelpKINode Title="about ExternalLoginConfirmationViewModel class" Url="html/a86cc24a-9256-115a-2a25-4bf59981d715.htm" />
     <HelpKINode Title="constructor" Url="html/01ccc4b1-5e24-7543-cbc8-fa0f3a16eab6.htm" />
-    <HelpKINode Title="methods" Url="html/4761726f-2bd9-d0c2-376e-d135dc50c706.htm" />
     <HelpKINode Title="properties" Url="html/b913d75a-c64f-baf7-a0af-7597dc5f47fc.htm" />
   </HelpKINode>
   <HelpKINode Title="ExternalLoginConfirmationViewModel.Email property" Url="html/187c4e8f-470b-4f7d-d1c2-52f0a808c40e.htm" />
@@ -634,7 +822,6 @@
     <HelpKINode Title="ExternalLoginListViewModel Class" Url="html/58065adb-b902-cc3e-cc8f-953ce8654d52.htm" />
     <HelpKINode Title="about ExternalLoginListViewModel class" Url="html/58065adb-b902-cc3e-cc8f-953ce8654d52.htm" />
     <HelpKINode Title="constructor" Url="html/002f53f4-ceb1-a543-037a-0c29fde5271b.htm" />
-    <HelpKINode Title="methods" Url="html/3dc7cc3b-cc76-f4f2-8457-319beafc4b92.htm" />
     <HelpKINode Title="properties" Url="html/d230f64f-0625-4b77-774a-c83877066c76.htm" />
   </HelpKINode>
   <HelpKINode Title="ExternalLoginListViewModel.ExternalLoginListViewModel constructor" Url="html/002f53f4-ceb1-a543-037a-0c29fde5271b.htm" />
@@ -643,7 +830,6 @@
     <HelpKINode Title="FactorViewModel Class" Url="html/a97134e5-0bf8-5b81-b1e6-234a166aee0a.htm" />
     <HelpKINode Title="about FactorViewModel class" Url="html/a97134e5-0bf8-5b81-b1e6-234a166aee0a.htm" />
     <HelpKINode Title="constructor" Url="html/89bf14b5-7be6-ccfc-688a-5ab4038d8526.htm" />
-    <HelpKINode Title="methods" Url="html/62798310-f736-9edf-c9c8-9cb4cbbad028.htm" />
     <HelpKINode Title="properties" Url="html/19490e37-8bee-7375-dc1f-53308b323214.htm" />
   </HelpKINode>
   <HelpKINode Title="FactorViewModel.FactorViewModel constructor" Url="html/89bf14b5-7be6-ccfc-688a-5ab4038d8526.htm" />
@@ -657,7 +843,6 @@
     <HelpKINode Title="FeedModel Class" Url="html/01eaf986-1371-7c65-26a0-85aa52ddf240.htm" />
     <HelpKINode Title="about FeedModel class" Url="html/01eaf986-1371-7c65-26a0-85aa52ddf240.htm" />
     <HelpKINode Title="constructor" Url="html/104b6c00-80f4-11bc-0583-5b4369b93daa.htm" />
-    <HelpKINode Title="methods" Url="html/f8699d70-db9a-f318-ad04-3ee0a431f0e8.htm" />
     <HelpKINode Title="properties" Url="html/a8cdb40d-76b7-cbd9-97c6-243dab7d3492.htm" />
   </HelpKINode>
   <HelpKINode Title="FeedModel.BarID property" Url="html/4c671c48-a3bb-f3e4-6da0-6d146036db6c.htm" />
@@ -672,14 +857,19 @@
     <HelpKINode Title="ICustomBarContext.FeedModels Property " Url="html/4532b05f-b9ef-cfe8-c767-e58150bf8510.htm" />
   </HelpKINode>
   <HelpKINode Title="FeedRepository class">
-    <HelpKINode Title="FeedRepository Class" Url="html/ec9b3309-06cd-0325-0808-b838ad40677a.htm" />
-    <HelpKINode Title="about FeedRepository class" Url="html/ec9b3309-06cd-0325-0808-b838ad40677a.htm" />
-    <HelpKINode Title="constructor" Url="html/80c6cde9-32c1-6b55-3c09-662a9cf4bf7c.htm" />
-    <HelpKINode Title="methods" Url="html/da2098c2-2dd7-3d3a-3ccd-47b79ba2efcc.htm" />
+    <HelpKINode Title="FeedRepository Class" Url="html/398e8817-9333-67c5-4865-b7003cf96124.htm" />
+    <HelpKINode Title="about FeedRepository class" Url="html/398e8817-9333-67c5-4865-b7003cf96124.htm" />
+    <HelpKINode Title="constructor" Url="html/db83e264-a054-1f87-61b9-b277dc463525.htm" />
+    <HelpKINode Title="fields" Url="html/a1dc9b35-b0d0-e03c-13c4-6c4d75f29c43.htm" />
+    <HelpKINode Title="methods" Url="html/c323162e-af48-da80-f8e7-347aa624954c.htm" />
+    <HelpKINode Title="properties" Url="html/c6867bc0-46a4-ab6b-9697-8175aa404aa0.htm" />
   </HelpKINode>
-  <HelpKINode Title="FeedRepository property" Url="html/1ce21621-4795-7d84-7756-7399f2428683.htm" />
-  <HelpKINode Title="FeedRepository.Dispose method" Url="html/b13e145c-530c-5574-6e3f-c40cd529053b.htm" />
-  <HelpKINode Title="FeedRepository.FeedRepository constructor" Url="html/80c6cde9-32c1-6b55-3c09-662a9cf4bf7c.htm" />
+  <HelpKINode Title="FeedRepository property">
+    <HelpKINode Title="IUnitOfWork.FeedRepository Property " Url="html/bd25131f-4063-a812-b3e1-31e82eb56aa5.htm" />
+    <HelpKINode Title="UnitOfWork.FeedRepository Property " Url="html/523002f6-847e-c804-0524-798b3db07726.htm" />
+  </HelpKINode>
+  <HelpKINode Title="FeedRepository.BarCrawlerContext property" Url="html/e8bc74e0-a452-96da-2f09-1a643b515d56.htm" />
+  <HelpKINode Title="FeedRepository.FeedRepository constructor" Url="html/db83e264-a054-1f87-61b9-b277dc463525.htm" />
   <HelpKINode Title="Feeds property" Url="html/fa670607-bfd6-90ba-ec11-1bfa88220441.htm" />
   <HelpKINode Title="FilterConfig class">
     <HelpKINode Title="FilterConfig Class" Url="html/aeff6606-7e48-dc94-d2ab-9ef610729512.htm" />
@@ -695,7 +885,6 @@
     <HelpKINode Title="ForgotPasswordViewModel Class" Url="html/1018217f-f805-586c-5930-f64a519413d5.htm" />
     <HelpKINode Title="about ForgotPasswordViewModel class" Url="html/1018217f-f805-586c-5930-f64a519413d5.htm" />
     <HelpKINode Title="constructor" Url="html/ec0f242f-bf59-b276-d8fc-9037e7482b78.htm" />
-    <HelpKINode Title="methods" Url="html/605f79a5-f862-4087-31c6-ab1d28570860.htm" />
     <HelpKINode Title="properties" Url="html/2dbb2e4b-e7b2-4bab-1e76-640a0b11354f.htm" />
   </HelpKINode>
   <HelpKINode Title="ForgotPasswordViewModel.Email property" Url="html/81c469d7-6238-dbcd-2374-9228fc3fa988.htm" />
@@ -704,7 +893,6 @@
     <HelpKINode Title="ForgotViewModel Class" Url="html/8efb68c3-b684-62ab-2cc7-b3ce74079d36.htm" />
     <HelpKINode Title="about ForgotViewModel class" Url="html/8efb68c3-b684-62ab-2cc7-b3ce74079d36.htm" />
     <HelpKINode Title="constructor" Url="html/761ba4fc-b462-022a-9693-cc9c3c6a2d60.htm" />
-    <HelpKINode Title="methods" Url="html/3ac86b7b-3fc3-dbc4-dd6c-46f8f0d57920.htm" />
     <HelpKINode Title="properties" Url="html/460a0b22-7a86-7594-8a35-0d68d678bbf2.htm" />
   </HelpKINode>
   <HelpKINode Title="ForgotViewModel.Email property" Url="html/f3e108f8-e726-7155-7b0b-d33962f6fb53.htm" />
@@ -713,55 +901,89 @@
   <HelpKINode Title="GenericRepository(Of TEntity) class">
     <HelpKINode Title="GenericRepository(TEntity) Class" Url="html/c7c2d3db-4181-01cb-3812-8ef80e898204.htm" />
     <HelpKINode Title="about GenericRepository(Of TEntity) class" Url="html/c7c2d3db-4181-01cb-3812-8ef80e898204.htm" />
-    <HelpKINode Title="constructor" Url="html/150c3535-ac1b-d041-abc6-9957c6774ca8.htm" />
+    <HelpKINode Title="constructor" Url="html/7db1e322-8de1-1d5d-fc8b-c72886e2130f.htm" />
     <HelpKINode Title="fields" Url="html/4d45a7eb-1a04-faf8-10f2-e2a2d149e495.htm" />
     <HelpKINode Title="methods" Url="html/78786041-a3b5-63ce-7295-bcca27968aca.htm" />
   </HelpKINode>
-  <HelpKINode Title="GenericRepository(Of TEntity).GenericRepository constructor" Url="html/150c3535-ac1b-d041-abc6-9957c6774ca8.htm" />
+  <HelpKINode Title="GenericRepository(Of TEntity).Add method" Url="html/2a27a33d-02a0-15ff-cb14-acdb8890082c.htm" />
+  <HelpKINode Title="GenericRepository(Of TEntity).GenericRepository constructor" Url="html/7db1e322-8de1-1d5d-fc8b-c72886e2130f.htm" />
   <HelpKINode Title="GenericRepository(Of TEntity).GetAll method" Url="html/b4c45c14-3232-19d4-164e-d95e6724593c.htm" />
   <HelpKINode Title="GenericRepository(Of TEntity).GetByID method" Url="html/cd2ea8c0-8c55-661f-88d3-fb516d8b27ed.htm" />
+  <HelpKINode Title="GenericRepository(Of TEntity).MarkAsDirty method" Url="html/b7149ff3-2e05-8dfd-efe5-05d74f076299.htm" />
   <HelpKINode Title="GenericRepository(Of TEntity).Remove method" Url="html/92e993a0-8bda-13ed-e7be-6d17a88b982c.htm" />
   <HelpKINode Title="GenericRepository(Of TEntity)._context field" Url="html/78ac2261-e3c9-5190-97b8-1656116eef4c.htm" />
   <HelpKINode Title="GenericRepository&lt;TEntity&gt; class">
     <HelpKINode Title="GenericRepository(TEntity) Class" Url="html/c7c2d3db-4181-01cb-3812-8ef80e898204.htm" />
     <HelpKINode Title="about GenericRepository&lt;TEntity&gt; class" Url="html/c7c2d3db-4181-01cb-3812-8ef80e898204.htm" />
-    <HelpKINode Title="constructor" Url="html/150c3535-ac1b-d041-abc6-9957c6774ca8.htm" />
+    <HelpKINode Title="constructor" Url="html/7db1e322-8de1-1d5d-fc8b-c72886e2130f.htm" />
     <HelpKINode Title="fields" Url="html/4d45a7eb-1a04-faf8-10f2-e2a2d149e495.htm" />
     <HelpKINode Title="methods" Url="html/78786041-a3b5-63ce-7295-bcca27968aca.htm" />
   </HelpKINode>
-  <HelpKINode Title="GenericRepository&lt;TEntity&gt;.GenericRepository constructor" Url="html/150c3535-ac1b-d041-abc6-9957c6774ca8.htm" />
+  <HelpKINode Title="GenericRepository&lt;TEntity&gt;.Add method" Url="html/2a27a33d-02a0-15ff-cb14-acdb8890082c.htm" />
+  <HelpKINode Title="GenericRepository&lt;TEntity&gt;.GenericRepository constructor" Url="html/7db1e322-8de1-1d5d-fc8b-c72886e2130f.htm" />
   <HelpKINode Title="GenericRepository&lt;TEntity&gt;.GetAll method" Url="html/b4c45c14-3232-19d4-164e-d95e6724593c.htm" />
   <HelpKINode Title="GenericRepository&lt;TEntity&gt;.GetByID method" Url="html/cd2ea8c0-8c55-661f-88d3-fb516d8b27ed.htm" />
+  <HelpKINode Title="GenericRepository&lt;TEntity&gt;.MarkAsDirty method" Url="html/b7149ff3-2e05-8dfd-efe5-05d74f076299.htm" />
   <HelpKINode Title="GenericRepository&lt;TEntity&gt;.Remove method" Url="html/92e993a0-8bda-13ed-e7be-6d17a88b982c.htm" />
   <HelpKINode Title="GenericRepository&lt;TEntity&gt;._context field" Url="html/78ac2261-e3c9-5190-97b8-1656116eef4c.htm" />
   <HelpKINode Title="GetAll method">
     <HelpKINode Title="GenericRepository(TEntity).GetAll Method " Url="html/b4c45c14-3232-19d4-164e-d95e6724593c.htm" />
     <HelpKINode Title="IRepository(TEntity).GetAll Method " Url="html/b2dd56cb-66d0-c715-9678-57f609d75b17.htm" />
   </HelpKINode>
-  <HelpKINode Title="GetAllBars method" Url="html/237d0a4c-01a9-e8f0-3695-d4b7227f376f.htm" />
-  <HelpKINode Title="GetAllBarsForHome method" Url="html/5c242ab0-89d9-a653-85e1-61c00b6bc068.htm" />
-  <HelpKINode Title="GetAllEvents method" Url="html/efb21add-1651-59cd-328f-0aabcd4ddaa8.htm" />
-  <HelpKINode Title="GetBarByID method" Url="html/28e25104-abb8-5cad-5eec-cca3b10f814f.htm" />
-  <HelpKINode Title="GetBarModel method" Url="html/6b5d703d-d97a-b94a-f9ac-bd1bdf31b720.htm" />
-  <HelpKINode Title="GetBarModels method" Url="html/c586a7f3-f883-f53f-95ea-dcc162c784be.htm" />
-  <HelpKINode Title="GetBarprofile method" Url="html/6ed85b48-7db1-523e-a2c1-259a8723329f.htm" />
+  <HelpKINode Title="GetAllBarsForHome method" Url="html/d8fa9c41-49bc-8ff2-b7ce-d31628a1c225.htm" />
+  <HelpKINode Title="GetBarprofile method" Url="html/43ced3bf-d18a-2277-4cdd-e6d5846067f4.htm" />
   <HelpKINode Title="GetByID method">
     <HelpKINode Title="GenericRepository(TEntity).GetByID Method " Url="html/cd2ea8c0-8c55-661f-88d3-fb516d8b27ed.htm" />
     <HelpKINode Title="IRepository(TEntity).GetByID Method " Url="html/030c36bb-fcde-5109-fd3f-3fed46063864.htm" />
   </HelpKINode>
-  <HelpKINode Title="GetEventByID method" Url="html/8217606c-f65c-582e-5f82-069f375fe227.htm" />
-  <HelpKINode Title="GetProfile method" Url="html/4413e5ab-a1f5-a2a8-80ae-14e4bb2a07ed.htm" />
+  <HelpKINode Title="GetByUserID method">
+    <HelpKINode Title="BarRepository.GetByUserID Method " Url="html/832bd976-2927-a8f2-d99e-d7d7314ad1d4.htm" />
+    <HelpKINode Title="IBarRepository.GetByUserID Method " Url="html/c756c96d-25aa-88db-2dc9-5c18e40c0b88.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetEditInfo method">
+    <HelpKINode Title="BarRepository.GetEditInfo Method " Url="html/8a1626e0-2d04-cead-a722-327eeff0b8ad.htm" />
+    <HelpKINode Title="IBarRepository.GetEditInfo Method " Url="html/938888b4-0133-a411-3ae1-cf1b8911f0d7.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GetProfile method">
+    <HelpKINode Title="BarRepository.GetProfile Method " Url="html/e1ebc5b6-ab07-fa30-fd10-8b0f2e6ef0f7.htm" />
+    <HelpKINode Title="IBarRepository.GetProfile Method " Url="html/53fca2fe-dff3-22a0-a3c9-50b11b98a42b.htm" />
+  </HelpKINode>
+  <HelpKINode Title="HasPassword method" Url="html/cb6f4c04-533b-825a-dea6-249be31b99ec.htm" />
   <HelpKINode Title="HasPassword property" Url="html/e7a17dd5-4f16-639e-6d48-0f09ff593dcd.htm" />
+  <HelpKINode Title="HasPhoneNumber method" Url="html/a7048407-00d6-94d5-497c-c09a41356a88.htm" />
   <HelpKINode Title="HomeController class">
     <HelpKINode Title="HomeController Class" Url="html/e0592637-ca98-6a44-043d-79c2f03d8b3f.htm" />
     <HelpKINode Title="about HomeController class" Url="html/e0592637-ca98-6a44-043d-79c2f03d8b3f.htm" />
     <HelpKINode Title="constructor" Url="html/1df459c2-340e-2640-58d7-410c019c3ee9.htm" />
+    <HelpKINode Title="fields" Url="html/72f919bf-8124-31b0-3206-1b1eb9740de0.htm" />
     <HelpKINode Title="methods" Url="html/b89034eb-d838-78f5-1969-a2aa816eb281.htm" />
-    <HelpKINode Title="properties" Url="html/75369dbb-eb29-b21a-b596-ffe5a7915191.htm" />
   </HelpKINode>
   <HelpKINode Title="HomeController.Contact method" Url="html/2bba6ccd-7a06-7fae-310a-57b50f3d212c.htm" />
   <HelpKINode Title="HomeController.HomeController constructor" Url="html/1df459c2-340e-2640-58d7-410c019c3ee9.htm" />
   <HelpKINode Title="HomeController.Index method" Url="html/784feb40-c67c-a892-8fa8-d0d88a27b436.htm" />
+  <HelpKINode Title="HomeController._unitOfWork field" Url="html/4093b76a-cec2-77ed-862d-db4f2c4fe74d.htm" />
+  <HelpKINode Title="IBarProfilePictureRepository interface">
+    <HelpKINode Title="IBarProfilePictureRepository Interface" Url="html/ffabc75e-20ca-1496-6b28-3c42a7f57883.htm" />
+    <HelpKINode Title="about IBarProfilePictureRepository interface" Url="html/ffabc75e-20ca-1496-6b28-3c42a7f57883.htm" />
+    <HelpKINode Title="methods" Url="html/e1426b21-2385-1e5c-5f48-c39492bfff17.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IBarProfilePictureRepository.AddModelForUpdate method" Url="html/21a2de83-8814-e7b8-ee56-35d009d1b8a3.htm" />
+  <HelpKINode Title="IBarRepository interface">
+    <HelpKINode Title="IBarRepository Interface" Url="html/0ae0aa65-68c5-5d1b-c361-dafa150c10df.htm" />
+    <HelpKINode Title="about IBarRepository interface" Url="html/0ae0aa65-68c5-5d1b-c361-dafa150c10df.htm" />
+    <HelpKINode Title="methods" Url="html/ef62d849-2c97-a19a-da38-3fbd5593daf9.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IBarRepository.CreateAndAddBar method" Url="html/af594fc2-7ef4-4af5-8c9b-a2bf90e41185.htm" />
+  <HelpKINode Title="IBarRepository.EditInfo method" Url="html/a736c5df-39ae-8641-aebe-b33b7f201fd7.htm" />
+  <HelpKINode Title="IBarRepository.GetByUserID method" Url="html/c756c96d-25aa-88db-2dc9-5c18e40c0b88.htm" />
+  <HelpKINode Title="IBarRepository.GetEditInfo method" Url="html/938888b4-0133-a411-3ae1-cf1b8911f0d7.htm" />
+  <HelpKINode Title="IBarRepository.GetProfile method" Url="html/53fca2fe-dff3-22a0-a3c9-50b11b98a42b.htm" />
+  <HelpKINode Title="ICoverPictureRepository interface">
+    <HelpKINode Title="ICoverPictureRepository Interface" Url="html/79d34d67-9e62-7b9d-c9d0-311bae9a8bc8.htm" />
+    <HelpKINode Title="about ICoverPictureRepository interface" Url="html/79d34d67-9e62-7b9d-c9d0-311bae9a8bc8.htm" />
+    <HelpKINode Title="methods" Url="html/fc4299f0-7503-83a2-6cdd-ae3c3385b43d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ICoverPictureRepository.AddModelForUpdate method" Url="html/88b2e681-3622-a625-2d7e-f5b0849e4625.htm" />
   <HelpKINode Title="ICustomBarContext interface">
     <HelpKINode Title="ICustomBarContext Interface" Url="html/c209dc36-7915-a5e4-4d63-92db1794f162.htm" />
     <HelpKINode Title="about ICustomBarContext interface" Url="html/c209dc36-7915-a5e4-4d63-92db1794f162.htm" />
@@ -780,6 +1002,17 @@
     <HelpKINode Title="methods" Url="html/552b567d-73ea-7ff7-b9a9-79693d1ab244.htm" />
   </HelpKINode>
   <HelpKINode Title="IDrinkRepository.AddModelForUpdate method" Url="html/514d2153-8d48-ade5-0e00-8e90d8c82eae.htm" />
+  <HelpKINode Title="IEventRepository interface">
+    <HelpKINode Title="IEventRepository Interface" Url="html/0300345b-b4bf-c28e-dbc3-7bb0d9287cc9.htm" />
+    <HelpKINode Title="about IEventRepository interface" Url="html/0300345b-b4bf-c28e-dbc3-7bb0d9287cc9.htm" />
+    <HelpKINode Title="methods" Url="html/8bdc8299-dc7e-ac38-89ff-fecdc67a4812.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IEventRepository.EditInfo method" Url="html/7c63d5bf-ea87-b36e-b268-32186e67a93e.htm" />
+  <HelpKINode Title="IFeedRepository interface">
+    <HelpKINode Title="IFeedRepository Interface" Url="html/41803e2a-b4ee-f281-3748-a8bcb335e867.htm" />
+    <HelpKINode Title="about IFeedRepository interface" Url="html/41803e2a-b4ee-f281-3748-a8bcb335e867.htm" />
+    <HelpKINode Title="methods" Url="html/13d037c5-45cc-b05b-36b4-e56ef91ef322.htm" />
+  </HelpKINode>
   <HelpKINode Title="Index method">
     <HelpKINode Title="BarProfilController.Index Method " Url="html/20fa97b0-4876-5e7b-85a7-496aa6f7e4ea.htm" />
     <HelpKINode Title="HomeController.Index Method " Url="html/784feb40-c67c-a892-8fa8-d0d88a27b436.htm" />
@@ -789,7 +1022,6 @@
     <HelpKINode Title="IndexViewModel Class" Url="html/016f26c4-fe5b-3346-5854-370328b17302.htm" />
     <HelpKINode Title="about IndexViewModel class" Url="html/016f26c4-fe5b-3346-5854-370328b17302.htm" />
     <HelpKINode Title="constructor" Url="html/4700f4b7-9407-3fc3-a5a1-2ee94904ba44.htm" />
-    <HelpKINode Title="methods" Url="html/8d06e642-fc9c-040c-aada-65c3c8f68fb4.htm" />
     <HelpKINode Title="properties" Url="html/50620b01-1cf7-e9a0-dc1b-d8edb51cd55b.htm" />
   </HelpKINode>
   <HelpKINode Title="IndexViewModel.BrowserRemembered property" Url="html/b828e08c-8679-9593-30d2-5775e357ba6f.htm" />
@@ -802,16 +1034,26 @@
     <HelpKINode Title="Initial Class" Url="html/d3823dad-fee7-1eeb-af5b-dfd2aaf2478f.htm" />
     <HelpKINode Title="about Initial class" Url="html/d3823dad-fee7-1eeb-af5b-dfd2aaf2478f.htm" />
     <HelpKINode Title="constructor" Url="html/4d30b89a-b03d-1717-dbae-2f86fec1344b.htm" />
+    <HelpKINode Title="fields" Url="html/caf8cc69-e992-8e13-dae6-8245acca63ea.htm" />
     <HelpKINode Title="methods" Url="html/e5534420-c38e-b7bc-c77b-94dbb770fc58.htm" />
   </HelpKINode>
   <HelpKINode Title="Initial.Down method" Url="html/f98e7802-3f23-82d0-a5e9-f297d879b92b.htm" />
   <HelpKINode Title="Initial.Initial constructor" Url="html/4d30b89a-b03d-1717-dbae-2f86fec1344b.htm" />
+  <HelpKINode Title="Initial.Resources field" Url="html/774c9e54-e343-2545-69c6-b0b945660801.htm" />
   <HelpKINode Title="Initial.Up method" Url="html/70a96c53-4ef9-61dd-0621-5a4037551801.htm" />
+  <HelpKINode Title="InitializeRepositories method" Url="html/b1c09d03-541c-cefb-7e8f-16985a70e545.htm" />
+  <HelpKINode Title="IPictureRepository interface">
+    <HelpKINode Title="IPictureRepository Interface" Url="html/f284e2c3-a492-c5ad-986c-9d35c69b385e.htm" />
+    <HelpKINode Title="about IPictureRepository interface" Url="html/f284e2c3-a492-c5ad-986c-9d35c69b385e.htm" />
+    <HelpKINode Title="methods" Url="html/dd5d2b64-4c4d-9494-9679-9c3b0c971b04.htm" />
+  </HelpKINode>
+  <HelpKINode Title="IPictureRepository.AddModelForUpdate method" Url="html/d692c037-88b8-6752-4c20-9ad6ed73a121.htm" />
   <HelpKINode Title="IRepository(Of TEntity) interface">
     <HelpKINode Title="IRepository(TEntity) Interface" Url="html/bbaf9ce2-93fb-d859-0acd-901361f14eb7.htm" />
     <HelpKINode Title="about IRepository(Of TEntity) interface" Url="html/bbaf9ce2-93fb-d859-0acd-901361f14eb7.htm" />
     <HelpKINode Title="methods" Url="html/d8cd0d8b-2f9b-e89e-12c0-71fb78185665.htm" />
   </HelpKINode>
+  <HelpKINode Title="IRepository(Of TEntity).Add method" Url="html/8f219361-10f8-6fd8-c053-dffcbaf03708.htm" />
   <HelpKINode Title="IRepository(Of TEntity).GetAll method" Url="html/b2dd56cb-66d0-c715-9678-57f609d75b17.htm" />
   <HelpKINode Title="IRepository(Of TEntity).GetByID method" Url="html/030c36bb-fcde-5109-fd3f-3fed46063864.htm" />
   <HelpKINode Title="IRepository(Of TEntity).Remove method" Url="html/510deb19-e6c1-9596-f31a-bf5c9920ec39.htm" />
@@ -820,17 +1062,24 @@
     <HelpKINode Title="about IRepository&lt;TEntity&gt; interface" Url="html/bbaf9ce2-93fb-d859-0acd-901361f14eb7.htm" />
     <HelpKINode Title="methods" Url="html/d8cd0d8b-2f9b-e89e-12c0-71fb78185665.htm" />
   </HelpKINode>
+  <HelpKINode Title="IRepository&lt;TEntity&gt;.Add method" Url="html/8f219361-10f8-6fd8-c053-dffcbaf03708.htm" />
   <HelpKINode Title="IRepository&lt;TEntity&gt;.GetAll method" Url="html/b2dd56cb-66d0-c715-9678-57f609d75b17.htm" />
   <HelpKINode Title="IRepository&lt;TEntity&gt;.GetByID method" Url="html/030c36bb-fcde-5109-fd3f-3fed46063864.htm" />
   <HelpKINode Title="IRepository&lt;TEntity&gt;.Remove method" Url="html/510deb19-e6c1-9596-f31a-bf5c9920ec39.htm" />
   <HelpKINode Title="IUnitOfWork interface">
-    <HelpKINode Title="IUnitOfWork Interface" Url="html/45723b5c-917a-d37d-34ad-72b6b23ee285.htm" />
-    <HelpKINode Title="about IUnitOfWork interface" Url="html/45723b5c-917a-d37d-34ad-72b6b23ee285.htm" />
-    <HelpKINode Title="methods" Url="html/94938a3b-c381-4117-70cc-2593c39c553c.htm" />
-    <HelpKINode Title="properties" Url="html/a9b0ef37-8420-89a5-4547-182b69c9427b.htm" />
+    <HelpKINode Title="IUnitOfWork Interface" Url="html/556ba12b-2b81-5b8b-7ab0-d1c61510e4fe.htm" />
+    <HelpKINode Title="about IUnitOfWork interface" Url="html/556ba12b-2b81-5b8b-7ab0-d1c61510e4fe.htm" />
+    <HelpKINode Title="methods" Url="html/ee756939-4730-3f1f-9d81-776fd078e1c4.htm" />
+    <HelpKINode Title="properties" Url="html/eabc5f21-f243-6643-5a74-1219f4f172f0.htm" />
   </HelpKINode>
-  <HelpKINode Title="IUnitOfWork.DrinkRepository property" Url="html/48c8dae9-7a48-7127-95c3-48bf1e48de52.htm" />
-  <HelpKINode Title="IUnitOfWork.Save method" Url="html/d79e1ac9-1672-41eb-b126-8c0249cb03ca.htm" />
+  <HelpKINode Title="IUnitOfWork.BarProfilePictureRepository property" Url="html/f2db3d8e-578e-c1fb-d87c-023d9d5d08ee.htm" />
+  <HelpKINode Title="IUnitOfWork.BarRepository property" Url="html/6e00a980-baf8-d923-f085-131ef4af24b5.htm" />
+  <HelpKINode Title="IUnitOfWork.CoverPictureRepository property" Url="html/b4cc80c5-0cac-ccc9-8850-a8bf5392fa6b.htm" />
+  <HelpKINode Title="IUnitOfWork.DrinkRepository property" Url="html/cc8c6cff-b472-165a-32d1-4e4631a0f3ea.htm" />
+  <HelpKINode Title="IUnitOfWork.EventRepository property" Url="html/b3e7e7d4-23b2-aea1-43fe-ae16d3fe3f73.htm" />
+  <HelpKINode Title="IUnitOfWork.FeedRepository property" Url="html/bd25131f-4063-a812-b3e1-31e82eb56aa5.htm" />
+  <HelpKINode Title="IUnitOfWork.PictureRepository property" Url="html/b28b1100-2f8d-b32b-ddc2-02d43dfe176a.htm" />
+  <HelpKINode Title="IUnitOfWork.Save method" Url="html/18891ea7-943d-8f57-e795-a1e20d577849.htm" />
   <HelpKINode Title="Latitude property" Url="html/b12a5cf2-9bad-53e3-0cd7-65bed709220d.htm" />
   <HelpKINode Title="LinkLogin method" Url="html/447baa4c-b8cc-1c32-0bde-bdfcdc57f2f8.htm" />
   <HelpKINode Title="LinkLoginCallback method" Url="html/91864c98-9a78-e0b7-9713-b2760a016ee8.htm" />
@@ -840,7 +1089,6 @@
     <HelpKINode Title="LoginViewModel Class" Url="html/d6a2d403-33fa-8732-ee6a-a21236dce205.htm" />
     <HelpKINode Title="about LoginViewModel class" Url="html/d6a2d403-33fa-8732-ee6a-a21236dce205.htm" />
     <HelpKINode Title="constructor" Url="html/94050dbb-16d2-53e3-c616-139efcc78153.htm" />
-    <HelpKINode Title="methods" Url="html/dc9c2ab4-65fb-d524-3769-8bc529bf550d.htm" />
     <HelpKINode Title="properties" Url="html/bdf3b801-d96c-6bf1-3a15-65b4f157328d.htm" />
   </HelpKINode>
   <HelpKINode Title="LoginViewModel.Email property" Url="html/154dce1b-5d88-b8aa-e1d0-3a2ae2b4a8fc.htm" />
@@ -853,14 +1101,19 @@
     <HelpKINode Title="ManageController Class" Url="html/8d462989-7ceb-3c07-dfc5-bd0b4bfebeb3.htm" />
     <HelpKINode Title="about ManageController class" Url="html/8d462989-7ceb-3c07-dfc5-bd0b4bfebeb3.htm" />
     <HelpKINode Title="constructor" Url="html/604f1fdf-ec58-cc8a-fd55-59c190c940c8.htm" />
+    <HelpKINode Title="fields" Url="html/43f8915f-d3f4-b52b-3e7f-cfc31473ef0a.htm" />
     <HelpKINode Title="methods" Url="html/e32d95ff-de10-7194-3336-6d7693ffc6c5.htm" />
     <HelpKINode Title="properties" Url="html/610689ac-d120-9566-6648-95234898aa79.htm" />
   </HelpKINode>
+  <HelpKINode Title="ManageController.AddErrors method" Url="html/3bfd222a-08a7-f178-d53b-b793d1213c01.htm" />
   <HelpKINode Title="ManageController.AddPhoneNumber method" Url="html/67c1c40e-f7c3-dc18-5f38-d1a5c4b9a9e8.htm" />
+  <HelpKINode Title="ManageController.AuthenticationManager property" Url="html/e8ef2c73-7767-b2c3-cd22-7d64dd50814f.htm" />
   <HelpKINode Title="ManageController.ChangePassword method" Url="html/60093977-2079-d426-ffd7-5b87a48b6f2b.htm" />
   <HelpKINode Title="ManageController.DisableTwoFactorAuthentication method" Url="html/c713c618-ab2f-ada4-ae24-89f97890c4bc.htm" />
-  <HelpKINode Title="ManageController.Dispose method" Url="html/9cd61496-6368-6325-f5a5-310a05f4ec3b.htm" />
+  <HelpKINode Title="ManageController.Dispose method" Url="html/ea0df3b1-0c6b-1568-3733-61cdf36fa0a8.htm" />
   <HelpKINode Title="ManageController.EnableTwoFactorAuthentication method" Url="html/1638ef6b-8789-4ed5-d935-d40ebb7647c6.htm" />
+  <HelpKINode Title="ManageController.HasPassword method" Url="html/cb6f4c04-533b-825a-dea6-249be31b99ec.htm" />
+  <HelpKINode Title="ManageController.HasPhoneNumber method" Url="html/a7048407-00d6-94d5-497c-c09a41356a88.htm" />
   <HelpKINode Title="ManageController.Index method" Url="html/09d729c3-6628-99e5-101b-53e93ef47a28.htm" />
   <HelpKINode Title="ManageController.LinkLogin method" Url="html/447baa4c-b8cc-1c32-0bde-bdfcdc57f2f8.htm" />
   <HelpKINode Title="ManageController.LinkLoginCallback method" Url="html/91864c98-9a78-e0b7-9713-b2760a016ee8.htm" />
@@ -873,24 +1126,25 @@
   <HelpKINode Title="ManageController.SignInManager property" Url="html/5166ed71-994e-14e8-f6e8-c93dd8ef1c2d.htm" />
   <HelpKINode Title="ManageController.UserManager property" Url="html/825851be-1e29-7485-51ac-5b3bf96d61cf.htm" />
   <HelpKINode Title="ManageController.VerifyPhoneNumber method" Url="html/64e09452-c46b-df9e-1385-363b30ed3545.htm" />
+  <HelpKINode Title="ManageController.XsrfKey field" Url="html/29db00dc-648b-4a26-3c5e-ef219efbb2f3.htm" />
+  <HelpKINode Title="ManageController._signInManager field" Url="html/967c91ae-4824-0d0a-d717-1cf9cb3f1f4c.htm" />
+  <HelpKINode Title="ManageController._userManager field" Url="html/05e2a9d7-49e0-a9ad-1cfd-df3d8d196a2e.htm" />
   <HelpKINode Title="ManageLogins method" Url="html/14e41a7d-0ffe-0cdc-e0ad-6ebcee426562.htm" />
   <HelpKINode Title="ManageLoginsViewModel class">
     <HelpKINode Title="ManageLoginsViewModel Class" Url="html/e408c74d-2f3e-7ef8-a89b-f805339ecf86.htm" />
     <HelpKINode Title="about ManageLoginsViewModel class" Url="html/e408c74d-2f3e-7ef8-a89b-f805339ecf86.htm" />
     <HelpKINode Title="constructor" Url="html/256153b1-3e05-46fc-0593-cf0220dfd285.htm" />
-    <HelpKINode Title="methods" Url="html/05984e7d-9a12-3f66-922a-a467bc4ec209.htm" />
     <HelpKINode Title="properties" Url="html/710b26d5-2018-8f1f-86a3-5a8ebd37c166.htm" />
   </HelpKINode>
   <HelpKINode Title="ManageLoginsViewModel.CurrentLogins property" Url="html/6b5267cb-30a8-8bf1-8ba2-b6febc647d0c.htm" />
   <HelpKINode Title="ManageLoginsViewModel.ManageLoginsViewModel constructor" Url="html/256153b1-3e05-46fc-0593-cf0220dfd285.htm" />
   <HelpKINode Title="ManageLoginsViewModel.OtherLogins property" Url="html/4d12b589-8de0-34ec-824e-ecd639b4b5db.htm" />
+  <HelpKINode Title="MarkAsDirty method" Url="html/b7149ff3-2e05-8dfd-efe5-05d74f076299.htm" />
   <HelpKINode Title="MvcApplication class">
     <HelpKINode Title="MvcApplication Class" Url="html/d8aa3e2a-423e-caa7-cae0-12ed21701ff7.htm" />
     <HelpKINode Title="about MvcApplication class" Url="html/d8aa3e2a-423e-caa7-cae0-12ed21701ff7.htm" />
     <HelpKINode Title="constructor" Url="html/0c68e1a9-93ed-2623-5da6-1023bb170570.htm" />
-    <HelpKINode Title="events" Url="html/72dc1f0a-e99a-91e2-132b-a7d584ef3a43.htm" />
     <HelpKINode Title="methods" Url="html/9666b6d0-0851-2d6d-367c-e4b56c429c55.htm" />
-    <HelpKINode Title="properties" Url="html/9dcecb7f-52ec-48d5-97ac-6df8ea9964bd.htm" />
   </HelpKINode>
   <HelpKINode Title="MvcApplication.Application_Start method" Url="html/21555b2b-5b1a-2785-5379-c6dd86ba61ee.htm" />
   <HelpKINode Title="MvcApplication.MvcApplication constructor" Url="html/0c68e1a9-93ed-2623-5da6-1023bb170570.htm" />
@@ -904,19 +1158,23 @@
     <HelpKINode Title="OpdateretDrinksModelPris Class" Url="html/1bb3183c-acd6-c620-7ebc-67dec03bb7f0.htm" />
     <HelpKINode Title="about OpdateretDrinksModelPris class" Url="html/1bb3183c-acd6-c620-7ebc-67dec03bb7f0.htm" />
     <HelpKINode Title="constructor" Url="html/5e9f305e-2763-2e9a-ac7e-36c534eb561c.htm" />
+    <HelpKINode Title="fields" Url="html/71b6b95c-21f0-cd61-e930-396d4a823042.htm" />
     <HelpKINode Title="methods" Url="html/72ca4caf-6c68-0c7a-be8e-d03e53cf33aa.htm" />
   </HelpKINode>
   <HelpKINode Title="OpdateretDrinksModelPris.Down method" Url="html/3fea9045-9cfc-f5c5-7903-a0bb4314df1c.htm" />
   <HelpKINode Title="OpdateretDrinksModelPris.OpdateretDrinksModelPris constructor" Url="html/5e9f305e-2763-2e9a-ac7e-36c534eb561c.htm" />
+  <HelpKINode Title="OpdateretDrinksModelPris.Resources field" Url="html/ea0f81c1-e4be-31e6-6943-59dac530111e.htm" />
   <HelpKINode Title="OpdateretDrinksModelPris.Up method" Url="html/03df7c90-cadc-d29f-67dd-0ff89fac1314.htm" />
   <HelpKINode Title="OpenCloseTimeInBarModel class">
     <HelpKINode Title="OpenCloseTimeInBarModel Class" Url="html/b12d49c4-705b-fecb-b1de-18b99e6ba6c8.htm" />
     <HelpKINode Title="about OpenCloseTimeInBarModel class" Url="html/b12d49c4-705b-fecb-b1de-18b99e6ba6c8.htm" />
     <HelpKINode Title="constructor" Url="html/66dfeff8-1af0-a229-eeaf-ef6eebc3c655.htm" />
+    <HelpKINode Title="fields" Url="html/e1ea290d-3486-f39a-adc6-84aae0715d43.htm" />
     <HelpKINode Title="methods" Url="html/c2516470-8ee2-facc-ce52-4d9535274e33.htm" />
   </HelpKINode>
   <HelpKINode Title="OpenCloseTimeInBarModel.Down method" Url="html/00cd0216-beaa-bb19-ecbf-0b25c4e73b20.htm" />
   <HelpKINode Title="OpenCloseTimeInBarModel.OpenCloseTimeInBarModel constructor" Url="html/66dfeff8-1af0-a229-eeaf-ef6eebc3c655.htm" />
+  <HelpKINode Title="OpenCloseTimeInBarModel.Resources field" Url="html/d23641bd-a9e9-c5e4-3283-c1eda9667101.htm" />
   <HelpKINode Title="OpenCloseTimeInBarModel.Up method" Url="html/876bf2c4-a5ae-ebbc-2bb6-f7f23f1ae483.htm" />
   <HelpKINode Title="OpenTime property">
     <HelpKINode Title="BarModel.OpenTime Property " Url="html/66d446f0-d848-db3d-934e-267974f6316f.htm" />
@@ -935,12 +1193,14 @@
     <HelpKINode Title="VerifyPhoneNumberViewModel.PhoneNumber Property " Url="html/4d249552-8bec-47b5-f866-94f0eb6a3da4.htm" />
   </HelpKINode>
   <HelpKINode Title="Picture property" Url="html/56aef4b2-37f7-f76c-5b3a-26a6dbdddcbb.htm" />
-  <HelpKINode Title="PictureID property" Url="html/674c1ee3-a760-319e-cafa-5435c2f39389.htm" />
+  <HelpKINode Title="PictureID property">
+    <HelpKINode Title="PictureModel.PictureID Property " Url="html/674c1ee3-a760-319e-cafa-5435c2f39389.htm" />
+    <HelpKINode Title="PictureViewModel.PictureID Property " Url="html/5a2d9f04-8c37-5770-5aac-fe9089e9c074.htm" />
+  </HelpKINode>
   <HelpKINode Title="PictureModel class">
     <HelpKINode Title="PictureModel Class" Url="html/e1378b85-1dc1-5359-10dd-fb401567038b.htm" />
     <HelpKINode Title="about PictureModel class" Url="html/e1378b85-1dc1-5359-10dd-fb401567038b.htm" />
     <HelpKINode Title="constructor" Url="html/16fd2210-70a5-4bb8-b8d9-6065035eb8d9.htm" />
-    <HelpKINode Title="methods" Url="html/71928971-6514-b1bb-c46a-1cbd8c233b4d.htm" />
     <HelpKINode Title="properties" Url="html/10e5487d-159b-38a5-a298-5ed81d675a4e.htm" />
   </HelpKINode>
   <HelpKINode Title="PictureModel.BarID property" Url="html/d9fb5aad-b1da-b0c9-940e-68f346a5cb5b.htm" />
@@ -956,28 +1216,40 @@
     <HelpKINode Title="ICustomBarContext.PictureModels Property " Url="html/b8ab3a1a-d019-f9f4-a444-dc4001be233b.htm" />
   </HelpKINode>
   <HelpKINode Title="PictureRepository class">
-    <HelpKINode Title="PictureRepository Class" Url="html/3d3ce2b8-d985-1390-1414-e28d8fe448c8.htm" />
-    <HelpKINode Title="about PictureRepository class" Url="html/3d3ce2b8-d985-1390-1414-e28d8fe448c8.htm" />
-    <HelpKINode Title="constructor" Url="html/136a93b1-b2f7-46ee-746b-a366ec4eb6b2.htm" />
-    <HelpKINode Title="methods" Url="html/0470ff52-bd13-103c-ee21-26b4e39b5a52.htm" />
+    <HelpKINode Title="PictureRepository Class" Url="html/6f481bc2-b549-9cb6-c746-bb5145286b31.htm" />
+    <HelpKINode Title="about PictureRepository class" Url="html/6f481bc2-b549-9cb6-c746-bb5145286b31.htm" />
+    <HelpKINode Title="constructor" Url="html/07631561-ce20-30d9-389e-2af2acc80aee.htm" />
+    <HelpKINode Title="fields" Url="html/4b4ad140-8198-4acc-3f3c-927410dbfa30.htm" />
+    <HelpKINode Title="methods" Url="html/94c4fcbf-8117-ae3f-616d-581d442f5786.htm" />
   </HelpKINode>
-  <HelpKINode Title="PictureRepository property" Url="html/aa7ad5ee-6237-e91c-a2c2-2778d9a107f0.htm" />
-  <HelpKINode Title="PictureRepository.Dispose method" Url="html/37ea77d0-18c6-8413-0669-410cf0e08329.htm" />
-  <HelpKINode Title="PictureRepository.PictureRepository constructor" Url="html/136a93b1-b2f7-46ee-746b-a366ec4eb6b2.htm" />
+  <HelpKINode Title="PictureRepository property">
+    <HelpKINode Title="IUnitOfWork.PictureRepository Property " Url="html/b28b1100-2f8d-b32b-ddc2-02d43dfe176a.htm" />
+    <HelpKINode Title="UnitOfWork.PictureRepository Property " Url="html/a2d82a27-a01e-4bd2-d7c5-1b8ac81983e7.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PictureRepository.AddModelForUpdate method" Url="html/c6b91281-7efc-1336-3d05-b9a426594e7d.htm" />
+  <HelpKINode Title="PictureRepository.PictureRepository constructor" Url="html/07631561-ce20-30d9-389e-2af2acc80aee.htm" />
   <HelpKINode Title="Pictures property" Url="html/bb42565e-366a-5614-e9eb-c901bb636651.htm" />
-  <HelpKINode Title="PostBarModel method" Url="html/91dea948-b8b2-a310-0ece-9913c53f0d0f.htm" />
+  <HelpKINode Title="PictureViewModel class">
+    <HelpKINode Title="PictureViewModel Class" Url="html/927bacec-f2c3-d034-6fdb-27b09be63b05.htm" />
+    <HelpKINode Title="about PictureViewModel class" Url="html/927bacec-f2c3-d034-6fdb-27b09be63b05.htm" />
+    <HelpKINode Title="constructor" Url="html/4c71bff8-f948-7642-dde2-a07f56a4486c.htm" />
+    <HelpKINode Title="properties" Url="html/72ab783d-c7cb-8b38-47a8-be2749a4db4f.htm" />
+  </HelpKINode>
+  <HelpKINode Title="PictureViewModel.BarID property" Url="html/783ee9a0-5d6b-04d7-064a-c1a1b9eacf94.htm" />
+  <HelpKINode Title="PictureViewModel.Description property" Url="html/ba16ff5f-116b-658b-a2b5-7e282792d766.htm" />
+  <HelpKINode Title="PictureViewModel.PictureID property" Url="html/5a2d9f04-8c37-5770-5aac-fe9089e9c074.htm" />
+  <HelpKINode Title="PictureViewModel.PictureViewModel constructor" Url="html/4c71bff8-f948-7642-dde2-a07f56a4486c.htm" />
   <HelpKINode Title="Price property">
     <HelpKINode Title="DrinkModel.Price Property " Url="html/54bf239d-29c1-5a61-acfc-7311fbea1d35.htm" />
     <HelpKINode Title="DrinkViewModel.Price Property " Url="html/3b4e08aa-731f-b570-c20c-a10b93948f29.htm" />
   </HelpKINode>
-  <HelpKINode Title="ProfilPictureModel property" Url="html/cb52cb16-eb14-ba3e-a615-5a6b72d357bb.htm" />
   <HelpKINode Title="Provider property" Url="html/bfe68130-5c73-f5b0-6d07-7277ede87312.htm" />
   <HelpKINode Title="Providers property">
     <HelpKINode Title="ConfigureTwoFactorViewModel.Providers Property " Url="html/0acc222b-cff9-c7d5-70c8-3292fcee4b89.htm" />
     <HelpKINode Title="SendCodeViewModel.Providers Property " Url="html/e210f3d4-3454-ea00-83d7-860757574985.htm" />
   </HelpKINode>
   <HelpKINode Title="Purpose property" Url="html/85aaae2d-9ccd-b688-9af5-51369362a18e.htm" />
-  <HelpKINode Title="PutBarModel method" Url="html/3725c564-64ae-3e64-2cc6-d2680d264dde.htm" />
+  <HelpKINode Title="RedirectToLocal method" Url="html/4564961e-1aa6-4b53-b35a-b341850e7105.htm" />
   <HelpKINode Title="Register method" Url="html/e2f5e0fb-d593-382a-69fc-b91b7f7700c3.htm" />
   <HelpKINode Title="RegisterBundles method" Url="html/e34720b8-6dbe-d3fb-02b8-987e7f470b54.htm" />
   <HelpKINode Title="RegisterGlobalFilters method" Url="html/b1f07b83-4155-8d06-c227-3aee7b4776c3.htm" />
@@ -986,7 +1258,6 @@
     <HelpKINode Title="RegisterViewModel Class" Url="html/a55ae6b1-dc2c-1658-2d45-fa92d968d2dd.htm" />
     <HelpKINode Title="about RegisterViewModel class" Url="html/a55ae6b1-dc2c-1658-2d45-fa92d968d2dd.htm" />
     <HelpKINode Title="constructor" Url="html/936dee96-a007-1e28-adb4-1011e2c10798.htm" />
-    <HelpKINode Title="methods" Url="html/3785cc3f-b4b2-f46f-cf22-433a7acb9de2.htm" />
     <HelpKINode Title="properties" Url="html/5c69d9dd-3ed3-1cd0-d455-22ee472b6787.htm" />
   </HelpKINode>
   <HelpKINode Title="RegisterViewModel property" Url="html/0916d56d-2165-16d1-e722-66fe58be1b24.htm" />
@@ -1013,7 +1284,6 @@
     <HelpKINode Title="ResetPasswordViewModel Class" Url="html/c93f5f0d-2919-93c8-bd19-93278c2bbb94.htm" />
     <HelpKINode Title="about ResetPasswordViewModel class" Url="html/c93f5f0d-2919-93c8-bd19-93278c2bbb94.htm" />
     <HelpKINode Title="constructor" Url="html/32898fed-dbbe-e5ae-8a62-ca86c8d1e4dc.htm" />
-    <HelpKINode Title="methods" Url="html/879b760b-6bff-9a6d-60ae-fb98f64027de.htm" />
     <HelpKINode Title="properties" Url="html/86cb0683-30d7-1d76-86e8-7e936cfdd1e9.htm" />
   </HelpKINode>
   <HelpKINode Title="ResetPasswordViewModel.Code property" Url="html/9fe884bf-9934-f428-71db-2f8eb5870045.htm" />
@@ -1021,6 +1291,19 @@
   <HelpKINode Title="ResetPasswordViewModel.Email property" Url="html/0d9f581a-f09c-473a-af9f-040691619fd5.htm" />
   <HelpKINode Title="ResetPasswordViewModel.Password property" Url="html/a1e4fd05-ab32-b641-1e40-5b08a206dd1b.htm" />
   <HelpKINode Title="ResetPasswordViewModel.ResetPasswordViewModel constructor" Url="html/32898fed-dbbe-e5ae-8a62-ca86c8d1e4dc.htm" />
+  <HelpKINode Title="Resources field">
+    <HelpKINode Title="AddedCoverPictureModel.Resources Field" Url="html/13997ff5-7eba-2e4a-53c0-740df05e614a.htm" />
+    <HelpKINode Title="AddedTwoPictureModels.Resources Field" Url="html/31b488c5-ecdb-ff56-111f-8c3a0406ea90.htm" />
+    <HelpKINode Title="bar.Resources Field" Url="html/f64fb952-7d55-4fae-9e02-fe0499fb5046.htm" />
+    <HelpKINode Title="barId.Resources Field" Url="html/eb9a02d2-4a42-0403-0d9f-04bcaef93840.htm" />
+    <HelpKINode Title="BarnameOnApplicationuser.Resources Field" Url="html/6b91fa91-850c-b10f-325f-379c86ad1ea9.htm" />
+    <HelpKINode Title="ChangeNameOfBarProfilePicture.Resources Field" Url="html/6c036bc6-18e3-bacd-7117-9eec5c62a93c.htm" />
+    <HelpKINode Title="Initial.Resources Field" Url="html/774c9e54-e343-2545-69c6-b0b945660801.htm" />
+    <HelpKINode Title="OpdateretDrinksModelPris.Resources Field" Url="html/ea0f81c1-e4be-31e6-6943-59dac530111e.htm" />
+    <HelpKINode Title="OpenCloseTimeInBarModel.Resources Field" Url="html/d23641bd-a9e9-c5e4-3283-c1eda9667101.htm" />
+    <HelpKINode Title="UpdatedModelsWithCreateTime.Resources Field" Url="html/0e7a7d96-03ac-2541-97c0-af3818d390ab.htm" />
+    <HelpKINode Title="WeirdChanged.Resources Field" Url="html/fa612367-2321-57f1-3fa7-0550ab03cc7b.htm" />
+  </HelpKINode>
   <HelpKINode Title="ReturnUrl property">
     <HelpKINode Title="ExternalLoginListViewModel.ReturnUrl Property " Url="html/1c57cd37-a1c7-4155-d076-3462c091ed37.htm" />
     <HelpKINode Title="SendCodeViewModel.ReturnUrl Property " Url="html/bed6a6b9-a6eb-3d45-784a-7d15b024bb25.htm" />
@@ -1035,8 +1318,8 @@
   <HelpKINode Title="RouteConfig.RegisterRoutes method" Url="html/cf67072d-c2c9-766a-f11d-c661045ea157.htm" />
   <HelpKINode Title="RouteConfig.RouteConfig constructor" Url="html/8190820d-9e71-d22b-fe46-cbee1d00d8d6.htm" />
   <HelpKINode Title="Save method">
-    <HelpKINode Title="IUnitOfWork.Save Method " Url="html/d79e1ac9-1672-41eb-b126-8c0249cb03ca.htm" />
-    <HelpKINode Title="UnitOfWork.Save Method " Url="html/b661a0ea-d543-2c79-e582-978b777f1ca2.htm" />
+    <HelpKINode Title="IUnitOfWork.Save Method " Url="html/18891ea7-943d-8f57-e795-a1e20d577849.htm" />
+    <HelpKINode Title="UnitOfWork.Save Method " Url="html/96be8984-6a59-b7af-8af4-454bab174237.htm" />
   </HelpKINode>
   <HelpKINode Title="SaveChanges method" Url="html/460e98d3-f820-14a6-cc64-f7d7bec0fd21.htm" />
   <HelpKINode Title="Seed method">
@@ -1056,7 +1339,6 @@
     <HelpKINode Title="SendCodeViewModel Class" Url="html/27b32841-f1c5-c0cc-54a6-5699c163c2f0.htm" />
     <HelpKINode Title="about SendCodeViewModel class" Url="html/27b32841-f1c5-c0cc-54a6-5699c163c2f0.htm" />
     <HelpKINode Title="constructor" Url="html/29d3cb4a-e747-8d3a-0aa3-97eb1f2dd6b3.htm" />
-    <HelpKINode Title="methods" Url="html/0174605e-81df-11cf-e544-7bf502652550.htm" />
     <HelpKINode Title="properties" Url="html/39e52f0e-d086-6c68-e778-95006a54c940.htm" />
   </HelpKINode>
   <HelpKINode Title="SendCodeViewModel.Providers property" Url="html/e210f3d4-3454-ea00-83d7-860757574985.htm" />
@@ -1070,7 +1352,6 @@
     <HelpKINode Title="SetPasswordViewModel Class" Url="html/3f9d4707-4c94-99c4-be38-1cf2b99fc825.htm" />
     <HelpKINode Title="about SetPasswordViewModel class" Url="html/3f9d4707-4c94-99c4-be38-1cf2b99fc825.htm" />
     <HelpKINode Title="constructor" Url="html/fb853a7e-ed98-010f-6c5b-974da459d82e.htm" />
-    <HelpKINode Title="methods" Url="html/b247c937-9897-403f-311f-83f93b3eb9a7.htm" />
     <HelpKINode Title="properties" Url="html/02c2bbb5-b4c4-657c-3d7d-59e10b79bf68.htm" />
   </HelpKINode>
   <HelpKINode Title="SetPasswordViewModel.ConfirmPassword property" Url="html/c4099f7a-7720-1d6d-34ac-10b0b1c3d0df.htm" />
@@ -1102,60 +1383,75 @@
     <HelpKINode Title="BarModel.StreetNumber Property " Url="html/0de23eba-f17b-8365-2b18-c6cf4b127200.htm" />
     <HelpKINode Title="EditViewModel.StreetNumber Property " Url="html/a212c3c9-f026-c276-9ae0-b1a89ed3f9b0.htm" />
     <HelpKINode Title="EventModel.StreetNumber Property " Url="html/79d12081-e940-5fdb-6e87-98838c155941.htm" />
+    <HelpKINode Title="EventViewModel.StreetNumber Property " Url="html/d4faaf1c-dfb7-fec5-f548-e97e37ffb499.htm" />
   </HelpKINode>
   <HelpKINode Title="Text property" Url="html/357695ab-076d-f300-d404-235be112114f.htm" />
   <HelpKINode Title="TimeStamp property">
     <HelpKINode Title="BarModel.TimeStamp Property " Url="html/c96ef477-1dfb-f37a-fa5c-41bb272c5043.htm" />
-    <HelpKINode Title="BarProfilPictureModel.TimeStamp Property " Url="html/49fd579c-74ef-1ab8-6955-ff19704818ea.htm" />
+    <HelpKINode Title="BarProfilePictureModel.TimeStamp Property " Url="html/b0712eac-9757-a268-77e8-a3fdfb89d32d.htm" />
+    <HelpKINode Title="CoverPictureModel.TimeStamp Property " Url="html/347f96d2-e2de-f51f-10c0-c0e1ef253b10.htm" />
     <HelpKINode Title="DrinkModel.TimeStamp Property " Url="html/66769c21-6180-033b-680b-a498cba9799e.htm" />
     <HelpKINode Title="DrinkPictureModel.TimeStamp Property " Url="html/9ffb8bf0-6ca8-a8da-9065-5f24940c302d.htm" />
     <HelpKINode Title="EventModel.TimeStamp Property " Url="html/3f3f3d6d-2f9b-8260-7f43-12b5c4c6fa32.htm" />
     <HelpKINode Title="FeedModel.TimeStamp Property " Url="html/10e7eb1f-dd9f-f6c5-6c7f-04f88049e727.htm" />
     <HelpKINode Title="PictureModel.TimeStamp Property " Url="html/d9341161-1b2a-7397-4f8e-7c5795929c11.htm" />
   </HelpKINode>
+  <HelpKINode Title="TimeToSubtract field" Url="html/50c12323-2929-9b68-e787-387195eeef0f.htm" />
   <HelpKINode Title="Title property">
     <HelpKINode Title="DrinkModel.Title Property " Url="html/915999a4-6ad0-3cf1-9fa6-d75aea931b75.htm" />
     <HelpKINode Title="DrinkViewModel.Title Property " Url="html/1dbaa576-4a59-587f-15d2-a582f6894283.htm" />
     <HelpKINode Title="EventModel.Title Property " Url="html/aa6585ec-c634-cdda-ed71-6ec8477f08ef.htm" />
+    <HelpKINode Title="EventViewModel.Title Property " Url="html/e467f815-0c2e-820b-a525-3d79c92ce153.htm" />
   </HelpKINode>
   <HelpKINode Title="TwoFactor property" Url="html/4f315d62-aa9b-8882-e38d-807deb5de23d.htm" />
   <HelpKINode Title="UnitOfWork class">
-    <HelpKINode Title="UnitOfWork Class" Url="html/dd65e7b3-188e-0e3e-448c-82a7b92bd70f.htm" />
-    <HelpKINode Title="about UnitOfWork class" Url="html/dd65e7b3-188e-0e3e-448c-82a7b92bd70f.htm" />
-    <HelpKINode Title="constructor" Url="html/93388260-56bb-4ecc-6f8a-d7971d9c364f.htm" />
-    <HelpKINode Title="methods" Url="html/9baac890-a278-7ace-b537-e9b9678c81b0.htm" />
-    <HelpKINode Title="properties" Url="html/6e904784-3747-e710-f99c-5e5a54ed402d.htm" />
+    <HelpKINode Title="UnitOfWork Class" Url="html/28ee91fa-ce08-4295-a889-2a4b86200084.htm" />
+    <HelpKINode Title="about UnitOfWork class" Url="html/28ee91fa-ce08-4295-a889-2a4b86200084.htm" />
+    <HelpKINode Title="constructor" Url="html/dad465d1-e0ed-74ce-76d4-0dad20154066.htm" />
+    <HelpKINode Title="fields" Url="html/56c465e9-13e8-f620-d623-0638423e7ed9.htm" />
+    <HelpKINode Title="methods" Url="html/7bacb6d4-fed2-de0c-0b98-c4c8bf7d4f0f.htm" />
+    <HelpKINode Title="properties" Url="html/dddb8814-91b5-c729-5da5-6017a4f43a76.htm" />
   </HelpKINode>
-  <HelpKINode Title="UnitOfWork.BarRepository property" Url="html/05027a55-6637-1d6f-a4cf-4d17a16f614b.htm" />
-  <HelpKINode Title="UnitOfWork.Dispose method" Url="html/cd21fc53-2323-1c9d-11d3-5924fce2aef5.htm" />
-  <HelpKINode Title="UnitOfWork.DrinkRepository property" Url="html/02ce9039-9b1b-1920-2373-84b62611264f.htm" />
-  <HelpKINode Title="UnitOfWork.EventRepository property" Url="html/37828de8-7960-e49a-c075-860fbe16ccbf.htm" />
-  <HelpKINode Title="UnitOfWork.FeedRepository property" Url="html/1ce21621-4795-7d84-7756-7399f2428683.htm" />
-  <HelpKINode Title="UnitOfWork.GetAllBarsForHome method" Url="html/5c242ab0-89d9-a653-85e1-61c00b6bc068.htm" />
-  <HelpKINode Title="UnitOfWork.GetBarprofile method" Url="html/6ed85b48-7db1-523e-a2c1-259a8723329f.htm" />
-  <HelpKINode Title="UnitOfWork.PictureRepository property" Url="html/aa7ad5ee-6237-e91c-a2c2-2778d9a107f0.htm" />
-  <HelpKINode Title="UnitOfWork.Save method" Url="html/b661a0ea-d543-2c79-e582-978b777f1ca2.htm" />
-  <HelpKINode Title="UnitOfWork.UnitOfWork constructor" Url="html/93388260-56bb-4ecc-6f8a-d7971d9c364f.htm" />
+  <HelpKINode Title="UnitOfWork.BarProfilePictureRepository property" Url="html/f94a71f5-b89f-839c-556b-c98fc2c9e15e.htm" />
+  <HelpKINode Title="UnitOfWork.BarRepository property" Url="html/1ab60e66-739b-e989-68fe-885f5fb799cd.htm" />
+  <HelpKINode Title="UnitOfWork.CoverPictureRepository property" Url="html/d2775483-b8eb-6438-6515-b817055d49b1.htm" />
+  <HelpKINode Title="UnitOfWork.Dispose method" Url="html/e1e94229-d9cb-6c6c-76db-bc0e9613306d.htm" />
+  <HelpKINode Title="UnitOfWork.DrinkRepository property" Url="html/548e0514-57de-982d-1112-42676411eaf0.htm" />
+  <HelpKINode Title="UnitOfWork.EventRepository property" Url="html/f5927221-b72a-0b07-acd2-2c0508dfec2a.htm" />
+  <HelpKINode Title="UnitOfWork.FeedRepository property" Url="html/523002f6-847e-c804-0524-798b3db07726.htm" />
+  <HelpKINode Title="UnitOfWork.GetAllBarsForHome method" Url="html/d8fa9c41-49bc-8ff2-b7ce-d31628a1c225.htm" />
+  <HelpKINode Title="UnitOfWork.GetBarprofile method" Url="html/43ced3bf-d18a-2277-4cdd-e6d5846067f4.htm" />
+  <HelpKINode Title="UnitOfWork.InitializeRepositories method" Url="html/b1c09d03-541c-cefb-7e8f-16985a70e545.htm" />
+  <HelpKINode Title="UnitOfWork.PictureRepository property" Url="html/a2d82a27-a01e-4bd2-d7c5-1b8ac81983e7.htm" />
+  <HelpKINode Title="UnitOfWork.Save method" Url="html/96be8984-6a59-b7af-8af4-454bab174237.htm" />
+  <HelpKINode Title="UnitOfWork.TimeToSubtract field" Url="html/50c12323-2929-9b68-e787-387195eeef0f.htm" />
+  <HelpKINode Title="UnitOfWork.UnitOfWork constructor" Url="html/dad465d1-e0ed-74ce-76d4-0dad20154066.htm" />
+  <HelpKINode Title="UnitOfWork._context field" Url="html/90e7040c-36b7-8c6a-194d-2734624729a5.htm" />
   <HelpKINode Title="Up method">
+    <HelpKINode Title="AddedCoverPictureModel.Up Method " Url="html/dda84166-8d26-7101-4163-8b6876005c54.htm" />
     <HelpKINode Title="AddedTwoPictureModels.Up Method " Url="html/601c0eb7-5b04-619a-4637-4248f720e965.htm" />
+    <HelpKINode Title="bar.Up Method " Url="html/e56068bf-70cb-1ea8-d1be-40089badb10d.htm" />
+    <HelpKINode Title="barId.Up Method " Url="html/44efa0fd-75df-6d7b-5d5f-26a1cb23b8eb.htm" />
+    <HelpKINode Title="BarnameOnApplicationuser.Up Method " Url="html/a9d8ae29-b24d-3a60-ecdc-0225869d8b50.htm" />
+    <HelpKINode Title="ChangeNameOfBarProfilePicture.Up Method " Url="html/8716e548-f304-8fed-4c88-395322539987.htm" />
     <HelpKINode Title="Initial.Up Method " Url="html/70a96c53-4ef9-61dd-0621-5a4037551801.htm" />
     <HelpKINode Title="OpdateretDrinksModelPris.Up Method " Url="html/03df7c90-cadc-d29f-67dd-0ff89fac1314.htm" />
     <HelpKINode Title="OpenCloseTimeInBarModel.Up Method " Url="html/876bf2c4-a5ae-ebbc-2bb6-f7f23f1ae483.htm" />
     <HelpKINode Title="UpdatedModelsWithCreateTime.Up Method " Url="html/012b832d-b6bb-45cb-c4e6-681f8ef35e4d.htm" />
+    <HelpKINode Title="WeirdChanged.Up Method " Url="html/d88f141d-d7f8-7528-f6c0-2d77f7c07e97.htm" />
   </HelpKINode>
-  <HelpKINode Title="UpdateBarModel method" Url="html/f3581606-d014-5570-441d-afd9da27fcf0.htm" />
   <HelpKINode Title="UpdatedModelsWithCreateTime class">
     <HelpKINode Title="UpdatedModelsWithCreateTime Class" Url="html/bc888137-d208-7ef4-5a31-4f292a123dac.htm" />
     <HelpKINode Title="about UpdatedModelsWithCreateTime class" Url="html/bc888137-d208-7ef4-5a31-4f292a123dac.htm" />
     <HelpKINode Title="constructor" Url="html/6e729324-b1a3-b0cb-c7fe-d6bd6f8f0802.htm" />
+    <HelpKINode Title="fields" Url="html/a0aef67c-dab2-25f2-2bc8-5bc4034e04f6.htm" />
     <HelpKINode Title="methods" Url="html/6ec5a928-f9b8-972b-972f-a54ee8dea16e.htm" />
   </HelpKINode>
   <HelpKINode Title="UpdatedModelsWithCreateTime.Down method" Url="html/ab2d8638-de32-a092-3cab-bd61d2c88f19.htm" />
+  <HelpKINode Title="UpdatedModelsWithCreateTime.Resources field" Url="html/0e7a7d96-03ac-2541-97c0-af3818d390ab.htm" />
   <HelpKINode Title="UpdatedModelsWithCreateTime.Up method" Url="html/012b832d-b6bb-45cb-c4e6-681f8ef35e4d.htm" />
   <HelpKINode Title="UpdatedModelsWithCreateTime.UpdatedModelsWithCreateTime constructor" Url="html/6e729324-b1a3-b0cb-c7fe-d6bd6f8f0802.htm" />
-  <HelpKINode Title="UpdateDrinks method" Url="html/f260f07e-0309-6d28-93db-8f5d738d11cb.htm" />
-  <HelpKINode Title="UpdateEventModel method" Url="html/33120982-aa1e-2cd8-6163-2f954cf1a4f1.htm" />
-  <HelpKINode Title="userID field" Url="html/ff0b6bec-452f-46d9-ca11-e0989bd1a7d7.htm" />
+  <HelpKINode Title="userID property" Url="html/f99d3cb0-c512-300d-080b-c3ee11b4db0d.htm" />
   <HelpKINode Title="UserManager property">
     <HelpKINode Title="AccountController.UserManager Property " Url="html/4f4610f0-14ec-60d7-8c90-5d0f5b033287.htm" />
     <HelpKINode Title="BarCrawlerContextInitializer(T).UserManager Property " Url="html/2e28b8d3-1790-1062-77a1-4fb6d90c9735.htm" />
@@ -1166,7 +1462,6 @@
     <HelpKINode Title="VerifyCodeViewModel Class" Url="html/7c4318dc-fd0e-30b4-6e6d-80b7e1fe0fc0.htm" />
     <HelpKINode Title="about VerifyCodeViewModel class" Url="html/7c4318dc-fd0e-30b4-6e6d-80b7e1fe0fc0.htm" />
     <HelpKINode Title="constructor" Url="html/4fcf4059-23d4-108f-8190-813fe4b76b7c.htm" />
-    <HelpKINode Title="methods" Url="html/64c4a3d9-c6dc-2273-f1ed-9cbf3a23a370.htm" />
     <HelpKINode Title="properties" Url="html/85fab0fd-7446-e4f3-8244-a26419ee7b10.htm" />
   </HelpKINode>
   <HelpKINode Title="VerifyCodeViewModel.Code property" Url="html/cb718c71-8e06-dedd-4e4b-60365bf8ce89.htm" />
@@ -1180,7 +1475,6 @@
     <HelpKINode Title="VerifyPhoneNumberViewModel Class" Url="html/8f394637-8ff7-2ea9-4a1b-e62dfb013845.htm" />
     <HelpKINode Title="about VerifyPhoneNumberViewModel class" Url="html/8f394637-8ff7-2ea9-4a1b-e62dfb013845.htm" />
     <HelpKINode Title="constructor" Url="html/0e34e9a5-62b2-5c4e-ad2d-9abf3bed1767.htm" />
-    <HelpKINode Title="methods" Url="html/3b19cb84-5ea2-2d4e-a2d7-16581a55c141.htm" />
     <HelpKINode Title="properties" Url="html/37d11637-f2b5-44a8-36c6-c8d65adc6597.htm" />
   </HelpKINode>
   <HelpKINode Title="VerifyPhoneNumberViewModel.Code property" Url="html/88595b39-56c9-1816-788e-013d2354f378.htm" />
@@ -1190,11 +1484,46 @@
     <HelpKINode Title="1.0.0.0" Url="html/265aaab6-0e71-4475-a0ce-eaae8d535fc0.htm" />
     <HelpKINode Title="history" Url="html/00701752-5d7d-458a-9d90-bb241000369d.htm" />
   </HelpKINode>
+  <HelpKINode Title="WeirdChanged class">
+    <HelpKINode Title="WeirdChanged Class" Url="html/c4326702-5bd2-7b9d-0d37-2efd41f17e30.htm" />
+    <HelpKINode Title="about WeirdChanged class" Url="html/c4326702-5bd2-7b9d-0d37-2efd41f17e30.htm" />
+    <HelpKINode Title="constructor" Url="html/388ed2ff-e246-55c0-1787-6cee31e9d8c7.htm" />
+    <HelpKINode Title="fields" Url="html/f1cd0c04-a463-5cec-f15c-dc90f36f6837.htm" />
+    <HelpKINode Title="methods" Url="html/ccb6416c-82ed-8d67-f497-dda07f5fe172.htm" />
+  </HelpKINode>
+  <HelpKINode Title="WeirdChanged.Down method" Url="html/37e245e9-4421-f1e9-69fa-5fc5116ed625.htm" />
+  <HelpKINode Title="WeirdChanged.Resources field" Url="html/fa612367-2321-57f1-3fa7-0550ab03cc7b.htm" />
+  <HelpKINode Title="WeirdChanged.Up method" Url="html/d88f141d-d7f8-7528-f6c0-2d77f7c07e97.htm" />
+  <HelpKINode Title="WeirdChanged.WeirdChanged constructor" Url="html/388ed2ff-e246-55c0-1787-6cee31e9d8c7.htm" />
   <HelpKINode Title="Welcome" Url="html/fce12b9f-d076-4063-9238-2bc8d0e00dde.htm" />
+  <HelpKINode Title="XsrfKey field">
+    <HelpKINode Title="AccountController.XsrfKey Field" Url="html/1665e5fa-ba1d-bd52-6696-4f2e335588e4.htm" />
+    <HelpKINode Title="ManageController.XsrfKey Field" Url="html/29db00dc-648b-4a26-3c5e-ef219efbb2f3.htm" />
+  </HelpKINode>
   <HelpKINode Title="Zipcode property">
     <HelpKINode Title="BarModel.Zipcode Property " Url="html/40864d8e-85e0-a512-96eb-4fcd4c80b04f.htm" />
     <HelpKINode Title="EditViewModel.Zipcode Property " Url="html/0cd6b82d-2d4c-8beb-1d26-3aebffe22b88.htm" />
     <HelpKINode Title="EventModel.Zipcode Property " Url="html/5350f273-c60f-ca5e-f989-c17505367c5a.htm" />
+    <HelpKINode Title="EventViewModel.Zipcode Property " Url="html/d6c9bddc-e6fa-92cb-0b39-fd1429ccedbe.htm" />
   </HelpKINode>
-  <HelpKINode Title="_context field" Url="html/78ac2261-e3c9-5190-97b8-1656116eef4c.htm" />
+  <HelpKINode Title="_context field">
+    <HelpKINode Title="GenericRepository(TEntity)._context Field" Url="html/78ac2261-e3c9-5190-97b8-1656116eef4c.htm" />
+    <HelpKINode Title="UnitOfWork._context Field" Url="html/90e7040c-36b7-8c6a-194d-2734624729a5.htm" />
+  </HelpKINode>
+  <HelpKINode Title="_dbSet field" Url="html/4163be2c-17c8-db90-3eba-eb429c01ebe8.htm" />
+  <HelpKINode Title="_signInManager field">
+    <HelpKINode Title="AccountController._signInManager Field" Url="html/71cdb69c-2feb-68de-c1bf-fcd5f8cf55fc.htm" />
+    <HelpKINode Title="BarCrawlerContextInitializer(T)._signInManager Field" Url="html/15d2b7db-e58c-b6c1-5d1d-0463eb2f1f70.htm" />
+    <HelpKINode Title="ManageController._signInManager Field" Url="html/967c91ae-4824-0d0a-d717-1cf9cb3f1f4c.htm" />
+  </HelpKINode>
+  <HelpKINode Title="_unitOfWork field">
+    <HelpKINode Title="AccountController._unitOfWork Field" Url="html/b0dd12f4-5e9d-59e5-9378-b563bcde14e5.htm" />
+    <HelpKINode Title="BarProfilController._unitOfWork Field" Url="html/77e2a55b-2990-9524-0e4e-7d8cdabe7f59.htm" />
+    <HelpKINode Title="HomeController._unitOfWork Field" Url="html/4093b76a-cec2-77ed-862d-db4f2c4fe74d.htm" />
+  </HelpKINode>
+  <HelpKINode Title="_userManager field">
+    <HelpKINode Title="AccountController._userManager Field" Url="html/067bed41-b30d-36cd-42ad-beea7dd8e5cb.htm" />
+    <HelpKINode Title="BarCrawlerContextInitializer(T)._userManager Field" Url="html/c82c81bd-7feb-2f25-6e1f-1480a532f36b.htm" />
+    <HelpKINode Title="ManageController._userManager Field" Url="html/05e2a9d7-49e0-a9ad-1cfd-df3d8d196a2e.htm" />
+  </HelpKINode>
 </HelpKI>
